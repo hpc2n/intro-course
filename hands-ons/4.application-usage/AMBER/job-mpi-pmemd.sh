@@ -7,10 +7,11 @@
 #SBATCH -N 1
 #SBATCH -n 28
 
+# It is a good idea to do a ml purge before loading other modules
 ml purge
 
-ml GCC/8.3.0  OpenMPI/3.1.4
-ml Amber/18-AmberTools-19-patchlevel-12-17-Python-2.7.16
+ml GCC/10.2.0  OpenMPI/4.0.5
+ml Amber/20.11-AmberTools-21.3 
 
 #Tutorial can be found at: http://ambermd.org/tutorials/pengfei/index.php
 
