@@ -7,11 +7,11 @@
 #SBATCH -n 4
 #SBATCH -c 7
 
-# It is always best to do a ml purge before loading other modules
+# It is a good idea to do a ml purge before loading other modules
 ml purge
 
-ml GCC/5.4.0-2.26  CUDA/8.0.61_375.26  impi/2017.3.196
-ml GROMACS/2016.4
+ml GCC/10.2.0  OpenMPI/4.0.5
+ml GROMACS/2021
 
 if [ -n "$SLURM_CPUS_PER_TASK" ]; then
     mdargs="-ntomp $SLURM_CPUS_PER_TASK"
@@ -21,6 +21,7 @@ fi
 
 export OMP_NUM_THREADS=7
 export MDRUN='gmx_mpi mdrun'
+gmx grompp -f step4.1_equilibration.mdp -o step4.1_equilibration.tpr -c step4.0_minimization.gro -r step3_charmm2gmx.pdb -n index.ndx -p topol.top
 
-gmx tune_pme -mdrun "$MDRUN" -np $SLURM_NTASKS $mdargs -dlb yes -s npt.tpr -nocheck -nolaunch -steps 20000 -resetstep 5000 -ntpr 1 -r 3 # -npme all -rmax 3.0 -rmin 1.2 -ntpr 5
+gmx tune_pme -mdrun "$MDRUN" -np $SLURM_NTASKS $mdargs -dlb yes -s step4.1_equilibration.tpr -nocheck -nolaunch -steps 20000 -resetstep 5000 -ntpr 1 -r 3 
  

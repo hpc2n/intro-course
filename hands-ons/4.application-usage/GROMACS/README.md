@@ -1,4 +1,4 @@
-# GROMACS examples provided in this folder are:
+# GROMACS test cases provided in this folder are:
 
    * "GPU" folder, here the job can be submitted with "sbatch job-gpu-gromacs.sh"
    At the end of the script you can find three ways to run GROMACS :
@@ -15,4 +15,8 @@
      you run long production simulations. A sample script for doing that with "tune_pme"
      is provided and it can be submitted with "sbatch job-tune-pme.sh". Take a look at the
      output "perf.out". 
+
+   * "VSITES" folder, here two different setups of the same system are provided one by using
+     the classical molecula dynamics and the the other by using virtual sites which allows 
+     to use a longer time step. Submit the jobs in each folder with "sbatch job*.sh" 
 
