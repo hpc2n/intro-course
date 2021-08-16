@@ -1,11 +1,14 @@
 # Loading modules
 
 ml purge
+
 ml fosscuda/2019b buildenv 
 
 # Compiling and linking
 mpicc -c main.c -o main.o
+
 nvcc -c print.cu -o print.o
+
 mpicc main.o print.o -lcuda -lcudart -lstdc++ -o exe 
 
 # Running the code using 2 MPI ranks
