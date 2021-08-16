@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A SNIC2020-9-215
+#SBATCH -A SNIC2021-22-514
 # Number of cores per task 
 #SBATCH -c 28
 #SBATCH --time=00:05:00
