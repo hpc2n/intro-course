@@ -1,0 +1,1126 @@
+\documentclass{beamer}
+
+% ////////////////////////////////////////////////////////////////////////////
+% Instructions for authors
+% ////////////////////////////////////////////////////////////////////////////
+% 
+% Please scan the current document and notices how it is divided into sections
+% Only one author per slide, please! This will reduce merge conflicts
+% Create new commands in separate sections marked by your initials
+% The document width is 78 characters.
+
+% Configuration of beamer
+\usetheme{Copenhagen}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+% Basic packages
+\usepackage{graphics,graphicx,hyperref,amsmath,amssymb,amsthm,color,multirow}
+\usepackage{ragged2e}
+\usepackage{verbatim,listings}
+\usepackage[normalem]{ulem}
+\usepackage{hhline}
+% Set the graphics path
+% \graphicspath{{./graphics/people/}{./graphics/logos/}}
+
+% ////////////////////////////////////////////////////////////////////////////
+% LaTeX shortcut commands typically defined by CCKM
+% ////////////////////////////////////////////////////////////////////////////
+
+% Theorems
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+% Finite dimensional vectorspaces
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}{\R^n}
+\newcommand{\Rp}{\R^p}
+\newcommand{\Rnn}{\R^{n \times n}}
+\newcommand{\Rnp}{\R^{n \times p}}
+\newcommand{\myspan}{\text{span}}
+
+% Equations
+\newcommand{\be}{\begin{equation}}
+  \newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+  \newcommand{\ees}{\end{equation*}}
+
+% Matrices
+\newcommand{\bbm}{\begin{bmatrix}}
+  \newcommand{\ebm}{\end{bmatrix}}
+\newcommand{\bpm}{\begin{pmatrix}}
+  \newcommand{\epm}{\end{pmatrix}}
+
+% Sets
+\newcommand{\Ran}{\text{Ran}\:}
+\newcommand{\Ker}{\text{Ker}\:}
+
+% Floating point representation
+\newcommand{\fl}{\text{fl}}
+
+% ////////////////////////////////////////////////////////////////////////////
+% Specialized graphics
+% /////////////////////////////////////////////////////////////////////////// 
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\setbeamerfont{block title}{size=\small}
+
+\title[Introduction to HPC2N]{Introduction to HPC2N}
+%\subtitle{}
+\author{Birgitte Bryds\o, Mirko Myllykoski, and Pedro Ojeda-May}
+\institute{HPC2N, Ume\aa{} University}
+
+\titlegraphic{\center{\includegraphics[height=1.2cm]{figures/SNIC_logo.png}\hspace*{1.1cm}~
+   \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\hspace*{1.1cm}~\includegraphics[height=1.2cm]{figures/hpc2n.png}
+}}
+\date{21 January 2021}
+\begin{document}
+
+\frame{
+  \titlepage
+}
+
+
+\frame{\frametitle{Overview}
+
+  \begin{block}{}
+\begin{itemize}
+\item Projects - compute and storage 
+\item Using our systems
+\item The File System 
+\item The Module System
+ \begin{itemize}
+  \item Overview 
+  \item Compiler Tool Chains
+  \item Examples
+ \end{itemize}
+\item Compiling/linking with libraries 
+\item The Batch System (SLURM)
+ \begin{itemize}
+\item Overview 
+\item Simple example
+ \end{itemize}
+\end{itemize}
+  \end{block}
+
+}
+
+
+% \frame{\frametitle{Kebnekaise and Abisko}\framesubtitle{Kebnekaise}
+
+%   \begin{block}{}
+% \begin{center}
+% \includegraphics[width=2.6cm]{figures/kebnekaise.png}
+% \end{center}
+%   \end{block}
+
+%   \begin{block}{}
+%     \begin{enumerate}
+%     \begin{footnotesize}
+%     \item 602 nodes / 19288 cores (of which 2448 are KNL)
+%     \end{footnotesize}
+%     \begin{itemize}
+%     \begin{scriptsize}
+%      \item 432 Intel Xeon E5-2690v4, 2x14 cores, 128 GB/node
+%      \item 52 Intel Xeon Gold 6132, 2x14 cores, 192 GB/node
+%      \item 20 Intel Xeon E7-8860v4, 4x18 cores, 3072 GB/node
+%      \item 32 Intel Xeon E5-2690v4, 2x NVidia K80, 2x14, 2x4992, 128 GB/node
+%      \item 4 Intel Xeon E5-2690v4, 4x NVidia K80, 2x14, 4x4992, 128 GB/node
+%      \item 10 Intel Xeon Gold 6132, 2x NVidia V100, 2x14, 2x5120, 192 GB/node
+%      \item 36 Intel Xeon Phi 7250, 68 cores, 192 GB/node, 16 GB MCDRAM/node
+%     \end{scriptsize}
+%     \end{itemize}
+%     \begin{footnotesize}
+%     \item 501760 CUDA ``cores'' (80*4992 cores/K80+20*5120 cores/V100)
+%     \item More than 136 TB memory
+%     \item Interconnect: Mellanox FDR / EDR Infiniband
+%     \item Theoretical performance: 728 TF (+ expansion)
+%     \item Date installed: Fall 2016 / Spring 2017 / Spring 2018
+%     \end{footnotesize}
+%     \end{enumerate}
+%   \end{block}
+
+% }
+
+\frame{\frametitle{Projects - compute and storage}
+Join a project or apply for one. 
+  \begin{block}{}
+    \begin{itemize}
+    \item Apply for a \textbf{compute project} in SUPR \texttt{https://supr.snic.se/round/compute/}
+      \begin{itemize}
+      \item Small ($\leq$ 5000 core-h/month, at least PhD student to apply)
+      \item Medium (monthly rounds, at least assistant professor to apply)
+      \item Large (bi-annual rounds)
+      \item When applying for compute projects, you can apply for
+        default storage (small is 500GB)
+      \item More information: \texttt{https://snic.se/allocations/compute/}
+      \end{itemize}
+    \item If the above mentioned default storage is not enough, you will need to apply for a \textbf{storage project} \texttt{https://supr.snic.se/round/storage/}
+      \begin{itemize}
+      \item Small (up to 2 TB, at least PhD student to apply)
+      \item Medium (monthly rounds)
+      \item Large (bi-annual rounds)
+      \item More information: \texttt{https://snic.se/allocations/storage/}
+      \end{itemize}
+    \end{itemize}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+  \begin{block}{}
+    \begin{itemize}
+    \item As default, you have 25GB in your home directory.
+    \item If you need more, you can accept the ``default storage''
+      that you will be offered after applying for compute resources.
+      them together. It is done from the \textbf{storage} project. 
+    \item The default storage is 500GB.
+    \item If you need more than that, you will have to apply for a
+        storage project
+    \end{itemize}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+    After indicating the amount of compute resources you want, you
+    will be asked if you want the default amount of storage:
+  \begin{block}{}
+\includegraphics[height=7cm]{figures/default-storage.png}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+    You will also be asked what the default storage directory should
+    be called: 
+  \begin{block}{}
+\includegraphics[height=7cm]{figures/default-dir.png}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+  \begin{block}{}
+    \begin{itemize}
+    \item After applying on SUPR, the project(s) will be reviewed.
+    \item When (if) the projects are approved, the PI needs to link
+      the compute and storage projects together if they applied for
+      both.
+    \item Linking them together is done from the \textbf{storage} project. 
+    \item This way all members of the compute project also becomes
+      members of the storage project.
+    \end{itemize}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+    Linking a compute project to a storage project:
+  \begin{block}{}
+\includegraphics[height=7cm]{figures/to-link.png}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+  Pick a compute project to link:
+  \begin{block}{}
+\includegraphics[height=7cm]{figures/choose.png}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+  Showing linked projects:
+  \begin{block}{}
+\includegraphics[height=7cm]{figures/linked.png}
+  \end{block}
+
+}
+
+\frame{\frametitle{Projects - compute and storage}
+
+  Members of the storage project after linking:
+  \begin{block}{}
+\includegraphics[height=6.5cm]{figures/storage-members.png}
+  \end{block}
+
+}
+
+\frame{\frametitle{Using our systems}
+
+  \begin{block}{}
+    \begin{enumerate}
+%    \item Get an account \tiny{(https://www.hpc2n.umu.se/documentation/access-and-accounts/users)} \normalsize{}
+    \item Connect to: \\
+\vspace{2mm}
+\texttt{kebnekaise.hpc2n.umu.se} \\
+\vspace{2mm}
+\item Transfer your files and data (optionally)
+  \item Load modules (if needed)
+    \item Compile own code, install software, or run pre-installed software 
+    \item Create batch script, submit batch job
+    \item Download data/results
+    \end{enumerate}
+  \end{block}
+
+}
+
+\frame{\frametitle{Using our systems}\framesubtitle{Connecting to HPC2N's systems - ThinLinc}
+
+  \begin{small}
+  \begin{block}{}
+ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially useful when you need software with a graphical interface.
+  \end{block}{}
+      \end{small}
+
+  \begin{block}{}
+    \begin{small}
+      \begin{itemize}
+      \item We recommend ThinLinc if you don't have a preferred SSH client.
+      \item Download the client from \texttt{https://www.cendio.com/thinlinc/download}. Install it.
+      \item Start the client. Enter the name of the server: kebnekaise-tl.hpc2n.umu.se. Enter your username. 
+      \item Go to "Options" $->$ "Security". Check that authentication method is set to password.
+      \item Go to "Options" $->$ "Screen". Uncheck "Full screen mode".
+      \item Enter your HPC2N password. Click "Connect"
+      \item Click "Continue" when you are being told that the server's host key is not in the registry. Wait for the ThinLinc desktop to open.
+      \end{itemize}
+      \end{small}
+  \end{block}
+
+}
+
+\frame{\frametitle{Using our systems}\framesubtitle{Connecting to HPC2N's systems - SSH clients}
+
+  \begin{block}{}
+    \begin{itemize}
+    \item \textbf{Linux, OS X:} 
+    \begin{itemize}
+       \item \texttt{ssh username@kebnekaise.hpc2n.umu.se} \\
+       \item Use \texttt{ssh -Y ....} if you want to open graphical displays. 
+    \end{itemize}
+    \item \textbf{Windows:} 
+    \begin{itemize}
+       \item Get an SSH client (PuTTY, Cygwin, MobaXterm ...)
+       \item Get an X11 server if you need graphical displays (Xming ...)
+       \item Start the client and login to \\
+\vspace{2mm}
+\texttt{kebnekaise.hpc2n.umu.se} \\
+\vspace{2mm}
+       \item More information here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/windows-connection} \normalsize{}
+    \end{itemize}
+       \item  \textbf{Mac/OSX:} Guide here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/mac-connection} \normalsize{}
+    \end{itemize}
+  \end{block}
+
+}
+
+%\frame{\frametitle{Using our systems}\framesubtitle{Connecting from a Windows System with PuTTY}
+%
+%  \begin{block}{}
+%    \justify
+%    Get the Zip file (http://www.putty.org/) with both PuTTY, PSCP, and PSFTP. Unzip, run putty.exe
+%  \end{block}
+%
+%  \begin{block}{}
+%\begin{center}
+%\includegraphics[width=6cm]{figures/putty-kebnekaise.png}
+%\end{center}
+%  \end{block}
+%}
+%
+%\frame{\frametitle{Using our systems}\framesubtitle{Connecting from a Windows System with PuTTY}
+%
+%  \begin{block}{}
+%    \justify
+%    Enter your username and then your password. 
+%  \end{block}
+%
+%  \begin{block}{}
+%\begin{center}
+%\includegraphics[width=6cm]{figures/putty-login-kebnekaise.png}
+%\end{center}
+%  \end{block}
+%}
+
+\frame{\frametitle{Using our systems}\framesubtitle{Transfer your files and data}
+
+  \begin{block}{}
+    \begin{itemize}
+    \item \textbf{Linux, OS X:} 
+    \begin{itemize}
+       \item Use scp for file transfer:\\
+\vspace{2mm}
+\begin{footnotesize}
+\texttt{local> scp username@kebnekaise.hpc2n.umu.se:file .}\\
+\texttt{local> scp file username@kebnekaise.hpc2n.umu.se:file}
+\end{footnotesize}
+    \end{itemize}
+    \item \textbf{Windows:} 
+    \begin{itemize}
+       \item Download client: WinSCP, FileZilla (sftp), PSCP/PSFTP, ...
+       \item Transfer with sftp or scp
+    \end{itemize}
+       \item \scriptsize{https://www.hpc2n.umu.se/documentation/filesystems/filetransfer} \normalsize{}
+    \item \textbf{Mac/OSX:}
+    \begin{itemize}
+       \item Transfer with sftp or scp (as for Linux) using Terminal
+       \item Or download client: Cyberduck, Fetch, ...
+    \end{itemize}
+       \item More info in guides (see previous slide) and here: \scriptsize{https://www.hpc2n.umu.se/documentation/filesystems/filetransfer} \normalsize{}
+    \end{itemize}
+  \end{block}
+
+}
+
+
+ \frame{\frametitle{Using our systems}\framesubtitle{Editors}
+
+  \begin{block}{}
+    \justify
+    Editing your files
+  \end{block}
+
+  \begin{block}{}
+\begin{itemize}
+\item Various editors: vi, vim, nano, emacs ...
+\item Example, nano:
+ \begin{itemize}
+ \item \texttt{nano $<$filename$>$}
+ \item Save and exit nano: \texttt{Ctrl-x}
+ \end{itemize}
+\item Example, Emacs: 
+ \begin{itemize}
+ \item Start with: emacs
+ \item Open (or create) file: Ctrl-x Ctrl-f
+ \item Save: Ctrl-x Ctrl-s
+ \item Exit Emacs: Ctrl-x Ctrl-c
+ \item (If you want to run in an a separate emacs window, and with full functionality, you need to login with ssh -Y or similar, for X11 forwarding):
+ \end{itemize}
+\end{itemize}
+  \end{block}
+}
+
+
+% \frame{\frametitle{The File System}
+
+%    \begin{block}{}
+%      \justify
+%      More info here: http://www.hpc2n.umu.se/filesystems/overview
+%    \end{block}
+
+% %      \renewcommand*{\arraystretch{1.5}}
+%    \begin{block}{}
+%     \begin{tiny}
+%       \begin{tabular}{|c|c|c|c|c|c|}
+%      \hline
+%      & AFS (\textasciitilde/) & AFS (\textasciitilde/Public) & Project storage & PFS & /scratch \\ \hline \hline 
+%      Good for & & & & & \\
+%      batch jobs & No & & Yes & Yes & \\ \hline 
+%      Backed up & Yes & Yes & No & No & No \\ \hline 
+%      Accessible & & Yes, readable & & & \\
+%      by batch & No & with right & Yes & Yes & Yes \\ 
+%      system & & permissions & & & (node only) \\ \hline 
+%      High & & & & &  \\
+%      performance & No & No & Yes & Yes & Medium \\ \hline 
+%      Default & & World & Group & Everyone & \\
+%      readability & Owner & readable & only & on cluster & Owner \\ \hline 
+%      & chmod, & Cannot be & chmod, & chmod, & chmod, \\
+%      Permissions & chgrp, ACL & changed & chgrp, ACL & chgrp, ACL & chgrp, ACL \\ \hline 
+%      & Your home- & Your home- & This gets  & & \\
+%      Notes & directory is & directory is & allocated through & & Per node \\
+%      & on AFS & on AFS & storage projects & & \\
+%      \hline
+%    \end{tabular}
+%    \end{tiny}
+%      \end{block}
+
+%    %An access-control list (ACL), with respect to a computer file system, is a list of permissions associated with an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.
+   
+% }
+
+\frame{\frametitle{The File System}
+
+   \begin{block}{}
+     \justify
+     More info here: http://www.hpc2n.umu.se/filesystems/overview
+   \end{block}
+
+%      \renewcommand*{\arraystretch{1.5}}
+   \begin{block}{}
+    \begin{scriptsize}
+      \begin{tabular}{|c|c|c|c|}
+     \hline
+     & & & \\ 
+        & \textbf{Project storage} & \textbf{\$HOME} &
+                                                       \textbf{/scratch} \\
+        & & & \\ \hhline{|=|=|=|=|} 
+     Recommended & & & \\
+     for batch jobs & Yes & No & Yes \\ \hline 
+     Backed up & No & Yes & No \\ \hline 
+     Accessible & & & \\
+     by batch & Yes & Yes & Yes (node only) \\ 
+     system & & & \\ \hline 
+     Performance & High & High & Medium \\ \hline 
+     Default & & & \\
+     readability & Group only & Owner & Owner \\ \hline 
+     Permissions & & & \\ 
+     management & chmod, chgrp, ACL & chmod, chgrp, ACL & N/A for
+                                                          batch jobs \\ \hline 
+     & Storage your group & & \\
+     Notes & get allocated through & Your home- & Per node \\
+     & the storage projects & directory & \\
+     \hline
+   \end{tabular}
+   \end{scriptsize}
+     \end{block}
+
+   %An access-control list (ACL), with respect to a computer file system, is a list of permissions associated with an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.
+   
+}
+
+% \frame{\frametitle{The File System}\framesubtitle{PFS, project storage}
+
+%    \begin{block}{}
+%     \begin{itemize}
+%     \item The 'parallel' file system, where your 'parallel' home directory is located in /pfs/nobackup/home/u/username (/pfs/nobackup/\$HOME)
+%     \item As well, project storage is located on pfs, under /proj/nobackup/$<$your-project-storage$>$ 
+%     \item Offers high performance when accessed from the nodes
+%     \item The correct place to run all your batch jobs
+%     \item NOT backed up, so you should not leave files there that cannot easily be recreated
+% %    \item For easier access, create a symbolic link from your home on AFS to your home on PFS: \\ 
+% %\vspace{3mm}
+% %\texttt{ln -s /pfs/nobackup/\$HOME \$HOME/pfs} \\ 
+% %\vspace{3mm}
+% %You can now access your pfs with \texttt{cd pfs} from your home directory on AFS
+%      \end{itemize}
+%    \end{block}
+
+%  }
+
+\frame{\frametitle{Using project storage}
+
+  \begin{block}{}
+    \begin{itemize}
+      \item If you have a storage project, you should use that to run your
+        jobs.
+      \item You will either choose a directory name when you apply for
+        the storage project or get the SNIC id as default name.
+      \item The location of the storage project in the file system is
+        \texttt{/proj/nobackup/$<$name-you-picked$>$}. 
+      \item Since the storage project is shared between all users of
+        the project, you should go to that directory and create a subdirectory
+        for your things, which you will then be using. 
+      \end{itemize}
+    \end{block}
+  
+}
+
+
+  \frame{\frametitle{The Module System (Lmod)}
+
+    \begin{block}{}
+      \justify
+      Most programs are accessed by first loading them as a 'module'
+    \end{block}
+
+      \begin{block}{}
+Modules are
+       \begin{itemize}
+        \item used to set up your environment (paths to executables, libraries, etc.) for using a particular (set of) software package(s) \\
+        \item a tool to help users manage their Unix/Linux shell environment, allowing groups of related environment-variable settings to be made or removed dynamically \\ 
+        \item allows having multiple versions of a program or package available by just loading the proper module \\ 
+        \item are installed in a hierarchial layout. This means that some modules are only available after loading a specific compiler and/or MPI version. \\ 
+       \end{itemize}
+      \end{block}
+  }
+
+ \frame{\frametitle{The Module System (Lmod)}
+
+   \begin{block}{}
+     \justify
+     Useful commands (Lmod)
+   \end{block}
+
+     \begin{block}{}
+      \begin{itemize}
+\begin{footnotesize}
+       \item See which modules exists: \\ 
+\texttt{module spider} or \texttt{ml spider}
+       \item Modules depending only on what is currently loaded: \\ 
+\texttt{module avail} or \texttt{ml av}
+       \item See which modules are currently loaded: \\ 
+ \texttt{module list} or \texttt{ml} 
+       \item Example: loading a compiler toolchain, here for GCC: \\ 
+\texttt{module load foss/version} or \texttt{ml foss/version} 
+       \item Example: Unload the above module:\\ 
+\texttt{module unload foss} or \texttt{ml -foss}
+       \item More information about a module: \\ 
+\texttt{ml show $<$module$>$} or \texttt{module show $<$module$>$}
+       \item Unload all modules except the 'sticky' modules: \\ 
+\texttt{ml purge}
+\end{footnotesize}
+      \end{itemize}
+     \end{block}
+ }
+
+ \frame{\frametitle{The Module System}\framesubtitle{Compiler Toolchains}
+
+   \begin{block}{}
+     \justify
+\begin{small}
+    Compiler toolchains load bundles of software making up a complete environment for compiling/using a specific prebuilt software. Includes some/all of: compiler suite, MPI, BLAS, LAPACK, ScaLapack, FFTW, CUDA. 
+\end{small}
+   \end{block}
+
+     \begin{block}{}
+      \begin{itemize}
+\begin{footnotesize}
+         \item Some currently available toolchains (check \texttt{ml av} for versions and full, updated list): 
+\end{footnotesize}
+\begin{itemize}
+\begin{tiny}
+       \item \textbf{GCC}: GCC only
+       \item \textbf{gcccuda}: GCC and CUDA
+       \item \textbf{foss}: GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK
+       \item \textbf{gimkl}: GCC, IntelMPI, IntelMKL
+       \item \textbf{gimpi}: GCC, IntelMPI
+       \item \textbf{gompi}: GCC, OpenMPI
+       \item \textbf{gompic}: GCC, OpenMPI, CUDA
+       \item \textbf{goolfc}: gompic, OpenBLAS/LAPACK, FFTW, ScaLAPACK
+       \item \textbf{icc}: Intel C and C++ only
+       \item \textbf{iccifort}: icc, ifort
+       \item \textbf{iccifortcuda}: icc, ifort, CUDA
+       \item \textbf{ifort}: Intel Fortran compiler only 
+       \item \textbf{iimpi}: icc, ifort, IntelMPI
+       \item \textbf{intel}: icc, ifort, IntelMPI, IntelMKL
+       \item \textbf{intelcuda}: intel and CUDA
+       \item \textbf{iomkl}: icc, ifort, Intel MKL, OpenMPI
+       \item \textbf{pomkl}: PGI C, C++, and Fortran compilers, IntelMPI
+       \item \textbf{pompi}: PGI C, C++, and Fortran compilers, OpenMPI \\
+\end{tiny}
+      \end{itemize}
+      \end{itemize}
+\end{block}
+ }
+
+\frame{\frametitle{Compiling and Linking with Libraries}\framesubtitle{Linking} 
+
+  \begin{block}{}
+    \justify
+\begin{small}
+Figuring out how to link
+\end{small}
+  \end{block}
+
+  \begin{block}{}
+   \begin{itemize}
+    \item Intel and Intel MKL linking: \\ 
+\begin{tiny}
+\texttt{https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor}
+\end{tiny}
+    \item GCC, etc. \textbf{Use buildenv}
+    \begin{itemize}
+     \item After loading a compiler toolchain, load \texttt{'buildenv'} and use \texttt{'ml show buildenv'} to get useful linking info 
+     \item Example, foss (add relevant version): \\ 
+\vspace{2mm}
+      \texttt{ml foss/version} \\
+      \texttt{ml buildenv} \\ 
+      \texttt{ml show buildenv}
+\vspace{2mm}
+\item Using the environment variable (prefaced with \$) for linking is highly recommended!
+  \item You have to load the buildenv module in order to use the environment variable for linking!
+    \end{itemize}
+    \end{itemize}
+  \end{block}
+}
+
+
+% \frame{\frametitle{Compiling and Linking with Libraries}\framesubtitle{Example: ml foss, ml buildenv, ml show buildenv}
+
+%   \begin{block}{}
+% \begin{center}
+% \includegraphics[height=7cm]{figures/ml-show-buildenv-v2.png}
+% \end{center}
+%   \end{block}
+% }
+
+\frame{\frametitle{The Batch System (SLURM)}
+
+  \begin{block}{}
+   \begin{itemize}
+    \item Large/long/parallel jobs \textbf{must} be run through the batch system 
+    \item SLURM is an Open Source job scheduler, which provides three key functions
+   \begin{itemize}
+    \item Keeps track of available system resources
+    \item Enforces local system resource usage and job scheduling policies
+    \item Manages a job queue, distributing work across resources according to policies
+   \end{itemize}
+ \item In order to run a batch job, you need to create and submit a
+SLURM submit file (also called a batch submit file, a batch
+script, or a job script).
+\item Guides and documentation at: http://www.hpc2n.umu.se/support
+  \end{itemize}
+  \end{block}
+}
+
+\frame{\frametitle{The Batch System}\framesubtitle{Accounting, Compute nodes, Kebnekaise}
+
+  \begin{block}{}
+\begin{center}
+\includegraphics[width=10cm]{figures/Allocation-Kebnekaise-thin_v3.png}
+\end{center}
+  \end{block}
+}
+
+
+\frame{\frametitle{The Batch System}\framesubtitle{Accounting, largemem nodes, Kebnekaise}
+
+  \begin{block}{}
+\begin{center}
+\includegraphics[width=10cm]{figures/Allocation-Kebnekaise-largemem_v3.png}
+\end{center}
+  \end{block}
+}
+
+
+\frame{\frametitle{The Batch System}\framesubtitle{Accounting, GPU nodes, Kebnekaise. Same for the V100 as for the K80.}
+
+  \begin{block}{}
+\begin{center}
+\includegraphics[width=6.8cm]{figures/Allocation-Kebnekaise-GPU_v3.png}
+\end{center}
+Note: V100s accounts like K80s and have \textbf{one} engine per card.
+  \end{block}
+}
+
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Useful Commands} 
+
+  \begin{block}{}
+   \begin{itemize}
+    \item Submit job: \texttt{sbatch $<$jobscript$>$} 
+    \item Get list of your jobs: \texttt{squeue -u $<$username$>$} 
+    \item \texttt{srun $<$commands for your job/program$>$} 
+%    \item \texttt{salloc $<$commands to the batch system$>$}
+    \item Check on a specific job: \texttt{scontrol show job $<$job id$>$} 
+    \item Delete a specific job: \texttt{scancel $<$job id$>$}
+    \item More detailed info about jobs: \\
+    \begin{scriptsize}      
+          \texttt{sacct -l -j $<$jobid$>$ -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize...}
+    \end{scriptsize}
+    \begin{itemize}
+    \item More flags can be found with \texttt{man sacct}
+    \item The output will be \textbf{very} wide. Use something like \\
+          \texttt{sacct -l -j ....... | less -S} \\
+          to view (makes it sideways scrollable, using the left/right arrow key)
+    \end{itemize}
+  \end{itemize}
+Use \texttt{man sbatch, man srun, man ....} for more information
+  \end{block}
+}
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Job Output} 
+
+  \begin{block}{}
+   \begin{itemize}
+    \item  Output and errors in: \\ 
+\texttt{slurm-$<$job id$>$.out}
+    \item Look at it with vi, nano, emacs, cat, less...
+    \item To get output and error files split up, you can give these flags in the submit script: \\ 
+\texttt{\#SBATCH --error=job.\%J.err} \\ 
+\texttt{\#SBATCH --output=job.\%J.out} 
+   \end{itemize}
+  \end{block}
+}
+
+ \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Using different parts of Kebnekaise} 
+
+   \begin{block}{}
+    \begin{itemize}
+     \item To run on the 'fat' nodes, add this flag to your script: \\ 
+ \texttt{\#SBATCH -p largemem} (Kebnekaise - largemem does not have general access) \\
+     \item  Specifying Intel Broadwell or Skylake CPUs only on Kebnekaise: \\ 
+ \texttt{\#SBATCH --constraint=broadwell} \\
+ or \\
+ \texttt{\#SBATCH --constraint=skylake}
+     \item Using the GPU nodes on Kebnekaise \\ 
+ \texttt{\#SBATCH --gres=gpu:$<$type-of-card$>$:x} where $<$type-of-card$>$ is either k80 or v100 and x = 1, 2, or 4 (4 only for the K80 type). \\ 
+    \end{itemize}
+ More on https://www.hpc2n.umu.se/documentation/guides/using\_kebnekaise
+   \end{block}
+ }
+
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, serial} 
+
+  \begin{block}{}
+    \justify
+Example: Serial job on Kebnekaise, compiler toolchain 'foss' 
+  \end{block}
+
+  \begin{block}{}
+\begin{small}
+\texttt{\#!/bin/bash} \\
+\texttt{\# Project id - change to your own after the course!} \\
+\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\# Asking for 1 core} \\
+\texttt{\#SBATCH -n 1} \\
+\texttt{\# Asking for a walltime of 5 min} \\ 
+\texttt{\#SBATCH --time=00:05:00} \\ 
+\vspace{3mm} 
+\texttt{\# Purge modules before loading new ones in a script. } \\
+\texttt{ml purge} \\ 
+\texttt{ml foss/2019b} \\ 
+\vspace{3mm}
+\texttt{./my\_serial\_program}
+\end{small}
+  \end{block}
+
+  \begin{block}{}
+    \justify
+\begin{small}
+Submit with: \\
+\end{small}
+\texttt{sbatch $<$jobscript$>$} 
+  \end{block}
+
+}
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Example, MPI C program} 
+
+  \begin{block}{}
+\texttt{\#include $<$stdio.h$>$} \\
+\texttt{\#include $<$mpi.h$>$} \\
+\vspace{3mm} 
+\texttt{int main (int argc, char *argv[]) {} \\ 
+\vspace{3mm}
+\texttt{int myrank, size;} \\ 
+\vspace{3mm}
+\texttt{MPI\_Init(\&argc, \&argv);} \\ 
+\texttt{MPI\_Comm\_rank(MPI\_COMM\_WORLD, \&myrank);} \\ 
+\texttt{MPI\_Comm\_size(MPI\_COMM\_WORLD, \&size);} \\ 
+\vspace{3mm}
+\texttt{printf("Processor \%d of \%d: Hello World!\textbackslash n", myrank, size);} \\ 
+\vspace{3mm}
+\texttt{MPI\_Finalize();}
+\vspace{3mm}
+\texttt{}}
+  \end{block}
+
+} 
+
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, parallel} 
+
+  \begin{block}{}
+    \justify
+Example: MPI job on Kebnekaise, compiler toolchain 'foss' 
+  \end{block}
+
+  \begin{block}{}
+\begin{small}
+\texttt{\#!/bin/bash} \\
+\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -n 14} \\
+\texttt{\#SBATCH --time=00:05:00} \\ 
+\texttt{\#\#SBATCH --exclusive} \\ 
+\texttt{\#SBATCH --reservation=intro-hpc} \\ 
+\vspace{3mm} 
+\texttt{module purge} \\ 
+\texttt{ml foss/2019b} \\ 
+\vspace{3mm}
+\texttt{srun ./my\_parallel\_program}
+\end{small}
+  \end{block}
+
+}
+
+
+\begin{frame}[fragile]\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, output} 
+
+  \begin{block}{}
+    \justify
+Example: Output from a MPI job on Kebnekaise, run on 14 cores (one NUMA island)
+  \end{block}
+
+  \begin{block}{}
+\begin{tiny}
+\begin{verbatim}
+b-an01 [~/pfs/slurm]$ cat slurm-15952.out 
+
+The following modules were not unloaded:
+   (Use "module --force purge" to unload all):
+
+  1) systemdefault   2) snicenvironment
+Processor 12 of 14: Hello World!
+Processor 5 of 14: Hello World!
+Processor 9 of 14: Hello World!
+Processor 4 of 14: Hello World!
+Processor 11 of 14: Hello World!
+Processor 13 of 14: Hello World!
+Processor 0 of 14: Hello World!
+Processor 1 of 14: Hello World!
+Processor 2 of 14: Hello World!
+Processor 3 of 14: Hello World!
+Processor 6 of 14: Hello World!
+Processor 7 of 14: Hello World!
+Processor 8 of 14: Hello World!
+Processor 10 of 14: Hello World!
+\end{verbatim}
+\end{tiny}
+  \end{block}
+
+\end{frame}
+
+
+
+% \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Requesting GPU nodes} 
+
+%     \begin{block}{}
+%       \justify
+%   Currently there is no separate queue for the GPU nodes 
+%     \end{block}
+
+%     \begin{block}{}
+%   \begin{itemize}
+%   \item You request GPU nodes by adding the following to your batch script: \\ 
+%   \texttt{\#SBATCH --gres=gpu:card:x} where \texttt{card=k80 or v100}
+%   and \texttt{x=1, 2, 4} (4 only valid for K80)
+%   \item x = the number of GPU cards. On K80 each has 2 GPU engines. On V100 they have 1 GPU engine each. 
+%  \end{itemize}
+%     \end{block}
+
+%   }
+
+
+
+% \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Longer example} 
+
+%   \begin{block}{}
+% \begin{small}
+% \texttt{\#!/bin/bash} \\
+% \texttt{\#SBATCH -A SNIC2019-5-172} \\
+% \texttt{\#SBATCH -n 14} \\
+% \texttt{\#SBATCH --time=00:05:00} \\ 
+% \vspace{3mm} 
+% \texttt{module purge} \\ 
+% \texttt{ml foss/2019a} \\ 
+% \vspace{3mm}
+% \texttt{echo "Running on hosts: \$SLURM\_NODELIST"} \\ 
+% \texttt{echo "Running on \$SLURM\_NNODES nodes."} \\ 
+% \texttt{echo "Running on \$SLURM\_NPROCS processors."} \\ 
+% \texttt{echo "Current working directory is `pwd`"} \\ 
+% \vspace{3mm}
+% \texttt{echo "Output of srun hostname:"} \\ 
+% \texttt{srun /bin/hostname} \\
+% \vspace{3mm}
+% \texttt{srun ./mpi\_hello}
+% \end{small}
+%   \end{block}
+
+% } 
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Starting more than one serial job in the same submit file} 
+
+  \begin{block}{}
+\begin{small}
+\texttt{\#!/bin/bash} \\
+\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -n 5} \\
+\texttt{\#SBATCH --time=00:15:00} \\ 
+\vspace{3mm} 
+\texttt{module purge} \\ 
+\texttt{ml foss/2019b} \\ 
+\vspace{3mm}
+\texttt{srun -n 1 ./job1.batch \&} \\ 
+\texttt{srun -n 1 ./job2.batch \&} \\ 
+\texttt{srun -n 1 ./job3.batch \&} \\ 
+\texttt{srun -n 1 ./job4.batch \&} \\ 
+\texttt{srun -n 1 ./job5.batch } \\
+\texttt{wait} \\
+\end{small}
+  \end{block}
+
+} 
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Multiple Parallel Jobs Sequentially} 
+
+  \begin{block}{}
+\begin{scriptsize}
+\texttt{\#!/bin/bash} \\
+\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -c 28} \\
+\texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
+\texttt{\#SBATCH --time=02:00:00} \\ 
+\vspace{3mm} 
+\texttt{module purge} \\ 
+\texttt{ml foss/2019b} \\ 
+\vspace{3mm}
+\texttt{\# Here 14 tasks with 2 cores per task. Output to file.} \\
+\texttt{\# Not needed if your job creates output in a file} \\ 
+\texttt{\# I also copy the output somewhere else and then run} \\
+\texttt{\# another executable...} \\
+\vspace{3mm}
+\texttt{srun -n 14 -c 2 ./a.out > myoutput1 2>\&1} \\ 
+\texttt{cp myoutput1 /pfs/nobackup/home/u/username/mydatadir} \\ 
+\texttt{srun -n 14 -c 2 ./b.out > myoutput2 2>\&1} \\ 
+\texttt{cp myoutput2 /pfs/nobackup/home/u/username/mydatadir} \\ 
+\texttt{srun -n 14 -c 2 ./c.out > myoutput3 2>\&1} \\
+\texttt{cp myoutput3 /pfs/nobackup/home/u/username/mydatadir} \\
+\end{scriptsize}
+  \end{block}
+
+} 
+
+
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Multiple Parallel Jobs Simultaneously} 
+
+\begin{footnotesize}
+Make sure you ask for enough cores that all jobs can run at the same time, and have enough memory. Of course, this will also work for serial jobs - just remove the srun from the command line.
+\end{footnotesize} 
+
+  \begin{block}{}
+\begin{footnotesize}
+\texttt{\#!/bin/bash} \\
+\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\# Total number of cores the jobs need} \\
+\texttt{\#SBATCH -n 56} \\
+\texttt{\# Remember to ask for enough time for all of the jobs to} \\
+\texttt{\# complete, even the longest} \\ 
+\texttt{\#SBATCH --time=02:00:00} \\ 
+\vspace{3mm} 
+\texttt{module purge} \\ 
+\texttt{ml foss/2019b} \\ 
+\vspace{3mm}
+\texttt{srun -n 14 --cpu\_bind=cores ./a.out \&} \\ 
+\texttt{srun -n 28 --cpu\_bind=cores ./b.out \&} \\ 
+\texttt{srun -n 14 --cpu\_bind=cores ./c.out \&} \\ 
+\texttt{...} \\ 
+\texttt{wait} \\
+\end{footnotesize}
+  \end{block}
+
+} 
+
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job} 
+
+  \begin{block}{}
+\begin{footnotesize}
+\texttt{\#!/bin/bash} \\
+\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\# Expected time for job to complete}  \\ 
+\texttt{\#SBATCH --time=00:10:00} \\
+\texttt{\# Number of GPU cards needed. Here asking for 2 K80 cards} \\
+\texttt{\#SBATCH --gres=k80:2} \\
+\vspace{3mm} 
+\texttt{module purge} \\ 
+\texttt{ml fosscuda/2019b} \\ 
+\vspace{3mm}
+\texttt{./my-program} \\
+\end{footnotesize}
+  \end{block}
+
+}
+
+% \frame{\frametitle{Miscellaneous}\framesubtitle{Installing Python packages with Virtualenv} 
+
+% \begin{footnotesize}
+% Virtualenv is installed with each of the loadable Python modules and is accessible after the Python module is loaded. It is highly recommended to use these versions of Virtualenv instead of installing yourself.
+% \end{footnotesize}
+
+%   \begin{block}{}
+% Accessing Virtualenv
+% \begin{itemize}
+% \item Load the module containing the Python version that you want to use  
+% \item Now you want to create your first virtual environment. Here I call it 'vpyenv', and put it in Public. You can call it anything. 
+% \begin{itemize}
+% \item Run the following to initialize the environment:
+% \begin{itemize}
+% \item virtualenv --system-site-packages \$HOME/Public/vpyenv
+% \end{itemize}
+% \end{itemize}
+% \end{itemize}
+%   \end{block}
+
+% } 
+
+% \frame{\frametitle{Miscellaneous}\framesubtitle{Installing Python packages with Virtualenv} 
+
+%   \begin{block}{}
+% Installing modules in Virtualenv
+% \begin{itemize}
+% \item In order to install Python modules in the environment, you first need to activate it. Change directory to the environment you created before, and run: 
+% \begin{itemize}
+% \item \texttt{source bin/activate}
+% \end{itemize}
+% \item It will now look like this on Abisko (remember I called my environment 'vpyenv', and put it in my Public directory): 
+% \begin{itemize}
+% \item \texttt{(vpyenv)t-mn01 [~/Public/vpyenv]\$}
+% \end{itemize}
+% \item You can now install python modules like this (example, spacy):
+% \begin{itemize}
+% \item \texttt{pip install spacy}
+% \end{itemize}
+% \item The module will be downloaded and installed. 
+% \end{itemize}
+% In order to deactivate the Virtualenv, run \texttt{deactivate}
+%   \end{block}
+
+% }
+
+\frame{\frametitle{Important information}
+
+  \begin{block}{}
+    \begin{itemize}
+    \item The course project has the following SNIC ID: SNIC2020-9-215
+    \item In order to use it in a batch job, add this to the batch script:
+      \begin{itemize}
+        \item \#SBATCH -a SNIC2020-9-215
+      \end{itemize}
+    \item There are two nodes reserved for the course, in order to let us run small examples without having to wait for too long.
+    \item This reservation is ONLY valid during the course:
+      \begin{itemize}
+      \item intro-hpc \\ (add with \#SBATCH --reservation=intro-hpc)
+      \end{itemize}
+\item We have a storage project linked to the compute project. It is
+  SNIC2021-23-36. You find it in /proj/nobackup/SNIC2021-23-36
+    \end{itemize}
+  \end{block}
+
+}
+
+\frame{\frametitle{Questions and support}
+
+  \begin{block}{}
+    \textbf{Questions?} Now: Ask me or one of the other support or application experts present. 
+
+ \vspace{0.5cm}
+OR 
+\vspace{0.5cm}
+
+    \begin{itemize}
+    \item Documentation: \texttt{https://www.hpc2n.umu.se/support}
+    \item Support questions to: \texttt{https://supr.snic.se/support/} or \texttt{support@hpc2n.umu.se}
+    \end{itemize}
+  \end{block}
+
+}
+
+\end{document}
+
+
+
+
+
+
