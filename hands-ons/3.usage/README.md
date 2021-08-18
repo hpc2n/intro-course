@@ -11,36 +11,66 @@ You need to compile any programs mentioned in order to run the examples, except 
 
 Try to change the C programs, add different programs, and in general play around with the examples! 
 
-## 1. LOADING MODULES
+## 1. LOADING AND UNLOADING MODULES
 
-For these test examples I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
+For these test examples I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts.
 
-In order to load the foss compiler toolchain version 2019b do the following: 
+### 1.1 LOADING
+
+In order to load the foss compiler toolchain version 2019b do the following:
 
 ```bash
 $ ml foss/2019b
 ```
-OR write 
+
+OR write
 
 ```bash
 $ module add foss/2019b
 ```
 
-You can see that it is loaded with 
+You can see that it is loaded with
 
 ```bash
 $ ml
 ```
 
-Do 
+Do
 
 ```bash
 $ ml av foss
 ```
 
-to see other versions of foss. 
+to see other versions of foss.
 
-The foss 2019b toolchain uses the GCC compilers, so the examples below use those. 
+Do
+
+```bash
+$ ml av
+```
+
+to see all available toolchains.
+
+### 1.2 UNLOADING
+
+Do
+
+```bash
+$ ml rm <toolchain>/version
+```
+
+to unload the toolchain.
+
+Do
+
+```bash
+$ ml purge
+```
+
+to unload all modules you have loaded.
+
+
+The foss 2019b toolchain uses the GCC compilers, so the examples below use those.
 
 ## 2. CHECKING ON YOUR JOB 
 

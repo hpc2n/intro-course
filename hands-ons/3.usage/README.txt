@@ -10,9 +10,11 @@ You need to compile any programs mentioned in order to run the examples, except 
 
 Try to change the C programs, add different programs, and in general play around with the examples! 
 
-1. LOADING MODULES
+1. LOADING AND UNLOADING MODULES
 
 For these test examples I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
+
+LOADING 
 
 In order to load the foss compiler toolchain version 2019b do the following: 
 
@@ -31,6 +33,27 @@ Do
 ml av foss
 
 to see other versions of foss. 
+
+Do 
+
+ml av
+
+to see all available toolchains. 
+
+UNLOADING
+
+Do
+
+ml rm <toolchain>/version
+
+to unload the toolchain. 
+
+Do 
+
+ml purge
+
+to unload all modules you have loaded. 
+
 
 The foss 2019b toolchain uses the GCC compilers, so the examples below use those. 
 
