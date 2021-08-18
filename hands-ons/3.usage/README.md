@@ -1,4 +1,5 @@
 # Brief documentation on how to run the simple examples. 
+# See EXERCISES.md for the exercises
 
 ---
 ## 0. NOTES
