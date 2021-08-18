@@ -6,9 +6,9 @@
 #SBATCH -n 28
 
 #Load modules necessary for running NAMD
-ml GCC/6.3.0-2.27  OpenMPI/2.0.2
-ml NAMD/2.12-mpi
+ml purge  > /dev/null 2>&1 
+ml GCC/9.3.0  OpenMPI/4.0.3
+ml NAMD/2.14-mpi
 
-srun namd2 +setcpuaffinity step4_equilibration.inp > output_mpi.dat
+srun namd2 step4_equilibration.inp > output_mpi.dat
 
-exit 0

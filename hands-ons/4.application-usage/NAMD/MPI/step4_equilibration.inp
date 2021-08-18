@@ -139,4 +139,4 @@ langevinPistonTemp      $temp
 
 #minimize 10000
 #numsteps 90000000
-run 10000
+run 2000
