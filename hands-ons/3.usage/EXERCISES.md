@@ -35,19 +35,31 @@ NOTE that in this example you are just running the job on the login node. This i
 
 ## 3. EXERCISE - BATCH JOBS
 
-### 3.1 Submit one of the example jobs 
+### 3.1 
 
-### 3.2 Look at the output of the job. Which file did the job create? 
+Submit one of the example jobs 
 
-### 3.3 Look at the list of jobs. Check the status of the job. 
+### 3.2 
 
-### 3.4 Try submitting more jobs see the change and different states. Try cancelling one of the jobs. 
+Look at the output of the job. Which file did the job create? 
+
+### 3.3 
+
+Look at the list of jobs. Check the status of the job. 
+
+### 3.4 
+
+Try submitting more jobs see the change and different states. Try cancelling one of the jobs. 
 
 ## 4. EXERCISE - BATCH SCRIPTS
 
-### 4.1 As a default, SLURM throws both errors and other output to the same file, named 'slurm-<jobid>.out'. The job script 'separate-err-out.sh' shows an example of how to split the output and error from the job into separate files. Try it out. Remember to compile the corresponding program and make sure the executable is named suitably for the script. Or change the name of the executable in the script. 
+### 4.1 
 
-### 4.2 Try and change the toolchain that is loaded in one of the scripts. Remember to load and compile the relevant program with the same toolchain before you submit the job.  
+As a default, SLURM throws both errors and other output to the same file, named 'slurm-<jobid>.out'. The job script 'separate-err-out.sh' shows an example of how to split the output and error from the job into separate files. Try it out. Remember to compile the corresponding program and make sure the executable is named suitably for the script. Or change the name of the executable in the script. 
+
+### 4.2 
+  
+Try and change the toolchain that is loaded in one of the scripts. Remember to load and compile the relevant program with the same toolchain before you submit the job.  
 
 ### 4.3 Change the number of cores per task for the OpenMP job, in 'omp_hello.sh'. Run the job script and see the changes to the output file.  
 
