@@ -1,3 +1,5 @@
+Brief documentation on how to run the simple examples.
+
 0. NOTES
 
 The reservation is only valid during the course and is commented out due to this in the job examples. If you are running this during the course, you can add the reservation and/or remove the out-commenting. 
@@ -10,19 +12,25 @@ Try to change the C programs, add different programs, and in general play around
 
 1. LOADING MODULES
 
-For these test I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
+For these test examples I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
 
-In order to load the foss compiler toolchain version 2019b (do 'ml av foss' to see others): 
+In order to load the foss compiler toolchain version 2019b do the following: 
 
 ml foss/2019b
 
-OR 
+OR write
 
 module add foss/2019b
 
-You can see it is loaded with 
+You can see that it is loaded with 
 
 ml
+
+Do 
+
+ml av foss
+
+to see other versions of foss. 
 
 The foss 2019b toolchain uses the GCC compilers, so the examples below use those. 
 

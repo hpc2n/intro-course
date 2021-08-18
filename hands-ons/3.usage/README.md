@@ -13,9 +13,9 @@ Try to change the C programs, add different programs, and in general play around
 
 ## 1. LOADING MODULES
 
-For these test I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
+For these test examples I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
 
-In order to load the foss compiler toolchain version 2019b: 
+In order to load the foss compiler toolchain version 2019b do the following: 
 
 ```bash
 $ ml foss/2019b

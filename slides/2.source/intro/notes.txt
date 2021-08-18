@@ -1,0 +1,6 @@
+WLCG NT1: NORDIC WLCG TIER-1 FACILITY
+    The Nordic distributed tier-1 facility for the worldwide computing grid serving the large hadron collider at CERN.
+
+NGSSC: National Graduate School in Scientific Computing
+
+SeSE: Swedish e-Science Education
