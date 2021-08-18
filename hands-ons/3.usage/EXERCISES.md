@@ -61,15 +61,25 @@ As a default, SLURM throws both errors and other output to the same file, named 
   
 Try and change the toolchain that is loaded in one of the scripts. Remember to load and compile the relevant program with the same toolchain before you submit the job.  
 
-### 4.3 Change the number of cores per task for the OpenMP job, in 'omp_hello.sh'. Run the job script and see the changes to the output file.  
+### 4.3 
+  
+Change the number of cores per task for the OpenMP job, in 'omp_hello.sh'. Run the job script and see the changes to the output file.  
 
-### 4.4 Compile the MPI C program 'mpi_hello.c' and run the corresponding job script.  What happens when you change the number of tasks? Try run it several times and see that the output order is random. 
+### 4.4 
+  
+Compile the MPI C program 'mpi_hello.c' and run the corresponding job script.  What happens when you change the number of tasks? Try run it several times and see that the output order is random. 
 
-### 4.5 Compile the corresponding programs and submit the 'multiple-serial.sh' script. Run it a few times and see the order in the output is random. 
+### 4.5 
+  
+Compile the corresponding programs and submit the 'multiple-serial.sh' script. Run it a few times and see the order in the output is random. 
 
-### 4.6 Compile the corresponding programs and submit the 'multiple-parallel-sequential.sh' program. Note that the output data will be thrown to file and copied to the directory 'mydatadir'.  
+### 4.6 
+  
+Compile the corresponding programs and submit the 'multiple-parallel-sequential.sh' program. Note that the output data will be thrown to file and copied to the directory 'mydatadir'.  
 
-### 4.7 Compile the corresponding programs and submit the 'multiple-parallel-simultaneous.sh' program. Look at the output. 
+### 4.7 
+  
+Compile the corresponding programs and submit the 'multiple-parallel-simultaneous.sh' program. Look at the output. 
 
 ## 5. EXERCISE - CUDA/GPU PROGRAM  
 
