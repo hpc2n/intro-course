@@ -252,7 +252,7 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
       \begin{itemize}
       \item We recommend ThinLinc if you don't have a preferred SSH client.
       \item Download the client from \texttt{https://www.cendio.com/thinlinc/download}. Install it.
-      \item Start the client. Enter the name of the server: kebnekaise-tl.hpc2n.umu.se. Enter your username. 
+      \item Start the client. Enter the name of the server: \textbf{kebnekaise-tl.hpc2n.umu.se}. Enter your username. 
       \item Go to "Options" $->$ "Security". Check that authentication method is set to password.
       \item Go to "Options" $->$ "Screen". Uncheck "Full screen mode".
       \item Enter your HPC2N password. Click "Connect"
@@ -263,30 +263,30 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
 
 }
 
-\frame{\frametitle{Using our systems}\framesubtitle{Connecting to HPC2N's systems - SSH clients}
+% \frame{\frametitle{Using our systems}\framesubtitle{Connecting to HPC2N's systems - SSH clients}
 
-  \begin{block}{}
-    \begin{itemize}
-    \item \textbf{Linux, OS X:} 
-    \begin{itemize}
-       \item \texttt{ssh username@kebnekaise.hpc2n.umu.se} \\
-       \item Use \texttt{ssh -Y ....} if you want to open graphical displays. 
-    \end{itemize}
-    \item \textbf{Windows:} 
-    \begin{itemize}
-       \item Get an SSH client (PuTTY, Cygwin, MobaXterm ...)
-       \item Get an X11 server if you need graphical displays (Xming ...)
-       \item Start the client and login to \\
-\vspace{2mm}
-\texttt{kebnekaise.hpc2n.umu.se} \\
-\vspace{2mm}
-       \item More information here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/windows-connection} \normalsize{}
-    \end{itemize}
-       \item  \textbf{Mac/OSX:} Guide here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/mac-connection} \normalsize{}
-    \end{itemize}
-  \end{block}
+%   \begin{block}{}
+%     \begin{itemize}
+%     \item \textbf{Linux, OS X:} 
+%     \begin{itemize}
+%        \item \texttt{ssh username@kebnekaise.hpc2n.umu.se} \\
+%        \item Use \texttt{ssh -Y ....} if you want to open graphical displays. 
+%     \end{itemize}
+%     \item \textbf{Windows:} 
+%     \begin{itemize}
+%        \item Get an SSH client (PuTTY, Cygwin, MobaXterm ...)
+%        \item Get an X11 server if you need graphical displays (Xming ...)
+%        \item Start the client and login to \\
+% \vspace{2mm}
+% \texttt{kebnekaise.hpc2n.umu.se} \\
+% \vspace{2mm}
+%        \item More information here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/windows-connection} \normalsize{}
+%     \end{itemize}
+%        \item  \textbf{Mac/OSX:} Guide here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/mac-connection} \normalsize{}
+%     \end{itemize}
+%   \end{block}
 
-}
+% }
 
 %\frame{\frametitle{Using our systems}\framesubtitle{Connecting from a Windows System with PuTTY}
 %
@@ -368,49 +368,14 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
  \item Open (or create) file: Ctrl-x Ctrl-f
  \item Save: Ctrl-x Ctrl-s
  \item Exit Emacs: Ctrl-x Ctrl-c
- \item (If you want to run in an a separate emacs window, and with full functionality, you need to login with ssh -Y or similar, for X11 forwarding):
+ \item (If you want to run in an a separate emacs window, and with
+   full functionality, you need to login with ThinLinc, ssh -Y or
+   similar, for X11 forwarding) 
  \end{itemize}
 \end{itemize}
   \end{block}
 }
 
-
-% \frame{\frametitle{The File System}
-
-%    \begin{block}{}
-%      \justify
-%      More info here: http://www.hpc2n.umu.se/filesystems/overview
-%    \end{block}
-
-% %      \renewcommand*{\arraystretch{1.5}}
-%    \begin{block}{}
-%     \begin{tiny}
-%       \begin{tabular}{|c|c|c|c|c|c|}
-%      \hline
-%      & AFS (\textasciitilde/) & AFS (\textasciitilde/Public) & Project storage & PFS & /scratch \\ \hline \hline 
-%      Good for & & & & & \\
-%      batch jobs & No & & Yes & Yes & \\ \hline 
-%      Backed up & Yes & Yes & No & No & No \\ \hline 
-%      Accessible & & Yes, readable & & & \\
-%      by batch & No & with right & Yes & Yes & Yes \\ 
-%      system & & permissions & & & (node only) \\ \hline 
-%      High & & & & &  \\
-%      performance & No & No & Yes & Yes & Medium \\ \hline 
-%      Default & & World & Group & Everyone & \\
-%      readability & Owner & readable & only & on cluster & Owner \\ \hline 
-%      & chmod, & Cannot be & chmod, & chmod, & chmod, \\
-%      Permissions & chgrp, ACL & changed & chgrp, ACL & chgrp, ACL & chgrp, ACL \\ \hline 
-%      & Your home- & Your home- & This gets  & & \\
-%      Notes & directory is & directory is & allocated through & & Per node \\
-%      & on AFS & on AFS & storage projects & & \\
-%      \hline
-%    \end{tabular}
-%    \end{tiny}
-%      \end{block}
-
-%    %An access-control list (ACL), with respect to a computer file system, is a list of permissions associated with an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.
-   
-% }
 
 \frame{\frametitle{The File System}
 
@@ -609,15 +574,6 @@ Figuring out how to link
 }
 
 
-% \frame{\frametitle{Compiling and Linking with Libraries}\framesubtitle{Example: ml foss, ml buildenv, ml show buildenv}
-
-%   \begin{block}{}
-% \begin{center}
-% \includegraphics[height=7cm]{figures/ml-show-buildenv-v2.png}
-% \end{center}
-%   \end{block}
-% }
-
 \frame{\frametitle{The Batch System (SLURM)}
 
   \begin{block}{}
@@ -736,7 +692,7 @@ Example: Serial job on Kebnekaise, compiler toolchain 'foss'
 \begin{small}
 \texttt{\#!/bin/bash} \\
 \texttt{\# Project id - change to your own after the course!} \\
-\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -A SNIC2021-22-514} \\
 \texttt{\# Asking for 1 core} \\
 \texttt{\#SBATCH -n 1} \\
 \texttt{\# Asking for a walltime of 5 min} \\ 
@@ -794,7 +750,7 @@ Example: MPI job on Kebnekaise, compiler toolchain 'foss'
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -A SNIC2021-22-514} \\
 \texttt{\#SBATCH -n 14} \\
 \texttt{\#SBATCH --time=00:05:00} \\ 
 \texttt{\#\#SBATCH --exclusive} \\ 
@@ -820,7 +776,7 @@ Example: Output from a MPI job on Kebnekaise, run on 14 cores (one NUMA island)
   \begin{block}{}
 \begin{tiny}
 \begin{verbatim}
-b-an01 [~/pfs/slurm]$ cat slurm-15952.out 
+b-an01 [~/slurm]$ cat slurm-15952.out 
 
 The following modules were not unloaded:
    (Use "module --force purge" to unload all):
@@ -848,58 +804,12 @@ Processor 10 of 14: Hello World!
 
 
 
-% \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Requesting GPU nodes} 
-
-%     \begin{block}{}
-%       \justify
-%   Currently there is no separate queue for the GPU nodes 
-%     \end{block}
-
-%     \begin{block}{}
-%   \begin{itemize}
-%   \item You request GPU nodes by adding the following to your batch script: \\ 
-%   \texttt{\#SBATCH --gres=gpu:card:x} where \texttt{card=k80 or v100}
-%   and \texttt{x=1, 2, 4} (4 only valid for K80)
-%   \item x = the number of GPU cards. On K80 each has 2 GPU engines. On V100 they have 1 GPU engine each. 
-%  \end{itemize}
-%     \end{block}
-
-%   }
-
-
-
-% \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Longer example} 
-
-%   \begin{block}{}
-% \begin{small}
-% \texttt{\#!/bin/bash} \\
-% \texttt{\#SBATCH -A SNIC2019-5-172} \\
-% \texttt{\#SBATCH -n 14} \\
-% \texttt{\#SBATCH --time=00:05:00} \\ 
-% \vspace{3mm} 
-% \texttt{module purge} \\ 
-% \texttt{ml foss/2019a} \\ 
-% \vspace{3mm}
-% \texttt{echo "Running on hosts: \$SLURM\_NODELIST"} \\ 
-% \texttt{echo "Running on \$SLURM\_NNODES nodes."} \\ 
-% \texttt{echo "Running on \$SLURM\_NPROCS processors."} \\ 
-% \texttt{echo "Current working directory is `pwd`"} \\ 
-% \vspace{3mm}
-% \texttt{echo "Output of srun hostname:"} \\ 
-% \texttt{srun /bin/hostname} \\
-% \vspace{3mm}
-% \texttt{srun ./mpi\_hello}
-% \end{small}
-%   \end{block}
-
-% } 
-
 \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Starting more than one serial job in the same submit file} 
 
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -A SNIC2021-22-514} \\
 \texttt{\#SBATCH -n 5} \\
 \texttt{\#SBATCH --time=00:15:00} \\ 
 \vspace{3mm} 
@@ -922,7 +832,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{scriptsize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -A SNIC2021-22-514} \\
 \texttt{\#SBATCH -c 28} \\
 \texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
 \texttt{\#SBATCH --time=02:00:00} \\ 
@@ -957,7 +867,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -A SNIC2021-22-514} \\
 \texttt{\# Total number of cores the jobs need} \\
 \texttt{\#SBATCH -n 56} \\
 \texttt{\# Remember to ask for enough time for all of the jobs to} \\
@@ -983,7 +893,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2020-9-215} \\
+\texttt{\#SBATCH -A SNIC2021-22-514} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
 \texttt{\# Number of GPU cards needed. Here asking for 2 K80 cards} \\
@@ -998,68 +908,26 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 
 }
 
-% \frame{\frametitle{Miscellaneous}\framesubtitle{Installing Python packages with Virtualenv} 
 
-% \begin{footnotesize}
-% Virtualenv is installed with each of the loadable Python modules and is accessible after the Python module is loaded. It is highly recommended to use these versions of Virtualenv instead of installing yourself.
-% \end{footnotesize}
-
-%   \begin{block}{}
-% Accessing Virtualenv
-% \begin{itemize}
-% \item Load the module containing the Python version that you want to use  
-% \item Now you want to create your first virtual environment. Here I call it 'vpyenv', and put it in Public. You can call it anything. 
-% \begin{itemize}
-% \item Run the following to initialize the environment:
-% \begin{itemize}
-% \item virtualenv --system-site-packages \$HOME/Public/vpyenv
-% \end{itemize}
-% \end{itemize}
-% \end{itemize}
-%   \end{block}
-
-% } 
-
-% \frame{\frametitle{Miscellaneous}\framesubtitle{Installing Python packages with Virtualenv} 
-
-%   \begin{block}{}
-% Installing modules in Virtualenv
-% \begin{itemize}
-% \item In order to install Python modules in the environment, you first need to activate it. Change directory to the environment you created before, and run: 
-% \begin{itemize}
-% \item \texttt{source bin/activate}
-% \end{itemize}
-% \item It will now look like this on Abisko (remember I called my environment 'vpyenv', and put it in my Public directory): 
-% \begin{itemize}
-% \item \texttt{(vpyenv)t-mn01 [~/Public/vpyenv]\$}
-% \end{itemize}
-% \item You can now install python modules like this (example, spacy):
-% \begin{itemize}
-% \item \texttt{pip install spacy}
-% \end{itemize}
-% \item The module will be downloaded and installed. 
-% \end{itemize}
-% In order to deactivate the Virtualenv, run \texttt{deactivate}
-%   \end{block}
-
-% }
 
 \frame{\frametitle{Important information}
 
   \begin{block}{}
     \begin{itemize}
-    \item The course project has the following SNIC ID: SNIC2020-9-215
+    \item The course project has the following SNIC ID: SNIC2021-22-514
     \item In order to use it in a batch job, add this to the batch script:
       \begin{itemize}
-        \item \#SBATCH -a SNIC2020-9-215
+        \item \#SBATCH -a SNIC2021-22-514
       \end{itemize}
-    \item There are two nodes reserved for the course, in order to let us run small examples without having to wait for too long.
-    \item This reservation is ONLY valid during the course:
+    \item There are two nodes reserved for the course, in order to let
+      us run small examples without having to wait for too long. One
+      node is a regular CPU node, the other a GPU node. 
+    \item These reservations are ONLY valid during the course:
       \begin{itemize}
       \item intro-hpc \\ (add with \#SBATCH --reservation=intro-hpc)
+      \item intro-hpc-gpu \\ (add with \#SBATCH --reservation=intro-hpc-gpu)
       \end{itemize}
-\item We have a storage project linked to the compute project. It is
-  SNIC2021-23-36. You find it in /proj/nobackup/SNIC2021-23-36
+\item We have a storage project linked to the compute project. It is snic2021-22-514. You find it in /proj/nobackup/snic2021-22-514
     \end{itemize}
   \end{block}
 
