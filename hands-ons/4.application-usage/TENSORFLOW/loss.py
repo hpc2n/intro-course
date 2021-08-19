@@ -29,7 +29,7 @@ sess = tf.compat.v1.Session()
 
 sess.run(init)
 
-for i in range (1000):
+for i in range (100):
     sess.run(train,{x:[1,2,3,4],y:[0,-1,-2,-3]})
     print(sess.run(loss,{x:[1,2,3,4],y:[0,-1,-2,-3]}))
 
