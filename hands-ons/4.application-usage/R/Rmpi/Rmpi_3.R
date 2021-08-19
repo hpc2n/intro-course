@@ -1,6 +1,6 @@
 library("Rmpi")
  
-mpi.spawn.Rslaves(nslaves=55)
+mpi.spawn.Rslaves(nslaves=27)
 mpi.bcast.cmd(id <- mpi.comm.rank())
 mpi.bcast.cmd(n <- mpi.comm.size())
 mpi.bcast.cmd(host <- mpi.get.processor.name())
