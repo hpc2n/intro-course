@@ -1,4 +1,4 @@
-#Taken from: https://cran.r-project.org/web/packages/doParallel/vignettes/gettingstartedParallel.pdf
+#Example taken from: https://cran.r-project.org/web/packages/doParallel/vignettes/gettingstartedParallel.pdf
 library(doParallel)
 
 x <- iris[which(iris[,5] != "setosa"), c(1,5)]

@@ -1,4 +1,4 @@
-#Taken from: http://michael.hahsler.net/SMU/LearnROnYourOwn/code/doMC.html
+#Example taken from: http://michael.hahsler.net/SMU/LearnROnYourOwn/code/doMC.html
 library(doParallel)
 registerDoParallel(cores=8)
 getDoParWorkers()
