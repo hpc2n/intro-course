@@ -19,9 +19,9 @@ else
     mdargs="-ntomp 1"
 fi
 
-export OMP_NUM_THREADS=7
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export MDRUN='gmx_mpi mdrun'
 gmx grompp -f step4.1_equilibration.mdp -o step4.1_equilibration.tpr -c step4.0_minimization.gro -r step3_charmm2gmx.pdb -n index.ndx -p topol.top
 
-gmx tune_pme -mdrun "$MDRUN" -np $SLURM_NTASKS $mdargs -dlb yes -s step4.1_equilibration.tpr -nocheck -nolaunch -steps 20000 -resetstep 5000 -ntpr 1 -r 3 
+gmx tune_pme -mdrun "$MDRUN" -np $SLURM_NTASKS $mdargs -dlb yes -s step4.1_equilibration.tpr -nocheck -nolaunch -steps 2000 -resetstep 1000 -ntpr 4 -r 2 -min 0.0 -max 0.5 
  
