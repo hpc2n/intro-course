@@ -1,4 +1,4 @@
-#https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md
+#Example taken from https://github.com/lgreski/datasciencectacontent/blob/master/markdown/pml-randomForestPerformance.md
 library(mlbench)
 data(Sonar)
 library(caret)
@@ -18,25 +18,21 @@ fitControl <- trainControl(method = "cv",
                            number = 25,
                            allowParallel = FALSE)
 
+stime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
 
-system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
+
 
 #Parallel mode
 library(parallel)
 library(doParallel)
-cluster <- makeCluster(4) # convention to leave 1 core for OS
+cluster <- makeCluster(5) 
 registerDoParallel(cluster)
-
-#tic <- Sys.time()
 
 fitControl <- trainControl(method = "cv",
                            number = 25,
                            allowParallel = TRUE)
 
-
-system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
-
-#Sys.time() - tic
+ptime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitControl))
 
 stopCluster(cluster)
 registerDoSEQ()
@@ -44,6 +40,10 @@ registerDoSEQ()
 fit
 fit$resample
 confusionMatrix.train(fit)
+
+#Timings
+timing <- rbind(sequential = stime, parallel = ptime)
+timing
 
 #Profiling
 # Nr. cores    Timing(sec)
