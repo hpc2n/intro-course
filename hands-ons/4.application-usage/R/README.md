@@ -57,7 +57,5 @@ Examples for R:
    5) In the folder "MachineLearning" we show a single ML model using a sonar database
    together with Random Forest. The simulations are done in serial mode and parallel
    mode. You may change the values for the number of cores (4 in the present case) 
-   to other values and write down the timings.
-
-   One can monitor the scaling behavior of this script (elapsed time vs. nr. of cores).
+   to other values.
 

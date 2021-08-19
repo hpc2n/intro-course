@@ -1,14 +1,15 @@
 #!/bin/bash
 #SBATCH -A Project_ID
-#Asking for 10 min.
-#SBATCH -t 00:02:00
+#Asking for 3 min.
+#SBATCH -t 00:03:00
 #SBATCH -n 1
 #Writing output and error files
 #SBATCH --output=output%J.out
 #SBATCH --error=error%J.error
 
-ml GCC/8.2.0-2.31.1  OpenMPI/3.1.3
-ml R/3.6.0
+ml purge
+ml GCC/10.2.0  OpenMPI/4.0.5
+ml R/4.0.4
 
 R --no-save --no-restore -f serial.R
 
