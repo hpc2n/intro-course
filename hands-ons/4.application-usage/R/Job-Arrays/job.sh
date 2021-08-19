@@ -1,14 +1,15 @@
 #!/bin/bash
 #SBATCH -A Project_ID
-#Asking for 10 min.
+#Asking for 12 min.
 #SBATCH -t 00:12:00
 #SBATCH --array=1-28
-##Writing the output and error files
+#Writing output and error files
 #SBATCH --output=Array_test.%A_%a.out
 #SBATCH --error=Array_test.%A_%a.error
 
-ml GCC/8.2.0-2.31.1  OpenMPI/3.1.3
-ml R/3.6.0
+ml purge
+ml GCC/10.2.0  OpenMPI/4.0.5
+ml R/4.0.4
 
 R --no-save --no-restore -f script.R
 
