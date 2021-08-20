@@ -137,6 +137,4 @@ langevinPistonTemp      $temp
 #exec sed -e "s/\$bb/1.0/g" -e "s/\$sc/0.1/g" mdsetup_restraint.namd.col > restraints/$outputname.col
 #colvarsConfig restraints/$outputname.col
 
-#minimize 10000
-#numsteps 90000000
 run 2000
