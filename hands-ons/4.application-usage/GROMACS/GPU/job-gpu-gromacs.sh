@@ -3,7 +3,8 @@
 # Remember to change the following to your own Project ID! 
 #SBATCH -A Project_ID
 #SBATCH -J Gromacs
-#SBATCH -t 00:10:00
+#SBATCH -t 00:30:00
+#SBATCH -N 1
 #SBATCH -n 4
 #SBATCH -c 7
 # Asking for 2 GPUs
@@ -36,8 +37,6 @@ mpirun -np $SLURM_NTASKS gmx_mpi mdrun $mdargs -dlb yes  -v -deffnm step4.1_equi
 #2. MPI version (Offloading nb and pme to gpus)
 mpirun -np $SLURM_NTASKS gmx_mpi mdrun -nb gpu -pme gpu -npme 1 $mdargs -dlb yes  -v -deffnm step4.1_equilibration
 
-#3. Threaded-MPI version
+#3. Threaded-MPI version (Offloading nb and pme to gpus)
 gmx mdrun -ntmpi $SLURM_NTASKS -nb gpu -pme gpu -npme 1 $mdargs -dlb yes  -v -deffnm step4.1_equilibration
 
-#More information on GROMACS performance 
-#  https://manual.gromacs.org/2021/user-guide/mdrun-performance.html

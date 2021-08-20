@@ -4,8 +4,9 @@
 #SBATCH -A Project_ID
 #SBATCH -J Gromacs
 #SBATCH -t 00:30:00
-#SBATCH -n 4
-#SBATCH -c 7
+#SBATCH -N 1
+#SBATCH -n *FIXME*
+#SBATCH -c *FIXME*
 
 # It is a good idea to do a ml purge before loading other modules
 ml purge
@@ -19,7 +20,7 @@ else
     mdargs="-ntomp 1"
 fi
 
-export OMP_NUM_THREADS=7
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export MDRUN='gmx_mpi mdrun'
 gmx grompp -f step4.1_equilibration.mdp -o step4.1_equilibration.tpr -c step4.0_minimization.gro -r step3_charmm2gmx.pdb -n index.ndx -p topol.top
 mpirun -np $SLURM_NTASKS $MDRUN $mdargs -dlb yes  -v -deffnm step4.1_equilibration
