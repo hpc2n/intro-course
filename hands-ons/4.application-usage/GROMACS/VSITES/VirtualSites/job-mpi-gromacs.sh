@@ -19,7 +19,7 @@ else
     mdargs="-ntomp 1"
 fi
 
-export OMP_NUM_THREADS=7
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export MDRUN='gmx_mpi mdrun'
 gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr
 mpirun -np $SLURM_NTASKS $MDRUN $mdargs -dlb yes  -v -deffnm nvt

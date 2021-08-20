@@ -51,3 +51,13 @@ How is the performance on GPUs compared to that on CPUs in the previous example?
 
 More information on GROMACS performance:
   https://manual.gromacs.org/2021/user-guide/mdrun-performance.html
+
+
+## 3. Virtual Sites
+
+One way to speed up the simulations in GROMACS is by using virtual sites where geometric
+constructs are used to avoid the use of constraints on bonds and angles. In the folder
+VSITES you will find a standard setup "ClassicalSim" and a setup of the same system
+but where virtual sites are applied "VirtualSites", submit the batch jobs and compare
+the performances. Where do you see a better performance? What is the main source of
+performance improvement?
