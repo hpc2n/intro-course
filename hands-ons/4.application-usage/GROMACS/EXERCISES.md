@@ -43,6 +43,9 @@ is the best option (for the current nr. of cores and GPUs) for running GROMACS?
 You can check if this analysis agrees with the performance for each run as reported
 in the log file measured in ns/day.
 
+What is the percentage of the GPUs used in the simulation based on the results from
+job-usage?
+
 ### 2.2
 How is the performance on GPUs compared to that on CPUs in the previous example?
 
