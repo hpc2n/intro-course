@@ -25,7 +25,7 @@ stime <- system.time(fit <- train(x,y, method="rf",data=Sonar,trControl = fitCon
 #Parallel mode
 library(parallel)
 library(doParallel)
-cluster <- makeCluster(5) 
+cluster <- makeCluster(1) 
 registerDoParallel(cluster)
 
 fitControl <- trainControl(method = "cv",
@@ -45,9 +45,3 @@ confusionMatrix.train(fit)
 timing <- rbind(sequential = stime, parallel = ptime)
 timing
 
-#Profiling
-# Nr. cores    Timing(sec)
-#   4          29.62 
-#   3          36.94
-#   2          51.83
-#   1          88.20

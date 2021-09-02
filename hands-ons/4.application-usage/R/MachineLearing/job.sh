@@ -2,7 +2,7 @@
 #SBATCH -A Project_ID
 #Asking for 10 min.
 #SBATCH -t 00:10:00
-#SBATCH -n 5
+#SBATCH -n 1
 #Writing output and error files
 #SBATCH --output=output%J.out
 #SBATCH --error=error%J.error

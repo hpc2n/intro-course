@@ -1,6 +1,6 @@
 #Example taken from: http://michael.hahsler.net/SMU/LearnROnYourOwn/code/doMC.html
 library(doParallel)
-registerDoParallel(cores=8)
+registerDoParallel(cores=4)
 getDoParWorkers()
 
 library(caret)
@@ -67,7 +67,7 @@ evaluation <- function() {
         function(x) missclassRate(true= test_class, predicted=x))
 }
 
-runs <- 100
+runs <- 10000
 
 stime <- system.time({
         sr <- foreach(1:runs, .combine = rbind) %do% evaluation()
