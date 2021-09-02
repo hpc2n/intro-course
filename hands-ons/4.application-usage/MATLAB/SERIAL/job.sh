@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A SNIC2020-5-235  
+#SBATCH -A Project_ID
 #SBATCH -t 00:03:00
 #SBATCH -n 1
 
