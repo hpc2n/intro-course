@@ -2,7 +2,13 @@ REQUIREMENTS:
    * Prior to running any of the following examples, you need to follow the
    configuration lines for MATLAB:
        
-       https://www.hpc2n.umu.se/resources/software/matlab
+       https://www.hpc2n.umu.se/resources/software/configure-matlab-2018
+
+   * Load the MATLAB module and launch the MATLAB instance: 
+
+   ml MATLAB/2021a
+
+   matlab -singleCompThread
 
 The following folders are included for MATLAB:
 
@@ -10,8 +16,6 @@ The following folders are included for MATLAB:
    The execution time is obtained with tic/toc and written down in a file called
    "log.out". The script can be run using the MATLAB GUI:
 
-   $ml MATLAB/2019b.Update2
-   $matlab -singleCompThread
 
    with the script "submit.m". As an alternative, you can submit the job via a
    batch script "job.sh"
