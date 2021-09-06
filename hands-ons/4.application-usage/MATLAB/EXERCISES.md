@@ -34,5 +34,8 @@ The following folders are included for MATLAB:
 
    * "GPU" computes a Mandelbrot set both on CPU "mandelcpu.m" and on GPU
    "mandelgpu.m". You can submit the jobs through the MATLAB GUI using the 
-   "submit*.m" files. The final output if everything ran well are two .png figures
-   which display the timings for both architectures.
+   "submit*.m" files. 
+
+   The final output if everything ran well are two .png figures
+   which display the timings for both architectures. Use the "eom" command on the
+   terminal to visualize the images (eom outputX.png)
