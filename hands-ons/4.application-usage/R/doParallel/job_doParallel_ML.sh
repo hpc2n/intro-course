@@ -7,7 +7,7 @@
 #SBATCH --output=output%J.out
 #SBATCH --error=error%J.error
 
-ml purge
+ml purge > /dev/null 2>&1
 ml GCC/10.2.0  OpenMPI/4.0.5
 ml R/4.0.4
 

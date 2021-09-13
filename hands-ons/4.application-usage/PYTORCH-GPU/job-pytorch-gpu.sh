@@ -6,7 +6,7 @@
 #SBATCH --output=job.%J.out
 #SBATCH --gres=gpu:k80:1
 
-ml purge
+ml purge  > /dev/null 2>&1
 
 ml GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5
 ml matplotlib/3.3.3
