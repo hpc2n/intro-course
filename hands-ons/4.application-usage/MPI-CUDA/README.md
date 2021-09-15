@@ -1,6 +1,6 @@
 # Loading modules
 
-ml purge
+ml purge > /dev/null 2>&1
 
 ml fosscuda/2019b buildenv 
 

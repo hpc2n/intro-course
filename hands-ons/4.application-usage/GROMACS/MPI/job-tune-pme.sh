@@ -8,7 +8,7 @@
 #SBATCH -c 7
 
 # It is a good idea to do a ml purge before loading other modules
-ml purge
+ml purge > /dev/null 2>&1
 
 ml GCC/10.2.0  OpenMPI/4.0.5
 ml GROMACS/2021
