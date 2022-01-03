@@ -4,8 +4,8 @@
 #SBATCH -A Project_ID
 #SBATCH -J Gromacs
 #SBATCH -t 00:30:00
-#SBATCH -n 4
-#SBATCH -c 7
+#SBATCH -n *FIXME*
+#SBATCH -c *FIXME*
 
 # It is a good idea to do a ml purge before loading other modules
 ml purge > /dev/null 2>&1
