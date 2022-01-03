@@ -22,10 +22,5 @@ ml Amber/20.11-AmberTools-21.3
 export init="solvated_1fsc"
 export pstep="02_Heat"
 export istep="03_Prod"
-#Option 1: using the srun command automatically assigns the number of MPIs:
 srun pmemd.cuda_SPFP.MPI -O -i ${istep}.in -p ${init}.top -c ${pstep}.rst7 -o ${istep}.mdout -r ${istep}.rst7 -inf ${istep}.mdinfo_2 -x ${istep}.nc
-
-#Option 2 for running AMBER: manually selecting the number of MPIs:
-mpirun -np 4 pmemd.cuda_SPFP.MPI -O -i ${istep}.in -p ${init}.top -c ${pstep}.rst7 -o ${istep}.mdout -r ${istep}.rst7 -inf ${istep}.mdinfo_1 -x ${istep}.nc
-
 
