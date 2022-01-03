@@ -43,11 +43,16 @@ being used (in percentage). How efficient is your simulation?
 
 ### 2.1
 
-In the GPU/ folder, take a look at the script job-gpu-gromacs.sh. At the end of the
+In the GPU/ folder, take a look at the script **job-gpu-gromacs.sh**. At the end of the
 script you will find three different ways to run GROMACS, the first one being the
-default way, and the other two where PME is offloaded to GPUs.  When the script finishes, you should see a step-like plot for
-the CPU usage where each step denotes each simulation. Based on these results, what
-is the best option (for the current nr. of cores and GPUs) for running GROMACS?
+default way (no Offloading), the second one the MPI version where nonbonded/PME interactions
+are offloaded to GPUs, and the third one being the Threaded-MPI version with nonbonded/PME
+interactions offloaded to GPUs. Submit the job to the queue and monitor the usage
+with the **job-usage** command that was introduced previously.
+
+When the script finishes, you should see a step-like plot for
+the CPU/GPU usage where each step denotes each simulation. Based on these results, what
+is the best of the three options in the script (for the current nr. of cores and GPUs) for running GROMACS?
 You can check if this analysis agrees with the performance for each run as reported
 in the log file measured in ns/day.
 
@@ -55,13 +60,14 @@ What is the percentage of the GPUs used in the simulation based on the results f
 job-usage?
 
 ### 2.2
-How is the performance on GPUs compared to that on CPUs in the previous example?
+
+How is the performance on GPUs version compared to that on CPU-only version in the previous examples?
 
 More information on GROMACS performance:
   https://manual.gromacs.org/2021/user-guide/mdrun-performance.html
 
 
-## 3. Virtual Sites
+## 3. EXERCISE - VIRTUAL SITES
 
 One way to speed up the simulations in GROMACS is by using virtual sites where geometric
 constructs are used to avoid the use of constraints on bonds and angles. In the folder
