@@ -4,8 +4,8 @@
 #SBATCH -t 00:10:00
 #Number of nodes
 #SBATCH -N 1
-#Ask for 28 processes
-#SBATCH -n 28
+#Ask for MPI ranks
+#SBATCH -n **FIXME**
 #SBATCH --exclusive
 
 #Purge and load modules necessary for running LAMMPS

@@ -3,7 +3,7 @@
 variable        x index 60
 variable        y index 60
 variable        z index 60
-variable        t index 1000
+variable        t index 10000
 
 variable        xx equal 1*$x
 variable        yy equal 1*$y
