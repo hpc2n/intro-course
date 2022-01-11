@@ -17,4 +17,4 @@ to try loading modules, compile a program, and submit a job to the Kebnekaise cl
 
 **Location**: Online
 
-**Instructors**: Mirko Myllykoski (HPC2N), Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)
+**Instructors**: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)
