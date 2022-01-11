@@ -1,4 +1,4 @@
-# Introduction to HPC and Kebnekaise (fall 2021)
+# Introduction to HPC and Kebnekaise (January 2022)
 
 ## Course description
 
