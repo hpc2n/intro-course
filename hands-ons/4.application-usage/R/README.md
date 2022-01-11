@@ -9,8 +9,8 @@ REQUIREMENTS:
 
      -- For this R version (check if they are not already installed)
 
-          ml GCC/8.2.0-2.31.1  OpenMPI/3.1.3
-          ml R/3.6.0
+          ml GCC/10.2.0  OpenMPI/4.0.5
+          ml R/4.0.4
 
           Rmpi
           doParallel
