@@ -3,7 +3,7 @@
 ## Course description
 
 We begin with a short introduction to Linux, which is what is used on HPC2N's compute clusters, and the vast majority of HPC clusters worldwide. 
-This part is only meant for complete beginners to the Linux operating system, and can be omitted if you are proficient already. See the schedule.
+This part is only meant for complete beginners to the Linux operating system, and can be omitted if you are proficient already. See the schedule here: https://www.hpc2n.umu.se/events/courses/2022/intro-spring.
 
 We then continue with an introduction to HPC and HPC2N, then move on to a walkthrough of the Kebnekaise system, including the GPUs and KNLs.
 In the afternoon we go through the module system and take a brief look at how to submit jobs. During the hands-on you will get the opportunity
