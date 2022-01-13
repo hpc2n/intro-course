@@ -74,7 +74,7 @@
 \titlegraphic{\center{\includegraphics[height=1.2cm]{figures/SNIC_logo.png}\hspace*{1.1cm}~
    \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\hspace*{1.1cm}~\includegraphics[height=1.2cm]{figures/hpc2n.png}
 }}
-\date{8 September 2021}
+\date{19 January 2022}
 \begin{document}
 
 \frame{
@@ -138,11 +138,10 @@ Join a project or apply for one.
     \begin{itemize}
     \item As default, you have 25GB in your home directory.
     \item If you need more, you can accept the ``default storage''
-      that you will be offered after applying for compute resources.
-      them together. It is done from the \textbf{storage} project. 
+      you will be offered after applying for compute resources.
     \item The default storage is 500GB.
     \item If you need more than that, you will have to apply for a
-        storage project
+        storage project. When you have both, link them together. It is done from the \textbf{storage} project. 
     \end{itemize}
   \end{block}
 
@@ -220,20 +219,24 @@ Join a project or apply for one.
 
 }
 
-\frame{\frametitle{Using our systems}
+\frame{\frametitle{Using our systems - example process}
 
   \begin{block}{}
     \begin{enumerate}
 %    \item Get an account \tiny{(https://www.hpc2n.umu.se/documentation/access-and-accounts/users)} \normalsize{}
-    \item Connect to: \\
+	    \item Connect to (SSH): \\
 \vspace{2mm}
 \texttt{kebnekaise.hpc2n.umu.se} \\
 \vspace{2mm}
-\item Transfer your files and data (optionally)
+or use ThinLinc and connect to: \\
+\vspace{2mm}
+\texttt{kebnekaise-tl.hpc2n.umu.se} \\
+\vspace{2mm}
+\item Transfer your files and data (optionally, if needed)
   \item Load modules (if needed)
     \item Compile own code, install software, or run pre-installed software 
     \item Create batch script, submit batch job
-    \item Download data/results
+    \item Download data/results to local/other machine (optionally)
     \end{enumerate}
   \end{block}
 
@@ -250,7 +253,7 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
   \begin{block}{}
     \begin{small}
       \begin{itemize}
-      \item We recommend ThinLinc if you don't have a preferred SSH client.
+	      \item We \textbf{recommend} ThinLinc if you don't have a preferred SSH client.
       \item Download the client from \texttt{https://www.cendio.com/thinlinc/download}. Install it.
       \item Start the client. Enter the name of the server: \textbf{kebnekaise-tl.hpc2n.umu.se}. Enter your username. 
       \item Go to "Options" $->$ "Security". Check that authentication method is set to password.
@@ -394,7 +397,7 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
                                                        \textbf{/scratch} \\
         & & & \\ \hhline{|=|=|=|=|} 
      Recommended & & & \\
-     for batch jobs & Yes & No & Yes \\ \hline 
+	      for batch jobs & Yes & No (size) & Yes \\ \hline 
      Backed up & No & Yes & No \\ \hline 
      Accessible & & & \\
      by batch & Yes & Yes & Yes (node only) \\ 
@@ -442,7 +445,7 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
     \begin{itemize}
       \item If you have a storage project, you should use that to run your
         jobs.
-      \item You will either choose a directory name when you apply for
+\item You (your PI) will either choose a directory name when you/they apply for
         the storage project or get the SNIC id as default name.
       \item The location of the storage project in the file system is
         \texttt{/proj/nobackup/$<$name-you-picked$>$}. 
@@ -521,21 +524,23 @@ Modules are
        \item \textbf{GCC}: GCC only
        \item \textbf{gcccuda}: GCC and CUDA
        \item \textbf{foss}: GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK
-       \item \textbf{gimkl}: GCC, IntelMPI, IntelMKL
-       \item \textbf{gimpi}: GCC, IntelMPI
+%       \item \textbf{gimkl}: GCC, IntelMPI, IntelMKL
+%       \item \textbf{gimpi}: GCC, IntelMPI
        \item \textbf{gompi}: GCC, OpenMPI
        \item \textbf{gompic}: GCC, OpenMPI, CUDA
-       \item \textbf{goolfc}: gompic, OpenBLAS/LAPACK, FFTW, ScaLAPACK
-       \item \textbf{icc}: Intel C and C++ only
+       \item \textbf{gomkl}: GCC, OpenMPI, MKL 
+%       \item \textbf{goolfc}: gompic, OpenBLAS/LAPACK, FFTW, ScaLAPACK
+%       \item \textbf{icc}: Intel C and C++ only
        \item \textbf{iccifort}: icc, ifort
        \item \textbf{iccifortcuda}: icc, ifort, CUDA
-       \item \textbf{ifort}: Intel Fortran compiler only 
+%       \item \textbf{ifort}: Intel Fortran compiler only 
        \item \textbf{iimpi}: icc, ifort, IntelMPI
        \item \textbf{intel}: icc, ifort, IntelMPI, IntelMKL
        \item \textbf{intelcuda}: intel and CUDA
-       \item \textbf{iomkl}: icc, ifort, Intel MKL, OpenMPI
-       \item \textbf{pomkl}: PGI C, C++, and Fortran compilers, IntelMPI
-       \item \textbf{pompi}: PGI C, C++, and Fortran compilers, OpenMPI \\
+%       \item \textbf{iomkl}: icc, ifort, Intel MKL, OpenMPI
+       \item \textbf{iompi}: iccifort and OpenMPI \\ 
+%       \item \textbf{pomkl}: PGI C, C++, and Fortran compilers, IntelMPI
+%       \item \textbf{pompi}: PGI C, C++, and Fortran compilers, OpenMPI \\
 \end{tiny}
       \end{itemize}
       \end{itemize}
@@ -692,7 +697,7 @@ Example: Serial job on Kebnekaise, compiler toolchain 'foss'
 \begin{small}
 \texttt{\#!/bin/bash} \\
 \texttt{\# Project id - change to your own after the course!} \\
-\texttt{\#SBATCH -A SNIC2021-22-514} \\
+\texttt{\#SBATCH -A SNIC2021-22-1017} \\
 \texttt{\# Asking for 1 core} \\
 \texttt{\#SBATCH -n 1} \\
 \texttt{\# Asking for a walltime of 5 min} \\ 
@@ -700,7 +705,7 @@ Example: Serial job on Kebnekaise, compiler toolchain 'foss'
 \vspace{3mm} 
 \texttt{\# Purge modules before loading new ones in a script. } \\
 \texttt{ml purge} \\ 
-\texttt{ml foss/2019b} \\ 
+\texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{./my\_serial\_program}
 \end{small}
@@ -750,14 +755,14 @@ Example: MPI job on Kebnekaise, compiler toolchain 'foss'
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-514} \\
+\texttt{\#SBATCH -A SNIC2021-22-1017} \\
 \texttt{\#SBATCH -n 14} \\
 \texttt{\#SBATCH --time=00:05:00} \\ 
 \texttt{\#\#SBATCH --exclusive} \\ 
-\texttt{\#SBATCH --reservation=intro-hpc} \\ 
+\texttt{\#SBATCH --reservation=intro-cpu} \\ 
 \vspace{3mm} 
 \texttt{module purge} \\ 
-\texttt{ml foss/2019b} \\ 
+\texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{srun ./my\_parallel\_program}
 \end{small}
@@ -809,12 +814,12 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-514} \\
+\texttt{\#SBATCH -A SNIC2021-22-1017} \\
 \texttt{\#SBATCH -n 5} \\
 \texttt{\#SBATCH --time=00:15:00} \\ 
 \vspace{3mm} 
 \texttt{module purge} \\ 
-\texttt{ml foss/2019b} \\ 
+\texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{srun -n 1 ./job1.batch \&} \\ 
 \texttt{srun -n 1 ./job2.batch \&} \\ 
@@ -832,13 +837,13 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{scriptsize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-514} \\
+\texttt{\#SBATCH -A SNIC2021-22-1017} \\
 \texttt{\#SBATCH -c 28} \\
 \texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
 \texttt{\#SBATCH --time=02:00:00} \\ 
 \vspace{3mm} 
 \texttt{module purge} \\ 
-\texttt{ml foss/2019b} \\ 
+\texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{\# Here 14 tasks with 2 cores per task. Output to file.} \\
 \texttt{\# Not needed if your job creates output in a file} \\ 
@@ -867,7 +872,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-514} \\
+\texttt{\#SBATCH -A SNIC2021-22-1017} \\
 \texttt{\# Total number of cores the jobs need} \\
 \texttt{\#SBATCH -n 56} \\
 \texttt{\# Remember to ask for enough time for all of the jobs to} \\
@@ -875,7 +880,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 \texttt{\#SBATCH --time=02:00:00} \\ 
 \vspace{3mm} 
 \texttt{module purge} \\ 
-\texttt{ml foss/2019b} \\ 
+\texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{srun -n 14 --cpu\_bind=cores ./a.out \&} \\ 
 \texttt{srun -n 28 --cpu\_bind=cores ./b.out \&} \\ 
@@ -893,14 +898,14 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-514} \\
+\texttt{\#SBATCH -A SNIC2021-22-1017} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
 \texttt{\# Number of GPU cards needed. Here asking for 2 K80 cards} \\
 \texttt{\#SBATCH --gres=k80:2} \\
 \vspace{3mm} 
 \texttt{module purge} \\ 
-\texttt{ml fosscuda/2019b} \\ 
+\texttt{ml fosscuda/2021b} \\ 
 \vspace{3mm}
 \texttt{./my-program} \\
 \end{footnotesize}
@@ -914,20 +919,19 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 
   \begin{block}{}
     \begin{itemize}
-    \item The course project has the following SNIC ID: SNIC2021-22-514
+    \item The course project has the following SNIC ID: SNIC2021-22-1017
     \item In order to use it in a batch job, add this to the batch script:
       \begin{itemize}
-        \item \#SBATCH -a SNIC2021-22-514
+        \item \#SBATCH -A SNIC2021-22-1017
       \end{itemize}
-    \item There are two nodes reserved for the course, in order to let
-      us run small examples without having to wait for too long. One
-      node is a regular CPU node, the other a GPU node. 
+    \item There are some nodes reserved for the course, in order to let
+      us run small examples without having to wait for too long. Three nodes are regular Broadwell CPU nodes, two nodes are K80 GPU node. 
     \item These reservations are ONLY valid during the course:
       \begin{itemize}
-      \item intro-hpc \\ (add with \#SBATCH --reservation=intro-hpc)
-      \item intro-hpc-gpu \\ (add with \#SBATCH --reservation=intro-hpc-gpu)
+      \item intro-cpu \\ (add with \#SBATCH --reservation=intro-cpu)
+      \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
       \end{itemize}
-\item We have a storage project linked to the compute project. It is snic2021-22-514. You find it in /proj/nobackup/snic2021-22-514
+\item We have a storage project linked to the compute project. It is snic2021-22-1017. You find it in /proj/nobackup/snic2021-22-1017 
     \end{itemize}
   \end{block}
 
