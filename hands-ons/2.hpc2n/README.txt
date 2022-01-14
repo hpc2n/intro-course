@@ -8,7 +8,7 @@ In order to login to HPC2N, you need an SSH client and potentially an X11 server
 
 1. ThinLinc
 
-Unless you already have a preferred setup for connecting, we strongly recommend using ThinLinc, particularly for the second half of this course since there will be exercises where you use the graphical interface of MATLAB. 
+Unless you already have a preferred setup for connecting, we strongly recommend using ThinLinc, particularly for the second half of this course since there will be exercises where you use the graphical interface (i.e. MATLAB). 
 
 ThinLinc includes everything needed and is quick to install.
 
@@ -48,4 +48,16 @@ After a short time, the thinlinc desktop opens, running Mate. It is fairly simil
 2.1 Exercise
 
 Login to HPC2N using ThinLinc
+
+2.2 Exercise 
+
+Change your password to something that is easier to remember than the auto-generated one.
+
+This is done using the passwd command:
+
+passwd
+
+Use a good password that combines letters of different case. Do not use dictionary words. Avoid using the same password that you also use in other places.
+
+It will first ask for your current password. Type in that and press enter. Then type in the new password, enter, and repeat. You have changed the password.
 
