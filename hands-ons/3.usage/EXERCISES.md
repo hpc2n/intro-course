@@ -41,6 +41,8 @@ Try change it to 1, 2, 4, 8 and run the program.
 
 Try using a different compiler toolchain (see the README file for how to find the toolchains). Remember that you need to compile and run with the same toolchain. 
 
+NOTE: remember to unload or purge the previously loaded toolchain! 
+
 Good example programs to test with are:
 
 hello.c
@@ -57,6 +59,9 @@ Try change it to 1, 2, 4, 8 and run the program.
 NOTE, again, that in this example you are just running the job on the login node. This is OK as long as it is a very short job that uses few resources. 
 
 ## 3. EXERCISE - BATCH JOBS
+
+NOTE: remember to unload any toolchains you do not want to use, and load the one(s) you w
+ant to use before compiling anything!
 
 ### 3.1 
 

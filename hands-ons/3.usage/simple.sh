@@ -1,6 +1,6 @@
 #!/bin/bash
 # Project id - change to your own after the course!
-#SBATCH -A SNIC2021-22-514
+#SBATCH -A SNIC2021-22-1017
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for a walltime of 1 min
@@ -8,6 +8,6 @@
  
 # Purge modules before loading new ones in a script.
 ml purge
-ml foss/2019b
+ml foss/2021b
 
 ./hello

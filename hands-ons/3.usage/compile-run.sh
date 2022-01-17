@@ -1,6 +1,6 @@
 #!/bin/bash
 # CHANGE THE PROJECT ID TO YOUR OWN PROJECT ID AFTER THE COURSE!
-#SBATCH -A SNIC2021-22-514
+#SBATCH -A SNIC2021-22-1017
 #Name the job, for easier finding in the list
 #SBATCH -J compiler-run
 #SBATCH -t 00:10:00
@@ -8,7 +8,7 @@
 
 ml purge
 
-ml foss/2019b 
+ml foss/2021b 
 
 mpicc mpi_hello.c -o mpi_hello 
 mpirun ./mpi_hello

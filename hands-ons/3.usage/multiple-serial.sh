@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH -A SNIC2021-22-514
+#SBATCH -A SNIC2021-22-1017
 # Add enough cores that all jobs can run at the same time 
 #SBATCH -n 5
 # Make sure that the time is long enough that the longest job will have time to finish 
 #SBATCH --time=00:15:00
 
 module purge
-ml foss/2019b 
+ml foss/2021b 
 
 srun -n 1 --exclusive ./hello &
 srun -n 1 --exclusive ./Greeting & 
