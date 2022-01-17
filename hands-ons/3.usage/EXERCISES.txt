@@ -9,26 +9,50 @@ See the file README.md for help and hints. That file also contains information a
 
 1. EXERCISE - PROJECT STORAGE
 
-Create a directory for yourself in the course's project storage /proj/nobackup/snic2021-22-514
+Create a directory for yourself in the course's project storage /proj/nobackup/snic2021-22-1017/
 
 2. EXERCISE - LOADING MODULES
 
-In the test examples I have used the 'foss' compiler toolchain, version 2019b, unless otherwise specified. 
+In the test examples I have used the 'foss' compiler toolchain, version 2021b, unless otherwise specified. 
 
-Try using a different one. Remember that you need to compile and run with the same toolchain. 
+In the test examples I have used the 'foss' compiler toolchain, version 2021b, unless otherwise specified.
+
+2.1 
+
+Load the recommended toolchain. Then check with 'ml' to see what was loaded.
+
+Try compiling these programs:
+
+hello.c
+omp_hello.c
+
+Remember, the README file contains information about how to compile C and OpenMP/C programs
+.
+
+These programs are very short. Try running them on the login node (this is not normally recommended, but these programs are short enough that it will not cause problems).
+
+The 'omp_hello.c' is an OpenMP program. You can see the different outputs when you change the number of threads with
+
+export OMP_NUM_THREADS=<number>
+
+Try change it to 1, 2, 4, 8 and run the program.
+
+2.2
+
+Try using a different compiler toolchain (see the README file for how to find the toolchains). Remember that you need to compile and run with the same toolchain.
 
 Good example programs to test with are:
 
 hello.c
 omp_hello.c
 
-The 'omp_hello.c' is an OpenMP program. You can see the different outputs when you change the number of threads with 
+The 'omp_hello.c' is an OpenMP program. You can see the different outputs when you change the number of threads with
 
 export OMP_NUM_THREADS=<number>
 
-Try change it to 1, 2, 4, 8 and run the program. 
+Try change it to 1, 2, 4, 8 and run the program.
 
-NOTE that in this example you are just running the job on the login node. This is OK as long as it is a very short job that uses few resources. 
+NOTE, again, that in this example you are just running the job on the login node. This is OK as long as it is a very short job that uses few resources.
 
 3. EXERCISE - BATCH JOBS
 
@@ -36,9 +60,11 @@ NOTE that in this example you are just running the job on the login node. This i
 
 3.2 Look at the output of the job. Which file did the job create? 
 
-3.3 Look at the list of jobs. Check the status of the job. 
+3.3 Look at the list of jobs (squeue, squeue -u <username>). Check the status of the jobs (scontrol show job <jobid>). 
 
-3.4 Try submitting more jobs see the change and different states. Try cancelling one of the jobs. 
+3.4 Try submitting more jobs and see the changes and different states. Try cancelling one of the jobs. 
+
+Again, look in the README file for help with commands!
 
 4. EXERCISE - BATCH SCRIPTS
 
@@ -58,7 +84,7 @@ NOTE that in this example you are just running the job on the login node. This i
 
 5. EXERCISE - CUDA/GPU PROGRAM  
 
-Load a suitable toolchain, like fosscuda/2019b and use 'nvcc' to compile the program hello-world.cu  
+Load a suitable toolchain, like fosscuda/2021b and use 'nvcc' to compile the program hello-world.cu  
 
 Submit the job script gpu.sh with the correct executable (named as in the script or changed to whatever you named it). 
 
