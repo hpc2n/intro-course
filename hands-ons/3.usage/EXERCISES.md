@@ -113,7 +113,7 @@ Compile the corresponding programs and submit the 'multiple-parallel-simultaneou
 
 ## 5. EXERCISE - CUDA/GPU PROGRAM  
 
-Load a suitable toolchain, like fosscuda/2021b and use 'nvcc' to compile the program 'hello-world.cu'  
+Load a suitable toolchain, like fosscuda/2020b and use 'nvcc' to compile the program 'hello-world.cu'  
 
 Submit the job script 'gpu.sh' with the correct executable (named as in the script or changed to whatever you named it). 
 

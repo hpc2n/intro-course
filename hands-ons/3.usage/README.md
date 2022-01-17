@@ -230,10 +230,10 @@ You need the mpi_hello.c file compiled (and the executable named mpi_hello) for 
 
 ### 3.8 CUDA/GPU program 
 
-To compile a cuda program, like hello-world.cu you need to load a toolchain containing CUDA compilers. We recommend fosscuda/2021b (contains GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK, and CUDA) or intelcuda/2021b (contains icc, ifort, IntelMPI, IntelMKL, and CUDA) 
+To compile a cuda program, like hello-world.cu you need to load a toolchain containing CUDA compilers. We recommend fosscuda/2020b (contains GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK, and CUDA) or intelcuda/2019a (contains icc, ifort, IntelMPI, IntelMKL, and CUDA) 
 
 ```bash 
-$ ml fosscuda/2021b
+$ ml fosscuda/2020b
 $ nvcc hello-world.cu -o hello
 ```
 
