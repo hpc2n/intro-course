@@ -12,17 +12,17 @@ Try to change the C programs, add different programs, and in general play around
 
 1. LOADING AND UNLOADING MODULES
 
-For these test examples I would suggest using the 'foss' compiler toolchain, version 2019b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
+For these test examples I would suggest using the 'foss' compiler toolchain, version 2021b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts. 
 
 LOADING 
 
-In order to load the foss compiler toolchain version 2019b do the following: 
+In order to load the foss compiler toolchain version 2021b do the following: 
 
-ml foss/2019b
+ml foss/2021b
 
 OR write
 
-module add foss/2019b
+module add foss/2021b
 
 You can see that it is loaded with 
 
@@ -55,7 +55,7 @@ ml purge
 to unload all modules you have loaded. 
 
 
-The foss 2019b toolchain uses the GCC compilers, so the examples below use those. 
+The foss 2021b toolchain uses the GCC compilers, so the examples below use those. 
 
 2. CHECKING ON YOUR JOB 
 
@@ -73,7 +73,7 @@ scontrol show job <jobid>
 
 2.3 LIST OF JOBS
 
-To see a list of your jobs, including their jobid's
+To see a list of your jobs, including their jobids
 
 squeue -u <username>
 
@@ -178,9 +178,9 @@ You need the mpi_hello.c file compiled (and the executable named mpi_hello) for 
 
 3.8 CUDA/GPU program 
 
-To compile a cuda program, like hello-world.cu you need to load a toolchain containing CUDA compilers. We recommend fosscuda/2019b (contains GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK, and CUDA) or intelcuda/2019b (contains icc, ifort, IntelMPI, IntelMKL, and CUDA) 
+To compile a cuda program, like hello-world.cu you need to load a toolchain containing CUDA compilers. We recommend fosscuda/2021b (contains GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK, and CUDA) or intelcuda/2021b (contains icc, ifort, IntelMPI, IntelMKL, and CUDA) 
 
-ml fosscuda/2019b
+ml fosscuda/2021b
 nvcc hello-world.cu -o hello
 
 The batch script gpu.sh compiles and runs a small cuda program called 'hello-world.cu'. To submit it: 
