@@ -47,8 +47,10 @@ NOTE: remember to unload or purge the previously loaded toolchain!
 
 Good example programs to test with are:
 
+```bash
 hello.c
 omp_hello.c
+```
 
 The 'omp_hello.c' is an OpenMP program. You can see the different outputs when you change the number of threads with 
 
@@ -62,8 +64,7 @@ NOTE, again, that in this example you are just running the job on the login node
 
 ## 3. EXERCISE - BATCH JOBS
 
-NOTE: remember to unload any toolchains you do not want to use, and load the one(s) you w
-ant to use before compiling anything!
+NOTE: remember to unload any toolchains you do not want to use, and load the one(s) you want to use before compiling anything!
 
 ### 3.1 
 
@@ -75,7 +76,7 @@ Look at the output of the job. Which file did the job create?
 
 ### 3.3 
 
-Look at the list of jobs (squeue, squeue -u <username>). Check the status of the jobs (scontrol show job <jobid>). 
+Look at the list of jobs (squeue, squeue -u username). Check the status of the jobs (scontrol show job jobid). 
 
 ### 3.4 
 
@@ -87,7 +88,9 @@ Again, look in the README file for help with commands!
 
 ### 4.1 
 
-As a default, SLURM throws both errors and other output to the same file, named 'slurm-<jobid>.out'. The job script 'separate-err-out.sh' shows an example of how to split the output and error from the job into separate files. Try it out. Remember to compile the corresponding program and make sure the executable is named suitably for the script. Or change the name of the executable in the script. 
+As a default, SLURM throws both errors and other output to the same file, named ```'slurm-<jobid>.out'```. 
+
+The job script 'separate-err-out.sh' shows an example of how to split the output and error from the job into separate files. Try it out. Remember to compile the corresponding program and make sure the executable is named suitably for the script. Or change the name of the executable in the script. 
 
 ### 4.2 
   
