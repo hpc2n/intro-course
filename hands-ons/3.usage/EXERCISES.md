@@ -22,8 +22,10 @@ Load the recommended toolchain. Then check with 'ml' to see what was loaded.
 
 Try compiling these programs:
 
+```bash
 hello.c
 omp_hello.c
+```
 
 Remember, the README file contains information about how to compile C and OpenMP/C programs. 
 
