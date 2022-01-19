@@ -76,7 +76,7 @@ Look at the output of the job. Which file did the job create?
 
 ### 3.3 
 
-Look at the list of jobs (squeue, squeue -u username). Check the status of the jobs (scontrol show job jobid). 
+Look at the list of jobs (```squeue, squeue -u <username>```). Check the status of the jobs (```scontrol show job <jobid>```). 
 
 ### 3.4 
 
