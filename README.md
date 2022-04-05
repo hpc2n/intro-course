@@ -15,6 +15,6 @@ to try loading modules, compile a program, and submit a job to the Kebnekaise cl
 
 **Time**: 09:00-17:00
 
-**Location**: Online
+**Location**: Online (ZOOM)
 
 **Instructors**: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)
