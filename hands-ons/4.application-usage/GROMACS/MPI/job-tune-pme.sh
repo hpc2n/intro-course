@@ -4,6 +4,7 @@
 #SBATCH -A Project_ID
 #SBATCH -J Gromacs
 #SBATCH -t 00:30:00
+#SBATCH -N 1
 #SBATCH -n *FIXME*
 #SBATCH -c *FIXME*
 
