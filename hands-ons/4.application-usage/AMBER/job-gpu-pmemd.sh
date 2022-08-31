@@ -16,8 +16,8 @@ ml purge > /dev/null 2>&1
 ml GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5
 ml Amber/20.11-AmberTools-21.3 
 
-
 #Tutorial can be found at: http://ambermd.org/tutorials/pengfei/index.php
+
 #Production
 export init="solvated_1fsc"
 export pstep="02_Heat"
