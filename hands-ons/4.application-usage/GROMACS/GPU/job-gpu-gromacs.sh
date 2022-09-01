@@ -29,17 +29,16 @@ ml GROMACS/2021
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 gmx grompp -f step4.1_equilibration.mdp -o step4.1_equilibration.tpr -c step4.0_minimization.gro -r step3_charmm2gmx.pdb -n index.ndx -p topol.top
-sleep 80
+sleep 10
 
 #Three different ways to run this job:
 #1. MPI version (Default)
 mpirun -np $SLURM_NTASKS gmx_mpi mdrun $mdargs -dlb yes  -v -deffnm step4.1_equilibration
-sleep 80
+sleep 10
 
 #2. MPI version (Offloading nb and pme to gpus)
 mpirun -np $SLURM_NTASKS gmx_mpi mdrun -nb gpu -pme gpu -npme 1 $mdargs -dlb yes  -v -deffnm step4.1_equilibration
-sleep 80
+sleep 10
 
 #3. Threaded-MPI version (Offloading nb and pme to gpus)
 gmx mdrun -ntmpi $SLURM_NTASKS -nb gpu -pme gpu -npme 1 $mdargs -dlb yes  -v -deffnm step4.1_equilibration
-
