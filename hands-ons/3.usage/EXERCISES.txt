@@ -72,6 +72,8 @@ Again, look in the README file for help with commands!
 
 NOTE: remember to unload any toolchains you do not want to use, and load the one(s) you want to use before compiling anything! 
 
+NOTE 2: A few of the submit scripts copies the output to a directory I have called "mydatadir" as an example of this. Remember to create that directory before running those examples, or change it in the submit file. 
+
 4.1 As a default, SLURM throws both errors and other output to the same file, named slurm-<jobid>.out. The job script separate-err-out.sh shows an example of how to split the output and error from the job into separate files. Try it out. Remember to compile the corresponding program and make sure the executable is named suitably for the script. Or change the name of the executable in the script. 
 
 4.2 Try and change the toolchain that is loaded in one of the scripts. Remember to load and compile the relevant program with the same toolchain before you submit the job.  

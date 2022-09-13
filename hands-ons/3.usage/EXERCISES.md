@@ -86,6 +86,11 @@ Again, look in the README file for help with commands!
 
 ## 4. EXERCISE - BATCH SCRIPTS
 
+NOTE: remember to unload any toolchains you do not want to use, and load the one(s) you want to use before compiling anything! 
+
+NOTE 2: A few of the submit scripts copies the output to a directory I have called "mydatadir" as an example o
+f this. Remember to create that directory before running those examples, or change it in the submit file.
+
 ### 4.1 
 
 As a default, SLURM throws both errors and other output to the same file, named ```'slurm-<jobid>.out'```. 
