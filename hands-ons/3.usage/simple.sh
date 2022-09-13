@@ -1,6 +1,6 @@
 #!/bin/bash
 # Project id - change to your own after the course!
-#SBATCH -A SNIC2021-22-1017
+#SBATCH -A SNIC2021-22-642
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for a walltime of 1 min

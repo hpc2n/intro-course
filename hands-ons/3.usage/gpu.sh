@@ -1,6 +1,6 @@
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A SNIC2021-22-1017
+#SBATCH -A SNIC2021-22-642
 #SBATCH --time=00:05:00
 #SBATCH --error=job.%J.err
 #SBATCH --output=job.%J.out

@@ -10,7 +10,7 @@ See the file README.md for help and hints. That file also contains information a
 
 ## 1. EXERCISE - PROJECT STORAGE
 
-Create a directory for yourself in the course's project storage /proj/nobackup/snic2021-22-1017/
+Create a directory for yourself in the course's project storage /proj/nobackup/snic2021-22-642/
 
 ## 2. EXERCISE - LOADING MODULES
 
@@ -80,7 +80,7 @@ Look at the list of jobs (```squeue, squeue -u <username>```). Check the status 
 
 ### 3.4 
 
-Try submitting more jobs see the change and different states. Try cancelling one of the jobs. 
+Try submitting more jobs and see the changes and different states. Try cancelling one of the jobs. 
 
 Again, look in the README file for help with commands! 
 

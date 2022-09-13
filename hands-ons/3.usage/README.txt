@@ -83,6 +83,10 @@ To cancel a job, do:
 
 scancel <jobid>
 
+To cancel all your jobs, do: 
+
+scancel <jobid> 
+
 3. EXAMPLES
 
 3.1 SERIAL EXAMPLE
