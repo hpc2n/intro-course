@@ -1,4 +1,4 @@
-# Introduction to HPC and Kebnekaise (January 2022)
+# Introduction to Kebnekaise and HPC2N (September 2022)
 
 ## Course description
 
@@ -11,7 +11,7 @@ to try loading modules, compile a program, and submit a job to the Kebnekaise cl
 
 **Lecture recordings from a previous course**: [On YouTube](https://youtube.com/playlist?list=PL6jMHLEmPVLwVjv1T9CtHIdgSlHVAUviZ)
 
-**Date**: 19 January 2022
+**Date**: 15 September 2022
 
 **Time**: 09:00-17:00
 
