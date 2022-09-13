@@ -74,7 +74,7 @@
 \titlegraphic{\center{\includegraphics[height=1.2cm]{figures/SNIC_logo.png}\hspace*{1.1cm}~
    \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\hspace*{1.1cm}~\includegraphics[height=1.2cm]{figures/hpc2n.png}
 }}
-\date{19 January 2022}
+\date{15 September 2022}
 \begin{document}
 
 \frame{
@@ -108,7 +108,7 @@
 
 
 \frame{\frametitle{Projects - compute and storage}
-Join a project or apply for one. 
+Join a project or apply for one. \textcolor{red}{Until 2022-12-31}
   \begin{block}{}
     \begin{itemize}
     \item Apply for a \textbf{compute project} in SUPR \texttt{https://supr.snic.se/round/compute/}
@@ -219,6 +219,19 @@ Join a project or apply for one.
 
 }
 
+\frame{\frametitle{Projects - after 2022-12-31?}
+
+  \begin{block}{}
+    \begin{itemize}
+    \item Nothing known for sure yet, but hopefully it will be clearer in a few weeks.
+    \item Non-UmU PI: You can continue working at Kebnekaise until 1 January 2023, but you should be prepared for the situation where you will have to migrate to another centre. 
+    \item Hopefully Kebnekaise will at least exist as a local resource after the new year, until it can be replaced with a newer suitable resource.
+    \item Local (UmU) PIs who have a need of using Kebnekaise (or another HPC2N resource) are encouraged to voice this to the people at UmU with the power to influence this.
+    \end{itemize}
+  \end{block}
+
+}
+
 \frame{\frametitle{Using our systems - example process}
 
   \begin{block}{}
@@ -265,59 +278,6 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
   \end{block}
 
 }
-
-% \frame{\frametitle{Using our systems}\framesubtitle{Connecting to HPC2N's systems - SSH clients}
-
-%   \begin{block}{}
-%     \begin{itemize}
-%     \item \textbf{Linux, OS X:} 
-%     \begin{itemize}
-%        \item \texttt{ssh username@kebnekaise.hpc2n.umu.se} \\
-%        \item Use \texttt{ssh -Y ....} if you want to open graphical displays. 
-%     \end{itemize}
-%     \item \textbf{Windows:} 
-%     \begin{itemize}
-%        \item Get an SSH client (PuTTY, Cygwin, MobaXterm ...)
-%        \item Get an X11 server if you need graphical displays (Xming ...)
-%        \item Start the client and login to \\
-% \vspace{2mm}
-% \texttt{kebnekaise.hpc2n.umu.se} \\
-% \vspace{2mm}
-%        \item More information here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/windows-connection} \normalsize{}
-%     \end{itemize}
-%        \item  \textbf{Mac/OSX:} Guide here: \scriptsize{https://www.hpc2n.umu.se/documentation/guides/mac-connection} \normalsize{}
-%     \end{itemize}
-%   \end{block}
-
-% }
-
-%\frame{\frametitle{Using our systems}\framesubtitle{Connecting from a Windows System with PuTTY}
-%
-%  \begin{block}{}
-%    \justify
-%    Get the Zip file (http://www.putty.org/) with both PuTTY, PSCP, and PSFTP. Unzip, run putty.exe
-%  \end{block}
-%
-%  \begin{block}{}
-%\begin{center}
-%\includegraphics[width=6cm]{figures/putty-kebnekaise.png}
-%\end{center}
-%  \end{block}
-%}
-%
-%\frame{\frametitle{Using our systems}\framesubtitle{Connecting from a Windows System with PuTTY}
-%
-%  \begin{block}{}
-%    \justify
-%    Enter your username and then your password. 
-%  \end{block}
-%
-%  \begin{block}{}
-%\begin{center}
-%\includegraphics[width=6cm]{figures/putty-login-kebnekaise.png}
-%\end{center}
-%  \end{block}
-%}
 
 \frame{\frametitle{Using our systems}\framesubtitle{Transfer your files and data}
 
@@ -416,29 +376,8 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
    \end{scriptsize}
      \end{block}
 
-   %An access-control list (ACL), with respect to a computer file system, is a list of permissions associated with an object. An ACL specifies which users or system processes are granted access to objects, as well as what operations are allowed on given objects.
+   }
    
-}
-
-% \frame{\frametitle{The File System}\framesubtitle{PFS, project storage}
-
-%    \begin{block}{}
-%     \begin{itemize}
-%     \item The 'parallel' file system, where your 'parallel' home directory is located in /pfs/nobackup/home/u/username (/pfs/nobackup/\$HOME)
-%     \item As well, project storage is located on pfs, under /proj/nobackup/$<$your-project-storage$>$ 
-%     \item Offers high performance when accessed from the nodes
-%     \item The correct place to run all your batch jobs
-%     \item NOT backed up, so you should not leave files there that cannot easily be recreated
-% %    \item For easier access, create a symbolic link from your home on AFS to your home on PFS: \\ 
-% %\vspace{3mm}
-% %\texttt{ln -s /pfs/nobackup/\$HOME \$HOME/pfs} \\ 
-% %\vspace{3mm}
-% %You can now access your pfs with \texttt{cd pfs} from your home directory on AFS
-%      \end{itemize}
-%    \end{block}
-
-%  }
-
 \frame{\frametitle{Using project storage}
 
   \begin{block}{}
@@ -451,7 +390,8 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
         \texttt{/proj/nobackup/$<$name-you-picked$>$}. 
       \item Since the storage project is shared between all users of
         the project, you should go to that directory and create a subdirectory
-        for your things, which you will then be using. 
+        for your things, which you will then be using.
+        \item For this course the storage is in \texttt{/proj/nobackup/snic2022-22-642}
       \end{itemize}
     \end{block}
   
@@ -632,25 +572,32 @@ Note: V100s accounts like K80s and have \textbf{one} engine per card.
 \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Useful Commands} 
 
   \begin{block}{}
-   \begin{itemize}
-    \item Submit job: \texttt{sbatch $<$jobscript$>$} 
-    \item Get list of your jobs: \texttt{squeue -u $<$username$>$} 
-    \item \texttt{srun $<$commands for your job/program$>$} 
-%    \item \texttt{salloc $<$commands to the batch system$>$}
-    \item Check on a specific job: \texttt{scontrol show job $<$job id$>$} 
-    \item Delete a specific job: \texttt{scancel $<$job id$>$}
-    \item More detailed info about jobs: \\
-    \begin{scriptsize}      
-          \texttt{sacct -l -j $<$jobid$>$ -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize...}
-    \end{scriptsize}
     \begin{itemize}
-    \item More flags can be found with \texttt{man sacct}
-    \item The output will be \textbf{very} wide. Use something like \\
-          \texttt{sacct -l -j ....... | less -S} \\
-          to view (makes it sideways scrollable, using the left/right arrow key)
+      \begin{footnotesize}
+      \item Submit job: \texttt{sbatch $<$jobscript$>$} 
+      \item Get list of your jobs: \texttt{squeue -u $<$username$>$} 
+      \item \texttt{srun $<$commands for your job/program$>$} 
+      \item Check on a specific job: \texttt{scontrol show job $<$job id$>$} 
+      \item Delete a specific job: \texttt{scancel $<$job id$>$}
+      \item Delete all your own jobs: \texttt{scancel -u $<$user$>$}
+      \item More detailed info about jobs: \\
+      \end{footnotesize}
+      \begin{scriptsize}      
+        \texttt{sacct -l -j $<$jobid$>$ -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize...}
+      \end{scriptsize}
+      \begin{itemize}
+      \begin{footnotesize}
+      \item More flags can be found with \texttt{man sacct}
+      \item The output will be \textbf{very} wide. To view, use \\
+        \texttt{sacct -l -j ....... | less -S} \\
+        (makes it sideways scrollable, using the left/right arrow key)
+        \end{footnotesize}
+      \end{itemize}
+      \begin{footnotesize}
+      \item Web url with graphical info about a job: \texttt{job-usage $<$job-id$>$}
+      \end{footnotesize}
     \end{itemize}
-  \end{itemize}
-Use \texttt{man sbatch, man srun, man ....} for more information
+    Use \texttt{man sbatch, man srun, man ....} for more information
   \end{block}
 }
 
@@ -697,7 +644,7 @@ Example: Serial job on Kebnekaise, compiler toolchain 'foss'
 \begin{small}
 \texttt{\#!/bin/bash} \\
 \texttt{\# Project id - change to your own after the course!} \\
-\texttt{\#SBATCH -A SNIC2021-22-1017} \\
+\texttt{\#SBATCH -A SNIC2022-22-642} \\
 \texttt{\# Asking for 1 core} \\
 \texttt{\#SBATCH -n 1} \\
 \texttt{\# Asking for a walltime of 5 min} \\ 
@@ -755,7 +702,7 @@ Example: MPI job on Kebnekaise, compiler toolchain 'foss'
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-1017} \\
+\texttt{\#SBATCH -A SNIC2021-22-642} \\
 \texttt{\#SBATCH -n 14} \\
 \texttt{\#SBATCH --time=00:05:00} \\ 
 \texttt{\#\#SBATCH --exclusive} \\ 
@@ -814,7 +761,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-1017} \\
+\texttt{\#SBATCH -A SNIC2021-22-642} \\
 \texttt{\#SBATCH -n 5} \\
 \texttt{\#SBATCH --time=00:15:00} \\ 
 \vspace{3mm} 
@@ -837,7 +784,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{scriptsize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-1017} \\
+\texttt{\#SBATCH -A SNIC2021-22-642} \\
 \texttt{\#SBATCH -c 28} \\
 \texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
 \texttt{\#SBATCH --time=02:00:00} \\ 
@@ -872,7 +819,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-1017} \\
+\texttt{\#SBATCH -A SNIC2021-22-642} \\
 \texttt{\# Total number of cores the jobs need} \\
 \texttt{\#SBATCH -n 56} \\
 \texttt{\# Remember to ask for enough time for all of the jobs to} \\
@@ -898,7 +845,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-1017} \\
+\texttt{\#SBATCH -A SNIC2021-22-642} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
 \texttt{\# Number of GPU cards needed. Here asking for 2 K80 cards} \\
@@ -919,19 +866,19 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 
   \begin{block}{}
     \begin{itemize}
-    \item The course project has the following SNIC ID: SNIC2021-22-1017
+    \item The course project has the following SNIC ID: SNIC2021-22-642
     \item In order to use it in a batch job, add this to the batch script:
       \begin{itemize}
-        \item \#SBATCH -A SNIC2021-22-1017
+        \item \#SBATCH -A SNIC2021-22-642
       \end{itemize}
     \item There are some nodes reserved for the course, in order to let
-      us run small examples without having to wait for too long. Three nodes are regular Broadwell CPU nodes, two nodes are K80 GPU node. 
+      us run small examples without having to wait for too long. Two nodes are regular Broadwell CPU nodes, two nodes are K80 GPU nodes. 
     \item These reservations are ONLY valid during the course:
       \begin{itemize}
       \item intro-cpu \\ (add with \#SBATCH --reservation=intro-cpu)
       \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
       \end{itemize}
-\item We have a storage project linked to the compute project. It is snic2021-22-1017. You find it in /proj/nobackup/snic2021-22-1017 
+\item We have a storage project linked to the compute project. It is snic2021-22-642. You find it in /proj/nobackup/snic2021-22-642 
     \end{itemize}
   \end{block}
 
