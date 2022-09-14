@@ -9,7 +9,7 @@ We then continue with an introduction to HPC and HPC2N, then move on to a walkth
 In the afternoon we go through the module system and take a brief look at how to submit jobs. During the hands-on you will get the opportunity
 to try loading modules, compile a program, and submit a job to the Kebnekaise cluster.
 
-**Materials, including exercises**: Clone this repo or download a zip of the material (click the gree "Code" button then pick "Download ZIP"). Or you can copy the materials as a tarball from /proj/nobackup/snic2022-22-642/intro-course.tar.gz during the course and until 2022-10-01. 
+**Materials, including exercises**: Clone this repo or download a zip of the material (click the green "Code" button then pick "Download ZIP"). Or you can copy the materials as a tarball from /proj/nobackup/snic2022-22-642/intro-course.tar.gz during the course and until 2022-10-01. 
 
 **Lecture recordings from a previous course**: [On YouTube](https://youtube.com/playlist?list=PL6jMHLEmPVLwVjv1T9CtHIdgSlHVAUviZ)
 
