@@ -1,6 +1,6 @@
 #!/bin/bash 
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A SNIC2021-22-642  
+#SBATCH -A SNIC2022-22-642  
 #SBATCH -n 8 
 #SBATCH --time=00:05:00
 # Putting the output in a separate output file and the errors in an 
