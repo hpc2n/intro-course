@@ -7,7 +7,6 @@
 #Ask for 28 processes
 #SBATCH -n 14
 #SBATCH -c 2
-#SBATCH --exclusive
 
 #Purge and load modules necessary for running LAMMPS
 ml purge > /dev/null 2>&1

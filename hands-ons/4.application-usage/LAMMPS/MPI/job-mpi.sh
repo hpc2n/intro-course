@@ -6,7 +6,6 @@
 #SBATCH -N 1
 #Ask for MPI ranks
 #SBATCH -n **FIXME**
-#SBATCH --exclusive
 
 #Purge and load modules necessary for running LAMMPS
 ml purge > /dev/null 2>&1
