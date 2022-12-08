@@ -11,5 +11,4 @@ ml purge > /dev/null 2>&1
 ml GCC/10.2.0  OpenMPI/4.0.5
 ml R/4.0.4
 
-R --no-save --no-restore -f script.R
-
+Rscript --quiet --no-save --no-restore script_arrays.R
