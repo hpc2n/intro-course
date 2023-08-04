@@ -20,6 +20,7 @@
 % Mirko Myllykoski, Senior Research Engineer at CS/HPC2N, Umeå
 % University, for the January 2021 version of the "Introduction to
 % HPC2N" course. 
+% Minor additions by Birgitte Brydsö, HPC2N, Umeå University, for later versions. 
 
 \beamertemplatenavigationsymbolsempty
 
@@ -33,11 +34,11 @@ and others at HPC2N}
 \institute[Ume{\aa} University]{
   HPC2N \\
   Ume{\aa} University}
-\date{15. September 2022}
+\date{21. September 2023}
 
 \titlegraphic{
  \centering
- \includegraphics[height=0.9cm]{figures/SNIC_logo_lower.png}\;\;\;
+% \includegraphics[height=0.9cm]{figures/SNIC_logo_lower.png}\;\;\;
  \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\;\;\;
  \includegraphics[height=0.9cm]{figures/hpc2n-logo-text5.png}
 }
@@ -45,7 +46,7 @@ and others at HPC2N}
 \addtobeamertemplate{frametitle}{}{%
 \begin{textblock*}{100mm}(-8mm,83mm)
  \includegraphics[height=4mm]{figures/umu-logo-left-EN.png}
- \includegraphics[height=4mm]{figures/SNIC_logo_lower.png}
+ \includegraphics[height=4mm]{figures/naiss.png}
  \includegraphics[height=4mm]{figures/hpc2n-logo-text5.png}
 \end{textblock*}}
 
@@ -58,16 +59,16 @@ and others at HPC2N}
 \frame{
 \frametitle{HPC2N (HPC2N at a glance)}
 \begin{itemize}
- \item \emph{High Performance Computing Center North (HPC2N)} is a national center for Scientific and Parallel Computing
+ \item \emph{High Performance Computing Center North (HPC2N)} is a competence center for Scientific and Parallel Computing
 \end{itemize}
 \begin{center}
  \includegraphics[width=0.4\textwidth]{figures/hpc2n-logo-text5.png}
 \end{center}
 \begin{itemize}
- \pause \item A part of \emph{Swedish National Infrastructure for Computing (SNIC)}
+ \pause \item A part of \emph{National Academic Infrastructure for Super­computing in Sweden (NAISS)}
 \end{itemize}
 \begin{center}
- \includegraphics[height=10mm]{figures/SNIC_logo_lower.png}
+ \includegraphics[height=15mm]{figures/naiss.png}
 \end{center}
 }
 
@@ -103,16 +104,16 @@ HPC2N has five \emph{partners}:
 \frame{
 \frametitle{HPC2N (funding)}
 \begin{itemize}
- \item Funded by \emph{Swedish Research Council (VR)}, \emph{SNIC} and various \emph{partners}
+	\item Funded mainly by \emph{Umeå University}, with contributions from the \emph{other HPC2N partners}
  \begin{center}
   \vspace{5mm}
-  \includegraphics[height=13mm]{figures/VR-Logo-ENG-SVART-322x150.png}\hspace{10mm}
-  \includegraphics[height=10mm]{figures/SNIC_logo_lower.png}
+  \includegraphics[height=13mm]{figures/umu-logotyp-EN.png}\hspace{10mm}
+%  \includegraphics[height=10mm]{figures/SNIC_logo_lower.png}
   \vspace{5mm}
  \end{center}
  \pause \item Involved in several \emph{projects and collaborations}
  \begin{itemize}
-  \item EGI, PRACE, EISCAT, eSSENCE, NOSEG, SNIC Science Cloud, \dots
+  \item DDLS, EGI, EISCAT, eSSENCE, NOSEG, Swedish Science Cloud, \dots
  \end{itemize}
 \end{itemize}
 }
@@ -155,11 +156,17 @@ HPC2N has five \emph{partners}:
 \end{itemize}
 \pause \emph{Others}
 \begin{itemize}
- \item Bo K\r{a}gstr{\"o}m
+% \item Bo K\r{a}gstr{\"o}m
  \item Mikael R{\"a}nnar (WLCG coord)
- \item Anders Backman
- \item Kenneth Bodin
- \item Claude Lacoursi\`{e}re (Algoryx)
+% \item Anders Backman
+% \item Kenneth Bodin
+% \item Claude Lacoursi\`{e}re (Algoryx)
+ \item Research Engineers under DDLS, HPC2N/SciLifeLab
+	 \begin{itemize}
+		 \item System Developer, IT
+		 \item Data Engineer
+		 \item Data Steward 
+	 \end{itemize}
 \end{itemize}
 \end{minipage}
 \,
@@ -191,7 +198,7 @@ HPC2N has five \emph{partners}:
  \pause \color{cyan} \r{A}ke Sandgren & General high level programming assistance, VASP, Gromacs, Amber \\
 \end{tabular}
 \begin{itemize}
- \pause \item Contact through regular support or dedicated support form\footnote{\url{https://www.snic.se/support/dedicated-user-support/}\\}
+ \pause \item Contact through regular support 
  \begin{itemize}
   \item If you have a specific problem/question and/or need consultation (up to 100 h)
  \end{itemize}
@@ -271,6 +278,11 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
   \item 52 Intel Xeon Gold 6132 (Skylake) nodes, as well as 
   \item 10 NVidian V100 (Volta) GPU nodes
  \end{itemize}
+ \pause \item In 2023, Kebnekaise was \emph{extended} with 
+ \begin{itemize}
+ \item 2 dual NVIDIA A100 GPU nodes
+ \item one many-core AMD Zen3 CPU node
+ \end{itemize}
 \end{itemize}
 }
 
@@ -279,31 +291,34 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
 \begin{tabular}{rcp{6.0cm}}
  Name & \# & Description \\ \hline 
         \color{cyan} Compute & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
- \pause \color{cyan} Compute-skylake & 52 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
- \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
- \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
+	\pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
+ \pause \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
+% \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
 \end{tabular}
 }
 
 \frame{
 \frametitle{Kebnekaise (GPU nodes)}
+\begin{footnotesize}
 \begin{tabular}{rcp{7.0cm}}
- Name & \# & Description \\ \hline
+Name & \# & Description \\ \hline
         \color{cyan} 2xGPU & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
  \pause \color{cyan} 4xGPU & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
- \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\
+ \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
+	\pause \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} 
 \end{tabular}
+\end{footnotesize}
 }
 
 \frame{
 \frametitle{Kebnekaise (in numbers)}
 \begin{itemize}
- \item 602 nodes in 15 racks
- \pause \item \emph{19288 cores} (of which 2448 cores are KNL-cores)
- \begin{itemize}
-  \item 18840 available for users (the rest are for managing the cluster)
- \end{itemize}
- \pause \item More than \emph{136 TB memory}
+ \item 553 nodes in 15 racks
+ \pause \item \emph{16504 cores} 
+% \begin{itemize}
+%  \item 18840 available for users (the rest are for managing the cluster)
+% \end{itemize}
+ \pause \item More than \emph{135 TB memory}
  \pause \item 71 switches (Infiniband, Access and Managment networks)
  \pause \item 728 TFlops/s Peak performance (expansion not included)
  \pause \item \emph{629 TFlops/s} Linpack (all parts, except expansion)
