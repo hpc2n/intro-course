@@ -1,0 +1,34 @@
+\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, output}
+
+  \begin{block}{}
+    \justify
+Example: Output from a MPI job on Kebnekaise, run on 14 cores (one NUMA island)
+  \end{block}
+
+  \begin{block}{}
+\begin{tiny}
+\begin{verbatim}
+b-an01 [~/slurm]$ cat slurm-15952.out
+
+The following modules were not unloaded:
+   (Use "module --force purge" to unload all):
+
+  1) systemdefault   2) snicenvironment
+Processor 12 of 14: Hello World!
+Processor 5 of 14: Hello World!
+Processor 9 of 14: Hello World!
+Processor 4 of 14: Hello World!
+Processor 11 of 14: Hello World!
+Processor 13 of 14: Hello World!
+Processor 0 of 14: Hello World!
+Processor 1 of 14: Hello World!
+Processor 2 of 14: Hello World!
+Processor 3 of 14: Hello World!
+Processor 6 of 14: Hello World!
+Processor 7 of 14: Hello World!
+Processor 8 of 14: Hello World!
+Processor 10 of 14: Hello World!
+\end{verbatim}
+\end{tiny}
+  \end{block}
+
