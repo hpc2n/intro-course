@@ -374,10 +374,20 @@ Name & \# & Description \\ \hline
  \begin{itemize}
   \item If more storage is required, you must be a member of a \emph{storage project}
  \end{itemize}
-% \pause \item Birgitte will cover more details
+\pause \item As Kebnekaise is a local cluster, you need to be affiliated with UmU, IRF, SLU, Miun, or LTU to use it
+ % \pause \item Birgitte will cover more details
  \pause \item I will cover more details in the next section, where we
  go more into detail about HPC2N and Kebnekaise. 
 \end{itemize}
+}
+
+\frame{
+	\frametitle{HPC}
+\begin{center}
+	\begin{large}
+		What is HPC?
+	\end{large}
+\end{center}
 }
 
 \frame{
@@ -390,12 +400,12 @@ Name & \# & Description \\ \hline
 \begin{itemize}
  \item \emph{Aggregating computing power}
  \begin{itemize}
-  \item 602 nodes in 15 racks totalling 19288 cores
+  \item 533 nodes in 15 racks totalling 16504 cores
   \item Compared to 4 cores in a modern laptop
  \end{itemize}
  \pause \item \emph{Higher performance}
  \begin{itemize}
-  \item 728\,000\,\underline{000}\,\underline{000}\,\underline{000} arithmetical operations per second\footnote{728 trillion (billion)}
+  \item More than 728\,000\,\underline{000}\,\underline{000}\,\underline{000} arithmetical operations per second\footnote{728 trillion (billion)}
   \item Compared to 200\,\underline{000}\,\underline{000}\,\underline{000} Flops in a modern laptop\footnote{200 billion (milliard)\\}
  \end{itemize}
  \pause \item \emph{Solve large problems}
@@ -422,6 +432,7 @@ Name & \# & Description \\ \hline
  \pause \item The latter by \emph{adding more memory / storage}
  \begin{itemize}
   \item More memory per node (including large memory nodes), more nodes, \dots
+  \item Kebnekaise: 128GB - 192GB, 512GB, 3TB
   \item Large storage solutions, \dots
  \end{itemize}
 \end{itemize}
@@ -453,8 +464,8 @@ Name & \# & Description \\ \hline
 \begin{itemize}
  \item Specialized (expensive) hardware
  \begin{itemize}
-  \pause \item GPUs, \emph{Nvidia Tesla V100 GPUs} are optimized for AI
-  \pause \item Intel Xeon Phi
+  \pause \item GPUs, \emph{Nvidia Tesla V100/A100 GPUs} are optimized for AI
+%  \pause \item Intel Xeon Phi
   \pause \item High-end CPUs (AVX-512 etc) and ECC memory
  \end{itemize}
  \pause \item Software
