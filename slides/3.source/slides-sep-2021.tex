@@ -689,17 +689,23 @@ script, or a job script).
  \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Using different parts of Kebnekaise} 
 
    \begin{block}{}
-    \begin{itemize}
+     \begin{small}
+       \begin{itemize}
      \item To run on the 'fat' nodes, add this flag to your script: \\ 
- \texttt{\#SBATCH -p largemem} (Kebnekaise - largemem does not have general access) \\
-     \item  Specifying Intel Broadwell or Skylake CPUs only on Kebnekaise: \\ 
+ \texttt{\#SBATCH -p largemem} (largemem does not have general access) \\
+     \item  Specifying Intel Broadwell, Intel Skylake, or AMD Zen3 CPUs: \\ 
  \texttt{\#SBATCH --constraint=broadwell} \\
  or \\
- \texttt{\#SBATCH --constraint=skylake}
-     \item Using the GPU nodes on Kebnekaise \\ 
- \texttt{\#SBATCH --gres=gpu:$<$type-of-card$>$:x} where $<$type-of-card$>$ is either k80 or v100 and x = 1, 2, or 4 (4 only for the K80 type). \\ 
+ \texttt{\#SBATCH --constraint=skylake} \\
+ or \\
+ \texttt{\#SBATCH --constraint=zen3} \\
+     \item Using the GPU nodes: \\ 
+       \texttt{\#SBATCH --gres=gpu:$<$type-of-card$>$:x} where $<$type-of-card$>$ is either k80, v100, or a100 and x = 1, 2, or 4 (4 only for K80). \\
+     \item In the case of the A100 GPU nodes, you also need to add a partition \\
+       \texttt{\#SBATCH -p amd\_gpu}
     \end{itemize}
  More on https://www.hpc2n.umu.se/documentation/guides/using\_kebnekaise
+     \end{small}
    \end{block}
  }
 
@@ -715,7 +721,7 @@ Example: Serial job on Kebnekaise, compiler toolchain 'foss'
 \begin{small}
 \texttt{\#!/bin/bash} \\
 \texttt{\# Project id - change to your own after the course!} \\
-\texttt{\#SBATCH -A SNIC2022-22-642} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\# Asking for 1 core} \\
 \texttt{\#SBATCH -n 1} \\
 \texttt{\# Asking for a walltime of 5 min} \\ 
@@ -773,7 +779,7 @@ Example: MPI job on Kebnekaise, compiler toolchain 'foss'
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-642} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\#SBATCH -n 14} \\
 \texttt{\#SBATCH --time=00:05:00} \\ 
 \texttt{\#\#SBATCH --exclusive} \\ 
@@ -832,7 +838,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-642} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\#SBATCH -n 5} \\
 \texttt{\#SBATCH --time=00:15:00} \\ 
 \vspace{3mm} 
@@ -855,7 +861,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{scriptsize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-642} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\#SBATCH -c 28} \\
 \texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
 \texttt{\#SBATCH --time=02:00:00} \\ 
@@ -890,7 +896,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-642} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\# Total number of cores the jobs need} \\
 \texttt{\#SBATCH -n 56} \\
 \texttt{\# Remember to ask for enough time for all of the jobs to} \\
@@ -916,7 +922,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A SNIC2021-22-642} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
 \texttt{\# Number of GPU cards needed. Here asking for 2 K80 cards} \\
@@ -937,10 +943,10 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 
   \begin{block}{}
     \begin{itemize}
-    \item The course project has the following SNIC ID: SNIC2021-22-642
+    \item The course project has the following project ID: hpc2n2023-102
     \item In order to use it in a batch job, add this to the batch script:
       \begin{itemize}
-        \item \#SBATCH -A SNIC2021-22-642
+        \item \#SBATCH -A hpc2n2023-102
       \end{itemize}
     \item There are some nodes reserved for the course, in order to let
       us run small examples without having to wait for too long. Two nodes are regular Broadwell CPU nodes, two nodes are K80 GPU nodes. 
@@ -949,7 +955,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
       \item intro-cpu \\ (add with \#SBATCH --reservation=intro-cpu)
       \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
       \end{itemize}
-\item We have a storage project linked to the compute project. It is snic2021-22-642. You find it in /proj/nobackup/snic2021-22-642 
+\item We have a storage project linked to the compute project. It is hpc2n2023-102. You find it in /proj/nobackup/hpc2n2023-102 
     \end{itemize}
   \end{block}
 
@@ -966,7 +972,7 @@ OR
 
     \begin{itemize}
     \item Documentation: \texttt{https://www.hpc2n.umu.se/support}
-    \item Support questions to: \texttt{https://supr.snic.se/support/} or \texttt{support@hpc2n.umu.se}
+    \item Support questions to: \texttt{https://supr.naiss.se/support/} or \texttt{support@hpc2n.umu.se}
     \end{itemize}
   \end{block}
 
