@@ -258,7 +258,7 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
 \frame{
 \frametitle{HPC2N (users by software)}
 \begin{center}
-\includegraphics[width=0.9\textwidth]{figures/software.png}
+\includegraphics[width=0.9\textwidth]{figures/software_v2.png}
 \end{center}
 }
 
@@ -290,7 +290,7 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
 \frametitle{Kebnekaise (compute nodes)}
 \begin{tabular}{rcp{6.0cm}}
  Name & \# & Description \\ \hline 
-        \color{cyan} Compute & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
+         \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Will ``soon'' be retired !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
 	\pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
  \pause \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
 % \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
@@ -302,7 +302,7 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
 \begin{footnotesize}
 \begin{tabular}{rcp{7.0cm}}
 Name & \# & Description \\ \hline
-        \color{cyan} 2xGPU & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
+         \makecell[r]{\color{cyan} 2xGPU \\ \small{\color{red} ! Will ``soon'' be retired !}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
  \pause \color{cyan} 4xGPU & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
  \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
 	\pause \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} 
