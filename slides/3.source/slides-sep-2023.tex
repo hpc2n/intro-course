@@ -573,13 +573,13 @@ script, or a job script).
 
   \begin{block}{}
     \begin{small}
-      Here the Broadwell nodes are used as an example. The only difference for the Skylake nodes is that it would say 192G instead of 128G per node.
+      Here the Skylake nodes are used as an example. The only difference for the Broadwell nodes is that it would say 128G instead of 192G per node.
     \end{small}
   \end{block}
   
   \begin{block}{}
 \begin{center}
-\includegraphics[width=9cm]{figures/Allocation-Kebnekaise-thin_v3.png}
+\includegraphics[width=9cm]{figures/Allocation-Kebnekaise-thin_skylake.png}
 \end{center}
   \end{block}
 }
@@ -925,8 +925,8 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 \texttt{\#SBATCH -A hpc2n2023-102} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
-\texttt{\# Number of GPU cards needed. Here asking for 2 K80 cards} \\
-\texttt{\#SBATCH --gres=k80:2} \\
+\texttt{\# Number of GPU cards needed. Here asking for 2 V100 cards} \\
+\texttt{\#SBATCH --gres=v100:2} \\
 \vspace{3mm} 
 \texttt{module purge} \\ 
 \texttt{ml fosscuda/2021b} \\ 
@@ -937,6 +937,28 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 
 }
 
+
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job} 
+
+  \begin{block}{}
+\begin{footnotesize}
+\texttt{\#!/bin/bash} \\
+\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\# Expected time for job to complete}  \\ 
+\texttt{\#SBATCH --time=00:10:00} \\
+\texttt{\# Adding the partition for the A100 GPUs} \\
+\texttt{\#SBATCH -p amd\_gpu} \\ 
+\texttt{\# Number of GPU cards needed. Here asking for 2 A100 cards} \\ 
+\texttt{\#SBATCH --gres=a100:2} \\
+\vspace{3mm} 
+\texttt{module purge} \\ 
+\texttt{ml fosscuda/2021b} \\ 
+\vspace{3mm}
+\texttt{./my-program} \\
+\end{footnotesize}
+  \end{block}
+
+}
 
 
 \frame{\frametitle{Important information}
@@ -949,7 +971,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
         \item \#SBATCH -A hpc2n2023-102
       \end{itemize}
     \item There are some nodes reserved for the course, in order to let
-      us run small examples without having to wait for too long. Two nodes are regular Broadwell CPU nodes, two nodes are K80 GPU nodes. 
+      us run small examples without having to wait for too long. Two nodes are regular Skylake CPU nodes, two nodes are V100 GPU nodes. 
     \item These reservations are ONLY valid during the course:
       \begin{itemize}
       \item intro-cpu \\ (add with \#SBATCH --reservation=intro-cpu)
