@@ -9,11 +9,17 @@ If you have already done so in the past, this is a good time to take a short bre
 
 In order to login to HPC2N, you need an SSH client and potentially an X11 server if you want to open graphical displays (for running MATLAB, for instance).
 
+Another option is to use ThinLinc to connect. See below. 
+
 ## 1. ThinLinc
 
 Unless you already have a preferred setup for connecting, we strongly recommend using ThinLinc, particularly for the second half of this course since there will be exercises where you use the graphical interface (i.e. MATLAB). 
 
 ThinLinc includes everything needed and is quick to install.
+
+You can either connect with the stand-alone client (fully featured), which you download from here (all OS): https://www.cendio.com/thinlinc/download
+
+Or through the Web Access Desktop: https://kebnekaise-tl.hpc2n.umu.se:300/ 
 
 **Guide**: 
 
@@ -69,3 +75,6 @@ Use a good password that combines letters of different case. Do not use dictiona
 
 It will first ask for your current password. Type in that and press enter. Then type in the new password, enter, and repeat. You have changed the password.
 
+### 2.3 Exercise (optional) 
+
+- Also try connecting with the Web Access Desktop: https://kebnekaise-tl.hpc2n.umu.se:300/
