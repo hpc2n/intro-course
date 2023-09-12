@@ -1,0 +1,5 @@
+sample,fastq_1,fastq_2,strandedness
+Germinating_seeds_1_REP1,SRR3581732_1.fastq.gz,,reverse
+Germinating_seeds_1_REP2,SRR3581893_1.fastq.gz,,reverse
+Germinating_seeds_2_REP1,SRR3581733_1.fastq.gz,,reverse
+Germinating_seeds_2_REP2,SRR3581894_1.fastq.gz,,reverse
