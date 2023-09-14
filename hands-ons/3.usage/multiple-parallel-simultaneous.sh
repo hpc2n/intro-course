@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A SNIC2022-22-642
+#SBATCH -A hpc2n2023-102
 # Since the files run simultaneously I need enough cores for all of them to run 
 #SBATCH -n 56
 # Remember to ask for enough time for all jobs to complete

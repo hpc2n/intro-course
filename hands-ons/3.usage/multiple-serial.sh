@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A SNIC2022-22-642
+#SBATCH -A hpc2n2023-102
 # Add enough cores that all jobs can run at the same time 
 #SBATCH -n 5
 # Make sure that the time is long enough that the longest job will have time to finish 

@@ -10,7 +10,7 @@ See the file README.md for help and hints. That file also contains information a
 
 ## 1. EXERCISE - PROJECT STORAGE
 
-Create a directory for yourself in the course's project storage /proj/nobackup/snic2021-22-642/
+Create a directory for yourself in the course's project storage /proj/nobackup/hpc2n2023-102/
 
 ## 2. EXERCISE - LOADING MODULES
 

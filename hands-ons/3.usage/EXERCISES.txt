@@ -9,11 +9,9 @@ See the file README.md for help and hints. That file also contains information a
 
 1. EXERCISE - PROJECT STORAGE
 
-Create a directory for yourself in the course's project storage /proj/nobackup/snic2021-22-642/
+Create a directory for yourself in the course's project storage /proj/nobackup/hpc2n2023-102/
 
 2. EXERCISE - LOADING MODULES
-
-In the test examples I have used the 'foss' compiler toolchain, version 2021b, unless otherwise specified. 
 
 In the test examples I have used the 'foss' compiler toolchain, version 2021b, unless otherwise specified.
 
@@ -57,6 +55,8 @@ Try change it to 1, 2, 4, 8 and run the program.
 NOTE, again, that in this example you are just running the job on the login node. This is OK as long as it is a very short job that uses few resources.
 
 3. EXERCISE - BATCH JOBS
+
+NOTE: remember to unload any toolchains you do not want to use, and load the one(s) you want to use before compiling anything!
 
 3.1 Submit one of the example jobs 
 

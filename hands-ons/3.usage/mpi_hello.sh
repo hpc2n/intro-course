@@ -1,6 +1,6 @@
 #!/bin/bash
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A SNIC2022-22-642
+#SBATCH -A hpc2n2023-102
 # Number of tasks - default is 1 core per task 
 #SBATCH -n 14
 #SBATCH --time=00:05:00
@@ -13,4 +13,4 @@ ml purge
 
 ml add foss/2021b
 
-srun mpi_hello
+srun ./mpi_hello

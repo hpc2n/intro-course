@@ -73,7 +73,7 @@ to unload all modules you have loaded.
 
 The foss 2021b toolchain uses the GCC compilers, so the examples below use those.
 
-## 2. CHECKING ON YOUR JOB 
+## 2. SUBMITTING AND CHECKING ON YOUR JOB 
 
 ### 2.1 SUBMITTING A JOB 
 
@@ -107,10 +107,10 @@ To cancel a job, do:
 $ scancel <jobid>
 ```
 
-To cancel all your jobs, do:
+To cancel all your jobs (for user with <username>), do:
 
 ```bash
-scancel <jobid>
+scancel -u <username>
 ```
 
 ## 3. EXAMPLES
