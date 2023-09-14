@@ -699,7 +699,7 @@ script, or a job script).
  \texttt{\#SBATCH --constraint=skylake} \\
  or \\
  \texttt{\#SBATCH --constraint=zen3} \\
-     \item Using the GPU nodes: \\ 
+     \item Using the GPU nodes (apply for as separate resource): \\ 
        \texttt{\#SBATCH --gres=gpu:$<$type-of-card$>$:x} where $<$type-of-card$>$ is either k80, v100, or a100 and x = 1, 2, or 4 (4 only for K80). \\
      \item In the case of the A100 GPU nodes, you also need to add a partition \\
        \texttt{\#SBATCH -p amd\_gpu}
