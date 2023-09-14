@@ -1,9 +1,17 @@
 \documentclass[usenames,dvipsnames]{beamer}
-\usepackage{graphicx}
+
+% Configuration of beamer
+\usetheme{Copenhagen}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\usepackage{graphics,graphicx}
 \usepackage{tablefootnote}
 \usepackage{bm}
-\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{subcaption}
+\usepackage{color,multirow,hhline}
 \usepackage{csquotes}
 \usepackage[many]{tcolorbox}
 \usepackage{listings}
@@ -22,7 +30,7 @@
 % HPC2N" course. 
 % Minor additions by Birgitte Brydsö, HPC2N, Umeå University, for later versions. 
 
-\beamertemplatenavigationsymbolsempty
+%\beamertemplatenavigationsymbolsempty
 
 \setbeamertemplate{footline}[frame number]
 
@@ -36,15 +44,18 @@ and others at HPC2N}
   Ume{\aa} University}
 \date{21. September 2023}
 
-\titlegraphic{
- \centering
-% \includegraphics[height=0.9cm]{figures/SNIC_logo_lower.png}\;\;\;
- \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\;\;\;
- \includegraphics[height=0.9cm]{figures/hpc2n-logo-text5.png}
-}
+\titlegraphic{\center{\includegraphics[height=1.1cm]{figures/naiss.png}\hspace*{0.5cm}~
+   \includegraphics[height=1.1cm]{figures/umu-logotyp-EN.png}\hspace*{0.5cm}~\includegraphics[height=1.1cm]{figures/hpc2n-logo-text5.png}
+}}
+%% \titlegraphic{
+%%  \centering
+%% % \includegraphics[height=0.9cm]{figures/SNIC_logo_lower.png}\;\;\;
+%%  \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\;\;\;
+%%  \includegraphics[height=0.9cm]{figures/hpc2n-logo-text5.png}
+%% }
 
 \addtobeamertemplate{frametitle}{}{%
-\begin{textblock*}{100mm}(-8mm,83mm)
+\begin{textblock*}{100mm}(-8mm,81mm)
  \includegraphics[height=4mm]{figures/umu-logo-left-EN.png}
  \includegraphics[height=4mm]{figures/naiss.png}
  \includegraphics[height=4mm]{figures/hpc2n-logo-text5.png}
@@ -80,42 +91,56 @@ Provides state-of-the-art resources and expertise:
  \item Scalable and parallel \emph{HPC}
  \pause \item Large-scale \emph{storage facilities} (Project storage (Lustre), SweStore, Tape)
  \pause \item \emph{Grid and cloud} computing (WLCG NT1, SNIC Cloud)
- \pause \item Support
+ \pause \item National Data Science Node in ”Epidemiology and Biology of Infections” (DDLS)
+ \pause \item Software for e-Science applications
+ \pause \item All levels of user support 
  \begin{itemize}
-  \item Primary, advanced, dedicated
-  \item Application Experts (AEs)
+ \item Primary, advanced, dedicated
+ \item Application Experts (AEs)
  \end{itemize}
- \pause \item International network for \emph{research and development} 
+% \pause \item International network for \emph{research and development} 
 \end{itemize}
 }
+
+\frame{
+  \frametitle{HPC2N}
+
+  \textbf{Primary objective:} to raise the national and local level of HPC competence and transfer HPC knowledge and technology to new users in academia and industry.
+  }
 
 \frame{
 \frametitle{HPC2N (partners)}
-HPC2N has five \emph{partners}:
-\begin{itemize}
- \item Lule\r{a} University of Technology
- \item Mid Sweden University
- \item Swedish Institute of Space Physics
- \item Swedish University of Agricultural Sciences (SLU)
- \item Ume\r{a} University
-\end{itemize}
+\emph{HPC2N is hosted by} \\
+\begin{center}\includegraphics[height=16mm]{figures/umu-logotyp-EN.png}\hspace{12mm} \\
+  \end{center}
+\emph{Partners}: \\
+\begin{center}
+  \includegraphics[height=1cm]{figures/irf.png}\hspace*{1.2cm}~
+  \includegraphics[height=1cm]{figures/ltu.preview.png}\hspace*{1.2cm}~\includegraphics[height=1cm]{figures/mid_sweden_university.png}\hspace*{1.2cm}~\includegraphics[height=1cm]{figures/slu_new.png}
+    \end{center}
 }
 
 \frame{
-\frametitle{HPC2N (funding)}
+\frametitle{HPC2N (funding and collaborations)}
 \begin{itemize}
-	\item Funded mainly by \emph{Umeå University}, with contributions from the \emph{other HPC2N partners}
- \begin{center}
-  \vspace{5mm}
-  \includegraphics[height=13mm]{figures/umu-logotyp-EN.png}\hspace{10mm}
-%  \includegraphics[height=10mm]{figures/SNIC_logo_lower.png}
-  \vspace{5mm}
- \end{center}
- \pause \item Involved in several \emph{projects and collaborations}
- \begin{itemize}
-  \item DDLS, EGI, EISCAT, eSSENCE, NOSEG, Swedish Science Cloud, \dots
- \end{itemize}
-\end{itemize}
+\item Funded mainly by \emph{Umeå University}, with contributions from the \emph{other HPC2N partners}
+%%  \begin{center}
+%%   \vspace{5mm}
+%%   \includegraphics[height=13mm]{figures/umu-logotyp-EN.png}\hspace{10mm}
+%% %  \includegraphics[height=10mm]{figures/SNIC_logo_lower.png}
+%%   \vspace{5mm}
+%%  \end{center}
+%%  \pause \item Involved in several \emph{projects and collaborations}
+%%  \begin{itemize}
+%%   \item DDLS, EGI, EISCAT, eSSENCE, NOSEG, Swedish Science Cloud, \dots
+%%  \end{itemize}
+  %% \end{itemize}
+  \pause \item Involved in several \emph{projects and collaborations} \\
+    \begin{center}
+  \includegraphics[height=1cm]{figures/essence.png}\hspace*{0.8cm}~
+  \includegraphics[height=1cm]{figures/prace.png}\hspace*{0.8cm}~\includegraphics[height=1cm]{figures/algoryx.png}\\ \vspace{0.8cm} \includegraphics[height=1cm]{figures/WLCG-logo.png}\hspace*{0.8cm}~\includegraphics[height=1cm]{figures/eosc-nordic.png}\hspace*{0.8cm}~\includegraphics[height=1cm]{figures/eiscat-logo5.png}\\ \vspace{0.8cm} \includegraphics[height=1cm]{figures/ScilifeLab.png}\hspace*{0.8cm}~\includegraphics[height=1cm]{figures/skills4eosc.png}
+    \end{center}
+\end{itemize}       
 }
 
 \frame{
@@ -130,10 +155,17 @@ HPC2N has five \emph{partners}:
  \begin{itemize}
   \item 0.5 -- 3 days; ready-to-run exercises
   \item Introduction to HPC2N and Kebnekaise
-  \item Parallel programming and tools (e.g., OpenMP, MPI, debugging, performance analyzers, Matlab, R, MD simulation, Deep Learning, GPU, \dots)
+  \item Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, \dots)
+        \begin{itemize}
+      \item \textbf{Using Python in an HPC environment}, 1 December 2023
+  \item \textbf{Introduction to Git}, 13-17 November 2023
+  \item \textbf{Introduction to running R, Python, and Julia in HPC}, 17-19 October 2023
+  \item \textbf{Workshop: Matlab in HPC}, 11, 18, 25/26 September 2023
+  \item \textbf{Introduction to Kebnekaise}, 21 September 2023
+\end{itemize}
  \end{itemize}
- \pause \item NGSSC / SeSE \& university courses
  \pause \item Workshops and seminars 
+ \pause \item NGSSC / SeSE \& university courses
 % \item<8-> Research \& Development --- Technology transfer
 \end{itemize}
 }
@@ -200,7 +232,7 @@ HPC2N has five \emph{partners}:
 \begin{itemize}
  \pause \item Contact through regular support 
  \begin{itemize}
-  \item If you have a specific problem/question and/or need consultation (up to 100 h)
+  \item If you have a specific problem/question and/or need consultation %(up to 100 h)
  \end{itemize}
 \end{itemize}
 }
@@ -217,7 +249,7 @@ HPC2N has five \emph{partners}:
   \item Materials science
   \item Mathematics and statistics 
   \item Physics including space physics
-  \item Deep learning and artificial intelligence
+  \item ML, DL, and other AI
  \end{itemize}
 \end{itemize}
 }
@@ -234,26 +266,26 @@ HPC2N has five \emph{partners}:
   \item \emph{Materials science}
   \item Mathematics and statistics 
   \item \emph{Physics including space physics}
-  \item {\color{cyan} Deep learning and artificial intelligence} (several new projects)
+  \item {\color{cyan} Machine learning and artificial intelligence} (several new projects)
  \end{itemize}
 \end{itemize}
 }
 
-\frame{
-\frametitle{HPC2N (medium users by university)}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{figures/medium-users.png}
-Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
-\end{center}
-}
+%% \frame{
+%% \frametitle{HPC2N (medium users by university)}
+%% \begin{center}
+%% \includegraphics[width=0.9\textwidth]{figures/medium-users.png}
+%% Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
+%% \end{center}
+%% }
 
-\frame{
-\frametitle{HPC2N (large users by university)}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{figures/large-users.png}
-Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
-\end{center}
-}
+%% \frame{
+%% \frametitle{HPC2N (large users by university)}
+%% \begin{center}
+%% \includegraphics[width=0.9\textwidth]{figures/large-users.png}
+%% Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
+%% \end{center}
+%% }
 
 \frame{
 \frametitle{HPC2N (users by software)}
@@ -265,7 +297,7 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
 \frame{
 \frametitle{Kebnekaise}
 \begin{itemize}
- \item \emph{Latest supercomputer at HPC2N}
+ \item \emph{The current supercomputer at HPC2N}
  \pause \item Named after a massif (contains some of Sweden's highest mountain peaks)
  \pause \item Kebnekaise was 
  \begin{itemize}
@@ -290,48 +322,92 @@ Projects with allocations at HPC2N: 2014-01-01 to 2016-05-30
 \frametitle{Kebnekaise (compute nodes)}
 \begin{tabular}{rcp{6.0cm}}
  Name & \# & Description \\ \hline 
-         \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Will ``soon'' be retired !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
+         \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline
 	\pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
- \pause \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
+        \pause \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Being phased out !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
+        \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
 % \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
 \end{tabular}
 }
 
-\frame{
-\frametitle{Kebnekaise (GPU nodes)}
-\begin{footnotesize}
-\begin{tabular}{rcp{7.0cm}}
-Name & \# & Description \\ \hline
-         \makecell[r]{\color{cyan} 2xGPU \\ \small{\color{red} ! Will ``soon'' be retired !}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
- \pause \color{cyan} 4xGPU & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
- \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
-	\pause \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} 
-\end{tabular}
-\end{footnotesize}
-}
+%% \frame{
+%% \frametitle{Kebnekaise (compute nodes)}
+%% \begin{tabular}{rcp{6.0cm}}
+%%  Name & \# & Description \\ \hline 
+%%          \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Will ``soon'' be retired !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
+%% 	\pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
+%%  \pause \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
+%% % \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
+%% \end{tabular}
+%% }
+
+ \frame{
+ \frametitle{Kebnekaise (GPU nodes)}
+ \begin{footnotesize}
+ \begin{tabular}{rcp{7.0cm}}
+ Name & \# & Description \\ \hline
+ 	\color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} \\ \hdashline
+        \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
+  \pause \makecell{\color{cyan} 4xGPU \\ \small{\color{red} !!! Being phased out !!!}} & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
+  \pause \makecell{\color{cyan} 2xGPU \\ \small{\color{red} !!! Being phased out !!!}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ 
+ \end{tabular}
+ \end{footnotesize}
+ }
+
+ %% \frame{
+%% \frametitle{Kebnekaise (GPU nodes)}
+%% \begin{footnotesize}
+%% \begin{tabular}{rcp{7.0cm}}
+%% Name & \# & Description \\ \hline
+%%          \makecell[r]{\color{cyan} 2xGPU \\ \small{\color{red} ! Will ``soon'' be retired !}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
+%%  \pause \color{cyan} 4xGPU & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
+%%  \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
+%% 	\pause \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} 
+%% \end{tabular}
+%% \end{footnotesize}
+%% }
 
 \frame{
 \frametitle{Kebnekaise (in numbers)}
 \begin{itemize}
- \item 553 nodes in 15 racks
- \pause \item \emph{16504 cores} 
+\item 553 nodes in 15 racks
+  \pause \item Intel Broadwell and Skylake, AMD Zen3
+  \pause \item NVidia A100, V100, K80 GPUs
 % \begin{itemize}
 %  \item 18840 available for users (the rest are for managing the cluster)
 % \end{itemize}
  \pause \item More than \emph{135 TB memory}
- \pause \item 71 switches (Infiniband, Access and Managment networks)
- \pause \item 728 TFlops/s Peak performance (expansion not included)
- \pause \item \emph{629 TFlops/s} Linpack (all parts, except expansion)
- \begin{itemize}
-  \item 86\% of Peak performance
- \end{itemize}
+ \pause \item 71 switches (Infiniband, Access and Management networks)
+  \pause \item 16504 CPU cores
+% \pause \item 728 TFlops/s Peak performance (expansion not included)
+% \pause \item \emph{629 TFlops/s} Linpack (all parts, except expansion)
+\pause \item 501760 CUDA cores
+\pause \item 12800 Tensor cores
 \end{itemize}
 }
+
+%% \frame{
+%% \frametitle{Kebnekaise (in numbers)}
+%% \begin{itemize}
+%%  \item 553 nodes in 15 racks
+%%  \pause \item \emph{16504 cores} 
+%% % \begin{itemize}
+%% %  \item 18840 available for users (the rest are for managing the cluster)
+%% % \end{itemize}
+%%  \pause \item More than \emph{135 TB memory}
+%%  \pause \item 71 switches (Infiniband, Access and Managment networks)
+%%  \pause \item 728 TFlops/s Peak performance (expansion not included)
+%%  \pause \item \emph{629 TFlops/s} Linpack (all parts, except expansion)
+%%  \begin{itemize}
+%%   \item 86\% of Peak performance
+%%  \end{itemize}
+%% \end{itemize}
+%% }
 
 \frame{
 \frametitle{Kebnekaise (HPC2N storage)}
 \begin{itemize}
- \item Basically five types of storage are available at HPC2N:
+ \item Basically four types of storage are available at HPC2N:
  \begin{itemize}
   \pause \item {\color{cyan} Home directory}
   \begin{itemize}
@@ -348,23 +424,24 @@ Name & \# & Description \\ \hline
    \item \texttt{\$SNIC\_TMP}
    \item SSD (170GB), per job, per node, "volatile"
   \end{itemize}
-  \pause \item {\color{cyan} SweStore} --- disk based (dCache)
-  \begin{itemize}
-   \item part of SNIC Storage, \emph{nationally accessible storage}
-  \end{itemize}
   \pause \item {\color{cyan} Tape Storage}
   \begin{itemize}
    \item Backup
    \item \emph{Long term storage}
   \end{itemize}
  \end{itemize}
+  \pause \item Also {\color{cyan} SweStore} --- disk based (dCache)
+  \begin{itemize}
+   \item Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG
+  \end{itemize}
 \end{itemize}
 }
 
 \frame{
 \frametitle{Kebnekaise (projects)}
 \begin{itemize}
- \item In order to use Kebnekaise, you must be a member of a \emph{compute project}
+  \begin{small}
+\item To use Kebnekaise, you must be a member of a \emph{compute project}
  \begin{itemize}
   \pause \item A compute project has a certain number of \emph{core hours} allocated for it per month
   \pause \item A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more
@@ -375,9 +452,11 @@ Name & \# & Description \\ \hline
   \item If more storage is required, you must be a member of a \emph{storage project}
  \end{itemize}
 \pause \item As Kebnekaise is a local cluster, you need to be affiliated with UmU, IRF, SLU, Miun, or LTU to use it
- % \pause \item Birgitte will cover more details
+\pause \item Projects are applied for through SUPR (https://supr.naiss.se)
+% \pause \item Birgitte will cover more details
  \pause \item I will cover more details in the next section, where we
  go more into detail about HPC2N and Kebnekaise. 
+\end{small}
 \end{itemize}
 }
 
