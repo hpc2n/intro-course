@@ -255,6 +255,7 @@
           \texttt{https://kebnekaise-tl.hpc2n.umu.se:300/}
           \vspace{1mm}
         \item SSH: \texttt{kebnekaise.hpc2n.umu.se}
+          \item \textbf{A100 or AMD Zen3}: \texttt{kebnekaise-amd-tl.hpc2n.umu.se} or \texttt{kebnekaise-amd.hpc2n.umu.se}
         \end{itemize}
       \item Transfer your files and data (if needed)
       \item Load modules (if needed)
@@ -689,23 +690,28 @@ script, or a job script).
  \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Using different parts of Kebnekaise} 
 
    \begin{block}{}
-     \begin{small}
+     \begin{scriptsize}
        \begin{itemize}
-     \item To run on the 'fat' nodes, add this flag to your script: \\ 
- \texttt{\#SBATCH -p largemem} (largemem does not have general access) \\
+     \item Use the 'fat' nodes by adding this flag to your script: \\ 
+ \texttt{\#SBATCH -p largemem} (separate resource) \\
      \item  Specifying Intel Broadwell, Intel Skylake, or AMD Zen3 CPUs: \\ 
  \texttt{\#SBATCH --constraint=broadwell} \\
  or \\
  \texttt{\#SBATCH --constraint=skylake} \\
  or \\
  \texttt{\#SBATCH --constraint=zen3} \\
-     \item Using the GPU nodes (apply for as separate resource): \\ 
+     \item Using the GPU nodes (separate resource): \\ 
        \texttt{\#SBATCH --gres=gpu:$<$type-of-card$>$:x} where $<$type-of-card$>$ is either k80, v100, or a100 and x = 1, 2, or 4 (4 only for K80). \\
-     \item In the case of the A100 GPU nodes, you also need to add a partition \\
-       \texttt{\#SBATCH -p amd\_gpu}
+       \begin{itemize}
+     \begin{scriptsize}
+       \item In the case of the A100 GPU nodes, you also need to add a partition \\
+         \texttt{\#SBATCH -p amd\_gpu}
+     \end{scriptsize}
+         \end{itemize}
+       \item Use the AMD login node for correct modules and compilers for AMD Zen3 and A100 nodes: \\ \texttt{kebnekaise-amd-tl.hpc2n.umu.se} or \\\texttt{kebnekaise-amd.hpc2n.umu.se}
     \end{itemize}
  More on https://www.hpc2n.umu.se/documentation/guides/using\_kebnekaise
-     \end{small}
+     \end{scriptsize}
    \end{block}
  }
 
@@ -928,10 +934,11 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 \texttt{\# Number of GPU cards needed. Here asking for 2 V100 cards} \\
 \texttt{\#SBATCH --gres=v100:2} \\
 \vspace{3mm} 
-\texttt{module purge} \\ 
+\texttt{module purge} \\
+\texttt{\# Change to modules needed for your program} \\ 
 \texttt{ml fosscuda/2021b} \\ 
 \vspace{3mm}
-\texttt{./my-program} \\
+\texttt{./my-cuda-program} \\
 \end{footnotesize}
   \end{block}
 
@@ -951,10 +958,13 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 \texttt{\# Number of GPU cards needed. Here asking for 2 A100 cards} \\ 
 \texttt{\#SBATCH --gres=a100:2} \\
 \vspace{3mm} 
-\texttt{module purge} \\ 
-\texttt{ml fosscuda/2021b} \\ 
+\texttt{module purge} \\
+\texttt{\# Change to modules needed for your software - remember to login} \\
+\texttt{\# to kebnekaise-amd.hpc2n.umu.se or} \\
+\texttt{\# kebnekaise-amd-tl.hpc2n.umu.se login node to see availability} \\
+\texttt{ml CUDA/11.7.0} \\ 
 \vspace{3mm}
-\texttt{./my-program} \\
+\texttt{./my-cuda-program} \\
 \end{footnotesize}
   \end{block}
 

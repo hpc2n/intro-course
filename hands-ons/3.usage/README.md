@@ -8,7 +8,7 @@ The reservation is only valid during the course and is commented out due to this
 
 For consistency, I have given all the example batch scripts the suffix .sh even though it is not required. Another commonly used suffix is .batch but any or none will work. 
 
-You need to compile any programs mentioned in order to run the examples, except for compile-run.sh and the CUDA example, which includes compilation. 
+You need to compile any programs mentioned in order to run the examples, except for compile-run.sh and the CUDA examples, which includes compilation. 
 
 Try to change the C programs, add different programs, and in general play around with the examples! 
 
@@ -236,7 +236,11 @@ You need the mpi_hello.c file compiled (and the executable named mpi_hello) for 
 
 ### 3.8 CUDA/GPU program 
 
-To compile a cuda program, like hello-world.cu you need to load a toolchain containing CUDA compilers. We recommend fosscuda/2020b (contains GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK, and CUDA) or intelcuda/2019a (contains icc, ifort, IntelMPI, IntelMKL, and CUDA) 
+To compile a cuda program, like hello-world.cu you need to load a toolchain containing CUDA compilers.
+
+#### V100
+
+We recommend fosscuda/2020b (contains GCC, OpenMPI, OpenBLAS/LAPACK, FFTW, ScaLAPACK, and CUDA) or intelcuda/2019a (contains icc, ifort, IntelMPI, IntelMKL, and CUDA) 
 
 ```bash 
 $ ml fosscuda/2020b
@@ -247,6 +251,23 @@ The batch script gpu.sh compiles and runs a small cuda program called 'hello-wor
 
 ```bash 
 $ sbatch gpu.sh
+```
+
+#### A100
+
+In order to find the correct modules, as well as compile a program if you need that, you must login to one of the AMD login nodes with either SSH (kebnekaise-amd.hpc2n.umu.se) or ThinLinc (kebnekaise-amd-tl.kebnekaise.hpc2n.umu.se)
+
+After that, you load a suitable CUDA toolchain, like CUDA/11.7.0 and use nvcc to compile the program 'hello-world.cu'
+
+```bash 
+$ ml CUDA/11.7.0
+$ nvcc hello-world.cu -o hello
+```
+
+The batch script gpu-a100.sh compiles and runs a small cuda program called 'hello-world.cu'. To submit it: 
+
+```bash 
+$ sbatch gpu-a100.sh
 ```
 
 

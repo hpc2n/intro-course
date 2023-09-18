@@ -90,7 +90,20 @@ NOTE 2: A few of the submit scripts copies the output to a directory I have call
 
 5. EXERCISE - CUDA/GPU PROGRAM  
 
-Load a suitable toolchain, like fosscuda/2020b and use 'nvcc' to compile the program hello-world.cu  
+V100: 
 
-Submit the job script gpu.sh with the correct executable (named as in the script or changed to whatever you named it). 
+Load a suitable toolchain, like fosscuda/2020b and use 'nvcc' to compile the program 'hello-world.cu'  
+
+Submit the job script 'gpu.sh' with the correct executable (named as in the script or changed to whatever you named it). 
+
+A100: 
+
+- Login to the AMD login node with either SSH (kebnekaise-amd.hpc2n.umu.se) or ThinLinc (kebnekaise-amd-tl.kebnekaise.hpc2n.umu.se)
+
+- Load a suitable CUDA toolchain, like CUDA/11.7.0 and use nvcc to compile the program 'hello-world.cu'
+
+- Try run the binary on the login node (not normally recommended, but this is a short program). See that it works.
+
+- Submit the script 'gpu-a100.sh' and see that it runs. Make changes to it if you want.
+
 
