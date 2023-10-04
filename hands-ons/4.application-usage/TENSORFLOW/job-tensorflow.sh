@@ -6,9 +6,8 @@
 #SBATCH -N 1
 #SBATCH --exclusive
 #Ask for 2 GPU cards
-#SBATCH --gres=gpu:k80:2
 #For V100 cards uncomment the following line and comment the line above
-##SBATCH --gres=gpu:v100:2
+#SBATCH --gres=gpu:v100:2
 
 ml GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5
 ml TensorFlow/2.4.1 

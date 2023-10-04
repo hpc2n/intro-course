@@ -19,7 +19,7 @@ nextflow run nf-core/rnaseq \
     -profile singularity \
     --input design_test.csv \
     --genome 'TAIR10' \
-    --max_cpus '16' \
+    --max_cpus '14' \
     --max_memory '60GB' \
     --outdir $PWD \
     -resume
