@@ -5,9 +5,9 @@
 #SBATCH -J Amber
 #SBATCH -t 00:10:00
 #SBATCH -N 1
-#SBATCH -n 4
+#SBATCH -n 2
 # Asking for 2 GPUs
-#SBATCH --gres=gpu:k80:2
+#SBATCH --gres=gpu:v100:2
 #SBATCH --exclusive
 
 # It is a good idea to do a ml purge before loading other modules
