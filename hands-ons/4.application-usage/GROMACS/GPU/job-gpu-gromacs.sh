@@ -7,8 +7,11 @@
 #SBATCH -N 1
 #SBATCH -n 4
 #SBATCH -c 7
-# Asking for 2 GPUs
-#SBATCH --gres=gpu:k80:2
+# Asking for V100 GPU
+#SBATCH --gres=gpu:v100:2
+# Asking for A100 GPU comment previous line and uncomment the next two lines
+##SBATCH -p amd_gpu
+##SBATCH --gres=gpu:a100:2
 #SBATCH --exclusive
 
 
@@ -24,8 +27,12 @@ echo $CUDA_VISIBLE_DEVICES
 
 # It is a good idea to do a ml purge before loading other modules
 ml purge > /dev/null 2>&1
+# For V100 GPU
 ml GCC/10.2.0  CUDA/11.1.1  OpenMPI/4.0.5
 ml GROMACS/2021
+# For A100 GPU
+#ml GCC/11.3.0  OpenMPI/4.1.4
+#ml GROMACS/2023.1-CUDA-11.7.0
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 gmx grompp -f step4.1_equilibration.mdp -o step4.1_equilibration.tpr -c step4.0_minimization.gro -r step3_charmm2gmx.pdb -n index.ndx -p topol.top
