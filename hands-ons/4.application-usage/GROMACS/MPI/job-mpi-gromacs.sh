@@ -5,14 +5,19 @@
 #SBATCH -J Gromacs
 #SBATCH -t 00:30:00
 #SBATCH -N 1
-#SBATCH -n *FIXME*
-#SBATCH -c *FIXME*
+#SBATCH -n #*FIXME*
+#SBATCH -c #*FIXME*
+# For AMD nodes uncomment the following line
+##SBATCH -p amd
 
 # It is a good idea to do a ml purge before loading other modules
 ml purge > /dev/null 2>&1
 
 ml GCC/10.2.0  OpenMPI/4.0.5
 ml GROMACS/2021
+# For AMD CPUs uncomment the following two lines and comment out the previous two
+#ml GCC/11.3.0  OpenMPI/4.1.4
+#ml GROMACS/2023.1
 
 if [ -n "$SLURM_CPUS_PER_TASK" ]; then
     mdargs="-ntomp $SLURM_CPUS_PER_TASK"
