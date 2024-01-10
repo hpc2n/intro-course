@@ -1,4 +1,4 @@
-# Introduction to Kebnekaise and HPC2N (September 2023)
+# Introduction to Kebnekaise and HPC2N (January 2024)
 
 ## Course description
 
@@ -10,13 +10,13 @@ After this, we go through the module system and take a brief look at how to subm
 
 We will then look at some application examples, and how to run them at Kebnekaise. There will again be hands-ons for you to try this out yourself. 
 
-**Materials, including exercises**: Clone this repo or download a zip of the material (click the green "Code" button then pick "Download ZIP"). Or you can copy the materials as a tarball from /proj/nobackup/hpc2n2023-102/intro-course.tar.gz during the course and until 2023-10-01. 
+**Materials, including exercises**: Clone this repo or download a zip of the material (click the green "Code" button then pick "Download ZIP"). Or you can copy the materials as a tarball from /proj/nobackup/hpc2n2023-132/intro-course.tar.gz during the course and until 2024-01-31. 
 
 **Lecture recordings from a previous course**: [On YouTube](https://youtube.com/playlist?list=PL6jMHLEmPVLwVjv1T9CtHIdgSlHVAUviZ)
 
 **Lecture recordings from the current course will be posted to HPC2N's YouTube page: https://www.youtube.com/user/HPC2N 
 
-**Date**: 21 September 2023
+**Date**: 18 January 2024
 
 **Time**: 09:00-17:00
 
