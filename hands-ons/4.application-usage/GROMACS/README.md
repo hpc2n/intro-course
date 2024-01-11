@@ -17,6 +17,6 @@
      output "perf.out". 
 
    * "VSITES" folder, here two different setups of the same system are provided one by using
-     the classical molecula dynamics and the the other by using virtual sites which allows 
+     the classical molecular dynamics and the the other by using virtual sites which allows 
      to use a longer time step. Submit the jobs in each folder with "sbatch job*.sh" 
 
