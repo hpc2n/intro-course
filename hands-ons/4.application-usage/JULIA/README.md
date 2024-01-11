@@ -1,4 +1,4 @@
-Running Julia on HPC
+# Running Julia on HPC
 
 This example uses the Distributed package which is built-in in Julia
 
