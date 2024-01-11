@@ -74,7 +74,7 @@
 \titlegraphic{\center{\includegraphics[height=1.2cm]{figures/naiss.png}\hspace*{1.1cm}~
    \includegraphics[height=1.2cm]{figures/umu-logotyp-EN.png}\hspace*{1.1cm}~\includegraphics[height=1.2cm]{figures/hpc2n.png}
 }}
-\date{21 September 2023}
+\date{18 January 2024}
 \begin{document}
 
 \frame{
@@ -109,36 +109,39 @@
 
 \frame{\frametitle{Projects - compute and storage}
   \begin{small}
-    Join a project or apply for one. \textcolor{red}{From 2023-01-01}
-    \end{small}
-\begin{block}{}
-  \begin{footnotesize}
-  \begin{itemize}
-  \item Kebnekaise is only open for local project requests.
-  \item The PI must be affiliated with UmU, LTU, IRF, MiUN, or SLU.
-  \item You can still add members (join) from anywhere. 
-  \item Apply for \textbf{compute project} in SUPR \texttt{https://supr.naiss.se/round/compute}
-    \begin{itemize}
-      \begin{footnotesize}
-      \item Login to SUPR (create SUPR account if you do not have one).
-      \item Click “Rounds” in the left menu. Pick “Compute Rounds”. Pick “Centre Local Compute”.
-      \item Pick “HPC2N Local Compute YYYY”. Choose “Create New Proposal for HPC2N Local Compute YYYY”.
-      \item Create from scratch or use earlier proposal as starting point.
-      \item Agree to the default storage if 500GB is enough. 
-      \item More information: \\
+    Join a project or apply for one. 
+  \end{small}
+  \begin{block}{}
+      \begin{itemize}
+    \begin{footnotesize}
+      \item Kebnekaise is only open for local project requests.
+        \begin{itemize}
+          \begin{footnotesize}
+          \item The PI must be affiliated with UmU, LTU, IRF, MiUN, or SLU.
+          \item You can still add members (join) from anywhere.
+          \end{footnotesize}
+        \end{itemize}
+      \item Apply for \textbf{compute project} in SUPR \texttt{https://supr.naiss.se/round/compute}
+        \begin{itemize}
+          \begin{footnotesize}
+          \item Login to SUPR (create SUPR account if you do not have one).
+          \item Click “Rounds” in the left menu. Pick “Compute Rounds”. Pick “Centre Local Compute”.
+          \item Pick “HPC2N Local Compute YYYY”. Choose “Create New Proposal for HPC2N Local Compute YYYY”.
+          \item Create from scratch or use earlier proposal as starting point.
+          \item Agree to the default storage if 500GB is enough. 
+          \item More information: \\
+            \begin{scriptsize}
+              \texttt{https://supr.naiss.se/round/open\_type/?type=Centre+Local+Compute}
+            \end{scriptsize}
+          \end{footnotesize}
+        \end{itemize}
+      \item If the above mentioned default storage is not enough, you will need to apply for a \textbf{Local storage project}: \\
         \begin{scriptsize}
-          \texttt{https://supr.naiss.se/round/open\_type/?type=Centre+Local+Compute}
+          \texttt{https://supr.naiss.se/round/open\_type/?type=Centre+Local+Storage}
         \end{scriptsize}
-        \end{footnotesize}
-    \end{itemize}
-  \item If the above mentioned default storage is not enough, you will need to apply for a \textbf{Local storage project}: \\
-    \begin{scriptsize}
-      \texttt{https://supr.naiss.se/round/open\_type/?type=Centre+Local+Storage}
-      \end{scriptsize}
-  \end{itemize}
-\end{footnotesize}
-\end{block}
-
+    \end{footnotesize}
+      \end{itemize}
+  \end{block}
 }
 
 \frame{\frametitle{Projects - compute and storage}
@@ -423,7 +426,7 @@ ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially usef
       \item Since the storage project is shared between all users of
         the project, you should go to that directory and create a subdirectory
         for your things, which you will then be using.
-        \item \textbf{For this course the storage is in \texttt{/proj/nobackup/hpc2n2023-102}}
+        \item \textbf{For this course the storage is in \texttt{/proj/nobackup/hpc2n2023-132}}
       \end{itemize}
     \end{block}
   
@@ -614,14 +617,14 @@ script, or a job script).
 \frame{\frametitle{The Batch System}\framesubtitle{Accounting, V100 GPU nodes, Kebnekaise.}
 
     \begin{block}{}
-    \begin{footnotesize}
+    \begin{scriptsize}
       Each V100 GPU accelerator card has 1 onboard compute engine (GV100 chip). They are placed together as 14 cores + 1 V100 on a socket (28 cores, 2 V100s per node).  
-    \end{footnotesize}
+    \end{scriptsize}
   \end{block}
  
   \begin{block}{}
 \begin{center}
-\includegraphics[width=5.8cm]{figures/V100-allocation-new.png}
+\includegraphics[width=6.8cm]{figures/V100-allocation-new.png}
 \end{center}
   \end{block}
 }
@@ -629,14 +632,14 @@ script, or a job script).
 \frame{\frametitle{The Batch System}\framesubtitle{Accounting, A100 GPU nodes, Kebnekaise.}
 
     \begin{block}{}
-    \begin{footnotesize}
+    \begin{scriptsize}
       Each A100 GPU accelerator card has 1 onboard compute engine. The AMD Zen3 nodes have 2 CPUs sockets with 24 cores each, for a total of 48 cores, and 2 NVidia A100 GPUs. They are placed together as 24 cores + 1 A100 on a socket. 
-    \end{footnotesize}
+    \end{scriptsize}
   \end{block}
  
   \begin{block}{}
 \begin{center}
-\includegraphics[width=5.8cm]{figures/A100-allocation.png}
+\includegraphics[width=6.8cm]{figures/A100-allocation.png}
 \end{center}
   \end{block}
 }
@@ -720,14 +723,16 @@ script, or a job script).
 
   \begin{block}{}
     \justify
+\begin{footnotesize}
 Example: Serial job on Kebnekaise, compiler toolchain 'foss' 
+\end{footnotesize}
   \end{block}
 
   \begin{block}{}
-\begin{small}
+\begin{footnotesize}
 \texttt{\#!/bin/bash} \\
 \texttt{\# Project id - change to your own after the course!} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\# Asking for 1 core} \\
 \texttt{\#SBATCH -n 1} \\
 \texttt{\# Asking for a walltime of 5 min} \\ 
@@ -738,15 +743,15 @@ Example: Serial job on Kebnekaise, compiler toolchain 'foss'
 \texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{./my\_serial\_program}
-\end{small}
+\end{footnotesize}
   \end{block}
 
   \begin{block}{}
     \justify
-\begin{small}
+\begin{footnotesize}
 Submit with: \\
-\end{small}
 \texttt{sbatch $<$jobscript$>$} 
+\end{footnotesize}
   \end{block}
 
 }
@@ -754,7 +759,8 @@ Submit with: \\
 \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Example, MPI C program} 
 
   \begin{block}{}
-\texttt{\#include $<$stdio.h$>$} \\
+    \begin{footnotesize}
+      \texttt{\#include $<$stdio.h$>$} \\
 \texttt{\#include $<$mpi.h$>$} \\
 \vspace{3mm} 
 \texttt{int main (int argc, char *argv[]) {} \\ 
@@ -770,6 +776,7 @@ Submit with: \\
 \texttt{MPI\_Finalize();}
 \vspace{3mm}
 \texttt{}}
+    \end{footnotesize}
   \end{block}
 
 } 
@@ -779,13 +786,15 @@ Submit with: \\
 
   \begin{block}{}
     \justify
-Example: MPI job on Kebnekaise, compiler toolchain 'foss' 
-  \end{block}
+  \begin{footnotesize}
+  Example: MPI job on Kebnekaise, compiler toolchain 'foss' 
+  \end{footnotesize}
+\end{block}
 
   \begin{block}{}
-\begin{small}
+\begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\#SBATCH -n 14} \\
 \texttt{\#SBATCH --time=00:05:00} \\ 
 \texttt{\#\#SBATCH --exclusive} \\ 
@@ -795,7 +804,7 @@ Example: MPI job on Kebnekaise, compiler toolchain 'foss'
 \texttt{ml foss/2021b} \\ 
 \vspace{3mm}
 \texttt{srun ./my\_parallel\_program}
-\end{small}
+\end{footnotesize}
   \end{block}
 
 }
@@ -844,7 +853,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{small}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\#SBATCH -n 5} \\
 \texttt{\#SBATCH --time=00:15:00} \\ 
 \vspace{3mm} 
@@ -867,7 +876,7 @@ Processor 10 of 14: Hello World!
   \begin{block}{}
 \begin{scriptsize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\#SBATCH -c 28} \\
 \texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
 \texttt{\#SBATCH --time=02:00:00} \\ 
@@ -902,7 +911,7 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\# Total number of cores the jobs need} \\
 \texttt{\#SBATCH -n 56} \\
 \texttt{\# Remember to ask for enough time for all of the jobs to} \\
@@ -923,12 +932,12 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 } 
 
 
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job} 
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job - V100} 
 
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
 \texttt{\# Number of GPU cards needed. Here asking for 2 V100 cards} \\
@@ -945,12 +954,12 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 }
 
 
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job} 
+\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job - A100} 
 
   \begin{block}{}
 \begin{footnotesize}
 \texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-102} \\
+\texttt{\#SBATCH -A hpc2n2023-132} \\
 \texttt{\# Expected time for job to complete}  \\ 
 \texttt{\#SBATCH --time=00:10:00} \\
 \texttt{\# Adding the partition for the A100 GPUs} \\
@@ -975,19 +984,24 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
 
   \begin{block}{}
     \begin{itemize}
-    \item The course project has the following project ID: hpc2n2023-102
-    \item In order to use it in a batch job, add this to the batch script:
-      \begin{itemize}
-        \item \#SBATCH -A hpc2n2023-102
-      \end{itemize}
-    \item There are some nodes reserved for the course, in order to let
-      us run small examples without having to wait for too long. Two nodes are regular Skylake CPU nodes, two nodes are V100 GPU nodes. 
-    \item These reservations are ONLY valid during the course:
-      \begin{itemize}
-      \item intro-cpu \\ (add with \#SBATCH --reservation=intro-cpu)
-      \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
-      \end{itemize}
-\item We have a storage project linked to the compute project. It is hpc2n2023-102. You find it in /proj/nobackup/hpc2n2023-102 
+      \begin{small}
+      \item The course project has the following project ID: hpc2n2023-132
+      \item In order to use it in a batch job, add this to the batch script:
+        \begin{itemize}
+          \begin{small}
+          \item \#SBATCH -A hpc2n2023-132
+          \end{small}
+        \end{itemize}
+      \item There is one A100 GPU node reserved for the course, in order to let us run small GPU examples without having to wait for too long.
+      \item You can ONLY use the reservation when adding \texttt{\#SBATCH -p amd\_gpu} and \texttt{\#SBATCH --gres=a100:x (for x=1,2)}. 
+      \item The reservation is ONLY valid during the course:
+        \begin{itemize}
+          \begin{small}
+          \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
+          \end{small}
+        \end{itemize}
+      \item We have a storage project linked to the compute project. It is hpc2n2023-132. You find it in /proj/nobackup/hpc2n2023-132. Remember to create your own directory under it.
+      \end{small}
     \end{itemize}
   \end{block}
 
@@ -998,9 +1012,9 @@ Make sure you ask for enough cores that all jobs can run at the same time, and h
   \begin{block}{}
     \textbf{Questions?} Now: Ask me or one of the other support or application experts present. 
 
- \vspace{0.5cm}
-OR 
-\vspace{0.5cm}
+    \vspace{0.5cm}
+    OR 
+    \vspace{0.5cm}
 
     \begin{itemize}
     \item Documentation: \texttt{https://www.hpc2n.umu.se/support}
