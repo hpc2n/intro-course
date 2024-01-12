@@ -6,7 +6,7 @@ REQUIREMENTS:
 
    * Load the MATLAB module and launch the MATLAB instance: 
 
-   ml MATLAB/2021a
+   ml MATLAB/2023a.Update4
 
    matlab -singleCompThread
 
