@@ -7,7 +7,11 @@
      mpirun -np $SLURM_NTASKS gmx_mpi mdrun -nb gpu -pme gpu -npme 1 $mdargs -dlb yes  -v -deffnm step4.1_equilibration
      gmx mdrun -ntmpi $SLURM_NTASKS -nb gpu -pme gpu -npme 1 $mdargs -dlb yes  -v -deffnm step4.1_equilibration
 
-   in general, the last two perform better than the default option
+   in general, the last two perform better than the default option. 
+
+   An example is included for running efficient simulations on our recently deployed AMD GPU nodes. The "step4.1_equilibration-amd.mdp" 
+   script has some differences w.r.t. to the previous script "step4.1_equilibration.mdp" mainly in the type of thermostat, which is
+   set to "v-rescale" in the former. The batch script for running on the AMD GPU nodes is "job-gpu-gromacs-amd.sh". 
 
    * "MPI" folder, there is a script to run GROMACS using MPI "sbatch job-mpi-gromacs.sh"
 

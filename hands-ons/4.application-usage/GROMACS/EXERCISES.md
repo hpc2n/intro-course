@@ -59,6 +59,8 @@ in the log file measured in ns/day.
 What is the percentage of the GPUs used in the simulation based on the results from
 job-usage?
 
+Do you observe any performance improvement if you run the simulation on the AMD GPU nodes? 
+
 ### 2.2
 
 How is the performance on GPUs version compared to that on CPU-only version in the previous examples?
