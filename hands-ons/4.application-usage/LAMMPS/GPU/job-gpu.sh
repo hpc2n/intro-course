@@ -3,9 +3,8 @@
 #SBATCH -t 00:10:00
 #SBATCH -c 1
 #SBATCH -n 1
-#SBATCH --gres=gpu:k80:1
-#For v100 uncomment the following line and comment out previous one
-###SBATCH --gres=gpu:v100:(1 or 2)
+#SBATCH --gres=gpu:v100:x    # x = 1 or 2
+##SBATCH --exclusive        # uncomment this line if x = 2 by removing one # symbol 
 
 #Load modules necessary for running LAMMPS
 ml purge > /dev/null 2>&1

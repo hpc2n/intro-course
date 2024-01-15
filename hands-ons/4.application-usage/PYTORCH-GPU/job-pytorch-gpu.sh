@@ -4,7 +4,8 @@
 #SBATCH --time=00:05:00
 #SBATCH --error=job.%J.err
 #SBATCH --output=job.%J.out
-#SBATCH --gres=gpu:k80:1
+#SBATCH --gres=gpu:v100:x   # x = 1 or 2
+##SBATCH --exclusive        # uncomment this line if x = 2 by removing one # symbol 
 
 ml purge  > /dev/null 2>&1
 

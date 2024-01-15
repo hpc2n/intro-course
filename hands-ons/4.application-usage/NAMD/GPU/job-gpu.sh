@@ -4,10 +4,8 @@
 #SBATCH -t 00:08:00
 #SBATCH -N 1
 #SBATCH -n 28
-#SBATCH --gres=gpu:k80:2
-#For V100 uncomment the following line and comment the line above
-##SBATCH --gres=gpu:v100:2
-#SBATCH --exclusive
+#SBATCH --gres=gpu:v100:x   # x = 1 or 2
+##SBATCH --exclusive        # uncomment this line if x = 2 by removing one # symbol 
 
 echo $CUDA_VISIBLE_DEVICES
 
