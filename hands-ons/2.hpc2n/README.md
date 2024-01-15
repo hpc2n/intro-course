@@ -33,6 +33,8 @@ The above page can also be used to reset your HPC2N password if you have forgott
 
 Note that you are authenticating through SUPR, using *that* service’s login credentials!
 
+The HPC2N password and the SUPR password are separate! The HPC2N password and your university/department password are also separate! 
+
 ### 1.1 Exercise
 
 - Download and install ThinLinc
