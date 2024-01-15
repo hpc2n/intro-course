@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -A hpc2n2023-102
+#SBATCH -A hpc2n2023-132
 # Since the files run simultaneously I need enough cores for all of them to run 
 #SBATCH -n 56
 # Remember to ask for enough time for all jobs to complete
-#SBATCH --time=02:00:00
+#SBATCH --time=00:10:00
  
-module purge 
+module purge > /dev/null 2>&1 
 ml foss/2021b
 
 srun -n 14 --exclusive ./mpi_hello &

@@ -1,6 +1,6 @@
 #!/bin/bash 
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2023-102  
+#SBATCH -A hpc2n2023-132  
 #SBATCH -n 8 
 #SBATCH --time=00:05:00
 
@@ -12,9 +12,9 @@
 #SBATCH --output=job.%J.out
 
 # This reservation is only valid during the course and so has been commented out! Remove the out-commenting if you are running this during the course and wish to use the reservation.  
-##SBATCH --reservation intro-cpu
+##SBATCH --reservation intro-gpu
 
-ml purge
+ml purge > /dev/null 2>&1
 ml foss/2021b
 
 mpirun ./mpi_hello 

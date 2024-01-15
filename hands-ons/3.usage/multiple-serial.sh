@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -A hpc2n2023-102
+#SBATCH -A hpc2n2023-132
 # Add enough cores that all jobs can run at the same time 
 #SBATCH -n 5
 # Make sure that the time is long enough that the longest job will have time to finish 
-#SBATCH --time=00:15:00
+#SBATCH --time=00:05:00
 
-module purge
+module purge > /dev/null 2>&1
 ml foss/2021b 
 
 srun -n 1 --exclusive ./hello &
