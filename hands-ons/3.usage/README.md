@@ -4,7 +4,15 @@
 ---
 ## 0. NOTES
 
-The reservation is only valid during the course and is commented out due to this in the job examples. If you are running this during the course, you can add the reservation and/or remove the out-commenting. 
+The reservation is only valid during the course and is commented out due to this in (most of) the job examples, if it is even listed there. If you are running this during the course, you can add the reservation and/or remove the out-commenting. 
+
+This is what needs to be there for using the reservation: 
+
+```bash
+#SBATCH --reservation=intro-gpu
+```
+
+**NOTE**: the reservation is for one Broadwell CPU node and one A100 GPU node. This means, for instance, that you cannot use it when you are asking for a V100 GPU node. 
 
 For consistency, I have given all the example batch scripts the suffix .sh even though it is not required. Another commonly used suffix is .batch but any or none will work. 
 
@@ -269,6 +277,15 @@ The batch script gpu-a100.sh compiles and runs a small cuda program called 'hell
 ```bash 
 $ sbatch gpu-a100.sh
 ```
+
+To use the reservation for running on this node, make sure
+
+```bash
+#SBATCH --reservation=intro-gpu
+```
+
+is added. 
+
 
 
 Have fun! 
