@@ -20,7 +20,7 @@ Lecture recordings: TBA
 
 Date: 16 September 2024
 
-Time: 11:00-17:00
+Time: 11:15-17:00
 
 Location: Online (ZOOM)
 

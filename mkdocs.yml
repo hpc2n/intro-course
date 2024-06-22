@@ -32,16 +32,14 @@ extra_css:
 
 nav:
   - Home: index.md
-  - Introduction To HPC2N, Kebnekaise, and HPC: intro.md
-  - How to use our systems: 
-    - The Batch System: batch.md
-    - Compiler Tool Chains: compilers.md
-    - The Module System: modules.md
-    - The File System: filesystem.md
-    - Hands-on: handson1.md
-    - Simple examples: simple.md
-    - Application examples: 
-      - Software packages and batch: software.md
+  - Introduction to Kebnekaise and HPC2N: intro.md
+  - Logging in: login.md
+  - The File System: filesystem.md
+  - The Module System: modules.md
+  - Compiler Tool Chains: compilers.md
+  - The Batch System: batch.md
+  - Simple examples: simple.md
+  - Application examples: software.md
 plugins:
   - search
   - external-markdown
