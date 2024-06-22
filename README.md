@@ -1,25 +1,27 @@
-# Introduction to Kebnekaise and HPC2N (January 2024)
+# Introduction to HPC2N and Kebnekaise - September 2024
 
 ## Course description
 
-We begin with a short introduction to Linux, which is what is used on HPC2N's compute clusters, and the vast majority of HPC clusters worldwide. 
-This part is only meant for complete beginners to the Linux operating system, and can be omitted if you are proficient already. See the schedule here: https://www.hpc2n.umu.se/events/courses/2024/intro-spring.
+**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Introduction to Linux" which will be given just before this course, 16 September, 9:00-11:00. You can find the course page and registration here: https://www.hpc2n.umu.se/events/courses/2024/fall/intro-linux 
 
-We then continue with an introduction to HPC and HPC2N, then move on to a walkthrough of the Kebnekaise system, including the GPUs.
-After this, we go through the module system and take a brief look at how to submit jobs. During afternoon there will be hands-ons where you will get the opportunity to try loading modules, compile a program, and submit a job to the Kebnekaise cluster.
+This course begins with an introduction to HPC and HPC2N, then move on to a walkthrough of the Kebnekaise system, including the GPUs. We will go into some detail about the new hardware. 
 
-We will then look at some application examples, and how to run them at Kebnekaise. There will again be hands-ons for you to try this out yourself. 
+After this, we go through the module system and take a brief look at how to submit jobs. During the afternoon, there will be hands-ons where you will get the opportunity to try loading modules, compile a program, and submit a job to the Kebnekaise cluster.
 
-**Materials, including exercises**: Clone this repo or download a zip of the material (click the green "Code" button then pick "Download ZIP"). Or you can copy the materials as a tarball from /proj/nobackup/hpc2n2023-132/intro-course.tar.gz during the course and until 2024-01-31. 
+We will then look at some application examples, and how to run them at Kebnekaise. There will again be hands-ons for you to try this out yourself.
 
-**Lecture recordings from a previous course**: [On YouTube](https://youtube.com/playlist?list=PL6jMHLEmPVLwVjv1T9CtHIdgSlHVAUviZ)
+Materials, including exercises: Clone this repo or download a zip of the material (click the green "Code" button then pick "Download ZIP"). 
 
-**Lecture recordings from the current course will be posted to HPC2N's YouTube page: https://www.youtube.com/user/HPC2N 
+The registration and schedule is here:  
 
-**Date**: 18 January 2024
+Lecture recordings: TBA
 
-**Time**: 09:00-17:00
+**Lecture recordings from the current course will be posted to HPC2N's YouTube page:** https://www.youtube.com/user/HPC2N
 
-**Location**: Online (ZOOM)
+Date: 16 September 2024
 
-**Instructors**: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)
+Time: 11:00-17:00
+
+Location: Online (ZOOM)
+
+Instructors: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)

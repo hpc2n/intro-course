@@ -1,0 +1,76 @@
+site_name: Introduction to Kebnekaise
+site_url: https://hpc2n.github.io/intro-course/
+site_description: Material for the course Introduction to Kebnekaise
+site_dir: site.build
+theme:
+  name: readthedocs
+  locale: en
+  logo: images/hpc2n-blue-text.png
+    #  static_templates:
+    #- sitemap.html
+  include_sidebar: true
+  font:
+    code: Robot Mono
+  features:
+    - toc.follow
+    - toc.integrate
+    - navigation.top
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  tabs: true
+  language: en
+extra_css:
+  - css/extra.css
+    #extra_javascript:
+    #  - js/popper.min.js
+    #  - js/tippy-bundle.umd.js
+    #  - js/clipboard.js
+
+nav:
+  - Home: index.md
+  - Introduction To HPC2N, Kebnekaise, and HPC: intro.md
+  - How to use our systems: 
+    - The Batch System: batch.md
+    - Compiler Tool Chains: compilers.md
+    - The Module System: modules.md
+    - The File System: filesystem.md
+    - Hands-on: handson1.md
+    - Simple examples: simple.md
+    - Application examples: 
+      - Software packages and batch: software.md
+plugins:
+  - search
+  - external-markdown
+  - mkdocstrings
+  - markdown-exec
+  - open-in-new-tab
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - smarty
+  - pymdownx.details
+  - pymdownx.superfences
+  - codehilite
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.tabbed
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      separator: "__"
