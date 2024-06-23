@@ -31,5 +31,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install mkdocstrings mkdocs-embed-external-markdown feedparser mkdocs-gen-files markdown-exec[ansi] markdown-include mkdocs-open-in-new-tab markdown-extra 
+      - run: pip install mkdocstrings mkdocs-embed-external-markdown feedparser mkdocs-gen-files markdown-exec[ansi] markdown-include mkdocs-open-in-new-tab markdown-extra python-markdown-comments 
       - run:  mkdocs gh-deploy --force

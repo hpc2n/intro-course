@@ -1,0 +1,569 @@
+# Introduction to HPC2N, Kebnekaise and HPC
+
+<!--- This document as well as the corresponding figures were created by
+Mirko Myllykoski, Senior Research Engineer at CS/HPC2N, Umeå
+University, for the January 2021 version of the "Introduction to
+HPC2N" course. 
+Various additions and changes by Birgitte Brydsö, HPC2N, Umeå University, for later versions. -->
+
+![umu-logo](images/umu-logo-left-EN.png){: style="height: 44px; float: left;"}
+![naiss-logo](images/naiss.png){: style="height: 44px;"}
+![hpc2n-logo](images/hpc2n-logo-text5.png){: style="height: 44px;"}
+
+- Welcome page and syllabus: <a href="https://hpc2n.github.io/intro-linux/index.html">https://hpc2n.github.io/intro-linux/index.html</a>
+    - Also link at the House symbol at the top of the page. 
+
+## HPC2N
+
+!!! note 
+
+    High Performance Computing Center North (HPC2N) is 
+
+    - a competence center for Scientific and Parallel Computing
+    - part of **National Academic Infrastructure for Super­computing in Sweden (NAISS)**
+    
+HPC2N provides state-of-the-art resources and expertise:
+
+- Scalable and parallel **HPC**
+- Large-scale **storage facilities** (Project storage (Lustre), SweStore, Tape)
+- **Grid and cloud** computing (WLCG NT1, Swedish Science Cloud)
+- National Data Science Node in ”Epidemiology and Biology of Infections” (DDLS)
+- Software for e-Science applications
+- All levels of user support 
+    - Primary, advanced, dedicated
+    - Application Experts (AEs)
+
+!!! note "Primary objective"
+
+     To raise the national and local level of HPC competence and transfer HPC knowledge and technology to new users in academia and industry.
+
+### HPC2N partners
+
+HPC2N is hosted by:
+
+![umu-logo](images/umu-logotyp-EN.png){: style="height: 100px;float: left;"} 
+
+<br><br style="clear: both;">
+
+Partners: 
+
+![irf-logo](images/irf.png){: style="height: 90px;float: left;padding: 4px;"} 
+![ltu-logo](images/ltu.preview.png){: style="height: 90px;padding: 4px;"}
+![miun-logo](images/mid_sweden_university.png){: style="height: 90px;padding: 4px;"}
+![slu-logo](images/slu_new.png){: style="height: 90px;padding: 4px;"}
+
+<br>
+
+### HPC2N funding and collaborations
+
+Funded mainly by **Umeå University**, with contributions from the **other HPC2N partners**.
+
+Involved in several **projects and collaborations**: 
+
+![essence-logo](images/essence.png){: style="height: 85px; float: left;padding: 5px;"}
+![prace-logo](images/prace.png){: style="height: 85px;padding: 5px;"}
+![algoryx-logo](images/algoryx.png){: style="height: 80px;padding: 5px;"}
+
+![WLCG-logo](images/WLCG-logo.png){: style="height: 90px;padding: 5px;"}
+![eosc-nordic-logo](images/eosc-nordic.png){: style="height: 85px;padding: 5px;"}
+![eiscat-logo](images/eiscat-logo5.png){: style="height: 95px;padding: 5px;"}
+
+![scilifelab-logo](images/SciLifeLab.png){: style="height: 90px;padding: 5px;"}
+![skills4eosc](images/skills4eosc.png){: style="height: 90px;padding: 5px;"}
+
+<br>
+
+### HPC2N training and other services 
+
+- **User support** (primary, advanced, dedicated)
+    - Research group meetings @ UmU
+    - Also at the partner sites
+    - Online "HPC2N fika"  
+- **User training and education program**
+    - 0.5 -- 5 days; ready-to-run exercises
+    - Introduction to Linux, 16 September 2024
+    - Introduction to HPC2N and Kebnekaise, 16 September 2024
+    - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
+    - Basic Singularity, 16 October 2024
+    - Introduction to running R, Python, Julia, and Matlab in HPC, 22-25 October 2024
+    - Introduction to Git, 25-29 November 2024 
+    - Using Python in an HPC environment, 5-6 December 2024
+    - **Updated list:** https://www.hpc2n.umu.se/events/courses
+- Workshops and seminars 
+- NGSSC / SeSE & university courses
+
+### HPC2N personnel
+
+Management:
+
+- Paolo Bientinesi, director
+- Björn Torkelsson, deputy director
+- Lena Hellman, administrator
+
+Application experts:
+
+- Jerry Eriksson
+- Pedro Ojeda May
+- Birgitte Brydsö
+- Åke Sandgren
+
+Others:
+
+- Mikael Rännar (WLCG coord)
+- Research Engineers under DDLS, HPC2N/SciLifeLab
+    - Paul Dulaud, System Developer, IT
+    - Abdullah Aziz, Data Engineer
+    - Data Steward 
+
+System and support:
+
+- Erik Andersson
+- **Birgitte Brydsö**
+- Niklas Edmundsson (Tape coord)
+- My Karlsson 
+- Roger Oscarsson
+- **Åke Sandgren**
+- Mattias Wadenstein (NeIC, Tier1)
+- **Lars Viklund**
+
+### HPC2N application experts
+
+- HPC2N provides advanced and dedicated support in the form of **Application Experts (AEs)**:
+    - Jerry Eriksson: Profiling, Machine learning (DNN), MPI, OpenMP, OpenACC 
+    - Pedro Ojeda May: Molecular dynamics, Profiling, QM/MM, NAMD, Amber, Gromacs, GAUSSIAN, R, Python 
+    - Åke Sandgren: General high level programming assistance, VASP, Gromacs, Amber 
+    - Birgitte Brydsö: General HPC, R, Python 
+- Contact through regular support 
+
+### HPC2N users by discipline
+
+- Users from several scientific disciplines:
+    - Biosciences and medicine 
+    - Chemistry
+    - Computing science  
+    - Engineering 
+    - Materials science
+    - Mathematics and statistics 
+    - Physics including space physics
+    - ML, DL, and other AI
+
+### HPC2N users by discipline, largest users
+ 
+- Users from several scientific disciplines:
+    - Biosciences and medicine 
+    - **Chemistry**
+    - Computing science  
+    - Engineering 
+    - **Materials science**
+    - Mathematics and statistics 
+    - **Physics including space physics**
+    - **Machine learning and artificial intelligence** (several new projects)
+
+### HPC2N users by software
+
+![software-users](images/software_v2.png)
+
+## Kebnekaise
+
+The current supercomputer at HPC2N.
+
+- Named after a massif (contains some of Sweden's highest mountain peaks)
+
+ \pause \item Kebnekaise was 
+ \begin{itemize}
+  \item delivered by Lenovo and 
+  \item \emph{installed during the summer 2016}
+ \end{itemize}
+ \pause \item Opened up for general availability on November 7, 2016
+ \pause \item In 2018, Kebnekaise was \emph{extended} with 
+ \begin{itemize}
+  \item 52 Intel Xeon Gold 6132 (Skylake) nodes, as well as 
+  \item 10 NVidian V100 (Volta) GPU nodes
+ \end{itemize}
+ \pause \item In 2023, Kebnekaise was \emph{extended} with 
+ \begin{itemize}
+ \item 2 dual NVIDIA A100 GPU nodes
+ \item one many-core AMD Zen3 CPU node
+ \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{Kebnekaise (compute nodes)}
+\begin{tabular}{rcp{6.0cm}}
+ Name & \# & Description \\ \hline 
+         \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline
+        \pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
+        \pause \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Being phased out !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
+        \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
+% \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
+\end{tabular}
+}
+
+%% \frame{
+%% \frametitle{Kebnekaise (compute nodes)}
+%% \begin{tabular}{rcp{6.0cm}}
+%%  Name & \# & Description \\ \hline 
+%%          \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Will ``soon'' be retired !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
+%%      \pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
+%%  \pause \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
+%% % \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
+%% \end{tabular}
+%% }
+
+ \frame{
+ \frametitle{Kebnekaise (GPU nodes)}
+ \begin{footnotesize}
+ \begin{tabular}{rcp{7.0cm}}
+ Name & \# & Description \\ \hline
+        \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} \\ \hdashline
+        \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
+  \pause \makecell{\color{cyan} 4xGPU \\ \small{\color{red} !!! Being phased out !!!}} & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
+  \pause \makecell{\color{cyan} 2xGPU \\ \small{\color{red} !!! Being phased out !!!}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ 
+ \end{tabular}
+ \end{footnotesize}
+ }
+
+ %% \frame{
+%% \frametitle{Kebnekaise (GPU nodes)}
+%% \begin{footnotesize}
+%% \begin{tabular}{rcp{7.0cm}}
+%% Name & \# & Description \\ \hline
+%%          \makecell[r]{\color{cyan} 2xGPU \\ \small{\color{red} ! Will ``soon'' be retired !}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
+%%  \pause \color{cyan} 4xGPU & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
+%%  \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
+%%      \pause \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} 
+%% \end{tabular}
+%% \end{footnotesize}
+%% }
+
+%% \frame{
+%% \frametitle{Kebnekaise (in numbers)}
+%% \begin{itemize}
+%% \item 553 nodes in 15 racks
+%%   \pause \item Intel Broadwell and Skylake, AMD Zen3
+%%   \pause \item NVidia A100, V100, K80 GPUs
+%% % \begin{itemize}
+%% %  \item 18840 available for users (the rest are for managing the cluster)
+%% % \end{itemize}
+%%  \pause \item More than \emph{135 TB memory}
+%%  \pause \item 71 switches (Infiniband, Access and Management networks)
+%%   \pause \item 16504 CPU cores
+%% % \pause \item 728 TFlops/s Peak performance (expansion not included)
+%% % \pause \item \emph{629 TFlops/s} Linpack (all parts, except expansion)
+%% \pause \item 501760 CUDA cores
+%% \pause \item 12800 Tensor cores
+%% \end{itemize}
+%% }
+
+\frame{
+\frametitle{Kebnekaise (HPC2N storage)}
+\begin{itemize}
+ \item Basically four types of storage are available at HPC2N:
+ \begin{itemize}
+  \pause \item {\color{cyan} Home directory}
+  \begin{itemize}
+   \item \texttt{/home/X/Xyz}, \texttt{\$HOME}, \texttt{$\sim$}
+   \item 25 GB, user owned
+  \end{itemize}
+  \pause \item {\color{cyan} Project storage}
+  \begin{itemize}
+   \item \texttt{/proj/nobackup/abc}
+   \item Shared among project members
+  \end{itemize}
+  \pause \item {\color{cyan} Local scratch space}
+  \begin{itemize}
+   \item \texttt{\$SNIC\_TMP}
+   \item SSD (170GB), per job, per node, "volatile"
+  \end{itemize}
+  \pause \item {\color{cyan} Tape Storage}
+  \begin{itemize}
+   \item Backup
+   \item \emph{Long term storage}
+  \end{itemize}
+ \end{itemize}
+  \pause \item Also {\color{cyan} SweStore} --- disk based (dCache)
+  \begin{itemize}
+   \item Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG
+  \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{Kebnekaise (projects)}
+\begin{itemize}
+  \begin{small}
+\item To use Kebnekaise, you must be a member of a \emph{compute project}
+ \begin{itemize}
+  \pause \item A compute project has a certain number of \emph{core hours} allocated for it per month
+  \pause \item A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more
+  \pause \item Not a hard limit but projects that go over the allocation get lower priority
+ \end{itemize}
+ \pause \item A compute project contains a certain amount of storage
+ \begin{itemize}
+  \item If more storage is required, you must be a member of a \emph{storage project}
+ \end{itemize}
+\pause \item As Kebnekaise is a local cluster, you need to be affiliated with UmU, IRF, SLU, Miun, or LTU to use it
+\pause \item Projects are applied for through SUPR (https://supr.naiss.se)
+% \pause \item Birgitte will cover more details
+ \pause \item I will cover more details in the next section, where we
+ go more into detail about HPC2N and Kebnekaise. 
+\end{small}
+\end{itemize}
+}
+
+\frame{
+        \frametitle{HPC}
+\begin{center}
+        \begin{large}
+                What is HPC?
+        \end{large}
+\end{center}
+}
+
+\frame{
+\frametitle{High Performance Computing (definition)}
+\say{High Performance Computing most generally refers to the practice of \emph{aggregating computing power} in a way that delivers much \emph{higher performance} than one could get out of a typical desktop computer or workstation in order to \emph{solve large problems} in science, engineering, or business.}\footnote{https://insidehpc.com/hpc-basic-training/what-is-hpc/\\}
+}
+
+
+\frame{
+\frametitle{High Performance Computing (opening the definition)}
+\begin{itemize}
+ \item \emph{Aggregating computing power}
+ \begin{itemize}
+  \item 533 nodes in 15 racks totalling 16504 cores
+  \item Compared to 4 cores in a modern laptop
+ \end{itemize}
+ \pause \item \emph{Higher performance}
+ \begin{itemize}
+  \item More than 728\,000\,\underline{000}\,\underline{000}\,\underline{000} arithmetical operations per second\footnote{728 trillion (billion)}
+  \item Compared to 200\,\underline{000}\,\underline{000}\,\underline{000} Flops in a modern laptop\footnote{200 billion (milliard)\\}
+ \end{itemize}
+ \pause \item \emph{Solve large problems}
+ \begin{itemize}
+  \item When does a problem become large enough for HPC?
+  \item Are there other reasons for using HPC resources? (Memory,
+    software, support, etc.) 
+ \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{High Performance Computing (large problems)}
+\begin{itemize}
+ \item A problem can be large for two main reasons:
+ \begin{enumerate}
+  \item {\color{cyan} Execution time}: The time required to form a solution to the problem is very long
+  \item {\color{cyan} Memory / storage use}: The solution of the problem requires a lot of memory and/or storage
+ \end{enumerate}
+ \pause \item The former can be remedied by \emph{increasing the performance}
+ \begin{itemize}
+  \item More cores, more nodes, GPUs, \dots
+ \end{itemize}
+ \pause \item The latter by \emph{adding more memory / storage}
+ \begin{itemize}
+  \item More memory per node (including large memory nodes), more nodes, \dots
+  \item Kebnekaise: 128GB - 192GB, 512GB, 3TB
+  \item Large storage solutions, \dots
+ \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{High Performance Computing (what counts as HPC)}
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{figures/hpc1.pdf}
+\end{center}
+}
+
+\frame{
+\frametitle{High Performance Computing (what counts as HPC)}
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{figures/hpc2.pdf}
+\end{center}
+}
+
+\frame{
+\frametitle{High Performance Computing (what counts as HPC)}
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{figures/hpc3.pdf}
+\end{center}
+}
+
+\frame{
+\frametitle{High Performance Computing (other reasons)}
+\begin{itemize}
+ \item Specialized (expensive) hardware
+ \begin{itemize}
+  \pause \item GPUs, \emph{Nvidia Tesla V100/A100 GPUs} are optimized for AI
+%  \pause \item Intel Xeon Phi
+  \pause \item High-end CPUs (AVX-512 etc) and ECC memory
+ \end{itemize}
+ \pause \item Software
+ \begin{itemize}
+  \item HPC2N holds \emph{licenses} for several softwares
+  \item Software is \emph{pre-configured and ready-to-use}
+ \end{itemize}
+ \pause \item \emph{Support and documentation}
+\end{itemize}
+}
+
+\frame{
+\frametitle{High Performance Computing (memory models)}
+\begin{itemize}
+ \item Two memory models are relevant for HPC:
+ \begin{itemize}
+  \pause \item {\color{cyan} Shared memory}: Single memory space for all data.
+   \begin{minipage}{0.3\textwidth}
+   \vspace{1mm}
+   \includegraphics[scale=0.45]{figures/sm.pdf}
+   \vspace{1mm}
+  \end{minipage}\,
+  \begin{minipage}{0.4\textwidth}
+   \begin{itemize}
+    \item \emph{Everyone can access the same data}
+    \item Straightforward to use
+   \end{itemize}
+  \end{minipage}
+  \pause \item {\color{cyan} Distributed memory}: Multiple \emph{distinct} memory spaces.
+  \begin{minipage}{0.3\textwidth}
+   \vspace{1mm}
+   \includegraphics[scale=0.45]{figures/dm.pdf}
+   \vspace{1mm}
+  \end{minipage}\,
+  \begin{minipage}{0.4\textwidth}
+   \begin{itemize}
+    \item Everyone has direct access \emph{only to the local data}
+    \item Requires \emph{communication}
+   \end{itemize}
+  \end{minipage}
+ \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{High Performance Computing (memory models)}
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{figures/memory.pdf}
+\end{center}
+}
+
+\frame{
+\frametitle{High Performance Computing (programming models)}
+\begin{itemize}
+ \item The programming model changes when we aim for extra performance and/or memory:
+ \begin{enumerate}
+  \pause \item {\color{cyan} Single-core}: Matlab, Python, C, Fortran, \dots
+  \begin{itemize}
+   \item Single stream of operations
+  \end{itemize}
+  \pause \item {\color{cyan} Multi-core}: Vectorized Matlab, pthreads, \emph{OpenMP}
+  \begin{itemize}
+   \item \emph{Multiple streams} of operations
+   \pause \item \emph{Work distribution}, \emph{coordination} (synchronization, etc), \dots
+  \end{itemize}
+  \pause \item {\color{cyan} Distributed memory}: \emph{MPI}, \dots
+  \begin{itemize}
+   \item Multiple streams of operations
+   \item Work distribution, coordination (synchronization, etc), \dots
+   \pause \item \emph{Data distribution and communication}
+  \end{itemize}
+ \end{enumerate}
+ \pause \item {\color{cyan} GPUs}: \emph{CUDA}, OpenCL, OpenACC, OpenMP, \dots
+ \begin{itemize}
+  \pause \item \emph{Many lightweight} streams of operations
+  \pause \item Work distribution, coordination (synchronization, etc), \dots
+  \pause \item \emph{Data distribution across memory spaces and movement}
+ \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{High Performance Computing (software)}
+\begin{itemize}
+ \item Complexity grows when we aim for extra performance and/or memory/storage:
+ \begin{enumerate}
+  \pause \item {\color{cyan} Single-core}: LAPACK, \dots
+  \begin{itemize}
+   \item Load correct toolchain etc
+  \end{itemize}
+  \pause \item {\color{cyan} Multi-core}: LAPACK + parallel BLAS, \dots
+  \begin{itemize}
+   \item Load correct toolchain etc
+   \pause \item \emph{Allocate} correct number of cores, \emph{configure} software to use correct number of cores, \dots
+  \end{itemize}
+  \pause \item {\color{cyan} Distributed memory}: ScaLAPACK, \dots
+  \begin{itemize}
+   \item Load correct toolchain etc
+   \pause \item Allocate correct number of \emph{nodes and cores}, configure software to use correct number of \emph{nodes and cores}, \dots
+   \pause \item Data distribution, storage, \dots
+  \end{itemize}
+ \end{enumerate}
+ \pause \item {\color{cyan} GPUs}: MAGMA, TensorFlow, \dots
+ \begin{itemize}
+  \item Load correct toolchain etc
+  \item Allocate correct number of \emph{cores and GPUs}, configure software to use correct number of \emph{cores and GPUs}, \dots
+ \end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{End (questions?)}
+\centering \Huge Questions?
+}
+
+
+\end{document}
+
+
+!!! Admonition "Learning outcomes"
+
+    - What is Linux?
+    - Learn about the command line interface (CLI)
+    - Navigate the file system - ls, mkdir, cd, rm, cp, mv, redirection, pipes, etc.  
+    - Data handling - compressing, archiving, file transfer, patterns, etc.  
+    - Hints and tricks of Linux
+
+## Why Linux 
+
+- Most HPC centers supercomputers run some flavour of Linux. 
+- It is stable and reliable
+- Customizable
+- Runs on any hardware
+- Strong community
+- Many flavours are open source and free
+- Lots of applications
+- Lightweight
+
+## What is Linux
+
+Linux is a family of open-source Unix-like operating systems based on the Linux kernel, an operating system kernel first released on September 17, 1991, by Linus Torvalds.
+
+An operating system is the software that sits underneath all of the other software on a computer, managing the computer’s hardware (CPU, GPU, memory, storage...) and taking care of the connections between your other software and the hardware. 
+
+Linux is typically packaged as a Linux distribution, which includes the kernel and supporting system software and libraries, many of which are provided by the GNU Project.
+
+!!! Note "Distributions (distros)"
+
+    There are many Linux distribuitions, including Ubuntu, Debian, Fedora, Gentoo, and many others. Many distributions are free and open source, but there are also commercial distributions, like Red Hat Enterprise and SUSE.
+
+    Desktop Linux distributions include <a href="https://en.wikipedia.org/wiki/Desktop_environment" target="_blank">a desktop environment</a>, like GNOME, MATE, KDE Plasma, Xfce, Unity, or many others. A window manager together with applications written using a widget toolkit are generally responsible for most of what the user sees.
+
+In addition, a windowing system of some sort (X11, Wayland) interfaces directly with the underlying operating system and libraries, providing support for graphical hardware, pointing devices, and keyboards. The window manager generally runs on top of this windowing system.
+
+While the use of Linux on desktop is only 2-3%, the vast majority of web servers (>96%), most mobile devices (Android is based on the Linux kernel), and all supercomputers on the <a href="https://en.wikipedia.org/wiki/TOP500" target="_blank">Top500</a> list run Linux.
+
+## More information 
+
+There is much more information about <a href="https://en.wikipedia.org/wiki/Linux" target="_blank">Linux on Wikipedia</a>.
+
+Some pages with guides and/or cheat sheets: 
+
+- <a href="https://linuxhandbook.com/" target="_blank">The Linux Handbook</a>
+- <a href="https://www.geeksforgeeks.org/linux-tutorial/" target="_blanks">https://www.geeksforgeeks.org/linux-tutorial/</a>
+- <a href="https://itsfoss.com/free-linux-training-courses/" target="_blank">14 Free Training Courses to Learn Linux Online</a>
+- <a href="https://tldp.org/LDP/intro-linux/intro-linux.pdf">Introduction to Linux - A Hands on Guide</a>
+- <a href="https://cloudacademy.com/course/linux-fundmentals-1346/the-linux-directory-structure/" target="_blank">Linux Fundamentals</a>
+- <a href="https://www.digitalocean.com/community/tutorials/linux-commands" target="_blank">Top 50+ Linux Commands You MUST Know</a>
+ 

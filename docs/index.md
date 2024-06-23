@@ -37,6 +37,11 @@
 
     - This course will consist of lectures and type-alongs, as well as a few exercises where you get to try out what you have just learned.    
 
+## Instructors
+
+- Birgitte Brydsö, HPC2N
+- Pedro Ojeda May, HPC2N
+
 ## Preliminary schedule
 
 

@@ -1,6 +1,7 @@
-.aux
-.log
-.nav
-.out
-.snm
-.vrb
+_build
+_site.build
+site.build
+*~
+*.swp
+*.swo
+wordlist.dic
