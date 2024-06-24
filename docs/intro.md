@@ -309,7 +309,7 @@ I will cover more details in a later section, where we go more into detail about
 
 Aggregating computing power
 
-- 147 nodes totalling 6808 cores
+- 147 nodes totalling 6808 cores and ??? CUDA cores 
     - Compared to 4 cores in a modern laptop
 
 Higher performance
