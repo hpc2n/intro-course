@@ -253,42 +253,32 @@ The large memory nodes are:
     - 41666 MB memory / core
     - 8 nodes
 
-### Kebnekaise (HPC2N storage)
+### Kebnekaise - HPC2N storage
   
 Basically four types of storage are available at HPC2N: 
 
 - Home directory
     - <code>/home/X/Xyz</code>, <code>\$HOME</code>, <code>~</code>
-   \item 25 GB, user owned
-  \end{itemize}
-  \pause \item {\color{cyan} Project storage}
-  \begin{itemize}
-   \item \texttt{/proj/nobackup/abc}
-   \item Shared among project members
-  \end{itemize}
-  \pause \item {\color{cyan} Local scratch space}
-  \begin{itemize}
-   \item \texttt{\$SNIC\_TMP}
-   \item SSD (170GB), per job, per node, "volatile"
-  \end{itemize}
-  \pause \item {\color{cyan} Tape Storage}
-  \begin{itemize}
-   \item Backup
-   \item \emph{Long term storage}
-  \end{itemize}
- \end{itemize}
-  \pause \item Also {\color{cyan} SweStore} --- disk based (dCache)
-  \begin{itemize}
-   \item Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG
-  \end{itemize}
-\end{itemize}
-}
+    - 25 GB, user owned
+- Project storage
+    - <code>/proj/nobackup/abc</code>
+    - Shared among project members
+- Local scratch space
+    - <code>\$SNIC_TMP</code>
+    - SSD (170GB), per job, per node, "volatile"
+- Tape Storage
+    - Backup
+    - Long term storage
 
-\frame{
-\frametitle{Kebnekaise (projects)}
-\begin{itemize}
-  \begin{small}
-\item To use Kebnekaise, you must be a member of a \emph{compute project}
+- Also **SweStore** --- disk based (dCache)
+    - Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG
+
+### Kebnekaise - projects
+
+!!! note 
+  
+    To use Kebnekaise, you must be a member of a **compute project**.
+
  \begin{itemize}
   \pause \item A compute project has a certain number of \emph{core hours} allocated for it per month
   \pause \item A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more
