@@ -297,22 +297,16 @@ I will cover more details in a later section, where we go more into detail about
 
 ## HPC 
 
-\begin{center}
-        \begin{large}
-                What is HPC?
-        \end{large}
-\end{center}
-}
+!!! note "What is HPC?"
 
-\frame{
-\frametitle{High Performance Computing (definition)}
-\say{High Performance Computing most generally refers to the practice of \emph{aggregating computing power} in a way that delivers much \emph{higher performance} than one could get out of a typical desktop computer or workstation in order to \emph{solve large problems} in science, engineering, or business.}\footnote{https://insidehpc.com/hpc-basic-training/what-is-hpc/\\}
-}
+    High Performance Computing (definition)
 
+    "High Performance Computing most generally refers to the practice of **aggregating computing power** in a way that delivers much **higher performance** than one could get out of a typical desktop computer or workstation in order to **solve large problems** in science, engineering, or business."
 
-\frame{
-\frametitle{High Performance Computing (opening the definition)}
-\begin{itemize}
+    From: <a href="https://insidehpc.com/hpc-basic-training/what-is-hpc/" target="_blank">https://insidehpc.com/hpc-basic-training/what-is-hpc/</a> 
+
+### High Performance Computing - opening the definition
+
  \item \emph{Aggregating computing power}
  \begin{itemize}
   \item 533 nodes in 15 racks totalling 16504 cores
