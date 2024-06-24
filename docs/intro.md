@@ -307,14 +307,14 @@ I will cover more details in a later section, where we go more into detail about
 
 ### High Performance Computing - opening the definition
 
- \item \emph{Aggregating computing power}
- \begin{itemize}
-  \item 533 nodes in 15 racks totalling 16504 cores
-  \item Compared to 4 cores in a modern laptop
- \end{itemize}
- \pause \item \emph{Higher performance}
- \begin{itemize}
-  \item More than 728\,000\,\underline{000}\,\underline{000}\,\underline{000} arithmetical operations per second\footnote{728 trillion (billion)}
+Aggregating computing power
+
+- 147 nodes totalling 6808 cores
+    - Compared to 4 cores in a modern laptop
+
+Higher performance
+
+- More than 728\,000\,\underline{000}\,\underline{000}\,\underline{000} arithmetical operations per second\footnote{728 trillion (billion)}
   \item Compared to 200\,\underline{000}\,\underline{000}\,\underline{000} Flops in a modern laptop\footnote{200 billion (milliard)\\}
  \end{itemize}
  \pause \item \emph{Solve large problems}
