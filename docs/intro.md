@@ -165,105 +165,100 @@ System and support:
 
 ## Kebnekaise
 
-The current supercomputer at HPC2N.
+The current supercomputer at HPC2N. It is a very heterogeneous system. 
 
 - Named after a massif (contains some of Sweden's highest mountain peaks)
+- Kebnekaise was 
+    - delivered by Lenovo and 
+    - installed during the summer 2016
+    - Opened up for general availability on November 7, 2016
+    - In 2018, Kebnekaise was extended with 
+        - 52 Intel Xeon Gold 6132 (Skylake) nodes, as well as 
+        - 10 NVidian V100 (Volta) GPU nodes
+    - In 2023, Kebnekaise was extended with 
+        - 2 dual NVIDIA A100 GPU nodes
+        - one many-core AMD Zen3 CPU node
 
- \pause \item Kebnekaise was 
- \begin{itemize}
-  \item delivered by Lenovo and 
-  \item \emph{installed during the summer 2016}
- \end{itemize}
- \pause \item Opened up for general availability on November 7, 2016
- \pause \item In 2018, Kebnekaise was \emph{extended} with 
- \begin{itemize}
-  \item 52 Intel Xeon Gold 6132 (Skylake) nodes, as well as 
-  \item 10 NVidian V100 (Volta) GPU nodes
- \end{itemize}
- \pause \item In 2023, Kebnekaise was \emph{extended} with 
- \begin{itemize}
- \item 2 dual NVIDIA A100 GPU nodes
- \item one many-core AMD Zen3 CPU node
- \end{itemize}
-\end{itemize}
-}
+Kebnekaise will be continuosly upgraded, as old hardware gets retired. 
 
-\frame{
-\frametitle{Kebnekaise (compute nodes)}
-\begin{tabular}{rcp{6.0cm}}
- Name & \# & Description \\ \hline 
-         \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline
-        \pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
-        \pause \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Being phased out !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
-        \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
-% \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
-\end{tabular}
-}
+- In 2024 Kebnekaise was extended with 
+    - 2 Dual socket GPU-nodes: Lenovo ThinkSystem SR675 V3
+        - 2 x AMD EPYC 9454 48C 290W 2.75GHz Processor
+        - 768GB [24x 32GB TruDDR5 4800MHz RDIMM-A]
+        - 1 x 3.84TB Read Intensive NVMe PCIe 4.0 x4 HS SSD
+        - 1 x NVIDIA H100 SXM5 700W 80G HBM3 GPU Board
+    - 10 dual-socket GPU-nodes: ThinkSystem SR665 V3
+        - 2 x AMD EPYC 9254 24C 200W 2.9GHz Processor
+        - 384GB [24x 16GB TruDDR5 4800MHz RDIMM-A]
+        - 1 x 1.92TB Read Intensive NVMe PCIe 5.0 x4 HS SSD
+        - 2 x NVIDIA L40S 48GB PCIe Gen4 Passive GPU
+    - 8 dual-socket CPU only: ThinkSystem SR645 V3
+        - 2 x AMD EPYC 9754 128C 360W 2.25GHz Processor
+        - 768GB [24x 32GB TruDDR5 4800MHz RDIMM-A]
+        - 1 x 1 3.84TB Read Intensive NVMe PCIe 4.0 x4 HS SSD
 
-%% \frame{
-%% \frametitle{Kebnekaise (compute nodes)}
-%% \begin{tabular}{rcp{6.0cm}}
-%%  Name & \# & Description \\ \hline 
-%%          \makecell[r]{\color{cyan} Compute \\ \small{\color{red} !!! Will ``soon'' be retired !!!}} & \emph{432} & \makecell[l]{Intel Xeon E5-2690v4, \emph{2 x 14 cores}, \\\emph{128 GB}, FDR Infiniband} \\ \hdashline
-%%      \pause \color{cyan} Compute-skylake & \emph{52} & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores, \\\emph{192 GB}, EDR Infiniband, \emph{AVX-512}} \\ \hdashline
-%%  \pause \color{cyan} Compute-AMD Zen3 & 1 & \makecell[l]{AMD Zen3 (EPYC 7762), 2 x 64 cores, \\\emph{1 TB}, EDR Infiniband} \\ \hdashline \pause \color{cyan} Large Memory & 20 & \makecell[l]{Intel Xeon E7-8860v4, \emph{4 x 18 cores}, \\\emph{3072 GB}, EDR Infiniband} \\ \hdashline
-%% % \pause \color{cyan} KNL & 36 & \makecell[l]{Intel \emph{Xeon Phi} 7250 (Knight's Landing), \\ 68 cores, 192 GB, 16 GB MCDRAM, \\FDR Infiniband}
-%% \end{tabular}
-%% }
+### Current hardware in Kebnekaise
 
- \frame{
- \frametitle{Kebnekaise (GPU nodes)}
- \begin{footnotesize}
- \begin{tabular}{rcp{7.0cm}}
- Name & \# & Description \\ \hline
-        \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} \\ \hdashline
-        \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
-  \pause \makecell{\color{cyan} 4xGPU \\ \small{\color{red} !!! Being phased out !!!}} & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
-  \pause \makecell{\color{cyan} 2xGPU \\ \small{\color{red} !!! Being phased out !!!}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ 
- \end{tabular}
- \end{footnotesize}
- }
+Kebnekaise have CPU-only, GPU enabled and large memory nodes.
 
- %% \frame{
-%% \frametitle{Kebnekaise (GPU nodes)}
-%% \begin{footnotesize}
-%% \begin{tabular}{rcp{7.0cm}}
-%% Name & \# & Description \\ \hline
-%%          \makecell[r]{\color{cyan} 2xGPU \\ \small{\color{red} ! Will ``soon'' be retired !}} & 32 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{2 x NVidia K80} \\ 4 x 2496 CUDA cores, 4 x 12 GB VRAM} \\ \hdashline
-%%  \pause \color{cyan} 4xGPU & 4 & \makecell[l]{Intel Xeon E5-2690v4, 2 x 14 cores,\\ 128 GB, FDR Infiniband,\\ \emph{4 x NVidia K80} \\ 8 x 2496 CUDA cores, 8 x 12 GB VRAM} \\ \hdashline
-%%  \pause \color{cyan} GPU-volta & 10 & \makecell[l]{Intel Xeon Gold 6132, 2 x 14 cores,\\ 192 GB, EDR Infiniband, \\\emph{2 x NVidia V100}, \\2 x 5120 CUDA cores, 2 x 16 GB VRAM, \\\emph{2 x 640 Tensor cores}} \\ \hdashline 
-%%      \pause \color{cyan} 2 x A100 & 2 & \makecell[l]{AMD Zen3 (AMD EPYC 7413), 2 x 24 cores, \\ 512 GB, EDR Infiniband, \\\emph{2 x NVidia A100}, \\2 x 6912 CUDA cores, \\ \emph{2 x 432 Tensor cores}} 
-%% \end{tabular}
-%% \end{footnotesize}
-%% }
+The CPU-only nodes are:
 
-%% \frame{
-%% \frametitle{Kebnekaise (in numbers)}
-%% \begin{itemize}
-%% \item 553 nodes in 15 racks
-%%   \pause \item Intel Broadwell and Skylake, AMD Zen3
-%%   \pause \item NVidia A100, V100, K80 GPUs
-%% % \begin{itemize}
-%% %  \item 18840 available for users (the rest are for managing the cluster)
-%% % \end{itemize}
-%%  \pause \item More than \emph{135 TB memory}
-%%  \pause \item 71 switches (Infiniband, Access and Management networks)
-%%   \pause \item 16504 CPU cores
-%% % \pause \item 728 TFlops/s Peak performance (expansion not included)
-%% % \pause \item \emph{629 TFlops/s} Linpack (all parts, except expansion)
-%% \pause \item 501760 CUDA cores
-%% \pause \item 12800 Tensor cores
-%% \end{itemize}
-%% }
+- 2 x 14 core Intel broadwell
+    - 4460 MB memory / core
+    - 48 nodes
+- 2 x 14 core Intel skylake
+    - 6785 MB memory / core
+    - 52 nodes
+- 2 x 64 core AMD zen3
+    - 8020 MB / core
+    - 1 node
+- 2 x 128 core AMD zen4
+    - 2516 MB / core
+    - 8 nodes
 
-\frame{
-\frametitle{Kebnekaise (HPC2N storage)}
-\begin{itemize}
- \item Basically four types of storage are available at HPC2N:
- \begin{itemize}
-  \pause \item {\color{cyan} Home directory}
-  \begin{itemize}
-   \item \texttt{/home/X/Xyz}, \texttt{\$HOME}, \texttt{$\sim$}
+The GPU enabled nodes are:
+
+- 2 x 14 core Intel broadwell
+    - 9000 MB memory / core
+    - 2 x Nvidia A40
+    - 4 nodes
+- 2 x 14 core Intel skylake
+    - 6785 MB memory / core
+    - 2 x Nvidia V100
+    - 10 nodes
+- 2 x 24 core AMD zen3
+    - 10600 MB / core
+    - 2 x Nvidia A100
+    - 2 nodes
+- 2 x 24 core AMD zen3
+    - 10600 MB / core
+    - 2 x AMD MI100
+    - 1 node
+- 2 x 24 core AMD zen4
+    - 6630 MB / core
+    - 2 x Nvidia A6000
+    - 1 node
+- 2 x 24 core AMD zen4
+    - 6630 MB / core
+    - 2 x Nvidia L40s
+    - 10 nodes
+- 2 x 48 core AMD zen4
+    - 6630 MB / core
+    - 4 x Nvidia H100 SXM5
+    - 2 nodes
+
+The large memory nodes are:
+
+- 4 x 18 core Intel broadwell
+    - 41666 MB memory / core
+    - 8 nodes
+
+### Kebnekaise (HPC2N storage)
+  
+Basically four types of storage are available at HPC2N: 
+
+- Home directory
+    - <code>/home/X/Xyz</code>, <code>\$HOME</code>, <code>~</code>
    \item 25 GB, user owned
   \end{itemize}
   \pause \item {\color{cyan} Project storage}
