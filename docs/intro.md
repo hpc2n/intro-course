@@ -270,35 +270,33 @@ Basically four types of storage are available at HPC2N:
     - Backup
     - Long term storage
 
-- Also **SweStore** --- disk based (dCache)
+Also 
+
+- **SweStore** --- disk based (dCache)
     - Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG
 
 ### Kebnekaise - projects
 
-!!! note 
+!!! note "Compute projects"
   
     To use Kebnekaise, you must be a member of a **compute project**.
 
- \begin{itemize}
-  \pause \item A compute project has a certain number of \emph{core hours} allocated for it per month
-  \pause \item A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more
-  \pause \item Not a hard limit but projects that go over the allocation get lower priority
- \end{itemize}
- \pause \item A compute project contains a certain amount of storage
- \begin{itemize}
-  \item If more storage is required, you must be a member of a \emph{storage project}
- \end{itemize}
-\pause \item As Kebnekaise is a local cluster, you need to be affiliated with UmU, IRF, SLU, Miun, or LTU to use it
-\pause \item Projects are applied for through SUPR (https://supr.naiss.se)
-% \pause \item Birgitte will cover more details
- \pause \item I will cover more details in the next section, where we
- go more into detail about HPC2N and Kebnekaise. 
-\end{small}
-\end{itemize}
-}
+    - A compute project has a certain number of **core hours** allocated for it per month
+    - A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more
+    - Not a hard limit but projects that go over the allocation get lower priority
 
-\frame{
-        \frametitle{HPC}
+A compute project contains a certain amount of storage. If more storage is required, you must be a member of a **storage project**. 
+
+!!! note 
+
+    As Kebnekaise is a local cluster, you need to be affiliated with UmU, IRF, SLU, Miun, or LTU to use it. 
+
+Projects are applied for through SUPR (<a href="https://supr.naiss.se" target="_blank">https://supr.naiss.se</a>). 
+
+I will cover more details in a later section, where we go more into detail about HPC2N and Kebnekaise. 
+
+## HPC 
+
 \begin{center}
         \begin{large}
                 What is HPC?
