@@ -329,17 +329,17 @@ I will cover more details in a later section, where we go more into detail about
 - When does a problem become large enough for HPC?
 - Are there other reasons for using HPC resources? (Memory, software, support, etc.) 
 
-\frame{
-\frametitle{High Performance Computing (large problems)}
-\begin{itemize}
- \item A problem can be large for two main reasons:
- \begin{enumerate}
-  \item {\color{cyan} Execution time}: The time required to form a solution to the problem is very long
-  \item {\color{cyan} Memory / storage use}: The solution of the problem requires a lot of memory and/or storage
- \end{enumerate}
- \pause \item The former can be remedied by \emph{increasing the performance}
- \begin{itemize}
-  \item More cores, more nodes, GPUs, \dots
+### High Performance Computing - large problems
+
+A problem can be large for two main reasons:
+
+- **Execution time**: The time required to form a solution to the problem is very long
+- **Memory / storage use**: The solution of the problem requires a lot of memory and/or storage
+
+The former can be remedied by **increasing the performance**
+- More cores, more nodes, GPUs, ...
+
+
  \end{itemize}
  \pause \item The latter by \emph{adding more memory / storage}
  \begin{itemize}
