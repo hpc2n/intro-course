@@ -337,27 +337,19 @@ A problem can be large for two main reasons:
 - **Memory / storage use**: The solution of the problem requires a lot of memory and/or storage
 
 The former can be remedied by **increasing the performance**
+
 - More cores, more nodes, GPUs, ...
 
+The latter by **adding more memory / storage**
 
- \end{itemize}
- \pause \item The latter by \emph{adding more memory / storage}
- \begin{itemize}
-  \item More memory per node (including large memory nodes), more nodes, \dots
-  \item Kebnekaise: 128GB - 192GB, 512GB, 3TB
-  \item Large storage solutions, \dots
- \end{itemize}
-\end{itemize}
-}
+- More memory per node (including large memory nodes), more nodes, ...
+    - Kebnekaise: 128GB - 192GB, 384GB, 512GB, 768GB, 3TB
+- Large storage solutions, ...
 
-\frame{
-\frametitle{High Performance Computing (what counts as HPC)}
-\begin{center}
- \includegraphics[width=0.6\textwidth]{figures/hpc1.pdf}
-\end{center}
-}
+### High Performance Computing - what counts as HPC
 
-\frame{
+![hpc1](images/hpc1.pdf){: style="width: 99%;float: left;"}
+
 \frametitle{High Performance Computing (what counts as HPC)}
 \begin{center}
  \includegraphics[width=0.6\textwidth]{figures/hpc2.pdf}
