@@ -350,6 +350,8 @@ The latter by **adding more memory / storage**
 
 ![hpc](images/hpc.gif){: style="width: 99%;float: left;"}
 
+<br><br style="clear: both;">
+
 ### High Performance Computing - other reasons 
 
 - Specialized (expensive) hardware
@@ -366,7 +368,7 @@ The latter by **adding more memory / storage**
 Two memory models are relevant for HPC:
   
 - Shared memory: Single memory space for all data.
-![sm](images/sm.png){: style="width: 99%;float: left;"}
+![sm](images/sm.png){: style="width: 50%;float: left;"}
     - Everyone can access the same data
     - Straightforward to use 
 - Distributed memory: Multiple **distinct** memory spaces.
