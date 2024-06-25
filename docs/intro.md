@@ -365,19 +365,12 @@ The latter by **adding more memory / storage**
 
 Two memory models are relevant for HPC:
   
-- Shared memory}: Single memory space for all data.
-   \begin{minipage}{0.3\textwidth}
-   \vspace{1mm}
-   \includegraphics[scale=0.45]{figures/sm.pdf}
-   \vspace{1mm}
-  \end{minipage}\,
-  \begin{minipage}{0.4\textwidth}
-   \begin{itemize}
-    \item \emph{Everyone can access the same data}
-    \item Straightforward to use
-   \end{itemize}
-  \end{minipage}
-  \pause \item {\color{cyan} Distributed memory}: Multiple \emph{distinct} memory spaces.
+- Shared memory: Single memory space for all data.
+![sm](images/sm.png){: style="width: 99%;float: left;"}
+    - Everyone can access the same data
+    - Straightforward to use 
+- Distributed memory: Multiple **distinct** memory spaces.
+
   \begin{minipage}{0.3\textwidth}
    \vspace{1mm}
    \includegraphics[scale=0.45]{figures/dm.pdf}
