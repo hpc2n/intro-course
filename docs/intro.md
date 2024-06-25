@@ -370,23 +370,10 @@ Two memory models are relevant for HPC:
     - Everyone can access the same data
     - Straightforward to use 
 - Distributed memory: Multiple **distinct** memory spaces.
+![dm](images/dm.png){: style="width: 99%; float: left;"}
+    - Everyone has direct access **only to the local data** 
+    - Requires **communication**
 
-  \begin{minipage}{0.3\textwidth}
-   \vspace{1mm}
-   \includegraphics[scale=0.45]{figures/dm.pdf}
-   \vspace{1mm}
-  \end{minipage}\,
-  \begin{minipage}{0.4\textwidth}
-   \begin{itemize}
-    \item Everyone has direct access \emph{only to the local data}
-    \item Requires \emph{communication}
-   \end{itemize}
-  \end{minipage}
- \end{itemize}
-\end{itemize}
-}
-
-\frame{
 \frametitle{High Performance Computing (memory models)}
 \begin{center}
  \includegraphics[width=0.6\textwidth]{figures/memory.pdf}
