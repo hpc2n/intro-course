@@ -1,214 +1,38 @@
-\frame{\frametitle{Overview}
+# Logging in 
 
-  \begin{block}{}
-\begin{itemize}
-\item Projects - compute and storage 
-\item Using our systems
-\item The File System 
-\item The Module System
- \begin{itemize}
-  \item Overview 
-  \item Compiler Tool Chains
-  \item Examples
- \end{itemize}
-\item Compiling/linking with libraries 
-\item The Batch System (SLURM)
- \begin{itemize}
-\item Overview 
-\item Examples
- \end{itemize}
-\end{itemize}
-  \end{block}
+When you have your account, you can login to Kebnekaise. This can be done with any number of SSH clients or with ThinLinc (the easiest option if you need a graphical interface). 
 
-}
+!!! Objectives 
 
+    - Login to Kebnekaise, either with ThinLinc or your SSH client of choice. 
 
-\frame{\frametitle{Projects - compute and storage}
-  \begin{small}
-    Join a project or apply for one. 
-  \end{small}
-  \begin{block}{}
-      \begin{itemize}
-    \begin{footnotesize}
-      \item Kebnekaise is only open for local project requests.
-        \begin{itemize}
-          \begin{footnotesize}
-          \item The PI must be affiliated with UmU, LTU, IRF, MiUN, or SLU.
-          \item You can still add members (join) from anywhere.
-          \end{footnotesize}
-        \end{itemize}
-      \item Apply for \textbf{compute project} in SUPR \texttt{https://supr.naiss.se/round/compute}
-        \begin{itemize}
-          \begin{footnotesize}
-          \item Login to SUPR (create SUPR account if you do not have one).
-          \item Click “Rounds” in the left menu. Pick “Compute Rounds”. Pick “Centre Local Compute”.
-          \item Pick “HPC2N Local Compute YYYY”. Choose “Create New Proposal for HPC2N Local Compute YYYY”.
-          \item Create from scratch or use earlier proposal as starting point.
-          \item Agree to the default storage if 500GB is enough. 
-          \item More information: \\
-            \begin{scriptsize}
-              \texttt{https://supr.naiss.se/round/open\_type/?type=Centre+Local+Compute}
-            \end{scriptsize}
-          \end{footnotesize}
-        \end{itemize}
-      \item If the above mentioned default storage is not enough, you will need to apply for a \textbf{Local storage project}: \\
-        \begin{scriptsize}
-          \texttt{https://supr.naiss.se/round/open\_type/?type=Centre+Local+Storage}
-        \end{scriptsize}
-    \end{footnotesize}
-      \end{itemize}
-  \end{block}
-}
+## Kebnekaise login servers 
 
-\frame{\frametitle{Projects - compute and storage}
+!!! note
 
-  \begin{block}{}
-    \begin{itemize}
-    \item As default, you have 25GB in your home directory.
-    \item If you need more, you/your PI can accept the ``default storage''
-      you will be offered after applying for compute resources.
-    \item The default storage is 500GB.
-    \item If you need more than that, you/your PI will have to apply for a
-      storage project.
-    \item When you have both, link them together. It is done from the \textbf{storage} project. 
-    \end{itemize}
-  \end{block}
+    - The main login node of Kebnekaise: <code>kebnekaise.hpc2n.umu.se</code>
+    - ThinLinc login node: <code>kebnekaise-tl.hpc2n.umu.se</code>
+        - ThinLinc through a browser (less features): <code>https://kebnekaise-tl.hpc2n.umu.se:300/</code>
 
-}
+In addition, there is a login node for the AMD-based nodes. We will talk more about this later: <code>kebnekaise-amd.hpc2n.umu.se</code>. For ThinLinc access: <code>kebnekaise-amd-tl.hpc2n.umu.se</code>
 
-% \frame{\frametitle{Projects - compute and storage}
+!!! NOTE "ThinLinc is recommended for this course"
 
-%     After indicating the amount of compute resources you want, you
-%     will be asked if you want the default amount of storage:
-%   \begin{block}{}
-% \includegraphics[height=7cm]{figures/default-storage.png}
-%   \end{block}
+    ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially useful when you need software with a graphical interface.
 
-% }
+    This is what we recommend you use for this course, unless you have a preferred SSH client. 
 
-% \frame{\frametitle{Projects - compute and storage}
+### Using ThinLinc 
 
-%     You will also be asked what the default storage directory should
-%     be called: 
-%   \begin{block}{}
-% \includegraphics[height=7cm]{figures/default-dir.png}
-%   \end{block}
-
-% }
-
-\frame{\frametitle{Projects - compute and storage}
-
-  \begin{block}{}
-    \begin{itemize}
-    \item After applying on SUPR, the project(s) will be reviewed.
-    \item When (if) the projects are approved, the PI needs to link
-      the compute and storage projects together if they applied for
-      both.
-    \item Linking them together is done from the \textbf{storage} project. 
-    \item This way all members of the compute project also becomes
-      members of the storage project.
-    \end{itemize}
-  \end{block}
-
-}
-
-\frame{\frametitle{Projects - compute and storage}
-
-    Linking a compute project to a storage project:
-  \begin{block}{}
-\includegraphics[height=7cm]{figures/to-link.png}
-  \end{block}
-
-}
-
-\frame{\frametitle{Projects - compute and storage}
-
-  Pick a compute project to link:
-  \begin{block}{}
-\includegraphics[height=7cm]{figures/choose2.png}
-  \end{block}
-
-}
-
-\frame{\frametitle{Projects - compute and storage}
-
-  Showing linked projects:
-  \begin{block}{}
-\includegraphics[height=7cm]{figures/linked.png}
-  \end{block}
-
-}
-
-\frame{\frametitle{Projects - compute and storage}
-
-  Members of the storage project after linking:
-  \begin{block}{}
-\includegraphics[height=6.5cm]{figures/storage-members.png}
-  \end{block}
-
-}
-
-% \frame{\frametitle{Projects - after 2022-12-31?}
-
-%   \begin{block}{}
-%     \begin{itemize}
-%     \item Nothing known for sure yet, but hopefully it will be clearer in a few weeks.
-%     \item Non-UmU PI: You can continue working at Kebnekaise until 2022-12-31, but you should be prepared for the situation where you will have to migrate to another centre. 
-%     \item Hopefully Kebnekaise will at least exist as a local resource after the new year, until it can be replaced with a newer suitable resource.
-%     \item Local (UmU) PIs who have a need of using Kebnekaise (or another HPC2N resource) are encouraged to voice this to the people at UmU with the power to influence this.
-%     \end{itemize}
-%   \end{block}
-
-% }
-
-\frame{\frametitle{Using our systems - example process}
-
-  \begin{block}{}
-    \begin{enumerate}
-%    \item Get an account \tiny{(https://www.hpc2n.umu.se/documentation/access-and-accounts/users)} \normalsize{}
-    \item Connect to Kebnekaise:
-      \begin{itemize}
-      \item \textbf{ThinLinc: \texttt{kebnekaise-tl.hpc2n.umu.se}}
-        \item ThinLinc through a browser (less features): \\
-          \vspace{1mm}
-          \texttt{https://kebnekaise-tl.hpc2n.umu.se:300/}
-          \vspace{1mm}
-        \item SSH: \texttt{kebnekaise.hpc2n.umu.se}
-          \item \textbf{A100 or AMD Zen3}: \texttt{kebnekaise-amd-tl.hpc2n.umu.se} or \texttt{kebnekaise-amd.hpc2n.umu.se}
-        \end{itemize}
-      \item Transfer your files and data (if needed)
-      \item Load modules (if needed)
-      \item Compile own code, install software, or run pre-installed software 
-      \item Create batch script, submit batch job
-      \item Download data/results to local/other machine (optionally)
-      \end{enumerate}
-    \end{block}
-    
-  }
-
-\frame{\frametitle{Using our systems}\framesubtitle{Connecting to HPC2N's systems - ThinLinc}
-
-  \begin{small}
-  \begin{block}{}
-ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially useful when you need software with a graphical interface.
-  \end{block}{}
-      \end{small}
-
-  \begin{block}{}
-    \begin{small}
-      \begin{itemize}
-	      \item We \textbf{recommend} ThinLinc if you don't have a preferred SSH client.
-      \item Download the client from \texttt{https://www.cendio.com/thinlinc/download}. Install it.
-      \item Start the client. Enter the name of the server: \textbf{kebnekaise-tl.hpc2n.umu.se}. Enter your username. 
-      \item Go to "Options" $->$ "Security". Check that authentication method is set to password.
-      \item Go to "Options" $->$ "Screen". Uncheck "Full screen mode".
-      \item Enter your HPC2N password. Click "Connect"
-      \item Click "Continue" when you are being told that the server's host key is not in the registry. Wait for the ThinLinc desktop to open.
-      \end{itemize}
-      \end{small}
-  \end{block}
-
-}
+- Download the client from <a href="https://www.cendio.com/thinlinc/download" target="_blank">https://www.cendio.com/thinlinc/download</a>. Install it.
+- Start the client. Enter the name of the server: <code>kebnekaise-tl.hpc2n.umu.se</code>. Enter your username. 
+<br style="clear: both;">
+![thinlinc](images/thinlinc.png){: styles="width: 30%;"}
+<br style="clear: both;">
+- Go to "Options" $->$ "Security". Check that authentication method is set to password.
+- Go to "Options" $->$ "Screen". Uncheck "Full screen mode".
+- Enter your HPC2N password. Click "Connect"
+- Click "Continue" when you are being told that the server's host key is not in the registry. Wait for the ThinLinc desktop to open.
 
 \frame{\frametitle{Using our systems}\framesubtitle{Transfer your files and data}
 
