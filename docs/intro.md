@@ -369,6 +369,7 @@ Two memory models are relevant for HPC:
   
 - Shared memory: Single memory space for all data.
 ![sm](images/sm.png){: style="width: 50%;float: left;"}
+<br><br style="clear: both;">
     - Everyone can access the same data
     - Straightforward to use 
 - Distributed memory: Multiple **distinct** memory spaces.
