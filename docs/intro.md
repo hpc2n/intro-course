@@ -348,7 +348,7 @@ The latter by **adding more memory / storage**
 
 ### High Performance Computing - what counts as HPC
 
-![hpc1](images/hpc1.pdf){: style="width: 99%;float: left;"}
+![hpc](images/hpc.gif){: style="width: 99%;float: left;"}
 
 \frametitle{High Performance Computing (what counts as HPC)}
 \begin{center}
