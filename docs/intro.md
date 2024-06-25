@@ -383,38 +383,24 @@ Two memory models are relevant for HPC:
 
 ### High Performance Computing - programming models 
 
+The programming model changes when we aim for extra performance and/or memory:
 
-\begin{itemize}
- \item The programming model changes when we aim for extra performance and/or memory:
- \begin{enumerate}
-  \pause \item {\color{cyan} Single-core}: Matlab, Python, C, Fortran, \dots
-  \begin{itemize}
-   \item Single stream of operations
-  \end{itemize}
-  \pause \item {\color{cyan} Multi-core}: Vectorized Matlab, pthreads, \emph{OpenMP}
-  \begin{itemize}
-   \item \emph{Multiple streams} of operations
-   \pause \item \emph{Work distribution}, \emph{coordination} (synchronization, etc), \dots
-  \end{itemize}
-  \pause \item {\color{cyan} Distributed memory}: \emph{MPI}, \dots
-  \begin{itemize}
-   \item Multiple streams of operations
-   \item Work distribution, coordination (synchronization, etc), \dots
-   \pause \item \emph{Data distribution and communication}
-  \end{itemize}
- \end{enumerate}
- \pause \item {\color{cyan} GPUs}: \emph{CUDA}, OpenCL, OpenACC, OpenMP, \dots
- \begin{itemize}
-  \pause \item \emph{Many lightweight} streams of operations
-  \pause \item Work distribution, coordination (synchronization, etc), \dots
-  \pause \item \emph{Data distribution across memory spaces and movement}
- \end{itemize}
-\end{itemize}
-}
+- Single-core: Matlab, Python, C, Fortran, ...
+    - Single stream of operations
+- Multi-core: Vectorized Matlab, pthreads, OpenMP 
+    - Multiple streams of operations
+    - Work distribution, coordination (synchronization, etc), ... 
+- Distributed memory: MPI, ... 
+    - Multiple streams of operations
+    - Work distribution, coordination (synchronization, etc), ... 
+    - Data distribution and communication 
+- GPUs: CUDA, OpenCL, OpenACC, OpenMP, ... 
+    - Many lightweight streams of operations
+    - Work distribution, coordination (synchronization, etc), ... 
+    - Data distribution across memory spaces and movement
 
-\frame{
-\frametitle{High Performance Computing (software)}
-\begin{itemize}
+### High Performance Computing - software 
+
  \item Complexity grows when we aim for extra performance and/or memory/storage:
  \begin{enumerate}
   \pause \item {\color{cyan} Single-core}: LAPACK, \dots
