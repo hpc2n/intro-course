@@ -373,18 +373,17 @@ Two memory models are relevant for HPC:
     - Everyone can access the same data
     - Straightforward to use 
 - Distributed memory: Multiple **distinct** memory spaces.
-![dm](images/dm.png){: style="width: 99%; float: left;"}
+![dm](images/dm.png){: style="width: 50%; float: left;"}
+<br><br style="clear: both;">
     - Everyone has direct access **only to the local data** 
     - Requires **communication**
 
-\frametitle{High Performance Computing (memory models)}
-\begin{center}
- \includegraphics[width=0.6\textwidth]{figures/memory.pdf}
-\end{center}
-}
+![memory](images/memory.png){: style="width:80%;"}
+<br><br style="clear: both;">
 
-\frame{
-\frametitle{High Performance Computing (programming models)}
+### High Performance Computing - programming models 
+
+
 \begin{itemize}
  \item The programming model changes when we aim for extra performance and/or memory:
  \begin{enumerate}
