@@ -350,43 +350,22 @@ The latter by **adding more memory / storage**
 
 ![hpc](images/hpc.gif){: style="width: 99%;float: left;"}
 
-\frametitle{High Performance Computing (what counts as HPC)}
-\begin{center}
- \includegraphics[width=0.6\textwidth]{figures/hpc2.pdf}
-\end{center}
-}
+### High Performance Computing - other reasons 
 
-\frame{
-\frametitle{High Performance Computing (what counts as HPC)}
-\begin{center}
- \includegraphics[width=0.6\textwidth]{figures/hpc3.pdf}
-\end{center}
-}
+- Specialized (expensive) hardware
+    - GPUs, including those optimized for AI 
+        - Kebnekaise has V100, A100, A40, MI100, A6000, L40S, H100 
+    - High-end CPUs (AVX-512 etc) and ECC memory
+- Software
+    - HPC2N holds **licenses** for several softwares
+    - Software is **pre-configured and ready-to-use** 
+- Support and documentation
 
-\frame{
-\frametitle{High Performance Computing (other reasons)}
-\begin{itemize}
- \item Specialized (expensive) hardware
- \begin{itemize}
-  \pause \item GPUs, \emph{Nvidia Tesla V100/A100 GPUs} are optimized for AI
-%  \pause \item Intel Xeon Phi
-  \pause \item High-end CPUs (AVX-512 etc) and ECC memory
- \end{itemize}
- \pause \item Software
- \begin{itemize}
-  \item HPC2N holds \emph{licenses} for several softwares
-  \item Software is \emph{pre-configured and ready-to-use}
- \end{itemize}
- \pause \item \emph{Support and documentation}
-\end{itemize}
-}
+### High Performance Computing - memory models
 
-\frame{
-\frametitle{High Performance Computing (memory models)}
-\begin{itemize}
- \item Two memory models are relevant for HPC:
- \begin{itemize}
-  \pause \item {\color{cyan} Shared memory}: Single memory space for all data.
+Two memory models are relevant for HPC:
+  
+- Shared memory}: Single memory space for all data.
    \begin{minipage}{0.3\textwidth}
    \vspace{1mm}
    \includegraphics[scale=0.45]{figures/sm.pdf}
