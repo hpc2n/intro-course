@@ -33,6 +33,7 @@ extra_css:
 nav:
   - Home: index.md
   - Introduction to Kebnekaise and HPC2N: intro.md
+  - Projects and Accounts: projectsaccounts.md
   - Logging in: login.md
   - The File System: filesystem.md
   - The Module System: modules.md
