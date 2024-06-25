@@ -206,15 +206,19 @@ The CPU-only nodes are:
 - 2 x 14 core Intel broadwell
     - 4460 MB memory / core
     - 48 nodes
+    - Total of 41.6 TFlops/s 
 - 2 x 14 core Intel skylake
     - 6785 MB memory / core
     - 52 nodes
+    - Total of 87 TFlops/s 
 - 2 x 64 core AMD zen3
     - 8020 MB / core
     - 1 node
+    - Total of 11 TFlops/s  
 - 2 x 128 core AMD zen4
     - 2516 MB / core
     - 8 nodes
+    - Total of 216 TFlops/s 
 
 The GPU enabled nodes are:
 
@@ -222,10 +226,12 @@ The GPU enabled nodes are:
     - 9000 MB memory / core
     - 2 x Nvidia A40
     - 4 nodes
+    - Total of 83 TFlops/s
 - 2 x 14 core Intel skylake
     - 6785 MB memory / core
     - 2 x Nvidia V100
     - 10 nodes
+    - Total of 75 TFlops/s
 - 2 x 24 core AMD zen3
     - 10600 MB / core
     - 2 x Nvidia A100
@@ -252,6 +258,7 @@ The large memory nodes are:
 - 4 x 18 core Intel broadwell
     - 41666 MB memory / core
     - 8 nodes
+    - Total of 13.6 TFlops/s for all these nodes 
 
 ### Kebnekaise - HPC2N storage
   
@@ -307,24 +314,20 @@ I will cover more details in a later section, where we go more into detail about
 
 ### High Performance Computing - opening the definition
 
-Aggregating computing power
+#### Aggregating computing power
 
 - 147 nodes totalling 6808 cores and ??? CUDA cores 
     - Compared to 4 cores in a modern laptop
 
-Higher performance
+#### Higher performance
 
-- More than 728\,000\,\underline{000}\,\underline{000}\,\underline{000} arithmetical operations per second\footnote{728 trillion (billion)}
-  \item Compared to 200\,\underline{000}\,\underline{000}\,\underline{000} Flops in a modern laptop\footnote{200 billion (milliard)\\}
- \end{itemize}
- \pause \item \emph{Solve large problems}
- \begin{itemize}
-  \item When does a problem become large enough for HPC?
-  \item Are there other reasons for using HPC resources? (Memory,
-    software, support, etc.) 
- \end{itemize}
-\end{itemize}
-}
+- More than 527,000,000,000,000 arithmetical operations per second (527 trillion (billion)
+    - Compared to 200,000,000,000 Flops in a modern laptop (200 billion (milliard)
+ 
+#### Solve large problems
+
+- When does a problem become large enough for HPC?
+- Are there other reasons for using HPC resources? (Memory, software, support, etc.) 
 
 \frame{
 \frametitle{High Performance Computing (large problems)}
