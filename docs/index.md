@@ -27,7 +27,7 @@
     - You will learn about
        - HPC2N, HPC, and Kebnekaise hardware
        - How to use our systems: 
-           - Logging in
+           - Logging in & editors
            - The File System
            - The Module System
            - Compiler Tool Chains
@@ -37,7 +37,7 @@
 
     - This course will consist of lectures and type-alongs, as well as a few exercises where you get to try out what you have just learned.    
 
-## Instructors
+**Instructors**
 
 - Birgitte Brydsö, HPC2N
 - Pedro Ojeda May, HPC2N
@@ -49,7 +49,7 @@
 | ---- | ----- | -------- |
 | 11:15 | Welcome+Syllabus | |
 | 11:25 | Introduction to Kebnekaise and HPC2N | Lecture | 
-| 11:45 | Logging in | Lecture+code along | 
+| 11:45 | Logging in & editors | Lecture+exercise | 
 | 11:55 | The File System | Lecture+code along |
 | 12:15 | LUNCH BREAK | |  
 | 13:15 | The Module System | Lecture+code along | 
