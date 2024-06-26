@@ -34,46 +34,83 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
 - Enter your HPC2N password. Click "Connect"
 - Click "Continue" when you are being told that the server's host key is not in the registry. Wait for the ThinLinc desktop to open.
 
-\frame{\frametitle{Using our systems}\framesubtitle{Transfer your files and data}
+!!! Exercise "Exercise" 
 
-  \begin{block}{}
-    \begin{itemize}
-    \item \textbf{Linux, OS X:} 
-    \begin{itemize}
-       \item Use scp for file transfer:\\
-\vspace{2mm}
-\begin{footnotesize}
-\texttt{local> scp username@kebnekaise.hpc2n.umu.se:file .}\\
-\texttt{local> scp file username@kebnekaise.hpc2n.umu.se:file}
-\end{footnotesize}
-    \end{itemize}
-    \item \textbf{Windows:} 
-    \begin{itemize}
-       \item Download client: WinSCP, FileZilla (sftp), PSCP/PSFTP, ...
-       \item Transfer with sftp or scp
-    \end{itemize}
-       \item \scriptsize{https://www.hpc2n.umu.se/documentation/filesystems/filetransfer} \normalsize{}
-    \item \textbf{Mac/OSX:}
-    \begin{itemize}
-       \item Transfer with sftp or scp (as for Linux) using Terminal
-       \item Or download client: Cyberduck, Fetch, ...
-    \end{itemize}
-       \item More info in guides (see previous slide) and here: \scriptsize{https://www.hpc2n.umu.se/documentation/filesystems/filetransfer} \normalsize{}
-    \end{itemize}
-  \end{block}
+    Login to Kebnekaise. 
 
-}
+    - If you are using ThinLinc, first install the ThinLinc client. If you are using another SSH client, install it first if you have not already done so.
 
+## File transfers 
 
- \frame{\frametitle{Using our systems}\framesubtitle{Editors}
+We are not going to transfer any files as part of this course, but you may have to do so as part of your workflow when using Kebnekaise (or another HPC centre) for your research. 
 
-  \begin{block}{}
-    \justify
-    Editing your files
-  \end{block}
+### Linux, OS X
 
-  \begin{block}{}
-\begin{itemize}
+#### scp
+
+SCP (Secure CoPy) is a simple way of transferring files between two machines that use the SSH (Secure SHell) protocol. You may use SCP to connect to any system where you have SSH (log-in) access. 
+
+These examples show how to use scp from the command-line. Graphical programs exists for doing scp transfer. 
+
+The command-lone scp program should already be installed. 
+
+!!! note "Remote to local"
+
+    Transfer a file from Kebnekaise to your local system, while on your local system
+
+    ```bash
+    scp username@kebnekaise.hpc2n.umu.se:file .
+    ```
+
+!!! note "Local to remote"
+
+    Transfer a local file to Kebnekaise, while on your local system 
+
+    ```bash
+    scp file username@kebnekaise.hpc2n.umu.se:file
+    ```
+
+!!! note "Recursive directory copy from a local system to a remote system"
+
+    The directory <code>sourcedirectory</code> is here copied as a subdirectory to <code>somedir</code>
+
+    ```bash
+    scp -r sourcedirectory/ username@kebnekaise.hpc2n.umu.se:somedir/
+    ```
+
+#### sftp 
+
+     SFTP (SSH File Transfer Protocol or sometimes called Secure File Transfer Protocol) is a network protocol that provides file transfer over a reliable data stream.
+
+     SFTP is a command -line program on most Unix, Linux, and Mac OS X systems. It is also available as a protocol choice in some graphical file transfer programs. 
+
+!!! Example "Example: From a local system to a remote system"
+
+    ```bash
+    enterprise-d [~]$ sftp user@kebnekaise.hpc2n.umu.se
+    Connecting to kebnekaise.hpc2n.umu.se...
+    user@kebnekaise.hpc2n.umu.se's password:
+    sftp> put file.c C/file.c
+    Uploading file.c to /home/u/user/C/file.c
+    file.c                          100%    1    0.0KB/s   00:00
+    sftp> put -P irf.png pic/
+    Uploading irf.png to /home/u/user/pic/irf.png
+    irf.png                         100% 2100    2.1KB/s   00:00
+    sftp>
+    ```
+
+### Windows
+
+Here you need to download a client: WinSCP, FileZilla (sftp), PSCP/PSFTP, ...
+
+You can transfer with sftp or scp. 
+
+There is documentation in HPC2N's documentation pages for <a href="https://docs.hpc2n.umu.se/tutorials/connections/#file__transfers">Windows file transfers</a>. 
+
+## Editors
+
+Since the editors on a Linux system are different to those you may be familiar with from Windows or macOS, here follows a short overview. 
+
 \item Various editors: vi, vim, nano, emacs ...
 \item Example, nano:
  \begin{itemize}
