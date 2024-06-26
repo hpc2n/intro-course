@@ -1,49 +1,94 @@
 # The Module System (Lmod)
 
-    \begin{block}{}
-      \justify
-      Most programs are accessed by first loading them as a 'module'
-    \end{block}
+!!! note "Objectives"
 
-      \begin{block}{}
-Modules are
-       \begin{itemize}
-        \item used to set up your environment (paths to executables, libraries, etc.) for using a particular (set of) software package(s) \\
-        \item a tool to help users manage their Unix/Linux shell environment, allowing groups of related environment-variable settings to be made or removed dynamically \\ 
-        \item allows having multiple versions of a program or package available by just loading the proper module \\ 
-        \item are installed in a hierarchial layout. This means that some modules are only available after loading a specific compiler and/or MPI version. \\ 
-       \end{itemize}
-      \end{block}
-  }
+    - Learn the basics of the module system which is used to access most of the software on Kebnekaise
+    - Try some of the most used commands for the module system: 
+        - find/list software modules
+        - load/unload software modules
 
- \frame{\frametitle{The Module System (Lmod)}
+Most programs are accessed by first loading them as a 'module'. 
 
-   \begin{block}{}
-     \justify
-     Useful commands (Lmod)
-   \end{block}
+Modules are: 
 
-     \begin{block}{}
-      \begin{itemize}
-\begin{footnotesize}
-       \item See which modules exists: \\ 
-\texttt{module spider} or \texttt{ml spider}
-       \item Modules depending only on what is currently loaded: \\ 
-\texttt{module avail} or \texttt{ml av}
-       \item See which modules are currently loaded: \\ 
- \texttt{module list} or \texttt{ml} 
-       \item Example: loading a compiler toolchain, here for GCC: \\ 
-\texttt{module load foss/version} or \texttt{ml foss/version} 
-       \item Example: Unload the above module:\\ 
-\texttt{module unload foss} or \texttt{ml -foss}
-       \item More information about a module: \\ 
-\texttt{ml show $<$module$>$} or \texttt{module show $<$module$>$}
-       \item Unload all modules except the 'sticky' modules: \\ 
-\texttt{ml purge}
-\end{footnotesize}
-      \end{itemize}
-     \end{block}
- }
+- used to set up your environment (paths to executables, libraries, etc.) for using a particular (set of) software package(s) 
+- a tool to help users manage their Unix/Linux shell environment, allowing groups of related environment-variable settings to be made or removed dynamically 
+- allows having multiple versions of a program or package available by just loading the proper module 
+- are installed in a hierarchial layout. This means that some modules are only available after loading a specific compiler and/or MPI version. 
+
+## Useful commands (Lmod)
+
+- See which modules exists: 
+    - <code>module spider</code> or <code>ml spider</code>
+- See which versions exist of a specific module:
+    - <code>module spider MODULE</code> or <code>ml spider MODULE</code>
+- See prerequisites and how to load a specfic version of a module: 
+    - <code>module spider MODULE/VERSION</code> or <code>ml spider MODULE/VERSION</code>
+- List modules depending only on what is currently loaded: 
+    - <code>module avail</code> or <code>ml av</code>
+- See which modules are currently loaded: 
+    - <code>module list</code> or <code>ml</code>
+- Loading a module: 
+    - <code>module load MODULE</code> or <code>ml MODULE</code> 
+- Loading a specific version of a module: 
+    - <code>module load MODULE/VERSION</code> or <code>ml MODULE/VERSION</code>
+- Unload a module:
+    - <code>module unload MODULE</code> or <code>ml -MODULE</code>
+- Get more information about a module: 
+    - <code>ml show MODULE</code> or <code>module show MODULE</code>
+- Unload all modules except the 'sticky' modules:
+    - <code>module purge</code> or <code>ml purge</code>
+
+!!! Example "Example: checking which versions exist of the module 'Python'"
+
+    ```bash
+    b-an01 [~]$ ml spider Python
+
+    ---------------------------------------------------------------------------------------------------------
+      Python:
+    ---------------------------------------------------------------------------------------------------------
+        Description:
+          Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+
+         Versions:
+            Python/2.7.15
+            Python/2.7.16
+            Python/2.7.18-bare
+            Python/2.7.18
+            Python/3.7.2
+            Python/3.7.4
+            Python/3.8.2
+            Python/3.8.6
+            Python/3.9.5-bare
+            Python/3.9.5
+            Python/3.9.6-bare
+            Python/3.9.6
+            Python/3.10.4-bare
+            Python/3.10.4
+            Python/3.10.8-bare
+            Python/3.10.8
+            Python/3.11.3
+            Python/3.11.5
+         Other possible modules matches:
+            Biopython  Boost.Python  Brotli-python  GitPython  IPython  Python-bundle-PyPI  flatbuffers-python  ...
+
+    ---------------------------------------------------------------------------------------------------------
+      To find other possible module matches execute:
+
+          $ module -r spider '.*Python.*'
+
+    ---------------------------------------------------------------------------------------------------------
+      For detailed information about a specific "Python" package (including how to load the modules) use the module's full name.
+      Note that names that have a trailing (E) are extensions provided by other modules.
+      For example:
+
+         $ module spider Python/3.11.5
+    ---------------------------------------------------------------------------------------------------------
+
+ 
+
+    b-an01 [~]$ 
+    ```
 
  \frame{\frametitle{The Module System}\framesubtitle{Compiler Toolchains}
 

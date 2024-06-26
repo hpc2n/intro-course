@@ -1,6 +1,11 @@
 # The File System
 
-**Overview**: 
+!!! note "Objectives" 
+
+    - Learn about the file system on Kebnekaise
+    - Find the project storage for this course and create your own subdirectory 
+
+## Overview
 
 |   | **Project storage** | **$HOME** | **/scratch** | 
 | - | ------------------- | --------- | ------------ | 
