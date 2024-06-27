@@ -37,7 +37,7 @@ nav:
   - Logging in: login.md
   - The File System: filesystem.md
   - The Module System: modules.md
-  - Compiler Tool Chains: compilers.md
+  - Compiling: compilers.md
   - The Batch System: batch.md
   - Simple examples: simple.md
   - Application examples: software.md

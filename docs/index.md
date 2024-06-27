@@ -30,7 +30,7 @@
            - Logging in & editors
            - The File System
            - The Module System
-           - Compiler Tool Chains
+           - Compiling and linking
            - The Batch System
        - Simple examples (batch system)
        - Application examples (batch system)
