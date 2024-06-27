@@ -1,8 +1,20 @@
 # Compiling and Linking with Libraries
 
+!!! note "Objectives"
 
+    - Learn about the compilers at HPC2N
+        - How to load the compiler toolchains
+        - How to use the compilers
+        - What are the popular flags
+    - How to link with libraries. 
 
-  \begin{block}{}
+## Installed compilers
+
+There are compilers available for Fortran 77, Fortran 90, Fortran 95, C, and C++. The compilers can produce both general-purpose code and architecture-specific optimized code to improve performance (loop-level optimizations, inter-procedural analysis and cache optimizations).
+
+## Loading compilers 
+
+\begin{block}{}
     \justify
 \begin{small}
 Figuring out how to link

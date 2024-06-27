@@ -281,3 +281,7 @@ Some currently available toolchains (check <code>ml av</code> for versions and f
         - List the modules you have currently loaded: <code>module list</code>
     - Compiler toolchains are modules containing compiler suites and various libraries 
 
+
+!!! info "More information"
+
+    - There is more information about the module system and how to work with it in <a href="https://docs.hpc2n.umu.se/documentation/modules/" target="_blank">HPC2N's documentation for the modules system</a>. 
