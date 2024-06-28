@@ -14,9 +14,85 @@ There are compilers available for Fortran 77, Fortran 90, Fortran 95, C, and C++
 
 ## Loading compilers 
 
-Use <code>ml av</code> to get a list of available <code>compiler toolchains</code> as mentioned in the [modules](../modules) section. 
+!!! note 
 
-\begin{block}{}
+    You need to load a compiler suite (and possibly libraries, depending on what you need) before you can compile and link. 
+
+Use <code>ml av</code> to get a list of available <code>compiler toolchains</code> as mentioned in the [modules - compiler toolchains](../modules#compiler__toolchains) section. 
+
+You load a compiler toolchain the same way you load any other module. They are always available directly, without the need to load prerequisites first. 
+
+!!! Example "Example: Loading foss/2023b"
+
+    This compiler toolchain contains: <code>GCC/13.2.0</code>, <code>BLAS</code> (with <code>LAPACK</code>, <code>ScaLAPACK</code>, and <code>FFTW</code>. 
+
+    ```bash
+    b-an01 [~]$ ml foss/2023b
+    b-an01 [~]$ ml
+
+    Currently Loaded Modules:
+      1) snicenvironment (S)   7) numactl/2.0.16     13) libevent/2.1.12  19) FlexiBLAS/3.3.1
+      2) systemdefault   (S)   8) XZ/5.4.4           14) UCX/1.15.0       20) FFTW/3.3.10
+      3) GCCcore/13.2.0        9) libxml2/2.11.5     15) PMIx/4.2.6       21) FFTW.MPI/3.3.10
+      4) zlib/1.2.13          10) libpciaccess/0.17  16) UCC/1.2.0        22) ScaLAPACK/2.2.0-fb
+      5) binutils/2.40        11) hwloc/2.9.2        17) OpenMPI/4.1.6    23) foss/2023b
+      6) GCC/13.2.0           12) OpenSSL/1.1        18) OpenBLAS/0.3.24
+
+      Where:
+       S:  Module is Sticky, requires --force to unload or purge
+
+ 
+
+    b-an01 [~]$ 
+    ```
+
+## Compiling
+
+### Compiling with GCC
+
+| **Language** | **Compiler name** | **MPI** | 
+| ------------ | ----------------- | ------- | 
+| Fortran77 | gfortran | mpif77 |
+| Fortran90 | gfortran | mpif90 |
+| Fortran95 | gfortran | N/A |
+| C | gcc | mpicc | 
+| C++ | g++ | mpiCC |
+
+!!! Example "Example: compiling hello.c"
+
+    You can find the file <code>hello.c</code> in the exercises directory, in the subdirectory "simple". Or you can download it here: <a href="
+
+
+Compiling with Intel
+Language 	Compiler name 	MPI
+Fortran77 	ifort 	mpiifort
+Fortran90 	ifort 	mpiifort
+Fortran95 	ifort 	N/A
+C 	icc 	mpiicc
+C++ 	icpc 	mpiicc
+
+
+
+
+### Build environment
+
+    Using a compiler toolchain by itself is possible but requires a fair bit of manual work, figuring out which paths to add to -I or -L ifor including files and libraries, and similar.
+
+To make life as a software builder easier there is a special module available, buildenv, that can be loaded on top of any toolchain. If it is missing for some toolchain, send a mail to support@hpc2n.umu.se and let us know.
+
+This module defines a large number of environment variables with the relevant settings for the used toolchain. Among other things it sets CC, CXX, F90, FC, MPICC, MPICXX, MPIF90, CFLAGS, FFLAGS, and much more.
+
+To see all of them, after loading a toolchain do:
+
+ml show buildenv
+
+Depending on the software one can use these environment variables to set related makefile variables or cmake defines, or just use them for guidelines on what to use in makefiles etc.
+
+Exactly how to use them depends on the softwares build system.
+
+
+
+ 
     \justify
 \begin{small}
 Figuring out how to link

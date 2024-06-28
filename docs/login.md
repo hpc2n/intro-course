@@ -40,6 +40,33 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
 
     - If you are using ThinLinc, first install the ThinLinc client. If you are using another SSH client, install it first if you have not already done so.
 
+## Change password
+
+You get your first, temporary HPC2N password from this page: <a href="https://www.hpc2n.umu.se/forms/user/suprauth?action=pwreset" target="_blank">HPC2N passwords</a>. 
+
+That page can also be used to reset your HPC2N password if you have forgotten it.
+
+Note that you are authenticating through SUPR, using *that* service’s login credentials!
+
+!!! Warning 
+
+    The HPC2N password and the SUPR password are separate! The HPC2N password and your university/department password are also separate! 
+
+!!! Exercise "Exercise: Change your password after first login" 
+
+    **ONLY do this if you have logged in for the first time/is still using the termporary password you got from the HPC2N password reset service!** 
+
+    Changing password is done using the passwd command:
+
+    ```bash
+    passwd
+    ```
+
+    Use a good password that combines letters of different case. Do not use dictionary words. Avoid using the same password that you also use in other places.
+
+    It will first ask for your current password. Type in that and press enter. Then type in the new password, enter, and repeat. You have changed the password.
+
+
 ## File transfers 
 
 We are not going to transfer any files as part of this course, but you may have to do so as part of your workflow when using Kebnekaise (or another HPC centre) for your research. 
