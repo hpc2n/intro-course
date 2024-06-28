@@ -22,6 +22,10 @@ Use <code>ml av</code> to get a list of available <code>compiler toolchains</cod
 
 You load a compiler toolchain the same way you load any other module. They are always available directly, without the need to load prerequisites first. 
 
+!!! Hint
+
+    Code-along!
+
 !!! Example "Example: Loading foss/2023b"
 
     This compiler toolchain contains: <code>GCC/13.2.0</code>, <code>BLAS</code> (with <code>LAPACK</code>, <code>ScaLAPACK</code>, and <code>FFTW</code>. 
@@ -48,6 +52,16 @@ You load a compiler toolchain the same way you load any other module. They are a
 
 ## Compiling
 
+!!! note 
+
+    **OpenMP**: All compilers has this included, so it is enough to load the module for a specific compiler toolchain and then add the appropriate flag.
+
+!!! note
+
+    If you do not name the executable (with the flag <code>-o SOMENAME</code>, it will be named <code>a.out</code> as default. 
+
+    This also means that the next time you compile something, if you also do not name that executable, it will overwrite the previous <code>a.out</code> file. 
+
 ### Compiling with GCC
 
 | **Language** | **Compiler name** | **MPI** | 
@@ -58,540 +72,184 @@ You load a compiler toolchain the same way you load any other module. They are a
 | C | gcc | mpicc | 
 | C++ | g++ | mpiCC |
 
-!!! Example "Example: compiling hello.c"
+In order to access the MPI compilers, load [a compiler toolchain which contains an MPI library](../modules#compiler__toolchains).  
 
-    You can find the file <code>hello.c</code> in the exercises directory, in the subdirectory "simple". Or you can download it here: <a href="
+!!! Hint
 
+    Code-along!
 
-Compiling with Intel
-Language 	Compiler name 	MPI
-Fortran77 	ifort 	mpiifort
-Fortran90 	ifort 	mpiifort
-Fortran95 	ifort 	N/A
-C 	icc 	mpiicc
-C++ 	icpc 	mpiicc
+!!! Example "Example: compiling a C program"
 
+    You can find the file <code>hello.c</code> in the exercises directory, in the subdirectory "simple". Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/hello.c" target="_blank">hello.c</a>. 
 
+    In this example we compile the C program <code>hello.c</code> and name the output (the executable) <code>hello</code>. 
 
+    ```bash
+    b-an01 [~]$ gcc hello.c -o hello 
+    ```
+
+!!! Example "Example: compiling an MPI C program"
+
+    You can find the file <code>mpi_hello.c</code> in the exercises directory, in the subdirectory "simple". Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/mpi_hello.c" target="_blank">mpi_hello.c</a>. 
+
+    In this example we compile the MPI C program <code>mpi_hello.c</code> and name the output (the executable) <code>mpi_hello</code>. 
+
+    ```bash
+    b-an01 [~]$ mpicc mpi_hello.c -i mpi_hello 
+    ```
+
+#### Flags
+
+!!! note
+
+    List of commonly used flags:
+
+    - **-o file** Place output in file ‘file’.
+    - **-c** Compile or assemble the source files, but do not link.
+    - **-fopenmp** Enable handling of the OpenMP directives.
+    - **-g** Produce debugging information in the operating systems native format.
+    - **-O** or **-O1** Optimize. The compiler tried to reduce code size and execution time.
+    - **-O2** Optimize even more. GCC performs nearly all supported optimizations that do not involve a space-speed tradeoff.
+    - **-O3** Optimize even more. The compiler will also do loop unrolling and function inlining. RECOMMENDED
+    - **-O0** Do not optimize. This is the default.
+    - **-Os** Optimize for size.
+    - **-Ofast** Disregard strict standards compliance. -Ofast enables all -O3 optimizations. It also enables optimizations that are not valid for all standard-compliant programs. It turns on -ffast-math and the Fortran-specific -fno-protect-parens and -fstack-arrays.
+    - **-ffast-math** Sets the options **-fno-math-errno**, **-funsafe-math-optimizations**, **-ffinite-math-only**, **-fno-rounding-math**, **-fno-signaling-nans** and **-fcx-limited-range**.
+    - **-l library** Search the library named ‘library’ when linking.
+
+!!! Hint
+
+    Code-along!
+
+!!! Example "Example: compiling an OpenMP C program"
+
+    You can find the file <code>omp_hello.c</code> in the exercises directory, in the subdirectory "simple". Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/omp_hello.c" target="_blank">omp_hello.c</a>. 
+
+    In this example we compile the OpenMP C program <code>omp_hello.c</code> and name the output (executable) <code>omp_hello</code>. 
+
+    ```bash 
+    b-an01 [~]$ gcc -fopenmp omp_hello.c -o omp_hello
+    ```
+
+!!! note
+
+    You can change the number of threads with <code>export OMP_NUM_THREADS=#threads</code>
+
+!!! Hint
+
+    Code-along!
+
+!!! Example 
+
+    Run the binary <code>omp_hello</code> that we got in the previous example. Set the number of threads to 4 and then rerun the binary. 
+
+    ```bash
+    b-an01 [~]$ ./omp_hello 
+    Thread 0 says: Hello World
+    Thread 0 reports: the number of threads are 1
+    b-an01 [~]$ export OMP_NUM_THREADS=4
+    b-an01 [~]$ ./omp_hello 
+    Thread 1 says: Hello World
+    Thread 0 says: Hello World
+    Thread 0 reports: the number of threads are 4
+    Thread 3 says: Hello World
+    Thread 2 says: Hello World
+    b-an01 [~]$ 
+    ```
+
+### Compiling with Intel 
+
+| **Language** | **Compiler name** | **MPI** | 
+| ------------ | ----------------- | ------- | 
+| Fortran77 | ifort | mpiifort | 
+| Fortran90 | ifort | mpiifort | 
+| Fortran95 | ifort | N/A | 
+| C | icc | mpiicc |
+| C++ | icpc | mpiicc | 
+
+In order to access the MPI compilers, load [a compiler toolchain which contains an MPI library](../modules#compiler__toolchains).                                
+
+!!! Example "Example: compiling a C program"
+
+    We are again compiling the <code>hello.c</code> program from before. This time we name the executable <code>hello_intel</code> to not overwrite the previously created executable. 
+
+    ```bash
+    b-an01 [~]$ icc hello.c -o hello 
+    ```
+
+#### Flags 
+
+!!! note
+
+    List of commonly used flags:
+
+    - **-fast** This option maximizes speed across the entire program.
+    - **-g** Produce symbolic debug information in an object file. The **-g** option changes the default optimization from **-O2** to **-O0**. It is often a good idea to add **-traceback** also, so the compiler generates extra information in the object file to provide source file traceback information.
+    - **-debug all** Enables generation of enhanced debugging information. You need to also specify **-g**
+    - **-O0** Disable optimizations. Use if you want to be certain of getting correct code. Otherwise use **-O2** for speed.
+    - **-O** Same as **-O2**
+    - **-O1** Optimize to favor code size and code locality. Disables loop unrolling. **-O1** may improve performance for applications with very large code size, many branches, and execution time not dominated by code within loops. In most cases, **-O2** is recommended over **-O1**.
+    - **-O2** (default) Optimize for code speed. This is the generally recommended optimization level.
+    - **-O3** Enable **-O2** optimizations and in addition, enable more aggressive optimizations such as loop and memory access transformation, and prefetching. The **-O3** option optimizes for maximum speed, but may not improve performance for some programs and may in some cases even slow down code. 
+    - **-Os** Enable speed optimizations, but disable some optimizations that increase code size for small speed benefit.
+    - **-fpe{0,1,3}** Allows some control over floating-point exception (divide by zero, overflow, invalid operation, underflow, denormalized number, positive infinity, negative infinity or a NaN) handling for the main program at runtime. Fortran only. 
+    - **-qopenmp** Enable the parallelizer to generate multi-threaded code based on the OpenMP directives. 
+    - **-parallel** Enable the auto-parallelizer to generate multi-threaded code for loops that can be safely executed in parallel. 
+
+## Linking
 
 ### Build environment
 
-    Using a compiler toolchain by itself is possible but requires a fair bit of manual work, figuring out which paths to add to -I or -L ifor including files and libraries, and similar.
+Using a compiler toolchain by itself is possible but requires a fair bit of manual work, figuring out which paths to add to **-I** or **-L** for including files and libraries, and similar.
 
-To make life as a software builder easier there is a special module available, buildenv, that can be loaded on top of any toolchain. If it is missing for some toolchain, send a mail to support@hpc2n.umu.se and let us know.
+To make life as a software builder easier there is a special module available, <code>buildenv</code>, that can be loaded on top of any toolchain. If it is missing for some toolchain, send a mail to support@hpc2n.umu.se and let us know.
 
 This module defines a large number of environment variables with the relevant settings for the used toolchain. Among other things it sets CC, CXX, F90, FC, MPICC, MPICXX, MPIF90, CFLAGS, FFLAGS, and much more.
 
-To see all of them, after loading a toolchain do:
+To see all of them, **after loading a toolchain** do:
 
+```bash
 ml show buildenv
+```
 
-Depending on the software one can use these environment variables to set related makefile variables or cmake defines, or just use them for guidelines on what to use in makefiles etc.
+To use the environment variables, load buildenv:
 
-Exactly how to use them depends on the softwares build system.
+```bash
+ml buildenv
+```
 
+Using the environment variable (prefaced with $) for linking is highly recommended!
 
+!!! Example
 
- 
-    \justify
-\begin{small}
-Figuring out how to link
-\end{small}
-  \end{block}
+    Linking with LAPACK (gcc, C program). 
 
-  \begin{block}{}
-   \begin{itemize}
-    \item Intel and Intel MKL linking: \\ 
-\begin{tiny}
-\texttt{https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor}
-\end{tiny}
-    \item GCC, etc. \textbf{Use buildenv}
-    \begin{itemize}
-     \item After loading a compiler toolchain, load \texttt{'buildenv'} and use \texttt{'ml show buildenv'} to get useful linking info 
-     \item Example, foss (add relevant version): \\ 
-\vspace{2mm}
-      \texttt{ml foss/version} \\
-      \texttt{ml buildenv} \\ 
-      \texttt{ml show buildenv}
-\vspace{2mm}
-\item Using the environment variable (prefaced with \$) for linking is highly recommended!
-  \item You have to load the buildenv module in order to use the environment variable for linking!
-    \end{itemize}
-    \end{itemize}
-  \end{block}
-}
+    ```bash
+    gcc -o PROGRAM PROGRAM.c -lflexiblas -lgfortran
+    ```
 
+    OR use the environment variable <code>$LIBLAPACK</code>: 
 
-\frame{\frametitle{The Batch System (SLURM)}
+    ```bash
+    gcc -o PROGRAM PROGRAM.c $LIBLAPACK
+    ```
 
-  \begin{block}{}
-   \begin{itemize}
-    \item Large/long/parallel jobs \textbf{must} be run through the batch system 
-    \item SLURM is an Open Source job scheduler, which provides three key functions
-   \begin{itemize}
-    \item Keeps track of available system resources
-    \item Enforces local system resource usage and job scheduling policies
-    \item Manages a job queue, distributing work across resources according to policies
-   \end{itemize}
- \item In order to run a batch job, you need to create and submit a
-SLURM submit file (also called a batch submit file, a batch
-script, or a job script).
-\item Guides and documentation at: http://www.hpc2n.umu.se/support
-  \end{itemize}
-  \end{block}
-}
+!!! note
 
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, Compute nodes, Kebnekaise}
+    You can see a list of all the libraries on Kebnekaise (June 2024) here: <a href="https://docs.hpc2n.umu.se/documentation/compiling/#libraries" target="_blank">https://docs.hpc2n.umu.se/documentation/compiling/#libraries</a>. 
 
-  \begin{block}{}
-    \begin{small}
-      Here the Skylake nodes are used as an example. The only difference for the Broadwell nodes is that it would say 128G instead of 192G per node.
-    \end{small}
-  \end{block}
-  
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=9cm]{figures/Allocation-Kebnekaise-thin_skylake.png}
-\end{center}
-  \end{block}
-}
+!!! Keypoints
 
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, largemem nodes, Kebnekaise}
-
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=10cm]{figures/Allocation-Kebnekaise-largemem_v3.png}
-\end{center}
-  \end{block}
-}
-
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, K80 GPU nodes, Kebnekaise.}
-
-    \begin{block}{}
-    \begin{footnotesize}
-      The K80 GPU cards have 2 onboard compute engines (GK210 chips). Most GPU nodes have 2 K80s, placed together as 14 cores + 1 K80/socket. 4 GPU nodes have 4 K80 GPU cards. 
-    \end{footnotesize}
-  \end{block}
- 
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=5.8cm]{figures/K80-GPUs.png}
-\end{center}
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, V100 GPU nodes, Kebnekaise.}
-
-    \begin{block}{}
-    \begin{scriptsize}
-      Each V100 GPU accelerator card has 1 onboard compute engine (GV100 chip). They are placed together as 14 cores + 1 V100 on a socket (28 cores, 2 V100s per node).  
-    \end{scriptsize}
-  \end{block}
- 
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=6.8cm]{figures/V100-allocation-new.png}
-\end{center}
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, A100 GPU nodes, Kebnekaise.}
-
-    \begin{block}{}
-    \begin{scriptsize}
-      Each A100 GPU accelerator card has 1 onboard compute engine. The AMD Zen3 nodes have 2 CPUs sockets with 24 cores each, for a total of 48 cores, and 2 NVidia A100 GPUs. They are placed together as 24 cores + 1 A100 on a socket. 
-    \end{scriptsize}
-  \end{block}
- 
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=6.8cm]{figures/A100-allocation.png}
-\end{center}
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Useful Commands} 
-
-  \begin{block}{}
-    \begin{itemize}
-      \begin{footnotesize}
-      \item Submit job: \texttt{sbatch $<$jobscript$>$} 
-      \item Get list of your jobs: \texttt{squeue -u $<$username$>$} 
-      \item \texttt{srun $<$commands for your job/program$>$} 
-      \item Check on a specific job: \texttt{scontrol show job $<$job id$>$} 
-      \item Delete a specific job: \texttt{scancel $<$job id$>$}
-      \item Delete all your own jobs: \texttt{scancel -u $<$user$>$}
-      \item More detailed info about jobs: \\
-      \end{footnotesize}
-      \begin{scriptsize}      
-        \texttt{sacct -l -j $<$jobid$>$ -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize...}
-      \end{scriptsize}
-      \begin{itemize}
-      \begin{footnotesize}
-      \item More flags can be found with \texttt{man sacct}
-      \item The output will be \textbf{very} wide. To view, use \\
-        \texttt{sacct -l -j ....... | less -S} \\
-        (makes it sideways scrollable, using the left/right arrow key)
-        \end{footnotesize}
-      \end{itemize}
-      \begin{footnotesize}
-      \item Web url with graphical info about a job: \texttt{job-usage $<$job-id$>$}
-      \end{footnotesize}
-    \end{itemize}
-    Use \texttt{man sbatch, man srun, man ....} for more information
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Job Output} 
-
-  \begin{block}{}
-   \begin{itemize}
-    \item  Output and errors in: \\ 
-\texttt{slurm-$<$job id$>$.out}
-    \item Look at it with vi, nano, emacs, cat, less...
-    \item To get output and error files split up, you can give these flags in the submit script: \\ 
-\texttt{\#SBATCH --error=job.\%J.err} \\ 
-\texttt{\#SBATCH --output=job.\%J.out} 
-   \end{itemize}
-  \end{block}
-}
-
- \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Using different parts of Kebnekaise} 
-
-   \begin{block}{}
-     \begin{scriptsize}
-       \begin{itemize}
-     \item Use the 'fat' nodes by adding this flag to your script: \\ 
- \texttt{\#SBATCH -p largemem} (separate resource) \\
-     \item  Specifying Intel Broadwell, Intel Skylake, or AMD Zen3 CPUs: \\ 
- \texttt{\#SBATCH --constraint=broadwell} \\
- or \\
- \texttt{\#SBATCH --constraint=skylake} \\
- or \\
- \texttt{\#SBATCH --constraint=zen3} \\
-     \item Using the GPU nodes (separate resource): \\ 
-       \texttt{\#SBATCH --gres=gpu:$<$type-of-card$>$:x} where $<$type-of-card$>$ is either k80, v100, or a100 and x = 1, 2, or 4 (4 only for K80). \\
-       \begin{itemize}
-     \begin{scriptsize}
-       \item In the case of the A100 GPU nodes, you also need to add a partition \\
-         \texttt{\#SBATCH -p amd\_gpu}
-     \end{scriptsize}
-         \end{itemize}
-       \item Use the AMD login node for correct modules and compilers for AMD Zen3 and A100 nodes: \\ \texttt{kebnekaise-amd-tl.hpc2n.umu.se} or \\\texttt{kebnekaise-amd.hpc2n.umu.se}
-    \end{itemize}
- More on https://www.hpc2n.umu.se/documentation/guides/using\_kebnekaise
-     \end{scriptsize}
-   \end{block}
- }
-
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, serial} 
-
-  \begin{block}{}
-    \justify
-\begin{footnotesize}
-Example: Serial job on Kebnekaise, compiler toolchain 'foss' 
-\end{footnotesize}
-  \end{block}
-
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\# Project id - change to your own after the course!} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\# Asking for 1 core} \\
-\texttt{\#SBATCH -n 1} \\
-\texttt{\# Asking for a walltime of 5 min} \\ 
-\texttt{\#SBATCH --time=00:05:00} \\ 
-\vspace{3mm} 
-\texttt{\# Purge modules before loading new ones in a script. } \\
-\texttt{ml purge > /dev/null 2>\&1} \\ 
-\texttt{ml foss/2021b} \\ 
-\vspace{3mm}
-\texttt{./my\_serial\_program}
-\end{footnotesize}
-  \end{block}
-
-  \begin{block}{}
-    \justify
-\begin{footnotesize}
-Submit with: \\
-\texttt{sbatch $<$jobscript$>$} 
-\end{footnotesize}
-  \end{block}
-
-}
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Example, MPI C program} 
-
-  \begin{block}{}
-    \begin{footnotesize}
-      \texttt{\#include $<$stdio.h$>$} \\
-\texttt{\#include $<$mpi.h$>$} \\
-\vspace{3mm} 
-\texttt{int main (int argc, char *argv[]) {} \\ 
-\vspace{3mm}
-\texttt{int myrank, size;} \\ 
-\vspace{3mm}
-\texttt{MPI\_Init(\&argc, \&argv);} \\ 
-\texttt{MPI\_Comm\_rank(MPI\_COMM\_WORLD, \&myrank);} \\ 
-\texttt{MPI\_Comm\_size(MPI\_COMM\_WORLD, \&size);} \\ 
-\vspace{3mm}
-\texttt{printf("Processor \%d of \%d: Hello World!\textbackslash n", myrank, size);} \\ 
-\vspace{3mm}
-\texttt{MPI\_Finalize();}
-\vspace{3mm}
-\texttt{}}
-    \end{footnotesize}
-  \end{block}
-
-} 
-
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, parallel} 
-
-  \begin{block}{}
-    \justify
-  \begin{footnotesize}
-  Example: MPI job on Kebnekaise, compiler toolchain 'foss' 
-  \end{footnotesize}
-\end{block}
-
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\#SBATCH -n 14} \\
-\texttt{\#SBATCH --time=00:05:00} \\ 
-\texttt{\#\#SBATCH --exclusive} \\ 
-\texttt{\#SBATCH --reservation=intro-gpu} \\ 
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\ 
-\texttt{ml foss/2021b} \\ 
-\vspace{3mm}
-\texttt{srun ./my\_parallel\_program}
-\end{footnotesize}
-  \end{block}
-
-}
-
-
-\begin{frame}[fragile]\frametitle{The Batch System (SLURM)}\framesubtitle{Simple example, output} 
-
-  \begin{block}{}
-    \justify
-Example: Output from a MPI job on Kebnekaise, run on 14 cores (one NUMA island)
-  \end{block}
-
-  \begin{block}{}
-\begin{tiny}
-\begin{verbatim}
-b-an01 [~/slurm]$ cat slurm-15952.out 
-
-Processor 12 of 14: Hello World!
-Processor 5 of 14: Hello World!
-Processor 9 of 14: Hello World!
-Processor 4 of 14: Hello World!
-Processor 11 of 14: Hello World!
-Processor 13 of 14: Hello World!
-Processor 0 of 14: Hello World!
-Processor 1 of 14: Hello World!
-Processor 2 of 14: Hello World!
-Processor 3 of 14: Hello World!
-Processor 6 of 14: Hello World!
-Processor 7 of 14: Hello World!
-Processor 8 of 14: Hello World!
-Processor 10 of 14: Hello World!
-\end{verbatim}
-\end{tiny}
-  \end{block}
-
-\end{frame}
-
-
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Starting more than one serial job in the same submit file} 
-
-  \begin{block}{}
-\begin{small}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\#SBATCH -n 5} \\
-\texttt{\#SBATCH --time=00:15:00} \\ 
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\ 
-\texttt{ml foss/2021b} \\ 
-\vspace{3mm}
-\texttt{srun -n 1 ./job1.batch \&} \\ 
-\texttt{srun -n 1 ./job2.batch \&} \\ 
-\texttt{srun -n 1 ./job3.batch \&} \\ 
-\texttt{srun -n 1 ./job4.batch \&} \\ 
-\texttt{srun -n 1 ./job5.batch } \\
-\texttt{wait} \\
-\end{small}
-  \end{block}
-
-} 
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Multiple Parallel Jobs Sequentially} 
-
-  \begin{block}{}
-\begin{scriptsize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\#SBATCH -c 28} \\
-\texttt{\# Remember to ask for enough time for all jobs to complete} \\ 
-\texttt{\#SBATCH --time=02:00:00} \\ 
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\ 
-\texttt{ml foss/2021b} \\ 
-\vspace{3mm}
-\texttt{\# Here 14 tasks with 2 cores per task. Output to file.} \\
-\texttt{\# Not needed if your job creates output in a file} \\ 
-\texttt{\# I also copy the output somewhere else and then run} \\
-\texttt{\# another executable...} \\
-\vspace{3mm}
-\texttt{srun -n 14 -c 2 ./a.out > myoutput1 2>\&1} \\ 
-\texttt{cp myoutput1 /pfs/nobackup/home/u/username/mydatadir} \\ 
-\texttt{srun -n 14 -c 2 ./b.out > myoutput2 2>\&1} \\ 
-\texttt{cp myoutput2 /pfs/nobackup/home/u/username/mydatadir} \\ 
-\texttt{srun -n 14 -c 2 ./c.out > myoutput3 2>\&1} \\
-\texttt{cp myoutput3 /pfs/nobackup/home/u/username/mydatadir} \\
-\end{scriptsize}
-  \end{block}
-
-} 
-
-
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Multiple Parallel Jobs Simultaneously} 
-
-\begin{footnotesize}
-Make sure you ask for enough cores that all jobs can run at the same time, and have enough memory. Of course, this will also work for serial jobs - just remove the srun from the command line.
-\end{footnotesize} 
-
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\# Total number of cores the jobs need} \\
-\texttt{\#SBATCH -n 56} \\
-\texttt{\# Remember to ask for enough time for all of the jobs to} \\
-\texttt{\# complete, even the longest} \\ 
-\texttt{\#SBATCH --time=02:00:00} \\ 
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\ 
-\texttt{ml foss/2021b} \\ 
-\vspace{3mm}
-\texttt{srun -n 14 --cpu\_bind=cores ./a.out \&} \\ 
-\texttt{srun -n 28 --cpu\_bind=cores ./b.out \&} \\ 
-\texttt{srun -n 14 --cpu\_bind=cores ./c.out \&} \\ 
-\texttt{...} \\ 
-\texttt{wait} \\
-\end{footnotesize}
-  \end{block}
-
-} 
-
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job - V100} 
-
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\# Expected time for job to complete}  \\ 
-\texttt{\#SBATCH --time=00:10:00} \\
-\texttt{\# Number of GPU cards needed. Here asking for 2 V100 cards} \\
-\texttt{\#SBATCH --gres=v100:2} \\
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\
-\texttt{\# Change to modules needed for your program} \\ 
-\texttt{ml fosscuda/2021b} \\ 
-\vspace{3mm}
-\texttt{./my-cuda-program} \\
-\end{footnotesize}
-  \end{block}
-
-}
-
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job - A100} 
-
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\# Expected time for job to complete}  \\ 
-\texttt{\#SBATCH --time=00:10:00} \\
-\texttt{\# Adding the partition for the A100 GPUs} \\
-\texttt{\#SBATCH -p amd\_gpu} \\ 
-\texttt{\# Number of GPU cards needed. Here asking for 2 A100 cards} \\ 
-\texttt{\#SBATCH --gres=a100:2} \\
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\
-\texttt{\# Change to modules needed for your software - remember to login} \\
-\texttt{\# to kebnekaise-amd.hpc2n.umu.se or} \\
-\texttt{\# kebnekaise-amd-tl.hpc2n.umu.se login node to see availability} \\
-\texttt{ml CUDA/11.7.0} \\ 
-\vspace{3mm}
-\texttt{./my-cuda-program} \\
-\end{footnotesize}
-  \end{block}
-
-}
-
-
-\frame{\frametitle{Important information}
-
-  \begin{block}{}
-    \begin{itemize}
-      \begin{small}
-      \item The course project has the following project ID: hpc2n2023-132
-      \item In order to use it in a batch job, add this to the batch script:
-        \begin{itemize}
-          \begin{small}
-          \item \#SBATCH -A hpc2n2023-132
-          \end{small}
-        \end{itemize}
-      \item There is a reservation with one A100 GPU node reserved for the course, in order to let us run small GPU examples without having to wait for too long. The reservation also is for one Broadwell CPU node. 
-      \item The reservation is ONLY valid during the course:
-        \begin{itemize}
-          \begin{small}
-          \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
-          \end{small}
-      \item To use the reservation with the A100 GPU node, also add \texttt{\#SBATCH -p amd\_gpu} and \texttt{\#SBATCH --gres=a100:x (for x=1,2)}. 
-        \end{itemize}
-      \item We have a storage project linked to the compute project. It is hpc2n2023-132. You find it in /proj/nobackup/hpc2n2023-132. Remember to create your own directory under it.
-      \end{small}
-    \end{itemize}
-  \end{block}
-
-}
-
-\frame{\frametitle{Questions and support}
-
-  \begin{block}{}
-    \textbf{Questions?} Now: Ask me or one of the other support or application experts present. 
-
-    \vspace{0.5cm}
-    OR 
-    \vspace{0.5cm}
-
-    \begin{itemize}
-    \item Documentation: \texttt{https://www.hpc2n.umu.se/support}
-    \item Support questions to: \texttt{https://supr.naiss.se/support/} or \texttt{support@hpc2n.umu.se}
-    \end{itemize}
-  \end{block}
-
-}
-
-\end{document}
-
-
-
-
-
+    - In order to compile a program, you must first load a "compiler toolchain" module 
+    - Kebnekaise has both GCC and Intel compilers installed 
+    - The GCC compilers are: 
+        - gfortran
+        - gcc
+        - g++
+    - The Intel compilers are: 
+        - ifort
+        - icc
+        - icpc
+    - Compiling MPI programs can be done after loading a compiler toolchains which contains MPI libraries 
+    - The easiest way to figure out how to link with a library is to use <code>ml show buildenv</code> after loading a compiler toolchain 
 
