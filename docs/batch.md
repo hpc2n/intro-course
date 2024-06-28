@@ -1,38 +1,4 @@
-# Compiling and Linking with Libraries
-
-
-
-  \begin{block}{}
-    \justify
-\begin{small}
-Figuring out how to link
-\end{small}
-  \end{block}
-
-  \begin{block}{}
-   \begin{itemize}
-    \item Intel and Intel MKL linking: \\ 
-\begin{tiny}
-\texttt{https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor}
-\end{tiny}
-    \item GCC, etc. \textbf{Use buildenv}
-    \begin{itemize}
-     \item After loading a compiler toolchain, load \texttt{'buildenv'} and use \texttt{'ml show buildenv'} to get useful linking info 
-     \item Example, foss (add relevant version): \\ 
-\vspace{2mm}
-      \texttt{ml foss/version} \\
-      \texttt{ml buildenv} \\ 
-      \texttt{ml show buildenv}
-\vspace{2mm}
-\item Using the environment variable (prefaced with \$) for linking is highly recommended!
-  \item You have to load the buildenv module in order to use the environment variable for linking!
-    \end{itemize}
-    \end{itemize}
-  \end{block}
-}
-
-
-\frame{\frametitle{The Batch System (SLURM)}
+# The Batch System (SLURM)  
 
   \begin{block}{}
    \begin{itemize}
