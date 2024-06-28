@@ -14,6 +14,8 @@ There are compilers available for Fortran 77, Fortran 90, Fortran 95, C, and C++
 
 ## Loading compilers 
 
+Use <code>ml av</code> to get a list of available <code>compiler toolchains</code> as mentioned in the [modules](../modules) section. 
+
 \begin{block}{}
     \justify
 \begin{small}
