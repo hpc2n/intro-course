@@ -27,36 +27,42 @@ Using a job script is often recommended.
 - If you ask for the resources on the command line, you will wait for the program to run before you can use the window again (unless you can send it to the background with &).
 - If you use a job script you have an easy record of the commands you used, to reuse or edit for later use.
 
-In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job id for your job, assigned by Slurm. USERNAME is your username. 
+!!! NOTE
+
+    When you submit a job, the system will return the Job ID. You can also get it with ``squeue -me``. See below. 
+
+In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job ID for your job, assigned by Slurm. USERNAME is your username. 
 
 - **Submit job**: ``sbatch JOBSCRIPT`` 
-- **Get list of your jobs**: ``squeue -u USERNAME`` 
+- **Get list of your jobs**: ``squeue -u USERNAME`` or ``squeue -me``
 - **Give the Slurm commands on the command line**: ``srun commands-for-your-job/program`` 
 - **Check on a specific job**: ``scontrol show job JOBID`` 
 - **Delete a specific job**: ``scancel JOBID``
 - **Delete all your own jobs**: ``scancel -u USERNAME``
+- **Request an interactive allocation**: ``salloc -A PROJECT-ID .......`` 
+    - Note that you will still be on the login node when the prompt returns and you MUST preface with ``srun`` to run on the allocated resources.
+    - I.e. ``srun MYPROGRAM``
 - **Get more detailed info about jobs**: <br>``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize``
     - More flags etc. can be found with ``man sacct``
-    - The output will be **very** wide. To view in a friendlier format, use ``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize | less -S`` 
+    - The output will be **very** wide. To view in a friendlier format, use <br>``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize | less -S`` 
         - this makes it sideways scrollable, using the left/right arrow key
 - Web url with graphical info about a job: ``job-usage JOBID``
+- More information: ``man sbatch``, ``man srun``, ``man ....``
 
-    \end{itemize}
-    Use \texttt{man sbatch, man srun, man ....} for more information
-  \end{block}
-}
+!!! NOTE
 
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Job Output} 
+    The output file from the job run will default be named ``slurm-JOBID.out``. It will contain both output as well as any errors. You can look at the content with ``vi``, ``nano``, ``emacs``, ``cat``, ``less``...
 
-  \begin{block}{}
-   \begin{itemize}
-    \item  Output and errors in: \\ 
-\texttt{slurm-$<$job id$>$.out}
-    \item Look at it with vi, nano, emacs, cat, less...
-    \item To get output and error files split up, you can give these flags in the submit script: \\ 
-\texttt{\#SBATCH --error=job.\%J.err} \\ 
-\texttt{\#SBATCH --output=job.\%J.out} 
-   \end{itemize}
+    The exception is if your program creates its own output files, or if you name the output file(s) differently within your jobscript. 
+
+    You can use Slurm commands within your job script to split the error and output in separate files, and name them as you want. It is highly recommended to include the environment variable ``%J`` (the job ID) in the name, as that is an easy way to get a new name for each time you run the script and thus avoiding the previous output being overwritten. 
+
+    Example, using the environment variable ``%J``: 
+
+    - Error file: ``#SBATCH --error=job.%J.err`` 
+    - Output file: ``#SBATCH --output=job.%J.out``
+
+
   \end{block}
 }
 
