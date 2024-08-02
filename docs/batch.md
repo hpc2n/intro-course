@@ -14,12 +14,12 @@
 
 ## Basic commands
 
-In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job id for your job, assigned by Slurm. 
+In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job id for your job, assigned by Slurm. USERNAME is your username. 
 
 - **Submit job**: ``sbatch JOBSCRIPT`` 
-- Get list of your jobs: \texttt{squeue -u $<$username$>$} 
-      \item \texttt{srun $<$commands for your job/program$>$} 
-      \item Check on a specific job: \texttt{scontrol show job $<$job id$>$} 
+- **Get list of your jobs**: ``squeue -u USERNAME`` 
+- **Give the Slurm commands on the command line**: ``srun commands-for-your-job/program`` 
+- **Check on a specific job**: ``scontrol show job JOBID`` 
       \item Delete a specific job: \texttt{scancel $<$job id$>$}
       \item Delete all your own jobs: \texttt{scancel -u $<$user$>$}
       \item More detailed info about jobs: \\
