@@ -35,7 +35,7 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
 - **Check on a specific job**: ``scontrol show job JOBID`` 
 - **Delete a specific job**: ``scancel JOBID``
 - **Delete all your own jobs**: ``scancel -u USERNAME``
-- **Get more detailed info about jobs**: ``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize``
+- **Get more detailed info about jobs**: <br>``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize``
     - More flags etc. can be found with ``man sacct``
     - The output will be **very** wide. To view in a friendlier format, use ``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize | less -S`` 
         - this makes it sideways scrollable, using the left/right arrow key
