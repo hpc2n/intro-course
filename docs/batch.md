@@ -34,23 +34,13 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
 - **Give the Slurm commands on the command line**: ``srun commands-for-your-job/program`` 
 - **Check on a specific job**: ``scontrol show job JOBID`` 
 - **Delete a specific job**: ``scancel JOBID``
-      \item Delete all your own jobs: \texttt{scancel -u $<$user$>$}
-      \item More detailed info about jobs: \\
-      \end{footnotesize}
-      \begin{scriptsize}      
-        \texttt{sacct -l -j $<$jobid$>$ -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize...}
-      \end{scriptsize}
-      \begin{itemize}
-      \begin{footnotesize}
-      \item More flags can be found with \texttt{man sacct}
-      \item The output will be \textbf{very} wide. To view, use \\
-        \texttt{sacct -l -j ....... | less -S} \\
-        (makes it sideways scrollable, using the left/right arrow key)
-        \end{footnotesize}
-      \end{itemize}
-      \begin{footnotesize}
-      \item Web url with graphical info about a job: \texttt{job-usage $<$job-id$>$}
-      \end{footnotesize}
+- **Delete all your own jobs**: ``scancel -u USERNAME``
+- **Get more detailed info about jobs**: ``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize``
+    - More flags etc. can be found with ``man sacct``
+    - The output will be **very** wide. To view in a friendlier format, use ``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize | less -S`` 
+        - this makes it sideways scrollable, using the left/right arrow key
+- Web url with graphical info about a job: ``job-usage JOBID``
+
     \end{itemize}
     Use \texttt{man sbatch, man srun, man ....} for more information
   \end{block}
