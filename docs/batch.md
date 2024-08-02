@@ -99,9 +99,39 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
     - Error file: ``#SBATCH --error=job.%J.err`` 
     - Output file: ``#SBATCH --output=job.%J.out``
 
+## Using the different parts of Kebnekaise 
 
+As mentioned under the introduction, Kebnekaise is a very heterogeneous system, comprised of several different types of CPUs and GPUs. The batch system reflects these several different types of resources. 
 
- \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Using different parts of Kebnekaise} 
+At the top we have partitions, which are similar to queues. Each partition is made up of a specific set of nodes. At HPC2N we have three classes of partitions, one for CPU-only nodes, one for GPU nodes and one for large memory nodes. Each node type also has a set of features that can be used to select which node(s) the job should run on.
+
+The three types of nodes also have corresponding resources one must apply for in SUPR to be able to use them.
+
+While Kebnekaise has multiple partitions, one for each major type of resource, there is only a single partition, ``batch``, that users can submit jobs to. The system then figures out which partition(s) the job should be sent to, based on the requested features. 
+
+!!! NOTE "Node overview" 
+
+    CPU-only nodes  
+    | Type | Memory/core | number nodes | 
+    | ---- | ----------- | ------ | 
+    | 2 x 14 core Intel broadwell | 4460 MB | 48 |
+    | 2 x 14 core Intel skylake | 6785 MB | 52 | 
+    | 2 x 64 core AMD zen3 | 8020 MB | 1 | 
+    | 2 x 128 core AMD zen4 | 2516 MB | 8 | 
+    GPU enabled nodes 
+    | Type | Memory/core | GPU card | number nodes | 
+    | ---- | ----------- | -------- | ------------ | 
+    | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 |
+    | 2 x 14 core Intel skylake | 6785 MB | 2 x Nvidia V100 | 10 | 
+    | 2 x 24 core AMD zen3 | 10600 MB | 2 x Nvidia A100 | 2 | 
+    | 2 x 24 core AMD zen3 | 10600 MB | 2 x AMD MI100 | 1 | 
+    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia A6000 | 1 | 
+    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia L40s | 10 | 
+    | 2 x 48 core AMD zen4 | 6630 MB | 4 x Nvidia H100 SXM5 | 2 | 
+    Large memory nodes 
+    | Type | Memory/core | number nodes | 
+    | ---- | ----------- | ------------ | 
+    | 4 x 18 core Intel broadwell | 41666 MB | 8 | 
 
    \begin{block}{}
      \begin{scriptsize}
