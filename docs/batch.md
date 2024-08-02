@@ -10,7 +10,7 @@
 
 !!! Note
 
-    Guides and documentation for the batch system at HPC2N here at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ 
+    Guides and documentation for the batch system at HPC2N here at: <a href="https://docs.hpc2n.umu.se/documentation/batchsystem/intro/" target="_blank">HPC2N's batch system documentation</a>. 
 
 ## Basic commands
 
