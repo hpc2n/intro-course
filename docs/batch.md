@@ -34,7 +34,7 @@ Using a job script is often recommended.
 In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job ID for your job, assigned by Slurm. USERNAME is your username. 
 
 - **Submit job**: ``sbatch JOBSCRIPT`` 
-- **Get list of your jobs**: ``squeue -u USERNAME`` or ``squeue -me``
+- **Get list of your jobs**: ``squeue -u USERNAME`` or ``squeue \--me``
 - **Give the Slurm commands on the command line**: ``srun commands-for-your-job/program`` 
 - **Check on a specific job**: ``scontrol show job JOBID`` 
 - **Delete a specific job**: ``scancel JOBID``
@@ -48,6 +48,21 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
         - this makes it sideways scrollable, using the left/right arrow key
 - Web url with graphical info about a job: ``job-usage JOBID``
 - More information: ``man sbatch``, ``man srun``, ``man ....``
+
+!!! Example 
+
+    Submit job
+
+    ```bash
+    b-an01 [~]$ sbatch simple.sh 
+    Submitted batch job 27774831
+    ```
+
+    Check status with squeue
+
+    ```bash
+    
+
 
 !!! NOTE
 
@@ -63,8 +78,6 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
     - Output file: ``#SBATCH --output=job.%J.out``
 
 
-  \end{block}
-}
 
  \frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Using different parts of Kebnekaise} 
 
