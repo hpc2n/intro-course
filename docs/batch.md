@@ -14,13 +14,18 @@
 
 ## Basic commands
 
+Using a job script is often recommended. 
+
+- If you ask for the resources on the command line, you will wait for the program to run before you can use the window again (unless you can send it to the background with &).
+- If you use a job script you have an easy record of the commands you used, to reuse or edit for later use.
+
 In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job id for your job, assigned by Slurm. USERNAME is your username. 
 
 - **Submit job**: ``sbatch JOBSCRIPT`` 
 - **Get list of your jobs**: ``squeue -u USERNAME`` 
 - **Give the Slurm commands on the command line**: ``srun commands-for-your-job/program`` 
 - **Check on a specific job**: ``scontrol show job JOBID`` 
-      \item Delete a specific job: \texttt{scancel $<$job id$>$}
+- **Delete a specific job**: ``scancel JOBID``
       \item Delete all your own jobs: \texttt{scancel -u $<$user$>$}
       \item More detailed info about jobs: \\
       \end{footnotesize}
