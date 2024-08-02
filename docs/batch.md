@@ -1,7 +1,8 @@
 # The Batch System (SLURM)  
 
 - Large/long/parallel jobs **must** be run through the batch system.
-- SLURM is an Open Source job scheduler, which provides three key functions.
+- Kebnekaise is running <a href="http://slurm.schedmd.com/" target="_blank">Slurm</a>. 
+- Slurm is an Open Source job scheduler, which provides three key functions.
     - Keeps track of available system resources.
     - Enforces local system resource usage and job scheduling policies. 
     - Manages a job queue, distributing work across resources according to policies. 
@@ -11,84 +12,12 @@
 
     Guides and documentation for the batch system at HPC2N here at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ 
 
-## Accounting, Compute nodes
+## Basic commands
 
-  \begin{block}{}
-    \begin{small}
-      Here the Skylake nodes are used as an example. The only difference for the Broadwell nodes is that it would say 128G instead of 192G per node.
-    \end{small}
-  \end{block}
-  
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=9cm]{figures/Allocation-Kebnekaise-thin_skylake.png}
-\end{center}
-  \end{block}
-}
+In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job id for your job, assigned by Slurm. 
 
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, largemem nodes, Kebnekaise}
-
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=10cm]{figures/Allocation-Kebnekaise-largemem_v3.png}
-\end{center}
-  \end{block}
-}
-
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, K80 GPU nodes, Kebnekaise.}
-
-    \begin{block}{}
-    \begin{footnotesize}
-      The K80 GPU cards have 2 onboard compute engines (GK210 chips). Most GPU nodes have 2 K80s, placed together as 14 cores + 1 K80/socket. 4 GPU nodes have 4 K80 GPU cards. 
-    \end{footnotesize}
-  \end{block}
- 
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=5.8cm]{figures/K80-GPUs.png}
-\end{center}
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, V100 GPU nodes, Kebnekaise.}
-
-    \begin{block}{}
-    \begin{scriptsize}
-      Each V100 GPU accelerator card has 1 onboard compute engine (GV100 chip). They are placed together as 14 cores + 1 V100 on a socket (28 cores, 2 V100s per node).  
-    \end{scriptsize}
-  \end{block}
- 
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=6.8cm]{figures/V100-allocation-new.png}
-\end{center}
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, A100 GPU nodes, Kebnekaise.}
-
-    \begin{block}{}
-    \begin{scriptsize}
-      Each A100 GPU accelerator card has 1 onboard compute engine. The AMD Zen3 nodes have 2 CPUs sockets with 24 cores each, for a total of 48 cores, and 2 NVidia A100 GPUs. They are placed together as 24 cores + 1 A100 on a socket. 
-    \end{scriptsize}
-  \end{block}
- 
-  \begin{block}{}
-\begin{center}
-\includegraphics[width=6.8cm]{figures/A100-allocation.png}
-\end{center}
-  \end{block}
-}
-
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{Useful Commands} 
-
-  \begin{block}{}
-    \begin{itemize}
-      \begin{footnotesize}
-      \item Submit job: \texttt{sbatch $<$jobscript$>$} 
-      \item Get list of your jobs: \texttt{squeue -u $<$username$>$} 
+- **Submit job**: ``sbatch JOBSCRIPT`` 
+- Get list of your jobs: \texttt{squeue -u $<$username$>$} 
       \item \texttt{srun $<$commands for your job/program$>$} 
       \item Check on a specific job: \texttt{scontrol show job $<$job id$>$} 
       \item Delete a specific job: \texttt{scancel $<$job id$>$}
