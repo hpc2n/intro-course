@@ -1,5 +1,13 @@
 # The Batch System (SLURM)  
 
+!!! Objectives
+
+    - Get information about what a batch system is and which one is used at HPC2N.
+    - Learn basic commands for the batch system used at HPC2N. 
+    - How to create a basic batch script. 
+    - Managing your job: submitting, status, cancelling, checking... 
+    - Learn how to allocate specific parts of Kebnekaise: skylake, zen3/zen4, GPUs... 
+
 - Large/long/parallel jobs **must** be run through the batch system.
 - Kebnekaise is running <a href="http://slurm.schedmd.com/" target="_blank">Slurm</a>. 
 - Slurm is an Open Source job scheduler, which provides three key functions.
