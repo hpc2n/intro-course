@@ -1,21 +1,17 @@
 # The Batch System (SLURM)  
 
-- Large/long/parallel jobs **must** be run through the batch system 
-    \item SLURM is an Open Source job scheduler, which provides three key functions
-   \begin{itemize}
-    \item Keeps track of available system resources
-    \item Enforces local system resource usage and job scheduling policies
-    \item Manages a job queue, distributing work across resources according to policies
-   \end{itemize}
- \item In order to run a batch job, you need to create and submit a
-SLURM submit file (also called a batch submit file, a batch
-script, or a job script).
-\item Guides and documentation at: http://www.hpc2n.umu.se/support
-  \end{itemize}
-  \end{block}
-}
+- Large/long/parallel jobs **must** be run through the batch system.
+- SLURM is an Open Source job scheduler, which provides three key functions.
+    - Keeps track of available system resources.
+    - Enforces local system resource usage and job scheduling policies. 
+    - Manages a job queue, distributing work across resources according to policies. 
+- In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
 
-\frame{\frametitle{The Batch System}\framesubtitle{Accounting, Compute nodes, Kebnekaise}
+!!! Note
+
+    Guides and documentation for the batch system at HPC2N here at: https://docs.hpc2n.umu.se/documentation/batchsystem/intro/ 
+
+## Accounting, Compute nodes
 
   \begin{block}{}
     \begin{small}
