@@ -1,8 +1,6 @@
 # The Batch System (SLURM)  
 
-  \begin{block}{}
-   \begin{itemize}
-    \item Large/long/parallel jobs \textbf{must} be run through the batch system 
+- Large/long/parallel jobs **must** be run through the batch system 
     \item SLURM is an Open Source job scheduler, which provides three key functions
    \begin{itemize}
     \item Keeps track of available system resources
