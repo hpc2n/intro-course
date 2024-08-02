@@ -51,18 +51,40 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
 
 !!! Example 
 
-    Submit job
+    Submit job with ``sbatch``
 
     ```bash
     b-an01 [~]$ sbatch simple.sh 
-    Submitted batch job 27774831
+    Submitted batch job 27774852
     ```
 
-    Check status with squeue
+    Check status with ``squeue --me``
 
     ```bash
-    
+    b-an01 [~]$ squeue --me
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          27774852  cpu_zen4 simple.s bbrydsoe  R       0:00      1 b-cn1701
+    ``` 
 
+    Submit several jobs (here several instances of the same), check on the status
+
+    ```bash
+    b-an01 [~]$ sbatch simple.sh 
+    Submitted batch job 27774872
+    b-an01 [~/store/bbrydsoe/intro-course/hands-ons/3.usage]$ sbatch simple.sh 
+    Submitted batch job 27774873
+    b-an01 [~/store/bbrydsoe/intro-course/hands-ons/3.usage]$ sbatch simple.sh 
+    Submitted batch job 27774874
+    b-an01 [~/store/bbrydsoe/intro-course/hands-ons/3.usage]$ squeue --me
+                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              27774873  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
+              27774874  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
+              27774872  cpu_zen4 simple.s bbrydsoe  CG      0:04      1 b-cn1702
+    ``` 
+
+    The status "R" means it is running. "CG" means completing. When a job is pending it has the state "PD". 
+
+    In these examples the jobs all ended up on nodes in the partition cpu_zen4. We will soon talk more about different types of nodes. 
 
 !!! NOTE
 
