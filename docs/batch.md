@@ -71,16 +71,16 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
     ```bash
     b-an01 [~]$ sbatch simple.sh 
     Submitted batch job 27774872
-    b-an01 [~/store/bbrydsoe/intro-course/hands-ons/3.usage]$ sbatch simple.sh 
+    b-an01 [~]$ sbatch simple.sh 
     Submitted batch job 27774873
-    b-an01 [~/store/bbrydsoe/intro-course/hands-ons/3.usage]$ sbatch simple.sh 
+    b-an01 [~]$ sbatch simple.sh 
     Submitted batch job 27774874
-    b-an01 [~/store/bbrydsoe/intro-course/hands-ons/3.usage]$ squeue --me
-                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-              27774873  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
-              27774874  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
-              27774872  cpu_zen4 simple.s bbrydsoe  CG      0:04      1 b-cn1702
-    ``` 
+    b-an01 [~]$ squeue --me
+                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+             27774873  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
+             27774874  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
+             27774872  cpu_zen4 simple.s bbrydsoe  CG      0:04      1 b-cn1702
+   ``` 
 
     The status "R" means it is running. "CG" means completing. When a job is pending it has the state "PD". 
 
@@ -111,7 +111,7 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
 !!! NOTE "Node overview" 
 
-    CPU-only nodes  
+    | CPU-only nodes |
     | Type | Memory/core | number nodes | 
     | ---- | ----------- | ------ | 
     | 2 x 14 core Intel broadwell | 4460 MB | 48 |
