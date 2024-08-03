@@ -111,32 +111,145 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
 !!! NOTE "Node overview" 
 
+    The "selector" can be used if you need a specific type of node. More about that later. 
+
     **CPU-only nodes**
 
-    | Type | Memory/core | number nodes | 
-    | ---- | ----------- | ------ | 
-    | 2 x 14 core Intel broadwell | 4460 MB | 48 |
-    | 2 x 14 core Intel skylake | 6785 MB | 52 | 
-    | 2 x 64 core AMD zen3 | 8020 MB | 1 | 
-    | 2 x 128 core AMD zen4 | 2516 MB | 8 | 
+    | Type | Memory/core | number nodes | Selector | 
+    | ---- | ----------- | ------------ | -------- |
+    | 2 x 14 core Intel broadwell | 4460 MB | 48 | broadwell (intel_cpu) |
+    | 2 x 14 core Intel skylake | 6785 MB | 52 | skylake (intel_cpu) | 
+    | 2 x 64 core AMD zen3 | 8020 MB | 1 | zen3 (amd_cpu) | 
+    | 2 x 128 core AMD zen4 | 2516 MB | 8 | zen4 (amd_cpu) | 
 
     **GPU enabled nodes**
 
-    | Type | Memory/core | GPU card | number nodes | 
-    | ---- | ----------- | -------- | ------------ | 
-    | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 |
-    | 2 x 14 core Intel skylake | 6785 MB | 2 x Nvidia V100 | 10 | 
-    | 2 x 24 core AMD zen3 | 10600 MB | 2 x Nvidia A100 | 2 | 
-    | 2 x 24 core AMD zen3 | 10600 MB | 2 x AMD MI100 | 1 | 
-    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia A6000 | 1 | 
-    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia L40s | 10 | 
-    | 2 x 48 core AMD zen4 | 6630 MB | 4 x Nvidia H100 SXM5 | 2 | 
+    | Type | Memory/core | GPU card | number nodes | Selector | 
+    | ---- | ----------- | -------- | ------------ | -------- | 
+    | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 | a40 | 
+    | 2 x 14 core Intel skylake | 6785 MB | 2 x Nvidia V100 | 10 | v100 | 
+    | 2 x 24 core AMD zen3 | 10600 MB | 2 x Nvidia A100 | 2 | a100 | 
+    | 2 x 24 core AMD zen3 | 10600 MB | 2 x AMD MI100 | 1 | mi100 | 
+    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia A6000 | 1 | a6000 | 
+    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia L40s | 10 | l40s | 
+    | 2 x 48 core AMD zen4 | 6630 MB | 4 x Nvidia H100 SXM5 | 2 | h100 | 
 
     **Large memory nodes**
  
     | Type | Memory/core | number nodes | 
     | ---- | ----------- | ------------ | 
     | 4 x 18 core Intel broadwell | 41666 MB | 8 | 
+
+### Requesting features
+
+To make it possible to target nodes in more detail there are a couple of features defined on each group of nodes. To select a feature one can use the ``-C`` option to ``sbatch`` or ``salloc``. This sets *constraints* on the job.
+
+There are several reasons why one might want to do that, including for benchmarks, to be able to replicate results (in some cases), because specific modules are only available for certain architectures, etc. 
+
+To constrain a job to a certain feature, use 
+
+```bash
+#SBATCH -C SELECTOR
+
+!!! note 
+
+    Features can be combined using “and” (``&``) or “or” (``|``). They should be wrapped in ``'``'s. 
+
+List of constraints: 
+
+!!! Note "For selecting type of CPU"
+
+    SELECTOR is:
+
+    intel_cpu
+    broadwell
+    skylake
+    amd_cpu
+    zen3
+    zen4
+
+!!! Note "For selecting type of GPU"
+
+    SELECTOR is:
+
+    v100
+    a40
+    a6000
+    a100
+    l40s
+    h100
+    mi100
+
+For GPUs, the above GPU selector list of constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
+
+!!! Note "For selecting GPUs with certain features"
+
+    SELECTOR is: 
+  
+    nvidia_gpu (Any Nvidia GPU)
+    amd_gpu (Any AMD GPU)
+    GPU_SP (GPU with single precision capability)
+    GPU_DP (GPU with double precision capability)
+    GPU_AI (GPU with AI features, like half precisions and lower)
+    GPU_ML (GPU with ML features, like half precisions and lower)
+
+!!! Note "For selecting large memory nodes"
+
+    SELECTOR is: 
+
+    largemem
+
+#### Examples 
+
+!!! Note "Only nodes with Zen4"
+
+     ```bash    
+     #SBATCH -C zen4
+     ```
+
+!!! Note "Nodes with a combination of features: a Zen4 CPU and a GPU with AI features"
+
+    ```bash
+    #SBATCH -C 'zen4&GPU_AI'
+    ```
+
+!!! Note "Nodes with either a Zen3 CPU or a Zen4 CPU" 
+
+    ```bash
+    #SBATCH -C 'zen3|zen4'
+    ```
+
+#### Requesting GPUs
+
+To use GPU resources one has to explicitly ask for one or more GPUs. Requests for GPUs can be done either in total for the job or per node of the job.
+
+```bash
+#SBATCH --gpus=1
+```
+
+or
+
+```bash
+#SBATCH --gpus-per-node=1
+```
+
+As mentioned about, for GPUs, constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
+
+```bash
+#SBATCH --gpus=SELECTOR:NUMBER
+```
+
+where SELECTOR is (like in the table above): 
+
+- v100
+- a40
+- a6000
+- a100
+- l40s
+- h100
+- mi100
+
+
 
    \begin{block}{}
      \begin{scriptsize}
