@@ -111,14 +111,17 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
 !!! NOTE "Node overview" 
 
-    | CPU-only nodes |
+    **CPU-only nodes**
+
     | Type | Memory/core | number nodes | 
     | ---- | ----------- | ------ | 
     | 2 x 14 core Intel broadwell | 4460 MB | 48 |
     | 2 x 14 core Intel skylake | 6785 MB | 52 | 
     | 2 x 64 core AMD zen3 | 8020 MB | 1 | 
     | 2 x 128 core AMD zen4 | 2516 MB | 8 | 
-    GPU enabled nodes 
+
+    **GPU enabled nodes**
+
     | Type | Memory/core | GPU card | number nodes | 
     | ---- | ----------- | -------- | ------------ | 
     | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 |
@@ -128,7 +131,9 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
     | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia A6000 | 1 | 
     | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia L40s | 10 | 
     | 2 x 48 core AMD zen4 | 6630 MB | 4 x Nvidia H100 SXM5 | 2 | 
-    Large memory nodes 
+
+    **Large memory nodes**
+ 
     | Type | Memory/core | number nodes | 
     | ---- | ----------- | ------------ | 
     | 4 x 18 core Intel broadwell | 41666 MB | 8 | 
