@@ -209,16 +209,27 @@ In this section, we are just going to try submitting a few jobs, checking their 
     ```
     3. If you compiled and named the executables as above, you should be able to submit the following batch scripts directly: ``simple.sh``, ``mpi_greeting.sh``, ``mpi_hello.sh``, ``mpi_hi.sh``, ``multiple-parallel-sequential.sh``, ``multiple-parallel.sh``, or ``multiple-parallel-simultaneous.sh``. 
 
-!!! Exercise "sbatch and squeue"
+!!! Exercise "Exercise: sbatch and squeue"
 
     Submit (``sbatch``) one of the batch scripts listed in 3. under preparations. Check with ``squeue --me`` if it is running, pending, or completing. 
 
-!!! Exercise "sbatch and scontrol show job" 
+!!! Exercise "Exercise: sbatch and scontrol show job" 
 
     Submit a few instances of ``multiple-parallel.sh`` and ``multiple-parallel-sequential.sh`` (so they do not finish running before you have time to check on them).
 
-    Do ``scontrol show job JOBID`` on one or more of the job IDs. You should be able to see node assigned (unless the job has not 
+    Do ``scontrol show job JOBID`` on one or more of the job IDs. You should be able to see node assigned (unless the job has not yet had one allocated), expected runtime, etc. If the job is running, you can see how long it has run. You will also get paths to submit directory etc. 
 
+!!! Exercise "Exercise: sbatch and scancel"  
+
+    Submit a few instances of ``multiple-parallel.sh`` and ``multiple-parallel-sequential.sh`` (so they do not finish running before you have time to check on them).
+
+    Do ``squeue --me`` and see the jobs listed. Pick one and do ``scancel JOBID`` on it. Do ``squeue --me`` again to see it is no longer there. 
+
+!!! Exercise "Exercise: check output"
+
+    Use ``nano`` to open one of the output files ``slurm-JOBID.out``. 
+
+    Try adding ``#SBATCH --error=job.%J.err`` and ``#SBATCH --output=job.%J.out`` to one of the batch scripts (you can edit it with ``nano``). Submit the batch script again. See that the expected files get created. 
 
 ## Using the different parts of Kebnekaise 
 
@@ -405,6 +416,10 @@ ml fosscuda/2021b
 ./my-gpu-program
 ```
 
-!!! note "Keypoints" 
+!!! keypoints "Keypoints" 
 
-    
+    - To submit a job, you first need to create a batch submit script, which you then submit with ``sbatch SUBMIT-SCRIPT``. 
+    - You can get a list of your running and pending jobs with ``squeue --me``. 
+    - Kebnekaise has many different nodes, both CPU and GPU. It is possible to constrain the the job to run only on specific types of nodes. 
+    - If your job is an MPI job, you need to use ``srun`` in front of your executable in the batch script (unless you use software which handles the parallelization itself). 
+
