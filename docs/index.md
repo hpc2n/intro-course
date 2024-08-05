@@ -40,7 +40,7 @@
 **Instructors**
 
 - Birgitte Brydsö, HPC2N
-- Pedro Ojeda May, HPC2N
+- Pedro Ojeda-May, HPC2N
 
 ## Preliminary schedule
 
