@@ -5,8 +5,23 @@ set temp           303.15;
 set outputname step4_equilibration;
 
 # read system values written by CHARMM (need to convert uppercases to lowercases)
-exec tr "\[:upper:\]" "\[:lower:\]" < ../InputFiles/step3_pbcsetup.str | sed -e "s/ =//g" > step3_pbcsetup.namd.str
-source             step3_pbcsetup.namd.str
+#exec tr "\[:upper:\]" "\[:lower:\]" < ../InputFiles/step3_pbcsetup.str | sed -e "s/ =//g" > step3_pbcsetup.namd.str
+#source             step3_pbcsetup.namd.str
+set xtltype  cubic
+set a 119
+set b 119
+set c 119
+set alpha 90.0
+set beta  90.0
+set gamma 90.0
+set fftx     128
+set ffty     128
+set fftz     128
+set posid pot
+set negid cla
+set xcen 0
+set ycen 0
+set zcen 0
 
 temperature        $temp;
 
@@ -105,8 +120,11 @@ wrapAll             on;                # wrap other molecules too
 wrapNearest        off;                # use for non-rectangular cells (wrap to the nearest image)
 
 # PME (for full-system periodic electrostatics)
-exec python ../InputFiles/checkfft.py $a $b $c > checkfft.str
-source checkfft.str
+#exec python ../InputFiles/checkfft.py $a $b $c > checkfft.str
+#source checkfft.str
+set fftx 128
+set ffty 128
+set fftz 128
 
 PME                yes;
 PMEInterpOrder       6;                # interpolation order (spline order 6 in charmm)
