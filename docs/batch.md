@@ -80,24 +80,83 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
              27774873  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
              27774874  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
              27774872  cpu_zen4 simple.s bbrydsoe  CG      0:04      1 b-cn1702
-   ``` 
+    ``` 
 
     The status "R" means it is running. "CG" means completing. When a job is pending it has the state "PD". 
 
     In these examples the jobs all ended up on nodes in the partition cpu_zen4. We will soon talk more about different types of nodes. 
 
-!!! NOTE
+## Job scripts and output 
 
-    The output file from the job run will default be named ``slurm-JOBID.out``. It will contain both output as well as any errors. You can look at the content with ``vi``, ``nano``, ``emacs``, ``cat``, ``less``...
+The official name for batch scripts in Slurm is Job Submission Files, but here we will use both names interchangeably. If you search the internet, you will find several other names used, including Slurm submit file, batch submit file, batch script, job script. 
 
-    The exception is if your program creates its own output files, or if you name the output file(s) differently within your jobscript. 
+A job submission file can contain any of the commands that you would otherwise issue yourself from the command line. It is, for example, possible to both compile and run a program and also to set any necessary environment values (though remember that Slurm exports the environment variables in your shell per default, so you can also just set them all there before submitting the job).
 
-    You can use Slurm commands within your job script to split the error and output in separate files, and name them as you want. It is highly recommended to include the environment variable ``%J`` (the job ID) in the name, as that is an easy way to get a new name for each time you run the script and thus avoiding the previous output being overwritten. 
+!!! note 
 
-    Example, using the environment variable ``%J``: 
+    The results from compiling or running your programs can generally be seen after the job has completed, though as Slurm will write to the output file during the run, some results will be available quicker.
 
-    - Error file: ``#SBATCH --error=job.%J.err`` 
+Outputs and any errors will per default be placed in the directory you are running from, though this can be changed.
+
+!!! Note 
+
+    This directory should preferrably be placed under your project storage, since your home directory only has 25 GB of space. 
+
+The output file from the job run will default be named ``slurm-JOBID.out``. It will contain both output as well as any errors. You can look at the content with ``vi``, ``nano``, ``emacs``, ``cat``, ``less``…
+
+The exception is if your program creates its own output files, or if you name the output file(s) differently within your jobscript.
+
+!!! note 
+
+    You can use Slurm commands within your job script to split the error and output in separate files, and name them as you want. It is highly recommended to include the environment variable ``%J`` (the job ID) in the name, as that is an easy way to get a new name for each time you run the script and thus avoiding the previous output being overwritten.
+
+    Example, using the environment variable ``%J``:
+
+    - Error file: ``#SBATCH --error=job.%J.err``
     - Output file: ``#SBATCH --output=job.%J.out``
+
+### Job scripts 
+
+A job submission file can either be very simple, with most of the job attributes specified on the command line, or it may consist of several Slurm directives, comments and executable statements. A Slurm directive provides a way of specifying job attributes in addition to the command line options.
+
+**Naming**: You can name your script anything, including the suffix. It does not matter. Just name it something that makes sense to you and helps you remember what the script is for. The standard is to name it with a suffix of ``.sbatch`` or ``.sh``.
+
+**Simple, serial job script**
+
+```bash
+#!/bin/bash
+# The name of the account you are running in, mandatory.
+#SBATCH -A hpc2nXXXX-YYY
+# Request resources - here for a serial job
+# tasks per core is 1 as default (can be changed with ``-c``)
+#SBATCH -n 1
+# Request runtime for the job (HHH:MM:SS) where 168 hours is the maximum. Here asking for 15 min. 
+#SBATCH --time=00:15:00 
+
+# Clear the environment from any previously loaded modules
+module purge > /dev/null 2>&1
+
+# Load the module environment suitable for the job - here foss/2022b 
+module load foss/2022b
+
+# And finally run the serial jobs 
+./my_serial_program
+
+
+!!! Note
+
+    - You have to always include ``#!/bin/bash`` at the beginning of the script, since bash is the only supported shell. Some things may work under other shells, but not everything.
+    - All Slurm directives start with ``#SBATCH``.
+    - One (or more) ``#`` in front of a text line means it is a comment, with the exception of the string ``#SBATCH``. In order to comment out the Slurm directives, you need to put one more ``#`` in front of the ``#SBATCH``.
+    - It is important to use capital letters for ``#SBATCH``. Otherwise the line will be considered a comment, and ignored.
+
+Let us go through the most commonly used arguments:
+
+    - **-A PROJ-ID**: The project that should be accounted. It is a simple conversion from the SUPR project id. You can also find your project account with the command ``projinfo``. The **PROJ-ID** argument is of the form
+        - hpc2nXXXX-YYY (HPC2N local project)
+    - **-N**: number of nodes. If this is not given, enough will be allocated to fullfill the requirements of -n and/or -c. A range can be given. If you ask for, say, 1-1, then you will get 1 and only 1 node, no matter what you ask for otherwise. It will also assure that all the processors will be allocated on the same node.
+    -n: number of tasks.
+    -c: cores per task. Request that a specific number of cores be allocated to each task. This can be useful if the job is multi-threaded and requires more than one core per task for optimal performance. The default is one core per task.
 
 ## Using the different parts of Kebnekaise 
 
@@ -111,11 +170,11 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
 !!! NOTE "Node overview" 
 
-    The "selector" can be used if you need a specific type of node. More about that later. 
+    The "Type" can be used if you need a specific type of node. More about that later. 
 
     **CPU-only nodes**
 
-    | Type | Memory/core | number nodes | Selector | 
+    | CPU | Memory/core | number nodes | Type | 
     | ---- | ----------- | ------------ | -------- |
     | 2 x 14 core Intel broadwell | 4460 MB | 48 | broadwell (intel_cpu) |
     | 2 x 14 core Intel skylake | 6785 MB | 52 | skylake (intel_cpu) | 
@@ -124,7 +183,7 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
     **GPU enabled nodes**
 
-    | Type | Memory/core | GPU card | number nodes | Selector | 
+    | CPU | Memory/core | GPU card | number nodes | Type | 
     | ---- | ----------- | -------- | ------------ | -------- | 
     | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 | a40 | 
     | 2 x 14 core Intel skylake | 6785 MB | 2 x Nvidia V100 | 10 | v100 | 
@@ -136,9 +195,9 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
     **Large memory nodes**
  
-    | Type | Memory/core | number nodes | 
-    | ---- | ----------- | ------------ | 
-    | 4 x 18 core Intel broadwell | 41666 MB | 8 | 
+    | CPU | Memory/core | number nodes | Type | 
+    | ---- | ----------- | ------------ | ---- | 
+    | 4 x 18 core Intel broadwell | 41666 MB | 8 | largemem |  
 
 ### Requesting features
 
@@ -149,57 +208,64 @@ There are several reasons why one might want to do that, including for benchmark
 To constrain a job to a certain feature, use 
 
 ```bash
-#SBATCH -C SELECTOR
+#SBATCH -C Type
+```
 
 !!! note 
 
-    Features can be combined using “and” (``&``) or “or” (``|``). They should be wrapped in ``'``'s. 
+    Features can be combined using “and” (``&``) or “or” (``|``). They should be wrapped in ``'``'s.
+
+    Example: 
+
+    ```bash
+    #SBATCH -C 'zen3|zen4'
+    ``` 
 
 List of constraints: 
 
 !!! Note "For selecting type of CPU"
 
-    SELECTOR is:
+    Type is:
 
-    intel_cpu
-    broadwell
-    skylake
-    amd_cpu
-    zen3
-    zen4
+    - intel_cpu
+    - broadwell
+    - skylake
+    - amd_cpu
+    - zen3
+    - zen4
 
 !!! Note "For selecting type of GPU"
 
-    SELECTOR is:
+    Type is:
 
-    v100
-    a40
-    a6000
-    a100
-    l40s
-    h100
-    mi100
+    - v100
+    - a40
+    - a6000
+    - a100
+    - l40s
+    - h100
+    - mi100
 
-For GPUs, the above GPU selector list of constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
+For GPUs, the above GPU list of constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
 
 !!! Note "For selecting GPUs with certain features"
 
-    SELECTOR is: 
+    Type is: 
   
-    nvidia_gpu (Any Nvidia GPU)
-    amd_gpu (Any AMD GPU)
-    GPU_SP (GPU with single precision capability)
-    GPU_DP (GPU with double precision capability)
-    GPU_AI (GPU with AI features, like half precisions and lower)
-    GPU_ML (GPU with ML features, like half precisions and lower)
+    - nvidia_gpu (Any Nvidia GPU)
+    - amd_gpu (Any AMD GPU)
+    - GPU_SP (GPU with single precision capability)
+    - GPU_DP (GPU with double precision capability)
+    - GPU_AI (GPU with AI features, like half precisions and lower)
+    - GPU_ML (GPU with ML features, like half precisions and lower)
 
 !!! Note "For selecting large memory nodes"
 
-    SELECTOR is: 
+    Type is: 
 
-    largemem
+    - largemem
 
-#### Examples 
+#### Examples, constraints 
 
 !!! Note "Only nodes with Zen4"
 
@@ -219,35 +285,39 @@ For GPUs, the above GPU selector list of constraints can be used either as a spe
     #SBATCH -C 'zen3|zen4'
     ```
 
-#### Requesting GPUs
+#### Examples, requesting GPUs
 
 To use GPU resources one has to explicitly ask for one or more GPUs. Requests for GPUs can be done either in total for the job or per node of the job.
 
-```bash
-#SBATCH --gpus=1
-```
+!!! note "Ask for one GPU of any kind"
 
-or
+    ```bash
+    #SBATCH --gpus=1
+    ```
 
-```bash
-#SBATCH --gpus-per-node=1
-```
+!!! note "Another way to ask for one GPU of any kind"
 
-As mentioned about, for GPUs, constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
+    ```bash
+    #SBATCH --gpus-per-node=1
+    ```
 
-```bash
-#SBATCH --gpus=SELECTOR:NUMBER
-```
+!!! note "Asking for a specific type of GPU"
 
-where SELECTOR is (like in the table above): 
+    As mentioned before, for GPUs, constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
 
-- v100
-- a40
-- a6000
-- a100
-- l40s
-- h100
-- mi100
+    ```bash
+    #SBATCH --gpus=Type:NUMBER
+    ```
+
+    where Type is, as mentioned:  
+
+    - v100
+    - a40
+    - a6000
+    - a100
+    - l40s
+    - h100
+    - mi100
 
 
 
