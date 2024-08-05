@@ -40,11 +40,19 @@ Modules are:
 - Unload all modules except the 'sticky' modules:
     - <code>module purge</code> or <code>ml purge</code>
 
+!!! Warning "Important!" 
+
+    Not all the modules (and versions) are the same on the skylake/broadwell nodes and the zen3/zen4 nodes. 
+
+    The regular login node ``kebnekaise.hpc2n.umu.se`` has the modules available on skylake/broadwell nodes. (ThinLinc: ``kebnekaise-tl.hpc2n.umu.se``)
+
+    In order to check if a module is available on the zen3/zen4 nodes, login to ``kebnekaise-amd.hpc2n.umu.se``. (ThinLinc: ``kebnekaise-amd-tl.hpc2n.umu.se``). 
+
 !!! Hint "Hint"
 
     Code-along!
 
-??? Admonition "Example: checking which versions exist of the module 'Python'"
+??? Admonition "Example: checking which versions exist of the module 'Python' on the regular login node"
 
     ```bash
     b-an01 [~]$ ml spider Python
@@ -95,7 +103,7 @@ Modules are:
     b-an01 [~]$ 
     ```
 
-??? Admonition "Example: Check how to load a specific Python version (3.11.5 in this example)"
+??? Admonition "Example: Check how to load a specific Python version (3.11.5 in this example) on the regular login node"
 
     ```bash 
     b-an01 [~]$ ml spider Python/3.11.5
@@ -136,7 +144,7 @@ Modules are:
     b-an01 [~]$ 
     ```
 
-??? Admonition "Example: Load Python/3.11.5 and its prerequisite(s)"
+??? Admonition "Example: Load Python/3.11.5 and its prerequisite(s) (on the regular login node)"
 
     Here we also show the loaded module before and after the load. For illustration, we use first <code>ml</code> and then <code>module list</code>:
 
@@ -167,7 +175,7 @@ Modules are:
     b-an01 [~]$ 
     ```
 
-??? Admonition "Example: Unloading the module <code>Python/3.11.5</code>"
+??? Admonition "Example: Unloading the module <code>Python/3.11.5</code> (on the regular login node)"
 
     In this example we unload the module <code>Python/3.11.5</code>, but not the prerequisite <code>GCCcore/13.2.0</code>. We also look at the output of <code>module list</code> before and after. 
 
@@ -199,7 +207,7 @@ Modules are:
 
     As you can see, the prerequisite did not get unloaded. This is on purpose, because you may have other things loaded which uses the prerequisite. 
 
-??? Admonition "Example: unloading every module you have loaded, with <code>module purge</code> except the 'sticky' modules (some needed things for the environment)"
+??? Admonition "Example: unloading every module you have loaded, with <code>module purge</code> except the 'sticky' modules (some needed things for the environment) (on the regular login node)"
  
     First we load some modules. Here Python 3.11.5, SciPy-bundle, and prerequisites for them. We also do <code>module list</code> after loading the modules and after using <code>module purge</code>. 
 
@@ -245,7 +253,11 @@ Modules are:
         - The modules have to be loaded in order! You cannot list the prerequisite after the module that needs it! 
     - One advantage to loading modules one at a time is that you can then find compatible modules that depend on that version easily. 
         - Example: you have loaded <code>GCC/13.2.0</code> and <code>Python/3.11.5</code>. You can now do <code>ml av</code> to see which versions of other modules you want to load, say SciPy-bundle, are compatible. If you know the name of the module you want, you can even start writing <code>module load SciPy-bundle/</code> and press <code>TAB</code> - the system will then autocomplete to the compatible one(s). 
- 
+
+!!! Exercise
+
+    Login to ``kebnekaise-amd`` (can be easily done with ``ssh kebnekaise-amd`` from a terminal window on the regular login node). Check if the versions of Python available differs from on the regular login node. 
+
 ## Compiler Toolchains
 
 Compiler toolchains load bundles of software making up a complete environment for compiling/using a specific prebuilt software. Includes some/all of: compiler suite, MPI, BLAS, LAPACK, ScaLapack, FFTW, CUDA.
