@@ -416,6 +416,14 @@ ml fosscuda/2021b
 ./my-gpu-program
 ```
 
+!!! Important
+
+    - The course project has the following project ID: hpc2n2024-084
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2024-084`` 
+    - We have a storage project linked to the compute project: **intro-hpc2n**. 
+        - You find it in ``/proj/nobackup/intro-hpc2n``. 
+        - Remember to create your own directory under it. 
+
 !!! keypoints "Keypoints" 
 
     - To submit a job, you first need to create a batch submit script, which you then submit with ``sbatch SUBMIT-SCRIPT``. 

@@ -1,259 +1,130 @@
-# The Batch System (SLURM)  
+# Simple batch script examples   
 
 !!! Objectives
 
-    - Get information about what a batch system is and which one is used at HPC2N.
-    - Learn basic commands for the batch system used at HPC2N. 
-    - How to create a basic batch script. 
-    - Managing your job: submitting, status, cancelling, checking... 
-    - Learn how to allocate specific parts of Kebnekaise: skylake, zen3/zen4, GPUs... 
+    - See and try out different types of simple batch script examples.
+    - Try using constraints: how to allocate specific CPUs. 
+    - Try using constraints: how to allocate specific GPUs.  
 
-- Large/long/parallel jobs **must** be run through the batch system.
-- Kebnekaise is running <a href="http://slurm.schedmd.com/" target="_blank">Slurm</a>. 
-- Slurm is an Open Source job scheduler, which provides three key functions.
-    - Keeps track of available system resources.
-    - Enforces local system resource usage and job scheduling policies. 
-    - Manages a job queue, distributing work across resources according to policies. 
-- In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
+For consistency, I have given all the example batch scripts the suffix ``.sh`` even though it is not required. Another commonly used suffix is ``.batch``, but any or none will work.
 
-!!! Note
+You need to compile any programs mentioned in a batch script in order to run the examples, except for ``compile-run.sh`` and the ``CUDA`` examples, which includes compilation.
 
-    Guides and documentation for the batch system at HPC2N here at: <a href="https://docs.hpc2n.umu.se/documentation/batchsystem/intro/" target="_blank">HPC2N's batch system documentation</a>. 
+!!! Important
 
-## Basic commands
+    - The course project has the following project ID: hpc2n2024-084
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2024-084``
+    - We have a storage project linked to the compute project: **intro-hpc2n**. 
+        - You find it in ``/proj/nobackup/intro-hpc2n``. 
+        - Remember to create your own directory under it. 
 
-Using a job script is often recommended. 
+!!! Hint 
 
-- If you ask for the resources on the command line, you will wait for the program to run before you can use the window again (unless you can send it to the background with &).
-- If you use a job script you have an easy record of the commands you used, to reuse or edit for later use.
+    Try to change the C programs, add different programs, and in general play around with the examples!
 
-!!! NOTE
+!!! NOTE 
 
-    When you submit a job, the system will return the Job ID. You can also get it with ``squeue -me``. See below. 
+    1. For these test examples I would suggest using the ``foss`` compiler toolchain, version 2022b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts.
+    2. To submit a job script, do ``sbatch JOBSCRIPT``
+    3. In most of the examples, I name the executable when I compile. The flag ``-o`` tells the compiler you want to name the executable. If you don't include that and a name, you will get an executable named ``a.out``. Of course, you do not have to name the executable ``hello``. This is just an example. In general, I have named all the executables the same as the program (without the suffix).
 
-In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job ID for your job, assigned by Slurm. USERNAME is your username. 
+## Serial batch job
 
-- **Submit job**: ``sbatch JOBSCRIPT`` 
-- **Get list of your jobs**: ``squeue -u USERNAME`` or ``squeue --me``
-- **Give the Slurm commands on the command line**: ``srun commands-for-your-job/program`` 
-- **Check on a specific job**: ``scontrol show job JOBID`` 
-- **Delete a specific job**: ``scancel JOBID``
-- **Delete all your own jobs**: ``scancel -u USERNAME``
-- **Request an interactive allocation**: ``salloc -A PROJECT-ID .......`` 
-    - Note that you will still be on the login node when the prompt returns and you MUST preface with ``srun`` to run on the allocated resources.
-    - I.e. ``srun MYPROGRAM``
-- **Get more detailed info about jobs**: <br>``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize``
-    - More flags etc. can be found with ``man sacct``
-    - The output will be **very** wide. To view in a friendlier format, use <br>``sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize | less -S`` 
-        - this makes it sideways scrollable, using the left/right arrow key
-- Web url with graphical info about a job: ``job-usage JOBID``
-- More information: ``man sbatch``, ``man srun``, ``man ....``
+To compile a serial program, like ``hello.c`` with gcc do:
 
-!!! Example 
+```bash 
+gcc hello.c -o hello
+```
 
-    Submit job with ``sbatch``
-
-    ```bash
-    b-an01 [~]$ sbatch simple.sh 
-    Submitted batch job 27774852
-    ```
-
-    Check status with ``squeue --me``
-
-    ```bash
-    b-an01 [~]$ squeue --me
-             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-          27774852  cpu_zen4 simple.s bbrydsoe  R       0:00      1 b-cn1701
-    ``` 
-
-    Submit several jobs (here several instances of the same), check on the status
-
-    ```bash
-    b-an01 [~]$ sbatch simple.sh 
-    Submitted batch job 27774872
-    b-an01 [~]$ sbatch simple.sh 
-    Submitted batch job 27774873
-    b-an01 [~]$ sbatch simple.sh 
-    Submitted batch job 27774874
-    b-an01 [~]$ squeue --me
-                JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-             27774873  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
-             27774874  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
-             27774872  cpu_zen4 simple.s bbrydsoe  CG      0:04      1 b-cn1702
-    ``` 
-
-    The status "R" means it is running. "CG" means completing. When a job is pending it has the state "PD". 
-
-    In these examples the jobs all ended up on nodes in the partition cpu_zen4. We will soon talk more about different types of nodes. 
-
-## Job scripts and output 
-
-The official name for batch scripts in Slurm is Job Submission Files, but here we will use both names interchangeably. If you search the internet, you will find several other names used, including Slurm submit file, batch submit file, batch script, job script. 
-
-A job submission file can contain any of the commands that you would otherwise issue yourself from the command line. It is, for example, possible to both compile and run a program and also to set any necessary environment values (though remember that Slurm exports the environment variables in your shell per default, so you can also just set them all there before submitting the job).
-
-!!! note 
-
-    The results from compiling or running your programs can generally be seen after the job has completed, though as Slurm will write to the output file during the run, some results will be available quicker.
-
-Outputs and any errors will per default be placed in the directory you are running from, though this can be changed.
-
-!!! Note 
-
-    This directory should preferrably be placed under your project storage, since your home directory only has 25 GB of space. 
-
-The output file from the job run will default be named ``slurm-JOBID.out``. It will contain both output as well as any errors. You can look at the content with ``vi``, ``nano``, ``emacs``, ``cat``, ``less``…
-
-The exception is if your program creates its own output files, or if you name the output file(s) differently within your jobscript.
-
-!!! note 
-
-    You can use Slurm commands within your job script to split the error and output in separate files, and name them as you want. It is highly recommended to include the environment variable ``%J`` (the job ID) in the name, as that is an easy way to get a new name for each time you run the script and thus avoiding the previous output being overwritten.
-
-    Example, using the environment variable ``%J``:
-
-    - Error file: ``#SBATCH --error=job.%J.err``
-    - Output file: ``#SBATCH --output=job.%J.out``
-
-### Job scripts 
-
-A job submission file can either be very simple, with most of the job attributes specified on the command line, or it may consist of several Slurm directives, comments and executable statements. A Slurm directive provides a way of specifying job attributes in addition to the command line options.
-
-**Naming**: You can name your script anything, including the suffix. It does not matter. Just name it something that makes sense to you and helps you remember what the script is for. The standard is to name it with a suffix of ``.sbatch`` or ``.sh``.
-
-**Simple, serial job script**
+**Sample batch script (hello.sh)**
 
 ```bash
 #!/bin/bash
-# The name of the account you are running in, mandatory.
-#SBATCH -A hpc2nXXXX-YYY
-# Request resources - here for a serial job
-# tasks per core is 1 as default (can be changed with ``-c``)
+# Project id - change to your own after the course!
+#SBATCH -A hpc2n2024-084
+# Asking for 1 core
 #SBATCH -n 1
-# Request runtime for the job (HHH:MM:SS) where 168 hours is the maximum. Here asking for 15 min. 
-#SBATCH --time=00:15:00 
+# Asking for a walltime of 1 min
+#SBATCH --time=00:01:00
+ 
+# Purge modules before loading new ones in a script.
+ml purge  > /dev/null 2>&1
+ml foss/2022b
 
-# Clear the environment from any previously loaded modules
-module purge > /dev/null 2>&1
-
-# Load the module environment suitable for the job - here foss/2022b 
-module load foss/2022b
-
-# And finally run the serial jobs 
-./my_serial_program
+./hello
 ```
 
-!!! Note
+!!! Note "Exercise: serial job"
 
-    - You have to always include ``#!/bin/bash`` at the beginning of the script, since bash is the only supported shell. Some things may work under other shells, but not everything.
-    - All Slurm directives start with ``#SBATCH``.
-    - One (or more) ``#`` in front of a text line means it is a comment, with the exception of the string ``#SBATCH``. In order to comment out the Slurm directives, you need to put one more ``#`` in front of the ``#SBATCH``.
-    - It is important to use capital letters for ``#SBATCH``. Otherwise the line will be considered a comment, and ignored.
+    Submit the job with ``sbatch``. Check on it with ``squeue --me``. Take a look at the output (``slurm-JOBID.out``) with ``nano`` or your favourite editor. 
 
-Let us go through the most commonly used arguments:
+## MPI batch job 
 
-- **-A PROJ-ID**: The project that should be accounted. It is a simple conversion from the SUPR project id. You can also find your project account with the command ``projinfo``. The **PROJ-ID** argument is of the form
-    - hpc2nXXXX-YYY (HPC2N local project)
-- **-N**: number of nodes. If this is not given, enough will be allocated to fullfill the requirements of -n and/or -c. A range can be given. If you ask for, say, 1-1, then you will get 1 and only 1 node, no matter what you ask for otherwise. It will also assure that all the processors will be allocated on the same node.
-- **-n**: number of tasks. 
-- **-c**: cores per task. Request that a specific number of cores be allocated to each task. This can be useful if the job is multi-threaded and requires more than one core per task for optimal performance. The default is one core per task.
+To compile an MPI program, like ``mpi_hello.c`` (and create an executable named ``mpi_hello``) with gcc, do:
 
-**Simple MPI program** 
+```bash 
+mpicc mpi_hello.c -o mpi_hello
+```
+
+**Sample batch script (mpi_hello.sh)** 
 
 ```bash 
 #!/bin/bash
-# The name of the account you are running in, mandatory.
-#SBATCH -A hpc2nXXXX-YYY
-# Request resources - here for eight MPI tasks
-#SBATCH -n 8
-# Request runtime for the job (HHH:MM:SS) where 168 hours is the maximum. Here asking for 15 min. 
-#SBATCH --time=00:15:00 
+# Remember to change this to your own Project ID after the course! 
+#SBATCH -A hpc2n2024-084
+# Number of tasks - default is 1 core per task 
+#SBATCH -n 14
+#SBATCH --time=00:05:00
 
-# Clear the environment from any previously loaded modules
-module purge > /dev/null 2>&1
+# It is always a good idea to do ml purge before loading other modules 
+ml purge > /dev/null 2>&1
 
-# Load the module environment suitable for the job - here foss/2022b 
-module load foss/2022b
+ml add foss/2022b
 
-# And finally run the job - use srun for MPI jobs, but not for serial jobs 
-srun ./my_mpi_program
+# Use srun since this is an MPI program 
+srun ./mpi_hello
 ```
 
-## Using the different parts of Kebnekaise 
+!!! Note "Exercise: MPI job"
 
-As mentioned under the introduction, Kebnekaise is a very heterogeneous system, comprised of several different types of CPUs and GPUs. The batch system reflects these several different types of resources. 
+    Submit the job with ``sbatch``. Check on it with ``squeue --me``. Take a look at the output (``slurm-JOBID.out``) with ``nano`` or your favourite editor. Try running it more than once to see that the order of the tasks are random. 
 
-At the top we have partitions, which are similar to queues. Each partition is made up of a specific set of nodes. At HPC2N we have three classes of partitions, one for CPU-only nodes, one for GPU nodes and one for large memory nodes. Each node type also has a set of features that can be used to select which node(s) the job should run on.
+## OpenMP batch job 
 
-The three types of nodes also have corresponding resources one must apply for in SUPR to be able to use them.
+To compile an OpenMP program, like ``omp_hello.c`` (and create an executable named ``omp_hello``) with gcc, do:
 
-While Kebnekaise has multiple partitions, one for each major type of resource, there is only a single partition, ``batch``, that users can submit jobs to. The system then figures out which partition(s) the job should be sent to, based on the requested features. 
+```bash 
+gcc -fopenmp omp_hello.c -o omp_hello
+```
 
-!!! NOTE "Node overview" 
-
-    The "Type" can be used if you need a specific type of node. More about that later. 
-
-    **CPU-only nodes**
-
-    | CPU | Memory/core | number nodes | Type | 
-    | ---- | ----------- | ------------ | -------- |
-    | 2 x 14 core Intel broadwell | 4460 MB | 48 | broadwell (intel_cpu) |
-    | 2 x 14 core Intel skylake | 6785 MB | 52 | skylake (intel_cpu) | 
-    | 2 x 64 core AMD zen3 | 8020 MB | 1 | zen3 (amd_cpu) | 
-    | 2 x 128 core AMD zen4 | 2516 MB | 8 | zen4 (amd_cpu) | 
-
-    **GPU enabled nodes**
-
-    | CPU | Memory/core | GPU card | number nodes | Type | 
-    | ---- | ----------- | -------- | ------------ | -------- | 
-    | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 | a40 | 
-    | 2 x 14 core Intel skylake | 6785 MB | 2 x Nvidia V100 | 10 | v100 | 
-    | 2 x 24 core AMD zen3 | 10600 MB | 2 x Nvidia A100 | 2 | a100 | 
-    | 2 x 24 core AMD zen3 | 10600 MB | 2 x AMD MI100 | 1 | mi100 | 
-    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia A6000 | 1 | a6000 | 
-    | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia L40s | 10 | l40s | 
-    | 2 x 48 core AMD zen4 | 6630 MB | 4 x Nvidia H100 SXM5 | 2 | h100 | 
-
-    **Large memory nodes**
- 
-    | CPU | Memory/core | number nodes | Type | 
-    | ---- | ----------- | ------------ | ---- | 
-    | 4 x 18 core Intel broadwell | 41666 MB | 8 | largemem |  
-
-### Requesting features
-
-To make it possible to target nodes in more detail there are a couple of features defined on each group of nodes. To select a feature one can use the ``-C`` option to ``sbatch`` or ``salloc``. This sets *constraints* on the job.
-
-There are several reasons why one might want to do that, including for benchmarks, to be able to replicate results (in some cases), because specific modules are only available for certain architectures, etc. 
-
-To constrain a job to a certain feature, use 
+**Sample batch script (omp_hello.sh)** 
 
 ```bash
-#SBATCH -C Type
+#!/bin/bash
+#SBATCH -A hpc2n2024-084 
+# Number of cores per task 
+#SBATCH -c 28
+#SBATCH --time=00:05:00
+
+# It is always a good idea to do ml purge before loading other modules 
+ml purge > /dev/null 2>&1
+
+ml add foss/2022b
+
+# Set OMP_NUM_THREADS to the same value as -c with a fallback in case it isn't set.
+# SLURM_CPUS_PER_TASK is set to the value of -c, but only if -c is explicitly set
+if [ -n "$SLURM_CPUS_PER_TASK" ]; then
+  omp_threads=$SLURM_CPUS_PER_TASK
+else
+  omp_threads=1
+fi
+export OMP_NUM_THREADS=$omp_threads
+
+./omp_hello
 ```
 
-!!! note 
+!!! Note "Exercise: OpenMP job" 
 
-    Features can be combined using “and” (``&``) or “or” (``|``). They should be wrapped in ``'``'s.
-
-    Example: 
-
-    ```bash
-    #SBATCH -C 'zen3|zen4'
-    ``` 
-
-List of constraints: 
-
-!!! Note "For selecting type of CPU"
-
-    Type is:
-
-    - intel_cpu
-    - broadwell
-    - skylake
-    - amd_cpu
-    - zen3
-    - zen4
 
 !!! Note "For selecting type of GPU"
 
