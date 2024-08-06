@@ -279,6 +279,10 @@ Some currently available toolchains (check <code>ml av</code> for versions and f
 - **intelcuda**: intel and CUDA
 - **iompi**: iccifort and OpenMPI 
 
+!!! Note "Exercise"
+
+    Check which versions of the ``foss`` toolchain exist. Load one of them. Check which modules you now have loaded. Remove all the (non-sticky) modules. 
+
 !!! Keypoints "Keypoints" 
 
     - The software on Kebnekaise is mostly accessed through the module system.
