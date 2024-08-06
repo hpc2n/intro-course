@@ -379,154 +379,245 @@ To run a piece of software that uses GPUs, you need to load a module version whi
 
 ### V100 - Intel Skylake
 
-#### CUDA 
+This example runs a small CUDA code. 
 
-We recommend ``fosscuda/2020b`` (contains ``GCC``, ``OpenMPI``, ``OpenBLAS``/``LAPACK``, ``FFTW``, ``ScaLAPACK``, and ``CUDA``) or ``intelcuda/2019a`` (contains icc, ifort, IntelMPI, IntelMKL, and CUDA)
+We recommend ``fosscuda/2020b`` (contains ``GCC``, ``OpenMPI``, ``OpenBLAS``/``LAPACK``, ``FFTW``, ``ScaLAPACK``, and ``CUDA``) or ``intelcuda/2019a`` (contains ``icc``, ``ifort``, ``IntelMPI``, ``IntelMKL``, and ``CUDA``)
 
-```bash 
-$ ml fosscuda/2020b
-$ nvcc hello-world.cu -o hello
-```
-
-The batch script gpu.sh compiles and runs a small cuda program called 'hello-world.cu'. To submit it:
+**Sample batch script ``gpu-skylake.sh``**
 
 ```bash 
-$ sbatch gpu.sh
+#!/bin/bash 
+# This job script is for running on 1 V100 GPU. 
+# Remember to change this to your own project ID after the course! 
+#SBATCH -A hpc2n2024-084 
+#SBATCH --time=00:05:00
+#SBATCH --gpus=v100:1
+
+ml purge > /dev/null 2>&1
+ml fosscuda/2020b
+
+nvcc hello-world.cu -o hello
+./hello
 ```
+
+The batch script gpu.sh compiles and runs a small cuda program called ``hello-world.cu``. 
+
+!!! note "Exercise: V100 GPU job"
+
+    To submit it, just do: 
+
+    ```bash 
+    sbatch gpu.sh
+    ```
+
+    Use ``squeue --me`` or ``scontrol show job JOBID`` to see that the job runs in the correct partition/node types. 
 
 ### A100 - AMD Zen3
 
-In order to find the correct modules, as well as compile a program if you need that, you must login to one of the AMD login nodes with either SSH (kebnekaise-amd.hpc2n.umu.se) or ThinLinc (kebnekaise-amd-tl.kebnekaise.hpc2n.umu.se)
+Remember, in order to find the correct modules, as well as compile a program if you need that, you must login to one of the AMD login nodes with either SSH (``kebnekaise-amd.hpc2n.umu.se``) or ThinLinc (``kebnekaise-amd-tl.kebnekaise.hpc2n.umu.se``). 
+The job can be submitted from the regular login node, though. 
 
-After that, you load a suitable CUDA toolchain, like CUDA/11.7.0 and use nvcc to compile the program 'hello-world.cu'
+!!! note "Exercise: login to the AMD login node and find a suitable module"
+
+    If you are logged in to the regular Kebnekaise login node, then you can easiest login to the AMD login node by typing this in a terminal window: 
+
+    ```bash
+    ssh kebnekaise-amd.hpc2n.umu.se
+    ```
+
+    After that, you check for a suitable CUDA toolchain: ``ml spider CUDA``.
+
+    You can then load it (here ``CUDA/11.7.0``) and use ``nvcc`` to compile the program ``hello-world.cu``: 
+
+    ```bash 
+    ml CUDA/11.7.0
+    nvcc hello-world.cu -o hello
+    ```
+
+    Now logout from the AMD login node again. 
+
+The batch script ``gpu-a100.sh`` compiles and runs a small cuda program called ``hello-world.cu``. 
+
+**Sample A100 GPU job script: gpu-a100.sh**
 
 ```bash 
-$ ml CUDA/11.7.0
-$ nvcc hello-world.cu -o hello
+#!/bin/bash 
+# Remember to change this to your own project ID after the course! 
+#SBATCH -A hpc2n2024-084
+#SBATCH --time=00:05:00
+#SBATCH --gpus=a100:1
+
+ml purge > /dev/null 2>&1
+ml CUDA/11.7.0
+
+nvcc hello-world.cu -o hello
+./hello
 ```
 
-The batch script gpu-a100.sh compiles and runs a small cuda program called 'hello-world.cu'. To submit it:
+!!! note "Exercise: A100 GPU batch jobs"
 
-```bash 
-$ sbatch gpu-a100.sh
-```
+    The above script is found in the same directory as the other exercises (``intro-course/exercises/simple``). You can submit it directory: 
 
-To use the reservation for running on this node, make sure
+    ```bash 
+    sbatch gpu-a100.sh
+    ```
+
+    Like for the A100, you are encouraged to use ``squeue --me`` and/or ``scontrol show job JOBID`` to see that the job gets the correct partition/node type allocated. 
+
+### A40 - Intel broadwell 
+
+Kebnekaise also has a few of the A40 GPUs. These are placed on Intel broadwell nodes. 
+
+In order to run on these, you add this to your batch script: 
 
 ```bash
-#SBATCH --reservation=intro-gpu
+#SBATCH --gpus=a40:number
 ```
 
-is added.
+where ``number`` is 1 or 2 (the number of GPU cards). 
 
-A40 - Intel broadwell 
+You can find the available modules on the regular login node, ``kebnekaise.hpc2n.umu.se``. 
 
-L40s - AMD Zen4
+### L40s - AMD Zen4 
 
-H100 - AMD Zen4
+Since these GPUs are located on AMD Zen4 nodes, you need to login to ``kebnekaise-amd.hpc2n.umu.se`` to check available modules. 
 
-A6000 - AMD Zen4
+Then, to ask for these nodes in your batch script, you add: 
 
-MI100 - AMD Zen3 
+```bash
+#SBATCH --gpus=l40s:number
+```
 
-:w
+where ``number`` is 1 or 2 (the number of GPU cards). 
 
+### H100 - AMD Zen4 
 
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job - V100} 
+The H100 GPUs are located on AMD Zen4 nodes. You can find the available modules by logging in to ``kebnekaise-amd.hpc2n.umu.se``. 
 
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\# Expected time for job to complete}  \\ 
-\texttt{\#SBATCH --time=00:10:00} \\
-\texttt{\# Number of GPU cards needed. Here asking for 2 V100 cards} \\
-\texttt{\#SBATCH --gres=v100:2} \\
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\
-\texttt{\# Change to modules needed for your program} \\ 
-\texttt{ml fosscuda/2021b} \\ 
-\vspace{3mm}
-\texttt{./my-cuda-program} \\
-\end{footnotesize}
-  \end{block}
+You ask for these GPUs in your batch script by adding: 
 
-}
+```bash
+#SBATCH --gpus=h100:number
+```
 
+where ``number`` is 1, 2, 3, or 4 (the number of GPU cards you want to allocate). 
 
-\frame{\frametitle{The Batch System (SLURM)}\framesubtitle{GPU Job - A100} 
+### A6000 - AMD Zen4 
 
-  \begin{block}{}
-\begin{footnotesize}
-\texttt{\#!/bin/bash} \\
-\texttt{\#SBATCH -A hpc2n2023-132} \\
-\texttt{\# Expected time for job to complete}  \\ 
-\texttt{\#SBATCH --time=00:10:00} \\
-\texttt{\# Adding the partition for the A100 GPUs} \\
-\texttt{\#SBATCH -p amd\_gpu} \\ 
-\texttt{\# Number of GPU cards needed. Here asking for 2 A100 cards} \\ 
-\texttt{\#SBATCH --gres=a100:2} \\
-\vspace{3mm} 
-\texttt{module purge > /dev/null 2>\&1} \\
-\texttt{\# Change to modules needed for your software - remember to login} \\
-\texttt{\# to kebnekaise-amd.hpc2n.umu.se or} \\
-\texttt{\# kebnekaise-amd-tl.hpc2n.umu.se login node to see availability} \\
-\texttt{ml CUDA/11.7.0} \\ 
-\vspace{3mm}
-\texttt{./my-cuda-program} \\
-\end{footnotesize}
-  \end{block}
+The A6000 GPUs are placed on AMD Zen4 nodes. That means you can find the available modules by logging in to ``kebnekaise-amd.hpc2n.umu.se``. 
 
-}
+To run on these GPUs, add this to your batch script: 
 
+```bash 
+#SBATCH --gpus=a6000:number 
+```
 
-\frame{\frametitle{Important information}
+where ``number`` is 1 or 2 (the number of GPU cards you want to allocated). 
 
-  \begin{block}{}
-    \begin{itemize}
-      \begin{small}
-      \item The course project has the following project ID: hpc2n2023-132
-      \item In order to use it in a batch job, add this to the batch script:
-        \begin{itemize}
-          \begin{small}
-          \item \#SBATCH -A hpc2n2023-132
-          \end{small}
-        \end{itemize}
-      \item There is a reservation with one A100 GPU node reserved for the course, in order to let us run small GPU examples without having to wait for too long. The reservation also is for one Broadwell CPU node. 
-      \item The reservation is ONLY valid during the course:
-        \begin{itemize}
-          \begin{small}
-          \item intro-gpu \\ (add with \#SBATCH --reservation=intro-gpu)
-          \end{small}
-      \item To use the reservation with the A100 GPU node, also add \texttt{\#SBATCH -p amd\_gpu} and \texttt{\#SBATCH --gres=a100:x (for x=1,2)}. 
-        \end{itemize}
-      \item We have a storage project linked to the compute project. It is hpc2n2023-132. You find it in /proj/nobackup/hpc2n2023-132. Remember to create your own directory under it.
-      \end{small}
-    \end{itemize}
-  \end{block}
+### MI100 - AMD Zen3 
 
-}
+The MI100 GPUs are located on AMD Zen3 nodes. You can find the available modules by logging in to ``kebnekaise-amd.hpc2n.umu.se``. 
 
-\frame{\frametitle{Questions and support}
+To allocate MI100 GPUs, add this to your batch script: 
 
-  \begin{block}{}
-    \textbf{Questions?} Now: Ask me or one of the other support or application experts present. 
+```bash
+#SBATCH --gpus=mi100:number
+```
 
-    \vspace{0.5cm}
-    OR 
-    \vspace{0.5cm}
+where ``number`` is 1 or 2 (the number of GPU cards). 
 
-    \begin{itemize}
-    \item Documentation: \texttt{https://www.hpc2n.umu.se/support}
-    \item Support questions to: \texttt{https://supr.naiss.se/support/} or \texttt{support@hpc2n.umu.se}
-    \end{itemize}
-  \end{block}
+## GPU features 
 
-}
+**Sample batch script for allocating any AMD GPU**
 
-\end{document}
+```bash
+#!/bin/bash 
+# Remember to change this to your own project ID after the course! 
+#SBATCH -A hpc2n2024-084 
+#SBATCH --time=00:05:00
+#SBATCH --gpus=1
+#SBATCH -C amd_gpu 
 
+ml purge > /dev/null 2>&1
+ml CUDA/11.7.0
 
+./myGPUcode
+```
+
+**Sample batch script for allocating any Nvidia GPU**
+
+```bash 
+#!/bin/bash
+# Remember to change this to your own project ID after the course! 
+#SBATCH -A hpc2n2024-084 
+#SBATCH --time=00:05:00
+#SBATCH --gpus=1
+#SBATCH -C nvidia_gpu 
+
+ml purge > /dev/null 2>&1
+ml CUDA/11.7.0
+
+./myGPUcode
+```
+
+**Sample batch script for allocating any Nvidia GPU on Intel node**
+
+```bash 
+#!/bin/bash
+# Remember to change this to your own project ID after the course!
+#SBATCH -A hpc2n2024-084
+#SBATCH --time=00:05:00
+#SBATCH --gpus=1
+#SBATCH -C 'nvidia_gpu&intel_cpu'
+
+ml purge > /dev/null 2>&1
+ml CUDA/11.7.0
+
+./myGPUcode
+```
+
+**Sample batch script for allocating any GPU with AI features and on a Zen node** 
+
+```bash 
+#!/bin/bash
+# Remember to change this to your own project ID after the course!
+#SBATCH -A hpc2n2024-084
+#SBATCH --time=00:05:00
+#SBATCH --gpus=1
+#SBATCH -C ''zen3|zen4'&GPU_AI'
+
+ml purge > /dev/null 2>&1
+ml CUDA/11.7.0
+
+./myGPUcode
+```
+
+!!! note "Exercise: GPU features"
+
+    In order to run these examples, you can change ``./myGPUcode`` to 
+
+    ```bash
+    nvcc hello-world.cu -o hello
+    ./hello
+    ```
+
+    or any other GPU program of your choice. 
+
+    The ``gpu-features.sh`` example script in the ``exercises/simple`` directory is prepared for the "any GPU with AI features and on a Zen node". You can either run it as is, or make changes to it and try any of the other combinations here (or try new combinations yourself). 
+
+    Check with ``squeue --me`` which partition/node type the job ends up in, and that it fits. More information can be found with ``scontrol show job JOBID``. 
+
+## Starting JupyterLab 
+
+On Kebnekaise, it is possible to run JupyterLab. This is done through a batch job, and is described in detail <a href ="https://docs.hpc2n.umu.se/tutorials/jupyter/" target="*blank">on our "Jupyter on Kebnekaise" documentation</a>.  
+
+## Keypoints 
+
+!!! keypoints "Keypoints" 
+
+    - How to run serial, MPI, OpenMP, and GPU jobs
+    - How to use GPU features 
+    - How to run several jobs from inside one batch job 
 
 
 
