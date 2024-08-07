@@ -47,7 +47,7 @@ plugins:
   - mkdocstrings
   - markdown-exec
   - open-in-new-tab
-  - markdown-footnotes
+  #- markdown-footnotes
 
 markdown_extensions:
   - pymdownx.highlight:
