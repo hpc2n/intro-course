@@ -72,7 +72,7 @@ You load a compiler toolchain the same way you load any other module. They are a
 | C | gcc | mpicc | 
 | C++ | g++ | mpiCC |
 
-In order to access the MPI compilers, load [a compiler toolchain which contains an MPI library](../modules#compiler__toolchains).  
+In order to access the MPI compilers, load [a compiler toolchain which contains an MPI library](modules#compiler__toolchains).  
 
 !!! Hint
 
