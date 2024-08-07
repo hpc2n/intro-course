@@ -2,9 +2,14 @@
 
 ## Matlab
 
+The first time you access Matlab on Kebnekaise, you need to configure it by following these guidelines 
+[Configuring Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018)
+
 ![pctworkflow](images/pctworkflow.png)
 
 <figcaption>Chart flow for a more efficient Matlab code using existing tools (adapted from [^1])</figcaption>
+
+
 
 ## References
 
