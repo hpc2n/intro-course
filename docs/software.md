@@ -12,11 +12,10 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
 !!! Note "Exercise 1: Matlab serial job"
  
-    The folder SERIAL contains a function [funct.m](../exercises/MATLAB/SERIAL/funct.m) 
+    The folder SERIAL contains a function [funct.m](../exercises/MATLAB/SERIAL/Readme.md) 
     which performs a FFT on a matrix.
     The execution time is obtained with tic/toc and written down in the output file called
-    **log.out**. Run the function **funct.m** by  using the MATLAB GUI with the help
-    of the script **submit.m**. 
+    **log.out**. Run the function [readme]](../exercises/MATLAB/SERIAL/funct.m)
 
     As an alternative, you can submit the job via a batch script **job.sh**. Here,
     you will need to fix the Project_ID with the one provided for the present course.
