@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH -A hpc2n2023-132
+#SBATCH -A hpc2n2024-084
 # Since the files run sequentially I only need enough cores for the largest of them to run 
 #SBATCH -n 14
 # Remember to ask for enough time for all jobs to complete
 #SBATCH --time=00:10:00
  
 module purge > /dev/null 2>&1
-ml foss/2021b
+ml foss/2022b
 
 # Here 14 tasks with 2 cores per task. Output to file - not needed if your job creates output in a file directly 
 # In this example I also copy the output somewhere else and then run another executable.
