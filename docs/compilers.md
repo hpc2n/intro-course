@@ -157,6 +157,16 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     b-an01 [~]$ 
     ```
 
+!!! Note "Exercise"
+
+    Try yourself! Rerun with OMP_NUM_THREADS set to 1, 2, 4, 8. 
+
+    **NOTE**: Normally you are not supposed to run anything on the command line, but these are very short and light-weight programs. 
+
+!!! Note "Exercise" 
+
+    You could try with a different toolchain (or version). Remember to unload/purge, load the new toolchain, compile the program again, and then run. 
+
 ### Compiling with Intel 
 
 | **Language** | **Compiler name** | **MPI** | 
