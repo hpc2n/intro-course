@@ -1,6 +1,6 @@
 # Application examples
 
-# Matlab
+## Matlab
 
-![pctworkflow](images/pctworkflow.png){: style="height: 100px;float: center;"} 
+![pctworkflow](images/pctworkflow.png){: style="height: 600px;float: center;"} 
 
