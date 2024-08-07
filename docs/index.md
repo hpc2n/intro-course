@@ -20,6 +20,8 @@
 
     - Basic knowledge about Linux (if you need a refresher, you could take the course "Introduction to Linux" which runs immediately before this course. Info and registration here: <a href="https://www.hpc2n.umu.se/events/courses/2024/fall/intro-linux" target="_blank">https://www.hpc2n.umu.se/events/courses/2024/fall/intro-linux</a>. 
     - An account at SUPR and at HPC2N. You should have already been contacted about getting these if you did not have them already. 
+
+--8<-- "exercises/simple/hello.c"
  
 !!! note "Content"
  
