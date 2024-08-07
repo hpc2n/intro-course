@@ -10,9 +10,18 @@ After this, we go through the module system and take a brief look at how to subm
 
 We will then look at some application examples, and how to run them at Kebnekaise. There will again be hands-ons for you to try this out yourself.
 
-Materials, including exercises: Clone this repo or download a zip of the material (click the green "Code" button then pick "Download ZIP"). 
+**Materials, including exercises**
 
-The registration and schedule is here:  
+Either:
+- Clone this repo 
+    - click the green "Code" button and copy the url, making sure it is set to HTTPS
+    - In a terminal window, where you want the files downloaded to, do ``git clone THE-URL``
+- or download a zip of the material 
+    - click the green "Code" button then pick "Download ZIP" 
+    - move the downloaded zip to where you want to work with the files and unzip it
+    - you can also right-click the "Download ZIP" and copy the link, then use ``wget THE-LINK`` in a terminal in your location of choice 
+
+The registration and schedule is here: https://www.hpc2n.umu.se/events/courses/2024/fall/intro-hpc2n
 
 Lecture recordings: TBA
 
