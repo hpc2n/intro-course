@@ -8,3 +8,5 @@ markdown-include==0.8.1
 mkdocs-open-in-new-tab==1.0.3
 markdown-extra==1.0.1
 python-markdown-comments==1.1.0
+markdown-footnotes==0.1.1
+Update github-actions.yml==10.8.1
