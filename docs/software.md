@@ -12,7 +12,7 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
 !!! Note "Exercise 1: Matlab serial job"
  
-    The folder SERIAL contains a function [funct.m](../exercises/MATLAB/SERIAL/Readme.md) 
+    The folder SERIAL contains a function [funct.m](exercises/MATLAB/SERIAL/funct.m) 
     which performs a FFT on a matrix.
     The execution time is obtained with tic/toc and written down in the output file called
     **log.out**. Run the function [readme](intro.md)
