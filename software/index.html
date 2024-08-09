@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/software/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Application examples - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Application examples";
+        var mkdocs_page_input_path = "software.md";
+        var mkdocs_page_url = "/intro-course/software/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Application examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#matlab">Matlab</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__matlab">How to find Matlab</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#first__time__configuration">First time configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tools__for__efficient__simulations">Tools for efficient simulations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Application examples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="application__examples">Application examples<a class="headerlink" href="#application__examples" title="Permanent link">&para;</a></h1>
+<h2 id="matlab">Matlab<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__matlab">How to find Matlab<a class="headerlink" href="#how__to__find__matlab" title="Permanent link">&para;</a></h3>
+<p>Matlab is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
+a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
+<a href="https://www.hpc2n.umu.se/resources/software/matlab">here</a>. </p>
+<h3 id="first__time__configuration">First time configuration<a class="headerlink" href="#first__time__configuration" title="Permanent link">&para;</a></h3>
+<p>The first time you access Matlab on Kebnekaise, you need to configure it by following these guidelines 
+<a href="https://www.hpc2n.umu.se/resources/software/configure-matlab-2018">Configuring Matlab</a></p>
+<h3 id="tools__for__efficient__simulations">Tools for efficient simulations<a class="headerlink" href="#tools__for__efficient__simulations" title="Permanent link">&para;</a></h3>
+<p>Chart flow for a more efficient Matlab code using existing tools (adapted from<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>)</p>
+<p><img alt="pctworkflow" src="../images/pctworkflow.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Exercise 1: Matlab serial job</p>
+<p>The folder SERIAL contains a function <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/funct.m" target="_blank">funct.m</a> 
+which performs a FFT on a matrix.
+The execution time is obtained with tic/toc and written down in the output file called
+<strong>log.out</strong>. Run the function by using the MATLAB GUI with the help of the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/submit.m" target="_blank">submit.m</a>.</p>
+<p>As an alternative, you can submit the job via a batch script 
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/job.sh" target="_blank">job.sh</a>. 
+Here, you will need to fix the Project_ID with the one provided for the present course and the Matlab version.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercise 2: Matlab parallel job</p>
+<ul>
+<li>PARFOR folder contains an example of a parallelized loop with the &ldquo;parfor&rdquo; directive. A pause()
+function is included in the loop to make it heavy. This function can be
+submitted to the queue by running the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/submit.m">submit.m</a> in the MATLAB GUI.
+The number of workers can be set by replacing the string <em>FIXME</em> (in the &ldquo;submit.m&rdquo;
+file) with the number you desire. </li>
+</ul>
+<p>Try different values for the number of workers from 1 to 28 and take a note
+  of the simulation time output at the end of the simulation. Where does the
+  code achieve its peak performance? </p>
+<ul>
+<li>SPMD folder presents an example of a parallelized code using SPMD paradigm. You
+can submit this job to the queue through the MATLAB GUI.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercise 2: Matlab GPU job</p>
+<p>GPU folder contains a test case that computes a Mandelbrot set both 
+on CPU <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelcpu.m">mandelcpu.m</a> 
+and on GPU <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelgpu.m">mandelgpu.m</a>. You can submit the jobs through 
+the MATLAB GUI using the <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitcpu.m">submitcpu.m</a> and <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitgpu.m">submitgpu.m</a>  files. </p>
+<p>The final output if everything ran well are two .png figures
+which display the timings for both architectures. Use the &ldquo;eom&rdquo; command on the
+terminal to visualize the images (eom out-X.png)</p>
+</div>
+<div class="admonition keypoints">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>The software on Kebnekaise is mostly accessed through the module system.</li>
+</ul>
+</div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="https://se.mathworks.com/help/parallel-computing/choosing-a-parallel-computing-solution.html" target="_blank">MathWorks documentation on Parallel Computing</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../simple/" class="btn btn-neutral float-left" title="Simple examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../simple/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
