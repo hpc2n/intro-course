@@ -28,7 +28,7 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
     As an alternative, you can submit the job via a batch script 
     [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/job.sh){:target="_blank"}. 
-    Here, you will need to fix the Project_ID with the one provided for the present course.
+    Here, you will need to fix the Project_ID with the one provided for the present course and the Matlab version.
 
 
 !!! Note "Exercise 2: Matlab parallel job"

@@ -4,7 +4,7 @@
 #SBATCH -n 1
 
 #Load modules necessary for running MATLAB
-ml MATLAB/2021a
+ml MATLAB/XYZ
 
 srun matlab -nodisplay -singleCompThread -r "funct(10000);exit" > out.log
 
