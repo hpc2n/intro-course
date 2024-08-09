@@ -24,7 +24,7 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
     The folder SERIAL contains a function [funct.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/funct.m){:target="_blank"} 
     which performs a FFT on a matrix.
     The execution time is obtained with tic/toc and written down in the output file called
-    **log.out**. Run the function.
+    **log.out**. Run the function by using the MATLAB GUI with the help of the script [submit.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/submit.m){:target="_blank"}.
 
     As an alternative, you can submit the job via a batch script 
     [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/job.sh){:target="_blank"}. 
