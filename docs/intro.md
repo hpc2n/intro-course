@@ -4,7 +4,7 @@
 Mirko Myllykoski, Senior Research Engineer at CS/HPC2N, Umeå
 University, for the January 2021 version of the "Introduction to
 HPC2N" course. 
-Various additions and changes by Birgitte Brydsö, HPC2N, Umeå University, for later versions. -->
+Various additions and changes, including porting to mkdocs by Birgitte Brydsö, HPC2N, Umeå University, for later versions. -->
 
 ![umu-logo](images/umu-logo-left-EN.png){: style="height: 44px; float: left;"}
 ![naiss-logo](images/naiss.png){: style="height: 44px;"}
@@ -81,9 +81,12 @@ Involved in several **projects and collaborations**:
     - Online "HPC2N fika"  
 - **User training and education program**
     - 0.5 -- 5 days; ready-to-run exercises
+    - intro courses: our system, Linux, R, Python, Julia, Matlab, Git
+    - intermediate courses
+    - - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
+- **Courses this fall**
     - Introduction to Linux, 16 September 2024
     - Introduction to HPC2N and Kebnekaise, 16 September 2024
-    - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
     - Basic Singularity, 16 October 2024
     - Introduction to running R, Python, Julia, and Matlab in HPC, 22-25 October 2024
     - Introduction to Git, 25-29 November 2024 
@@ -179,8 +182,6 @@ The current supercomputer at HPC2N. It is a very heterogeneous system.
         - 2 dual NVIDIA A100 GPU nodes
         - one many-core AMD Zen3 CPU node
 
-Kebnekaise will be continuosly upgraded, as old hardware gets retired. 
-
 - In 2024 Kebnekaise was extended with 
     - 2 Dual socket GPU-nodes: Lenovo ThinkSystem SR675 V3
         - 2 x AMD EPYC 9454 48C 290W 2.75GHz Processor
@@ -196,6 +197,8 @@ Kebnekaise will be continuosly upgraded, as old hardware gets retired.
         - 2 x AMD EPYC 9754 128C 360W 2.25GHz Processor
         - 768GB [24x 32GB TruDDR5 4800MHz RDIMM-A]
         - 1 x 1 3.84TB Read Intensive NVMe PCIe 4.0 x4 HS SSD
+
+Kebnekaise will be continuosly upgraded, as old hardware gets retired.
 
 ### Current hardware in Kebnekaise
 
@@ -224,7 +227,7 @@ The GPU enabled nodes are:
 
 - 2 x 14 core Intel broadwell
     - 9000 MB memory / core
-    - 2 x Nvidia A40
+    - 2 x Nvidia A40 
     - 4 nodes
     - Total of 83 TFlops/s
 - 2 x 14 core Intel skylake
@@ -260,6 +263,23 @@ The large memory nodes are:
     - 8 nodes
     - Total of 13.6 TFlops/s for all these nodes 
 
+GPUs can have different types of cores: 
+
+- **CUDA cores**: General-purpose cores for a variety of parallel computing tasks. Not as efficicent as specizalized cores. CUDA cores is only on NVidia. The (mostly) equivalent is called stream processors on AMD. 
+- **Tensor cores**: Made for matrix multiplications. Good for deep learning and AI workloads involving large matrix operations. Can be used for general-purpose as well, but less efficient for this. Tensor cores is the NVidia name. AMD has a somewhat equivalent core type called **matrix cores**. 
+- **RT (ray tracing) cores**: Cores that are optimized for tasks involving ray tracing, like rendering images or video. 
+
+| GPU Type | CUDA cores / stream processors | TENSOR cores / matrix cores | RT cores | 
+| -------- | ---------- | ------------ | -------- | 
+| A40 | 10752 | 336 | | 
+| V100 | 5120 | 640 | | 
+| A100 | 6912 | 432 | | 
+| MI100 | 7680 | 480 | | 
+| A6000 | 10752 | 386 | | 
+| L40S | 18176 | 568 | 142 | 
+| H100 | 16896 | 528 | | 
+
+NOTE that just like you cannot really compare CPU cores directly (speed etc.) you also cannot just compare CUDA/TENSOR/RT etc. cores directly (more efficient design, faster, etc.)  
 ### Kebnekaise - HPC2N storage
   
 Basically four types of storage are available at HPC2N: 
@@ -316,12 +336,12 @@ I will cover more details in a later section, where we go more into detail about
 
 #### Aggregating computing power
 
-- 147 nodes totalling 6808 cores and ??? CUDA cores 
-    - Compared to 4 cores in a modern laptop
+- 147 nodes totalling 6808 CPU cores and 64 GPUs (totalling 751616 CUDA cores, 33472 TENSOR cores + 960 matrix cores, 284 RT cores)  
+    - Compared to 4-8 cores in a common modern laptop
 
 #### Higher performance
 
-- More than 527,000,000,000,000 arithmetical operations per second (527 trillion (billion)
+- More than 527,000,000,000,000 arithmetical operations per second (527 trillion (billion)) in the CPU cores
     - Compared to 200,000,000,000 Flops in a modern laptop (200 billion (milliard)
  
 #### Solve large problems

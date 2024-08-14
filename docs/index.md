@@ -12,9 +12,9 @@
  
     Some useful links: 
 
-    - Documentation about Linux at HPC2N: https://docs.hpc2n.umu.se/tutorials/linuxguide/
-    - Get started guide: https://docs.hpc2n.umu.se/tutorials/quickstart/
-    - Documentation pages at HPC2N: https://docs.hpc2n.umu.se/ 
+    - Documentation about Linux at HPC2N: <a href="https://docs.hpc2n.umu.se/tutorials/linuxguide/" target="_blank">https://docs.hpc2n.umu.se/tutorials/linuxguide/</a>
+    - Get started guide: <a href="https://docs.hpc2n.umu.se/tutorials/quickstart/" target="_blank">https://docs.hpc2n.umu.se/tutorials/quickstart/</a>
+    - Documentation pages at HPC2N: <a href="https://docs.hpc2n.umu.se/" target="_blank">https://docs.hpc2n.umu.se/</a> 
 
 !!! note "Prerequisites"
 
@@ -48,7 +48,8 @@
 | Time | Topic | Activity | 
 | ---- | ----- | -------- |
 | 11:15 | Welcome+Syllabus | |
-| 11:25 | Introduction to Kebnekaise and HPC2N | Lecture | 
+| 11:20 | Introduction to Kebnekaise and HPC2N | Lecture |
+| 11:40 | Projects and accounts | Lecture |  
 | 11:45 | Logging in & editors | Lecture+exercise | 
 | 11:55 | The File System | Lecture+code along |
 | 12:15 | LUNCH BREAK | |  
