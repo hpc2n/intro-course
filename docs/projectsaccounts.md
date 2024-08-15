@@ -8,6 +8,10 @@
 
 There are both storage projects and compute projects. The storage projects are for when the amount of storage included with the compute project is not enough. 
 
+!!! important
+
+    You cannot have a storage project without a compute project! 
+
 !!! Warning "Kebnekaise is only open for local project requests!" 
 
     - The PI must be affiliated with UmU, LTU, IRF, MiUN, or SLU.

@@ -34,6 +34,18 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
 - Enter your HPC2N password. Click "Connect"
 - Click "Continue" when you are being told that the server's host key is not in the registry. Wait for the ThinLinc desktop to open.
 
+### Password
+
+You get your first, temporary HPC2N password from this page: <a href="https://www.hpc2n.umu.se/forms/user/suprauth?action=pwreset" target="_blank">HPC2N passwords</a>.
+
+That page can also be used to reset your HPC2N password if you have forgotten it.
+
+Note that you are authenticating through SUPR, using *that* service’s login credentials!
+
+!!! Warning
+
+    The HPC2N password and the SUPR password are separate! The HPC2N password and your university/department password are also separate!
+
 !!! Exercise "Exercise" 
 
     Login to Kebnekaise. 
@@ -41,16 +53,6 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
     - If you are using ThinLinc, first install the ThinLinc client. If you are using another SSH client, install it first if you have not already done so.
 
 ## Change password
-
-You get your first, temporary HPC2N password from this page: <a href="https://www.hpc2n.umu.se/forms/user/suprauth?action=pwreset" target="_blank">HPC2N passwords</a>. 
-
-That page can also be used to reset your HPC2N password if you have forgotten it.
-
-Note that you are authenticating through SUPR, using *that* service’s login credentials!
-
-!!! Warning 
-
-    The HPC2N password and the SUPR password are separate! The HPC2N password and your university/department password are also separate! 
 
 !!! Exercise "Exercise: Change your password after first login" 
 
@@ -70,6 +72,8 @@ Note that you are authenticating through SUPR, using *that* service’s login cr
 ## File transfers 
 
 We are not going to transfer any files as part of this course, but you may have to do so as part of your workflow when using Kebnekaise (or another HPC centre) for your research. 
+
+This section will only talk briefly about file transfers. You can find more information and examples on HPC2N's [File transfer documentation](https://docs.hpc2n.umu.se/documentation/filesystems/#file__transfer). 
 
 ### Linux, OS X
 

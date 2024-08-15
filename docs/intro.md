@@ -91,7 +91,7 @@ Involved in several **projects and collaborations**:
     - Introduction to running R, Python, Julia, and Matlab in HPC, 22-25 October 2024
     - Introduction to Git, 25-29 November 2024 
     - Using Python in an HPC environment, 5-6 December 2024
-    - **Updated list:** https://www.hpc2n.umu.se/events/courses
+    - **Updated list:** <a href="https://www.hpc2n.umu.se/events/courses" target="_blank">https://www.hpc2n.umu.se/events/courses</a> 
 - Workshops and seminars 
 - NGSSC / SeSE & university courses
 
@@ -127,7 +127,6 @@ System and support:
 - Roger Oscarsson
 - **Åke Sandgren**
 - Mattias Wadenstein (NeIC, Tier1)
-- **Lars Viklund**
 
 ### HPC2N application experts
 
