@@ -24,8 +24,13 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
 
 ### Using ThinLinc 
 
-- Download the client from <a href="https://www.cendio.com/thinlinc/download" target="_blank">https://www.cendio.com/thinlinc/download</a>. Install it.
-- Start the client. Enter the name of the server: <code>kebnekaise-tl.hpc2n.umu.se</code>. Enter your username. 
+- Download the client from <a href="https://www.cendio.com/thinlinc/download" target="_blank">https://www.cendio.com/thinlinc/download</a>. 
+    - Install it.
+        - Windows: Run the downloaded .exe file to install. 
+        - macOS: Information on the <a href="https://www.cendio.com/resources/docs/tag/client_macos.html#installing-the-macos-client" target="_blank">ThinLinc macOS info page</a>. 
+        - Linux Ubuntu: Download the .deb file. Run ``sudo dpkg -i PATH-TO-FILE/FILE-YOU-DOWNLOADED.deb`` 
+- Start the client. 
+- Enter the name of the server: <code>kebnekaise-tl.hpc2n.umu.se</code>. Enter your username. 
 <br style="clear: both;">
 ![thinlinc](images/thinlinc.png){: styles="width: 30%;"}
 <br style="clear: both;">
