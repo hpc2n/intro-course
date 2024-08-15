@@ -51,7 +51,7 @@
 | 11:20 | Introduction to Kebnekaise and HPC2N | Lecture |
 | 11:45 | Projects and accounts | Lecture |  
 | 11:50 | Logging in & editors | Lecture+exercise | 
-| 12:00 | The File System | Lecture+code along |
+| 12:05 | The File System | Lecture+code along |
 | 12:15 | LUNCH BREAK | |  
 | 13:15 | The Module System | Lecture+code along | 
 | 13:35 | Compiling, compiler tool chains | Lecture+code along+exercise | 

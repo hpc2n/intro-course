@@ -116,7 +116,7 @@ Others:
 - Research Engineers under DDLS, HPC2N/SciLifeLab
     - Paul Dulaud, System Developer, IT
     - Abdullah Aziz, Data Engineer
-    - Data Steward 
+    - Nalina Hamsaiyni Venkatesh, Data Steward 
 
 System and support:
 
