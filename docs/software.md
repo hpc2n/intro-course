@@ -6,12 +6,12 @@
 
 Matlab is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
 a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
-[here](https://www.hpc2n.umu.se/resources/software/matlab). 
+[here](https://www.hpc2n.umu.se/resources/software/matlab){:target="_blank"}. 
 
 ### First time configuration
 
 The first time you access Matlab on Kebnekaise, you need to configure it by following these guidelines 
-[Configuring Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018)
+[Configuring Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018){:target="_blank"}.
 
 ### Tools for efficient simulations 
 
@@ -33,25 +33,24 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
 !!! Note "Exercise 2: Matlab parallel job"
 
-    * PARFOR folder contains an example of a parallelized loop with the "parfor" directive. A pause()
+    * PARFOR folder contains an [example](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/parallel_example.m){:target="_blank"} of a parallelized loop with the "parfor" directive. A pause()
     function is included in the loop to make it heavy. This function can be
-    submitted to the queue by running the script [submit.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/submit.m) in the MATLAB GUI.
+    submitted to the queue by running the script [submit.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/submit.m){:target="_blank"} in the MATLAB GUI.
     The number of workers can be set by replacing the string *FIXME* (in the "submit.m"
     file) with the number you desire. 
-
-      Try different values for the number of workers from 1 to 28 and take a note
+      Try different values for the number of workers from 1 to 10 and take a note
       of the simulation time output at the end of the simulation. Where does the
       code achieve its peak performance? 
 
-    * SPMD folder presents an example of a parallelized code using SPMD paradigm. You
-    can submit this job to the queue through the MATLAB GUI.
+    * SPMD folder presents an example of a parallelized code using [SPMD](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SPMD/spmdex.m){:target="_blank"} paradigm. Submit this job to the queue through the MATLAB GUI. This
+    example illustrates the use of *parpool* to run parallel code in a more interactive manner.
 
-!!! Note "Exercise 2: Matlab GPU job"
+!!! Note "Exercise 3: Matlab GPU job"
 
     GPU folder contains a test case that computes a Mandelbrot set both 
-    on CPU [mandelcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelcpu.m) 
-    and on GPU [mandelgpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelgpu.m). You can submit the jobs through 
-    the MATLAB GUI using the [submitcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitcpu.m) and [submitgpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitgpu.m)  files. 
+    on CPU [mandelcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelcpu.m){:target="_blank"} 
+    and on GPU [mandelgpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelgpu.m){:target="_blank"}. You can submit the jobs through 
+    the MATLAB GUI using the [submitcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitcpu.m){:target="_blank"} and [submitgpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitgpu.m){:target="_blank"}  files. 
 
     The final output if everything ran well are two .png figures
     which display the timings for both architectures. Use the "eom" command on the

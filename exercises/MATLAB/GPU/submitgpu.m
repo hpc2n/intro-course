@@ -1,5 +1,5 @@
 % Get a handle to the cluster
-% See the page for configuring and setup of MATLAB 2018b for details
+% See the page for configuring and setup of MATLAB > 2018b for details
 c=parcluster('kebnekaise')
 % Run the jobs on 4 workers
 j = c.batch(@mandelgpu, 1, {})
