@@ -56,6 +56,9 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
     which display the timings for both architectures. Use the "eom" command on the
     terminal to visualize the images (eom out-X.png)
 
+## R
+
+
 
 !!! Keypoints "Keypoints" 
 
