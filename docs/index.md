@@ -53,8 +53,8 @@
 | 11:50 | Logging in & editors | Lecture+exercise | 
 | 12:05 | The File System | Lecture+code along |
 | 12:15 | LUNCH BREAK | |  
-| 13:15 | The Module System | Lecture+code along | 
-| 13:35 | Compiling, compiler tool chains | Lecture+code along+exercise | 
+| 13:15 | The Module System | Lecture+code along+exercise | 
+| 13:35 | Compiling | Lecture+code along+exercise | 
 | 13:50 | The Batch System | Lecture+code along |
 | 14:10 | Simple Examples | Lecture+exercises | 
 | 14:45 | COFFEE BREAK | |  

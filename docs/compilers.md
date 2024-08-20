@@ -28,7 +28,7 @@ You load a compiler toolchain the same way you load any other module. They are a
 
 !!! Example "Example: Loading foss/2023b"
 
-    This compiler toolchain contains: <code>GCC/13.2.0</code>, <code>BLAS</code> (with <code>LAPACK</code>, <code>ScaLAPACK</code>, and <code>FFTW</code>. 
+    This compiler toolchain contains: <code>GCC/13.2.0</code>, <code>BLAS</code> (with <code>LAPACK</code>), <code>ScaLAPACK</code>, and <code>FFTW</code>. 
 
     ```bash
     b-an01 [~]$ ml foss/2023b
@@ -88,6 +88,8 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     b-an01 [~]$ gcc hello.c -o hello 
     ```
 
+    You can run the executable with ``./hello``
+
 !!! Example "Example: compiling an MPI C program"
 
     You can find the file <code>mpi_hello.c</code> in the exercises directory, in the subdirectory "simple". Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/mpi_hello.c" target="_blank">mpi_hello.c</a>. 
@@ -95,8 +97,18 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     In this example we compile the MPI C program <code>mpi_hello.c</code> and name the output (the executable) <code>mpi_hello</code>. 
 
     ```bash
-    b-an01 [~]$ mpicc mpi_hello.c -i mpi_hello 
+    b-an01 [~]$ mpicc mpi_hello.c -o mpi_hello 
     ```
+
+    You then run with ```mpirun mpi_hello``
+
+!!! Important
+
+    If you later have loaded a different compiler than the one your program was compiled with, you should recompile your program before running it. 
+
+!!! note "Exercise"
+
+    Try loading ``foss/2023b`` and compiling ``mpi_hello.c``, then unload the module and instead load the module ``intel/2023b`` and see what happens if you try to run with ``mpirun mpi_hello``. 
 
 #### Flags
 
