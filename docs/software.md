@@ -11,13 +11,18 @@ a Matlab module on a Linux terminal on Kebnekaise. Details for these two options
 ### First time configuration
 
 The first time you access Matlab on Kebnekaise, you need to configure it by following these guidelines 
-[Configuring Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018){:target="_blank"}.
+[Configuring Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018){:target="_blank"}. After configuring the cluster, it is a good practice to validate the
+cluster (HOME -> Parallel -> Create and Manage Clusters):
+
+![clustervalidation](images/clusterProfileManager.png)
 
 ### Tools for efficient simulations 
 
 Chart flow for a more efficient Matlab code using existing tools (adapted from[^1])
 
 ![pctworkflow](images/pctworkflow.png)
+
+### 
 
 !!! Note "Exercise 1: Matlab serial job"
  
