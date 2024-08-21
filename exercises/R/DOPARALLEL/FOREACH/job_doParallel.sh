@@ -3,6 +3,7 @@
 #Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH -n 4
+#SBATCH -C 'skylake'
 #Writing output and error files
 #SBATCH --output=output%J.out
 #SBATCH --error=error%J.error
