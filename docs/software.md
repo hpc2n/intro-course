@@ -16,6 +16,15 @@ cluster (HOME -> Parallel -> Create and Manage Clusters):
 
 ![clustervalidation](images/clusterProfileManager.png)
 
+Notice that it is recommended to use a small number of workers for the validation, in this case 4. 
+
+!!! Warning "Kebnekaise is only open for local project requests!" 
+
+    - The PI must be affiliated with UmU, LTU, IRF, MiUN, or SLU.
+    - You can still add members (join) from anywhere.
+
+
+
 ### Tools for efficient simulations 
 
 Chart flow for a more efficient Matlab code using existing tools (adapted from[^1])
