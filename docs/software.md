@@ -164,7 +164,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
        sequential and parallel modes using the standard "iris" database. The 
        difference is basically in the use of %dopar% instead of %do% function. 
 
-          Submit the batch script [job_doParallel_ML.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/ML/job_doParallel_ML.sh){:target="_blank"} 
+          Submit the batch script [job_doParallel_ML.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/ML/job_doParallel_ML.sh){:target="_blank"} to the queue.
 
           In the output file observe the resulting elapsed times for the sequential
           and the 4 cores parallel simulation.
@@ -181,16 +181,17 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
           Note 1: In order to run this exercise, you need to have all the packages 
           listed at the beginning of this document installed. 
+
           Note 2: If you want to try a different number of cores for running the 
           scripts, you should change that number in both the *.R and *.sh scripts
 
 ??? Note "Exercise 5: Machine Learning jobs"
 
-    In the folder ``ML`` we show a single ML model using a sonar database
-    together with Random Forest. The simulations are done in serial mode and parallel
-    mode. You may change the values for the number of cores (1 in the present case) 
+    In the folder ``ML`` we show a ML model using a sonar database
+    and Random Forest as the training method ([Rscript.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/Rscript.R){:target="_blank"}). The simulations are done both in serial
+    and parallel modes. You may change the values for the number of cores (1 in the present case) 
     to other values. Notice that the number of cores needs to be the same in the
-    files job.sh and  Rscript.R. 
+    files [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/job.sh){:target="_blank"} and [Rscript.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/Rscript.R){:target="_blank"}. 
 
     Try a different number of cores and monitor the timings which are reported at
     the end of the output file.
