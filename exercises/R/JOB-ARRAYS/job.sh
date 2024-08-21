@@ -3,6 +3,7 @@
 #Asking for 12 min.
 #SBATCH -t 00:12:00
 #SBATCH --array=1-28
+#SBATCH -C 'skylake'
 #Writing output and error files
 #SBATCH --output=Array_test.%A_%a.out
 #SBATCH --error=Array_test.%A_%a.error

@@ -3,6 +3,7 @@
 #Asking for 10 min.
 #SBATCH -t 00:10:00
 #SBATCH -n 6
+#SBATCH -C 'skylake'
 
 export OMPI_MCA_mpi_warn_on_fork=0
 
