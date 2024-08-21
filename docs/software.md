@@ -149,14 +149,12 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
     The folder ``DOPARALLEL`` contains two examples:
 
-       1. doParallel.R shows how to use the "foreach" function in sequential mode
-       (1 core) and the parallel mode using 4 cores. The differences in the
-       call to "foreach" for  are basically:
-
-             --- the cluster initialization: makeCluster, registerDoParallel
-             --- the use of %dopar% instead of %do%
+       1. [doParallel.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/FOREACH/doParallel.R){:target="_blank"} 
+          shows how to use the **foreach** function in sequential mode
+          (1 core) and the parallel mode using 4 cores. What is the difference in the usage
+          of **foreach** for these two modes?
           
-          submit the **job_doParallel.sh** script and compare the timings of the
+          Submit the [job_doParallel.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/FOREACH/job_doParallel.sh){:target="_blank"} script and compare the timings of the
           sequential and parallel codes.
 
        2. doParallel_ML.R presents the evaluation of several ML models in both
