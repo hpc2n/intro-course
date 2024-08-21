@@ -33,19 +33,19 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
 ??? Note "Exercise 1: Matlab serial job"
  
-    The folder SERIAL contains a function [funct.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/funct.m){:target="_blank"} 
+    The folder ``SERIAL`` contains a function [funct.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/funct.m){:target="_blank"} 
     which performs a FFT on a matrix.
     The execution time is obtained with tic/toc and written down in the output file called
     **log.out**. Run the function by using the MATLAB GUI with the help of the script [submit.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/submit.m){:target="_blank"}.
 
     As an alternative, you can submit the job via a batch script 
     [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/job.sh){:target="_blank"}. 
-    Here, you will need to fix the Project_ID with the one provided for the present course and the Matlab version.
+    Here, you will need to fix the *Project_ID* with the one provided for the present course and the Matlab version.
 
 
 ??? Note "Exercise 2: Matlab parallel job"
 
-    * PARFOR folder contains an [example](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/parallel_example.m){:target="_blank"} of a parallelized loop with the "parfor" directive. A pause()
+    * ``PARFOR`` folder contains an [example](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/parallel_example.m){:target="_blank"} of a parallelized loop with the "parfor" directive. A pause()
     function is included in the loop to make it heavy. This function can be
     submitted to the queue by running the script [submit.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/submit.m){:target="_blank"} in the MATLAB GUI.
     The number of workers can be set by replacing the string *FIXME* (in the "submit.m"
@@ -54,12 +54,12 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
       of the simulation time output at the end of the simulation. Where does the
       code achieve its peak performance? 
 
-    * SPMD folder presents an example of a parallelized code using [SPMD](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SPMD/spmdex.m){:target="_blank"} paradigm. Submit this job to the queue through the MATLAB GUI. This
+    * ``SPMD`` folder presents an example of a parallelized code using [SPMD](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SPMD/spmdex.m){:target="_blank"} paradigm. Submit this job to the queue through the MATLAB GUI. This
     example illustrates the use of *parpool* to run parallel code in a more interactive manner.
 
 ??? Note "Exercise 3: Matlab GPU job"
 
-    GPU folder contains a test case that computes a Mandelbrot set both 
+    ``GPU`` folder contains a test case that computes a Mandelbrot set both 
     on CPU [mandelcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelcpu.m){:target="_blank"} 
     and on GPU [mandelgpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelgpu.m){:target="_blank"}. You can submit the jobs through 
     the MATLAB GUI using the [submitcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitcpu.m){:target="_blank"} and [submitgpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitgpu.m){:target="_blank"}  files. 
@@ -70,7 +70,7 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
 ## R
 
-### How to find Matlab 
+### How to find R
 
 Similar to Matlab, R is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
 a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
@@ -89,7 +89,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ### Exercises
 
-??? important
+??? important "Requirements"
 
     Prior to running the examples, you will need to install several packages.
     Follow these [instructions](https://www.hpc2n.umu.se/resources/software/user_installed/r){:target="_blank"}:
@@ -122,7 +122,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ??? Note "Exercise 1: R serial job"
 
-    In the SERIAL folder, a [serial](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/SERIAL/serial.R){:target="_blank"} is provided. Submit the script 
+    In the ``SERIAL`` folder, a [serial](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/SERIAL/serial.R){:target="_blank"} is provided. Submit the script 
     [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/SERIAL/job.sh){:target="_blank"} with the command *R CMD* and also with *Rscript*. Where could
     it be more suitable to use *Rscript* over *R CMD*?
 
@@ -130,19 +130,24 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ??? Note "Exercise 2: Job Arrays"
 
-    "Job-Arrays" folder shows an example for job arrays batch file. Submit the
-    script and take a look at the output.
+    ``JOB-ARRAYS`` folder shows an [example](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/JOB-ARRAYS/script_arrays.R){:target="_blank"} for job arrays, the batch file is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/JOB-ARRAYS/job.sh){:target="_blank"}. Submit the
+    script and notice what is written in the output files. 
+    
+    Could you use job arrays in your simulations if you need to run many simulations where some parameters are changed? As an example, imagine that you need to run 28 simulations 
+    where a single parameter, such as the temperature, is changed from 2 to 56 C. Could you 
+    use the variable *task_id* in the previous script to get that range of temperatures so
+    that each simulation prints out a different temperature?
 
 ??? Note "Exercise 3: Parallel jobs with Rmpi"
 
-    In the folder "Rmpi", you can find the R script "Rmpi_1.R" which uses 5
-    MPI slaves to apply the runif() function on an array "c". Submit this job
-    with "sbatch job_Rmpi_1.sh". As a result, you will see the random numbers
+    In the folder ``RMPI``, you can find the R script [Rmpi.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/RMPI/Rmpi.R){:target="_blank"} which uses 5
+    MPI slaves to apply the runif() function on an array "c". The submit file is
+    [job_Rmpi.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/RMPI/job_Rmpi.sh){:target="_blank"}. As a result, you will see the random numbers
     generated by the slaves in the slurm output file
 
 ??? Note "Exercise 4: Parallel jobs with doParallel"
 
-    The folder "doParallel" contains two examples:
+    The folder ``DOPARALLEL`` contains two examples:
 
        1. doParallel.R shows how to use the "foreach" function in sequential mode
        (1 core) and the parallel mode using 4 cores. The differences in the
@@ -180,7 +185,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ??? Note "Exercise 5: Machine Learning jobs"
 
-    In the folder "MachineLearning" we show a single ML model using a sonar database
+    In the folder ``ML`` we show a single ML model using a sonar database
     together with Random Forest. The simulations are done in serial mode and parallel
     mode. You may change the values for the number of cores (1 in the present case) 
     to other values. Notice that the number of cores needs to be the same in the
