@@ -157,29 +157,32 @@ The first time you access R on Kebnekaise, you need to configure it by following
           Submit the [job_doParallel.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/FOREACH/job_doParallel.sh){:target="_blank"} script and compare the timings of the
           sequential and parallel codes.
 
-       2. doParallel_ML.R presents the evaluation of several ML models in both
+          How many *workers* are allocated for this simulation? If you want to allocate
+          more or less, what changes must be made to these files?
+
+       2. [doParallel_ML.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/ML/doParallel_ML.R){:target="_blank"} presents the evaluation of several ML models in both
        sequential and parallel modes using the standard "iris" database. The 
        difference is basically in the use of %dopar% instead of %do% function. 
 
-          submit the job with "sbatch job_doParallel_ML.sh" 
+          Submit the batch script [job_doParallel_ML.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/ML/job_doParallel_ML.sh){:target="_blank"} 
 
-       In the output file observe the resulting elapsed times for the sequential
-       and the 4 cores parallel simulation.
+          In the output file observe the resulting elapsed times for the sequential
+          and the 4 cores parallel simulation.
 
-       Upon submitting the job to the queue you will get a number called job ID.
-       Use the command 
+          Upon submitting the job to the queue you will get a number called job ID.
+          Use the command:
 
-       job-usage job_ID
+          ``job-usage job_ID``
 
-       to obtain a URL which you can copy/paste in your local browser. Tip: refresh
-       your browser several times to get the statistics. 
+          to obtain a URL which you can copy/paste in your local browser. Tip: refresh
+          your browser several times to get the statistics. 
 
-       Can you see how the CPU is used? What about the memory?
+          Can you see how the CPU is used? What about the memory?
 
-       Note 1: In order to run this exercise, you need to have all the packages 
-       listed at the beginning of this document installed. 
-       Note 2: If you want to try a different number of cores for running the 
-       scripts, you should change that number in both the *.R and *.sh scripts
+          Note 1: In order to run this exercise, you need to have all the packages 
+          listed at the beginning of this document installed. 
+          Note 2: If you want to try a different number of cores for running the 
+          scripts, you should change that number in both the *.R and *.sh scripts
 
 ??? Note "Exercise 5: Machine Learning jobs"
 
