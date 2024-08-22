@@ -24,6 +24,11 @@ Chart flow for a more efficient Matlab code using existing tools (adapted from[^
 
 ![pctworkflow](images/pctworkflow.png)
 
+!!! important "MATLAB on GPUs" 
+
+    Notice that MATLAB currently supports only NVIDIA GPUs (v100,a40,a6000,a100,l40s,h100),
+    with v100 and l40s being the most abundant (10 nodes each).
+
 !!! Warning "Use MATLAB for lightweight tasks on the login nodes" 
 
     Remember that login nodes are used by many users and if you run heavy jobs there,
