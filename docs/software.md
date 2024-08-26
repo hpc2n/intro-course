@@ -201,6 +201,11 @@ The first time you access R on Kebnekaise, you need to configure it by following
     Try a different number of cores and monitor the timings which are reported at
     the end of the output file.
 
+## Alphafold
+
+### How to find Alphafold
+
+Alphafold is installed as a module
 
 
 
