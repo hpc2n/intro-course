@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -A Project_ID      # Your project ID
-#SBATCH -J multimer        # Job name in the queue 
+#SBATCH -J monomer         # Job name in the queue 
 #SBATCH -t 08:00:00        # Wall time 
 ## lines starting with double ## are considered as comments
 # For a whole node, 2 GPU cards, (could be useful depending on the 
