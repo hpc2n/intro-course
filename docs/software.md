@@ -215,7 +215,22 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ### How to find Alphafold
 
-Alphafold is installed as a module. 
+Alphafold is installed as a module. Notice that on the Intel nodes there are more
+versions of Alphafold installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. 
+
+### Exercises
+
+??? Note "Exercise 1: Running a monomer protein simulation"
+
+    In the folder ``ALPHAFOLD`` you will find a [fasta secuence](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/my_fasta_sequence.fasta){:target="_blank"} for a monomer and the 
+    corresponding batch file [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/job.sh){:target="_blank"} for running the simulation on
+    GPUs. Try running the simulation with CPUs only and then with v100 and a100 GPUs. 
+
+    Notice that the simulation will take ~3hrs. so the purpose of this exercise is to know
+    if the simulation starts running well only.
 
 
 
