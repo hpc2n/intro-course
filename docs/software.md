@@ -1,5 +1,15 @@
 # Application examples
 
+!!! important "Create a soft-link to your storage project" 
+
+    It will be very convinient to create a soft-link to your storage project in your
+    home directory for a faster navigation:
+
+    ```bash
+         cd $HOME
+         ln -s /proj/nobackup/hpc2n202X-XYZ choose-a-name
+    ```
+
 ## Matlab
 
 ### How to find Matlab 
