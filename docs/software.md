@@ -205,7 +205,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ### How to find Alphafold
 
-Alphafold is installed as a module
+Alphafold is installed as a module. 
 
 
 
