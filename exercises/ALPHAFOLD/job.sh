@@ -1,26 +1,23 @@
 #!/bin/bash
 #SBATCH -A Project_ID      # Your project ID
 #SBATCH -J monomer         # Job name in the queue 
-#SBATCH -t 08:00:00        # Wall time 
+#SBATCH -t 02:00:00        # Wall time 
 ## lines starting with double ## are considered as comments
 # For a whole node, 2 GPU cards, (could be useful depending on the 
 # length of the sequence and number nmers
 ##SBATCH -c 28
-# Using 2 v100 cards
-##SBATCH --gres=gpu:v100:2
-# Using 2 a100 cards
-##SBATCH --gres=gpu:a100:2
+##SBATCH --gres=gpu:Type:2
 ##SBATCH --exclusive
-# For short sequences and monomers half node, 1 v100 GPU card, would work 
+# For short sequences and monomers half node, 1 GPU card, would work 
 #SBATCH -c 14 
-#SBATCH --gres=gpu:v100:1
+#SBATCH --gres=gpu:Type:1
 
 # Clean the environment from loaded modules
 ml purge > /dev/null 2>&1
 
 # Load AlphaFold
-ml GCC/11.3.0  OpenMPI/4.1.4 
-ml AlphaFold/2.3.1-CUDA-11.7.0
+ml GCC/12.3.0  OpenMPI/4.1.5
+ml AlphaFold/2.3.2-CUDA-12.1.1
 
 # Comment or uncomment the following exporting variables depending on whether
 # you want to use a whole node or half or the node
