@@ -271,10 +271,51 @@ AMD node that lacks that installation.
 
     In the folder ``ALPHAFOLD`` you will find a [fasta secuence](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/my_fasta_sequence.fasta){:target="_blank"} for a monomer and the 
     corresponding batch file [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/job.sh){:target="_blank"} for running the simulation on
-    GPUs. Try running the simulation with CPUs only and then with v100 and a100 GPUs. 
+    GPUs. Try running the simulation with CPUs only and then with l40s, v100 and a100 GPUs. 
 
-    Notice that the simulation will take ~3hrs. so the purpose of this exercise is to know
+    Notice that the simulation will take ~1hrs. so the purpose of this exercise is to know
     if the simulation starts running well only.
+
+## CryoSPARC
+
+### How to find CryoSPARC 
+
+The version 4.5.3 of CryoSPARC is installed as a module. 
+
+### First time configuration
+
+One needs a license for using this software. For
+academic purposes a free of charge license can be requested at the website
+[cryosparc.com](https://cryosparc.com/){:target="_blank"} (one working day for the processing). 
+Once you obtain your license ID copy it, create a file called ``/home/u/username/.cryosparc-license`` and paste
+it in the first line of this file. In the second line of the file write your email address. 
+
+### Using CryoSPARC on Kebnekaise
+
+Create a suitable folder in your project directory, for instance ``/proj/nobackup/hpc2n202X-XYZ/cryosparc``
+and move into this folder. Copy the ``lane*tar`` files that are located [here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"}.
+
+
+ start cryosparc and accept the request which asks about continuing using
+cryostart and that the folder was not used before. List the users on the server (which should be only yourself
+for this type of license), check the email address that is displayed for this user (it should be the one you
+added in the license file) and reset the password to. These steps are summarized here:
+
+```bash
+$cryosparc start 
+...
+Do you wish to continue starting cryosparc? [yN]: y
+...
+CryoSPARC master started. 
+ From this machine, access CryoSPARC and CryoSPARC Live at
+    http://localhost:39000
+...
+
+$cryosparc listusers
+cryosparc resetpassword --email "username@mail.com" --password "your-password"
+```
+
+
 
 
 
