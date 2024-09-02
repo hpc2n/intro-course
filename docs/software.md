@@ -293,10 +293,10 @@ it in the first line of this file. In the second line of the file write your ema
 ### Using CryoSPARC on Kebnekaise
 
 Create a suitable folder in your project directory, for instance ``/proj/nobackup/hpc2n202X-XYZ/cryosparc``
-and move into this folder. Copy the ``lane*tar`` files that are located [here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"}.
+and move into this folder. Download/copy the ``lane*tar`` files that are located [here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"} to the cryosparc folder and untar them here (``tar -xvf lane_CPU.tar`` as an example).
 
-
- start cryosparc and accept the request which asks about continuing using
+Load the CryoSPARC modules.
+Start CryoSPARC and accept the request which asks about continuing using
 cryostart and that the folder was not used before. List the users on the server (which should be only yourself
 for this type of license), check the email address that is displayed for this user (it should be the one you
 added in the license file) and reset the password to. These steps are summarized here:
@@ -312,9 +312,12 @@ CryoSPARC master started.
 ...
 
 $cryosparc listusers
-cryosparc resetpassword --email "username@mail.com" --password "your-password"
+cryosparc resetpassword --email "username@mail.com" --password "choose-a-password"
 ```
 
+Copy and paste the line which has the localhost port (notice that port number can change) to a browser on Kebnekaise:
+
+![cryosparc](images/cryosparc-snapshot.png)
 
 
 
