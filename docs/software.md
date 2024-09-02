@@ -103,7 +103,8 @@ The first time you access R on Kebnekaise, you need to configure it by following
     Some parallel functions ``mcapply`` in this example, tend to replicate the data for 
     the workers (cores) if the dataframe is modified by them. This can be crucial if you
     are working with a large data frame and you are employing several parallel functions,
-    for instance during the training of machine learning models.
+    for instance during the training of machine learning models because your simulation could
+    easily exceed the available memory per node.
 
     ```bash
        library(parallel)
@@ -135,6 +136,9 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
     In this example [mem-dup.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/MEMDUP/mem-dup.R){:target="_blank"}, I used the function ``mem_used()`` provided by the ``pryr`` package
     to monitor the memory usage. The batch script for this example is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/MEMDUP/job.sh){:target="_blank"}.
+
+    One possible solution for data duplication could be to use use a data frame for each worker that includes
+    only the relevant data for that particular computation.
 
 
 !!! Warning "Use R for lightweight tasks on the login nodes" 
