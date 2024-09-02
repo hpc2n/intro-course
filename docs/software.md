@@ -295,6 +295,12 @@ it in the first line of this file. In the second line of the file write your ema
 Create a suitable folder in your project directory, for instance ``/proj/nobackup/hpc2n202X-XYZ/cryosparc``
 and move into this folder. Download/copy the ``lane*tar`` files that are located [here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"} to the cryosparc folder and untar them here (``tar -xvf lane_CPU.tar`` as an example).
 
+??? Important "Fix your Project_ID and time" 
+
+    Change the string *Project_ID* in the file ``lane*/cluster_script.sh`` to reflect your current project.
+    Also, the time was set to 20 min. in these files but for your realistic simulations you can change it to
+    longer times (``-t 00:20:00``).
+
 Load the CryoSPARC modules.
 Start CryoSPARC and accept the request which asks about continuing using
 cryostart and that the folder was not used before. List the users on the server (which should be only yourself
@@ -308,7 +314,7 @@ Do you wish to continue starting cryosparc? [yN]: y
 ...
 CryoSPARC master started. 
  From this machine, access CryoSPARC and CryoSPARC Live at
-    http://localhost:39000
+    http://localhost:39007
 ...
 
 $cryosparc listusers
@@ -317,7 +323,25 @@ cryosparc resetpassword --email "username@mail.com" --password "choose-a-passwor
 
 Copy and paste the line which has the localhost port (notice that port number can change) to a browser on Kebnekaise:
 
-![cryosparc](images/cryosparc-snapshot.png)
+![cryosparc-ini](images/cryosparc-ini.png)
+
+After loging in, you will be able to see the CryoSPARC's dashboard:
+
+![cryosparc-dash](images/cryosparc-snapshot.png)
+
+There are several tutorials at the CryoSPARC website, in the previous picture I followed the
+[Introductory Tutorial (v4.0+)](https://guide.cryosparc.com/processing-data/get-started-with-cryosparc-introductory-tutorial#step-3-download-the-tutorial-dataset){:target="_blank"}. 
+
+!!! Important "Use ``cryosparc`` instead of ``cryosparcm``" 
+
+    On Kebnekaise the command ``cryosparc`` should be used and not the one cited in the tutorial ``cryosparcm``
+
+Depending on the job type, CryoSPARC would suggest the hardware resources. For instance, in the tutorial
+above *Step 4: Import Movies* suggests using 1 CPU upon queueing it, but *Step 5: Motion Correction* suggests
+using 1 GPU. For CPU-only jobs you can choose the CPU lane, and if your job uses GPUs you can choose 
+among L40s, V100, A100, and H100. Notice that the V100 and L40s are the most abundant at the moment:
+
+![cryosparc-dash](images/cryosparc-path-motion.png)
 
 
 
