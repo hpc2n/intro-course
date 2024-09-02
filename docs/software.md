@@ -1,6 +1,6 @@
 # Application examples
 
-!!! important "Create a soft-link to your storage project" 
+??? important "Create a soft-link to your storage project" 
 
     It will be very convinient to create a soft-link to your storage project in your
     home directory for a faster navigation:
@@ -9,6 +9,16 @@
          cd $HOME
          ln -s /proj/nobackup/hpc2n202X-XYZ choose-a-name
     ```
+
+??? important "Monitoring the use of resources"
+
+    Most likely you will allocate many cores and many GPUs for your simulations. You can
+    monitor the use of these resources with the ``job-usage job_ID`` command, where ``job_ID``
+    is the output number of the ``sbatch`` command. You can also see this number if you type
+    ``squeue -u my-username``. ``job-usage`` outputs a url that you can copy/paste in your
+    local browser where you can see how resources are being used:
+
+    ![job-usage](images/job-usage.png)
 
 ## Matlab
 
@@ -301,8 +311,9 @@ and move into this folder. Download/copy the ``lane*tar`` files that are located
     Also, the time was set to 20 min. in these files but for your realistic simulations you can change it to
     longer times (``-t 00:20:00``).
 
-Load the CryoSPARC modules.
-Start CryoSPARC and accept the request which asks about continuing using
+The lanes should be recognized by CryoSPARC when it starts running.
+
+Load the CryoSPARC modules. Start CryoSPARC and accept the request which asks about continuing using
 cryostart and that the folder was not used before. List the users on the server (which should be only yourself
 for this type of license), check the email address that is displayed for this user (it should be the one you
 added in the license file) and reset the password to. These steps are summarized here:
@@ -318,7 +329,7 @@ CryoSPARC master started.
 ...
 
 $cryosparc listusers
-cryosparc resetpassword --email "username@mail.com" --password "choose-a-password"
+cryosparc resetpassword --email "myemail@mail.com" --password "choose-a-password"
 ```
 
 Copy and paste the line which has the localhost port (notice that port number can change) to a browser on Kebnekaise:
