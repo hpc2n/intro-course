@@ -96,6 +96,46 @@ a Matlab module on a Linux terminal on Kebnekaise. Details for these two options
 The first time you access R on Kebnekaise, you need to configure it by following the 
 [Preparations](https://www.hpc2n.umu.se/resources/software/user_installed/r){:target="_blank"} step.
 
+### Recommendations
+
+??? Warning "Be aware of data duplication in R"
+
+    Some parallel functions ``mcapply`` in this example, tend to replicate the data for 
+    the workers (cores) if the dataframe is modified by them. This can be crucial if you
+    are working with a large data frame and you are employing several parallel functions,
+    for instance during the training of machine learning models.
+
+    ```bash
+       library(parallel)
+       library(pryr)
+ 
+       prev <- mem_used()                                                         
+       print(paste("Memory initially allocated by R:", prev/1e6, "MB"))
+ 
+       # Define a relatively large dataframe
+       data_df <- data.frame(
+       ID = seq(1, 1e7),
+       Value = runif(1e7)
+       )
+ 
+       # Create a function to be applied to each row (or a subset of rows)
+       process_function <- function(i, df) {
+       # do some modification the i-th row 
+       return(df$Value[i] * 2)
+       }
+       prev <- mem_used() - prev
+       print(paste("Memory after the serial code execution:", prev/1e6, "MB"))
+ 
+       # Use mclapply to process the dataframe in parallel
+       num_cores <- 4
+       results <- mclapply(1:nrow(data_df), function(i) process_function(i, data_df), mc.cores = num_cores)
+       prev <- mem_used() - prev
+       print(paste("Memory after parallel code execution:", prev/1e6, "MB"))
+    ```
+
+    In this example [mem-dup.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/MEMDUP/mem-dup.R){:target="_blank"}, I used the function ``mem_used()`` provided by the ``pryr`` package
+    to monitor the memory usage. The batch script for this example is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/MEMDUP/job.sh){:target="_blank"}.
+
 
 !!! Warning "Use R for lightweight tasks on the login nodes" 
 
