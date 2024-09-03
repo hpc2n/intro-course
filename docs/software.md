@@ -388,8 +388,12 @@ AMD node that lacks that installation.
     mkdir nextflow-arabidopsis 
     cd nextflow-arabidopsis
     cp /proj/nobackup/hpc2n/SR*gz 
-    wget 
+    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/design_test.csv
+    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/job.sh
     ```
+
+    Fix the Project_ID to match the current project you are part of and send the job to the queue. This example
+    takes ~3 hrs. so the purpose of this exercise is just to show you how to run this job with Nextflow.  
 
 
 
