@@ -395,6 +395,33 @@ AMD node that lacks that installation.
     Fix the Project_ID to match the current project you are part of and send the job to the queue. This example
     takes ~3 hrs. so the purpose of this exercise is just to show you how to run this job with Nextflow.  
 
+??? Note "Exercise 2: Interactive job submission"
+
+    Nextflow allows you to submit jobs interactively on the Kebnekaise's command line. You need to write a file
+    with the instructions to be executed by Nextflow, in the present case, it is a file [wc.nf](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/wc.nf){:target="_blank"} which
+    unzips a file [file.txt.gz](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/file.txt.gz){:target="_blank"} and counts the number of lines in it. A configuration file
+    for the cluster [hpc2n.config](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config){:target="_blank"} is needed with some parameters that need to be changed with your
+    personal information. Similarly to the previous exercise, you can follow these commands:
+
+    ```bash
+    cd /proj/nobackup/your-project
+    mkdir nextflow-interactive 
+    cd nextflow-interactive 
+    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/wc.nf
+    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/file.txt.gz
+    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config
+    ```    
+
+    load the Nextflow module and send the job interactively by typing the command on the Kebnekaise's terminal (fix the project ID):
+
+    ```bash
+    ml Nextflow/24.04.2
+    nextflow run wc.nf -c hpc2n.config --input file.txt.gz --project hpc2n202X-XYZ --clusterOptions "-t 00:05:00 -n 28 -N 1"
+    ```    
+
+    Here, you will run the job on 28 cores. On a different terminal tab you can check that the job is submitted/running with the command ``squeue -u your-username``. 
+
+
 
 
 !!! Keypoints "Keypoints" 
