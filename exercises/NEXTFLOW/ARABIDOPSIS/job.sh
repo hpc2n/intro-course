@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n202Q-XYZ
+#SBATCH -A Project_ID
 #SBATCH -N 1
 #SBATCH -n 14
 #SBATCH --output=Chip_seq_analysis.out
