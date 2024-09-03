@@ -354,7 +354,8 @@ among L40s, V100, A100, and H100. Notice that the V100 and L40s are the most abu
 
 ![cryosparc-dash](images/cryosparc-path-motion.png)
 
-
+When you finish your analysis with CryoSPARC, shut it down with the command ``cryosparc stop`` on the terminal.
+Otherwise the server keeps running on the login node.
 
 
 !!! Keypoints "Keypoints" 
