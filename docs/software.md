@@ -280,7 +280,7 @@ AMD node that lacks that installation.
 
 ??? Note "Exercise 1: Running a monomer protein simulation"
 
-    In the folder ``ALPHAFOLD`` you will find a [fasta secuence](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/my_fasta_sequence.fasta){:target="_blank"} for a monomer and the 
+    In the exercises folder ``ALPHAFOLD`` you will find a [fasta secuence](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/my_fasta_sequence.fasta){:target="_blank"} for a monomer and the 
     corresponding batch file [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/job.sh){:target="_blank"} for running the simulation on
     GPUs. Try running the simulation with CPUs only and then with l40s, v100 and a100 GPUs. 
 
@@ -369,8 +369,27 @@ supported on Kebnekaise and you will need to follow the step above (manually cop
 
 ### How to find Nextflow
 
+Nextflow is installed as a module that can be loaded directly without any requirements.
+Notice that on the Intel nodes there are more versions of this software installed
+than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. 
 
+### Exercises
 
+??? Note "Exercise 1: Arabidopsis"
+
+    The data for running this example can be found in this [paper](https://onlinelibrary.wiley.com/doi/10.1111/tpj.13312){:target="_blank"} and more details about the analysis can be found there as well. We have downloaded the
+    data for you and you can get it by copying the files to your working project:
+
+    ```bash
+    cd /proj/nobackup/your-project
+    mkdir nextflow-arabidopsis 
+    cd nextflow-arabidopsis
+    cp /proj/nobackup/hpc2n/SR*gz 
+    wget 
+    ```
 
 
 
