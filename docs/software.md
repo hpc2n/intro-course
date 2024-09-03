@@ -357,6 +357,11 @@ among L40s, V100, A100, and H100. Notice that the V100 and L40s are the most abu
 When you finish your analysis with CryoSPARC, shut it down with the command ``cryosparc stop`` on the terminal.
 Otherwise the server keeps running on the login node.
 
+Additional information can be obtained from a tutorial given during a [workshop on Berzelius](https://nsc.liu.se/support/presto/BerzeLiUs_CryoSparc_workshop-20240415_latest.pdf){:target="_blank"}
+ and also
+from the [NSC documentation](https://www.nsc.liu.se/support/presto/CryoEM-PReSTO/cryosparc_berzelius/){:target="_blank"}. Notice that although the guidelines are for machines different to Kebnekaise,
+the systems are very similar and you could get ideas from them. For instance, the ``cryosparc copylanes`` is not
+supported on Kebnekaise and you will need to follow the step above (manually copying the lanes) for getting lanes working. 
 
 !!! Keypoints "Keypoints" 
 
