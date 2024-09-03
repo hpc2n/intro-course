@@ -40,7 +40,8 @@ Notice that it is recommended to use a small number of workers for the validatio
 
 ### Tools for efficient simulations 
 
-Chart flow for a more efficient Matlab code using existing tools (adapted from[^1])
+Chart flow for a more efficient Matlab code using existing tools adapted from Mathworks documentation
+on [parallel computing](https://se.mathworks.com/help/parallel-computing/choosing-a-parallel-computing-solution.html){:target="_blank"}:
 
 ![pctworkflow](images/pctworkflow.png)
 
@@ -363,10 +364,17 @@ from the [NSC documentation](https://www.nsc.liu.se/support/presto/CryoEM-PReSTO
 the systems are very similar and you could get ideas from them. For instance, the ``cryosparc copylanes`` is not
 supported on Kebnekaise and you will need to follow the step above (manually copying the lanes) for getting lanes working. 
 
+
+## Nextflow
+
+### How to find Nextflow
+
+
+
+
+
+
 !!! Keypoints "Keypoints" 
 
     - The software on Kebnekaise is mostly accessed through the module system.
 
-## References
-
-[^1]: <a href="https://se.mathworks.com/help/parallel-computing/choosing-a-parallel-computing-solution.html" target="_blank">MathWorks documentation on Parallel Computing</a>
