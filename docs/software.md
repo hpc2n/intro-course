@@ -423,6 +423,8 @@ AMD node that lacks that installation.
 
 ## Apptainer
 
+### How to find Apptainer
+
 Apptainer is site-installed meaning that you can run it without loading a module. Apptainer is supported on 
 Kebnekaise instead of Singularity. The recipes that are built/run with Singularity can also be built/run with
 Apptainer with the same parameters. You will need to replace the command ``singularity`` by ``apptainer``. 
@@ -437,8 +439,12 @@ $ls -lahrt /bin/singularity
 lrwxrwxrwx 1 root root 9 Mar 14 18:30 /bin/singularity -> apptainer
 ```
 
-As with any other software, use Apptainer on the login node for simple tasks, for instance building a lightweight 
-image, otherwise run a batch job. 
+!!! Warning "Use R for lightweight tasks on the login nodes" 
+
+    As with any other software, use Apptainer on the login node for simple tasks, for instance building a
+    lightweight image, otherwise run a batch job. 
+
+### Exercises
 
 ??? Note "Exercise 1: Building and running an Apptainer image"
 
@@ -456,6 +462,8 @@ image, otherwise run a batch job.
     Submit the **job.sh** file to the queue. The output of Gromacs including its performance at 
     the bottom of it (line with the ns/day string) is written in the *md.log* files. As a comparison,
     after running the Apptainer image, the module of Gromacs is loaded and the same simulation is run. 
+
+
 
 
 !!! Keypoints "Keypoints" 
