@@ -511,6 +511,7 @@ software, on Intel nodes there are more versions of this software installed than
     A couple of notes: 
 
         - You can change the type of the GPU where you want to run the notebook
+        
         - Cancel the job (``scancel job_ID``) if you stop using the notebook
 
 
