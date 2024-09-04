@@ -384,12 +384,12 @@ AMD node that lacks that installation.
     data for you and you can get it by copying the files to your working project:
 
     ```bash
-    cd /proj/nobackup/your-project
-    mkdir nextflow-arabidopsis 
-    cd nextflow-arabidopsis
-    cp /proj/nobackup/hpc2n/SR*gz 
-    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/design_test.csv
-    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/job.sh
+    $cd /proj/nobackup/your-project
+    $mkdir nextflow-arabidopsis 
+    $cd nextflow-arabidopsis
+    $cp /proj/nobackup/hpc2n/SR*gz 
+    $wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/design_test.csv
+    $wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/job.sh
     ```
 
     Fix the Project_ID to match the current project you are part of and send the job to the queue. This example
@@ -421,7 +421,41 @@ AMD node that lacks that installation.
 
     Here, you will run the job on 28 cores. On a different terminal tab you can check that the job is submitted/running with the command ``squeue -u your-username``. 
 
+## Apptainer
 
+Apptainer is site-installed meaning that you can run it without loading a module. Apptainer is supported on 
+Kebnekaise instead of Singularity. The recipes that are built/run with Singularity can also be built/run with
+Apptainer with the same parameters. You will need to replace the command ``singularity`` by ``apptainer``. 
+If you are curious, you will notice that the command ``singularity`` is also available on Kebnekaise but it is just
+a soft-link to ``apptainer``:
+
+```bash
+$which singularity 
+/bin/singularity
+
+$ls -lahrt /bin/singularity 
+lrwxrwxrwx 1 root root 9 Mar 14 18:30 /bin/singularity -> apptainer
+```
+
+As with any other software, use Apptainer on the login node for simple tasks, for instance building a lightweight 
+image, otherwise run a batch job. 
+
+??? Note "Exercise 1: Building and running an Apptainer image"
+
+    This is an example for building a software called Gromacs. Build a Gromacs container 
+    as follows in the directory which contains the [gromacs.def](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/APPTAINER/gromacs.def){:target="_blank"} definition file:
+
+    ```bash
+    $apptainer build gromacs.sif gromacs.def
+    ```
+
+    Download the **benchMEM.tpr** file [here](https://www.mpinat.mpg.de/grubmueller/bench){:target="_blank"} and 
+    place it in the directory where the .sif is generated. In fact you can place the files at 
+    any other location but then you will need to modify the paths in the [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/APPTAINER/job.sh){:target="_blank"} batch script.
+
+    Submit the **job.sh** file to the queue. The output of Gromacs including its performance at 
+    the bottom of it (line with the ns/day string) is written in the *md.log* files. As a comparison,
+    after running the Apptainer image, the module of Gromacs is loaded and the same simulation is run. 
 
 
 !!! Keypoints "Keypoints" 
