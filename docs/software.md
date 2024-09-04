@@ -475,10 +475,10 @@ Intel nodes there are more versions of this software installed than on the AMD n
 ??? Note "Exercise 1: Running TensorFlow simulations"
 
     In this exercise, you will run a script with TensorFlow v. 2.15 on GPUs. Notice that 
-    because this version of TensorFlow is available in all the NVIDIA GPUs, you just need
+    because this version of TensorFlow is available on all the NVIDIA GPUs, you just need
     to write the type of GPUs you want to use, in the present case *l40s*. There are 
     three different examples in the ``TENSORFLOW`` folder under the exercises one:
-    [hello_tensorflow.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/hello_tensorflow.py){:target="_blank"} (prints out *hello world* strings),
+    [hello_tensorflow.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/hello_tensorflow.py){:target="_blank"} (prints out *Hello, TensorFlow!* string),
     [loss.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/loss.py){:target="_blank"} (it computes a loss in a model), and 
     [mnist_mlp.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/mnist_mlp.py){:target="_blank"} (which runs a model using the MNIST database). 
 
