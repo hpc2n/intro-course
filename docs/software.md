@@ -484,6 +484,34 @@ Intel nodes there are more versions of this software installed than on the AMD n
 
     The batch script is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/job.sh){:target="_blank"}. Submit the job with different types of GPUs.
 
+## Jupyter Notebooks 
+
+You can use Jupyter Notebooks on Kebnekaise through JupyterLab. Jupyter Notebooks allow you to
+work in a more interactive manner which is convenient when you are at the development phase of
+your project. There are available kernels for most popular languages: R, Python, Matlab, and
+Julia to work in a Jupyter Notebook.
+
+### How to find JupyterLab
+
+Several versions of JupyterLab are installed as modules on Kebnekaise. Similarly to other 
+software, on Intel nodes there are more versions of this software installed than on the AMD nodes.
+
+### Exercises
+
+??? Note "Exercise 1: Running a Jupyter Notebook"
+
+    Because the tasks executed in a Jupyter Notebook are, in general, computationally expensive
+    it is more convenient to run them on a compute node instead of the login nodes. To do this, 
+    you need to prepare a batch script like this one [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/job.sh){:target="_blank"}. 
+
+    Once you submit your job and it starts running, check the output file **slurm*out** and search for
+    the string **http://b-cnwxyz.hpc2n.umu.se:8888/lab?token=xy...z**. Copy this string and paste it in
+    a browser on Kebnekaise. You will be directed to the dashboard of JupyterLab. 
+
+    A couple of notes: 
+
+        *  You can change the type of the GPU where you want to run the notebook
+        *  Cancel the job (``scancel job_ID``) if you stop using the notebook
 
 
 !!! Keypoints "Keypoints" 
