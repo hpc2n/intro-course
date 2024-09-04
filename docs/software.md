@@ -463,6 +463,26 @@ lrwxrwxrwx 1 root root 9 Mar 14 18:30 /bin/singularity -> apptainer
     the bottom of it (line with the ns/day string) is written in the *md.log* files. As a comparison,
     after running the Apptainer image, the module of Gromacs is loaded and the same simulation is run. 
 
+## TensorFlow
+
+### How to find TensorFlow
+
+Several versions of TensorFlow are installed as modules on Kebnekaise. Similarly to other software, on
+Intel nodes there are more versions of this software installed than on the AMD nodes.
+
+### Exercises
+
+??? Note "Exercise 1: Running TensorFlow simulations"
+
+    In this exercise, you will run a script with TensorFlow v. 2.15 on GPUs. Notice that 
+    because this version of TensorFlow is available in all the NVIDIA GPUs, you just need
+    to write the type of GPUs you want to use, in the present case *l40s*. There are 
+    three different examples in the ``TENSORFLOW`` folder under the exercises one:
+    [hello_tensorflow.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/hello_tensorflow.py){:target="_blank"} (prints out *hello world* strings),
+    [loss.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/loss.py){:target="_blank"} (it computes a loss in a model), and 
+    [mnist_mlp.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/mnist_mlp.py){:target="_blank"} (which runs a model using the MNIST database). 
+
+    The batch script is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/job.sh){:target="_blank"}. Submit the job with different types of GPUs.
 
 
 
