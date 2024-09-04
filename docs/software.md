@@ -404,19 +404,19 @@ AMD node that lacks that installation.
     personal information. Similarly to the previous exercise, you can follow these commands:
 
     ```bash
-    cd /proj/nobackup/your-project
-    mkdir nextflow-interactive 
-    cd nextflow-interactive 
-    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/wc.nf
-    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/file.txt.gz
-    wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config
+    $cd /proj/nobackup/your-project
+    $mkdir nextflow-interactive 
+    $cd nextflow-interactive 
+    $wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/wc.nf
+    $wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/file.txt.gz
+    $wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config
     ```    
 
     load the Nextflow module and send the job interactively by typing the command on the Kebnekaise's terminal (fix the project ID):
 
     ```bash
-    ml Nextflow/24.04.2
-    nextflow run wc.nf -c hpc2n.config --input file.txt.gz --project hpc2n202X-XYZ --clusterOptions "-t 00:05:00 -n 28 -N 1"
+    $ml Nextflow/24.04.2
+    $nextflow run wc.nf -c hpc2n.config --input file.txt.gz --project hpc2n202X-XYZ --clusterOptions "-t 00:05:00 -n 28 -N 1"
     ```    
 
     Here, you will run the job on 28 cores. On a different terminal tab you can check that the job is submitted/running with the command ``squeue -u your-username``. 
@@ -426,5 +426,9 @@ AMD node that lacks that installation.
 
 !!! Keypoints "Keypoints" 
 
-    - The software on Kebnekaise is mostly accessed through the module system.
+    - Kebnekaise is a highly heterogeneous system. Thus, you will need to consciously decide the hardware where your
+      simulations will run.
 
+    - Notice that Intel nodes have at the moment more versions installed of some software than the AMD nodes.
+
+    - It is a good practice to monitor the usage of resources, we offer the command ``job-usage job_ID`` on Kebnekaise.
