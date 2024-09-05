@@ -502,7 +502,7 @@ software, on Intel nodes there are more versions of this software installed than
 
     Because the tasks executed in a Jupyter Notebook are, in general, computationally expensive
     it is more convenient to run them on a compute node instead of the login nodes. To do this, 
-    you need to prepare a batch script like this one [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/job.sh){:target="_blank"}. 
+    you need to prepare a batch script like this one [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/SIMPLE/job.sh){:target="_blank"}. 
 
     Once you submit your job and it starts running, check the output file **slurm*out** and search for
     the string **http://b-cnwxyz.hpc2n.umu.se:8888/lab?token=xy...z**. Copy this string and paste it in
@@ -513,6 +513,48 @@ software, on Intel nodes there are more versions of this software installed than
     - You can change the type of the GPU where you want to run the notebook
 
     - Cancel the job (``scancel job_ID``) if you stop using the notebook
+
+??? Note "Exercise 1: Running Infomap in a Jupyter Notebook"
+
+    Infomap is a software for network community detection. It could be convenient for you to work
+    in a Jupyter Notebook if the simulations are not long and you need to see the graphical results
+    right away. Here, there are the steps you can follow to get Infomap running on a notebook:
+
+    ```bash
+    # Create a suitable folder in your project and move into it
+    $mkdir /proj/nobackup/hpc2n202Q-XYZ/infomap-workspace
+    $cd /proj/nobackup/hpc2n202Q-XYZ/infomap-workspace
+    # Purge and load JupyterLab module and dependencies
+    $module purge
+    $module load GCCcore/13.2.0 JupyterLab/4.2.0
+    # Create a isolated environment for this project called "infmpenv" and activate it
+    $python -m venv ./infmpenv 
+    $source infmpenv/bin/activate
+    # Install ipykernel to be able to create your own kernel for this environment
+    $pip install --no-cache-dir --no-build-isolation ipykernel
+    # Install Infomap, Networkx, and Matplotlib
+    $pip install --no-cache-dir infomap networkx matplotlib
+    # Install the kernel
+    $python -m ipykernel install --user --name=infmpenv
+    ```
+
+    After doing these installations, download the Jupyter Notebook for Infomap, create a *data*
+    and *output* folders as follows:
+
+    ```bash
+    $wget https://raw.githubusercontent.com/mapequation/infomap-notebooks/master/1_1_infomap_intro.ipynb
+    $mkdir data
+    $cd data 
+    $wget https://raw.githubusercontent.com/mapequation/infomap-notebooks/master/data/ninetriangles.net
+    $cd ..
+    $mkdir output
+    ```
+
+    Fix the project ID in the batch job [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/INFOMAP/job.sh){:target="_blank"} and send it to the queue. As in the previous
+    exercise, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. Then,
+    open the notebook you downloaded and choose the kernel you just created:
+
+    ![infomap](images/infomap.png)
 
 
 !!! Keypoints "Keypoints" 
