@@ -514,7 +514,7 @@ software, on Intel nodes there are more versions of this software installed than
 
     - Cancel the job (``scancel job_ID``) if you stop using the notebook
 
-??? Note "Exercise 1: Running Infomap in a Jupyter Notebook"
+??? Note "Exercise 2: Running Infomap in a Jupyter Notebook"
 
     Infomap is a software for network community detection. It could be convenient for you to work
     in a Jupyter Notebook if the simulations are not long and you need to see the graphical results
