@@ -556,6 +556,9 @@ software, on Intel nodes there are more versions of this software installed than
 
     ![infomap](images/infomap.png)
 
+    Notice that some attributes and methods in the downloaded Jupyter notebook have been modified in recent
+    versions of Infomap, for instance: ``codelength() -> codelength``, and ``network() -> network``.
+
 
 !!! Keypoints "Keypoints" 
 
