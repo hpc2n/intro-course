@@ -496,6 +496,10 @@ Julia to work in a Jupyter Notebook.
 Several versions of JupyterLab are installed as modules on Kebnekaise. Similarly to other 
 software, on Intel nodes there are more versions of this software installed than on the AMD nodes.
 
+### Using Jupyter Notebooks on Kebnekaise 
+
+Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https://www.hpc2n.umu.se/resources/software/jupyter-python){:target="_blank"}.
+
 ### Exercises
 
 ??? Note "Exercise 1: Running a Jupyter Notebook"
