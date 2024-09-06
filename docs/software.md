@@ -1,5 +1,12 @@
 # Application examples
 
+### Best practices
+
+??? important "Use your project directory instead of the home directory" 
+
+    The HOME directory has a limited storage space (~25 GB). Your project directory
+    ``/proj/nobackup/hpc2n202X-XYZ`` has a much larger space.
+
 ??? important "Create a soft-link to your storage project" 
 
     It will be very convinient to create a soft-link to your storage project in your
