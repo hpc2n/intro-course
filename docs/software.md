@@ -560,9 +560,6 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
 
     ![infomap](images/infomap.png)
 
-    Notice that some attributes and methods in the downloaded Jupyter notebook have been modified in recent
-    versions of Infomap, for instance: ``codelength() -> codelength``, and ``network() -> network``.
-
 
 !!! Keypoints "Keypoints" 
 
