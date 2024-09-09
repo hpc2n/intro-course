@@ -567,6 +567,41 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
 
     ![infomap](images/infomap.png)
 
+??? Note "Exercise 3: CPU and GPU code for Julia set"
+
+    In this exercise, you will compute the Julia set in both CPU and GPU. The GPU part will be done by using
+    the CuPy library. A nice feature in this example is that it shows you how you could use multi-GPUs by
+    modifying the initial single GPU case. Here are the guidelines for running this notebook: 
+
+    ```bash
+    # Create a suitable folder in your project and move into it
+    $mkdir /proj/nobackup/hpc2n202Q-XYZ/juliaset-workspace
+    $cd /proj/nobackup/hpc2n202Q-XYZ/juliaset-workspace
+    # Purge and load JupyterLab module and dependencies
+    $module purge
+    $module load GCCcore/13.2.0 JupyterLab/4.2.0
+    # Create a isolated environment for this project called "infmpenv" and activate it
+    $python -m venv ./mandelenv 
+    $source mandelenv/bin/activate
+    # Install ipykernel to be able to create your own kernel for this environment
+    $pip install --no-cache-dir --no-build-isolation ipykernel
+    # Install the kernel
+    $python -m ipykernel install --user --name=mandelenv
+    # Load a CUDA library
+    $ml CUDA/12.5.0
+    # Install Numpy, Matplotlib, and CuPy
+    $pip install --no-cache-dir --no-build-isolation numpy matplotlib cupy-cuda12x
+    ```
+
+    After these installations, download the Jupyter Notebook for Juliaset as follows:
+
+    ```bash
+    $wget https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/GPUS/Juliaset.ipynb
+    ```
+
+    Fix the project ID in the batch job [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/GPUS/job.sh){:target="_blank"} and send it to the queue. As in the previous
+    exercise, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. Choose the
+    kernel **mandelenv** you recently created.
 
 !!! Keypoints "Keypoints" 
 
