@@ -603,6 +603,65 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
     exercise, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. Choose the
     kernel **mandelenv** you recently created.
 
+## AMBER
+
+    Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
+    and analyzing the dynamical trajectories.
+
+### How to find AMBER
+
+AMBER is installed as a module on Kebnekaise. Notice that on the Intel nodes there are 
+more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. 
+
+### Exercises
+
+??? Note "Exercise 1: Running a MPI PMEMD job"
+
+    Run the script [job-mpi-pmemd.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh){:target="_blank"} as it is and look at the performance of the simulation (average number of nanoseconds per day) which is written at the bottom of the output file **03_Prod.mdout**.
+
+    Job submission command:  *sbatch job-mpi-pmemd.sh* (fix your project ID)
+
+??? Note "Exercise 2: Optimal performance of a MPI PMEMD job"
+
+    Running with more cores doesn't always mean better performance. Run the script 
+    [job-mpi-pmemd.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh){:target="_blank"} 
+    with a different number of MPI tasks (-n) and obtain the value for the performance of AMBER 
+    (as a function of the number of cores). The performance of AMBER can be obtained from the average
+    number of nanoseconds per day (ns/day) in the file **03_Prod.mdout**.
+
+    A plot of the number of ns/day vs. number of cores can help you to
+    visualize the results. Is it worth it to go from 14 cores to 28 cores?
+    What about going from 28 cores to 42 cores? Or even from 42 cores to 
+    56 cores?
+
+??? Note "Exercise 3: Optimal performance of a GPU PMEMD job"
+
+    Run the script [job-gpu-pmemd.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-gpu-pmemd.sh){:target="_blank"} 
+    with a different number of MPI tasks (-n) and obtain the value for the performance of AMBER 
+    (as a function of the number of cores). You are encourage to plot the average number of ns/day vs. 
+    number of cores as in the previous case. What is the optimal value for the number of MPI tasks?
+
+    Hint: Going above 4 MPI tasks will not give you better performance because in AMBER the number of MPI tasks
+    are tightly bound to the number of GPU cards.
+
+??? Note "Exercise 4: Monitoring the performance of your jobs"
+
+    Change the number of steps (nstlim) to 100000 in the file **03_Prod.in**.
+    Also, set the number of cores (-n) to 28 (1 node) and the time (-t) to
+    15 min in the file [job-mpi-pmemd.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh){:target="_blank"}. 
+    By submitting the job to the queue with **sbatch job-mpi-pmemd.sh** you get a 
+    number as output, this number is the job ID. On the command line, type 
+    **job-usage job_ID**. This will generate a URL that you can copy/paste to 
+    your local browser to monitor the efficiency of your simulation. How efficient is it in your case?
+
+    Hint: on the top right corner you can change the update frequency of the
+    plots from 15m to 1m for instance. It takes a few minutes before you can
+    see the results on the plots.
+
+
 !!! Keypoints "Keypoints" 
 
     - Kebnekaise is a highly heterogeneous system. Thus, you will need to consciously decide the hardware where your
