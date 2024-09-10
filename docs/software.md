@@ -605,8 +605,8 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
 
 ## AMBER
 
-    Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
-    and analyzing the dynamical trajectories.
+Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
+and analyzing the dynamical trajectories.
 
 ### How to find AMBER
 
@@ -620,6 +620,8 @@ AMD node that lacks that installation.
 
 ??? Note "Exercise 1: Running a MPI PMEMD job"
 
+    The input files for the exercises are located in the folder [exercises/AMBER](https://github.com/hpc2n/intro-course/tree/master/exercises/AMBER){:target="_blank"}. Thus, if you clone this repository you will
+    find the files in this folder.
     Run the script [job-mpi-pmemd.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh){:target="_blank"} as it is and look at the performance of the simulation (average number of nanoseconds per day) which is written at the bottom of the output file **03_Prod.mdout**.
 
     Job submission command:  *sbatch job-mpi-pmemd.sh* (fix your project ID)
