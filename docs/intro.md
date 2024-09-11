@@ -27,7 +27,7 @@ HPC2N provides state-of-the-art resources and expertise:
 - Scalable and parallel **HPC**
 - Large-scale **storage facilities** (Project storage (Lustre), SweStore, Tape)
 - **Grid and cloud** computing (WLCG NT1, Swedish Science Cloud)
-- National Data Science Node in ”Epidemiology and Biology of Infections” (DDLS)
+- National Data Science Node in ”Epidemiology and Biology of Infections” (Data-Driven Life Science - DDLS)
 - Software for e-Science applications
 - All levels of user support 
     - Primary, advanced, dedicated
@@ -80,7 +80,7 @@ Involved in several **projects and collaborations**:
     - Also at the partner sites
     - Online "HPC2N fika"  
 - **User training and education program**
-    - 0.5 -- 5 days; ready-to-run exercises
+    - 0.5 -- 5 days; presentations and ready-to-run exercises
     - intro courses: our system, Linux, R, Python, Julia, Matlab, Git
     - intermediate courses
     - - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
@@ -205,10 +205,6 @@ Kebnekaise have CPU-only, GPU enabled and large memory nodes.
 
 The CPU-only nodes are:
 
-- 2 x 14 core Intel broadwell
-    - 4460 MB memory / core
-    - 48 nodes
-    - Total of 41.6 TFlops/s 
 - 2 x 14 core Intel skylake
     - 6785 MB memory / core
     - 52 nodes
@@ -224,11 +220,6 @@ The CPU-only nodes are:
 
 The GPU enabled nodes are:
 
-- 2 x 14 core Intel broadwell
-    - 9000 MB memory / core
-    - 2 x Nvidia A40 
-    - 4 nodes
-    - Total of 83 TFlops/s
 - 2 x 14 core Intel skylake
     - 6785 MB memory / core
     - 2 x Nvidia V100
@@ -253,6 +244,15 @@ The GPU enabled nodes are:
 - 2 x 48 core AMD zen4
     - 6630 MB / core
     - 4 x Nvidia H100 SXM5
+    - 2 nodes
+- 2 x 32 core AMD zen4
+    - 11968 MB / core
+    - 6 x Nvidia L40s
+    - 2 nodes
+    - Can only use 10 cores/GPU
+- 2 x 32 core AMD zen4
+    - 11968 MB / core
+    - 8 x Nvidia A40
     - 2 nodes
 
 The large memory nodes are:
@@ -335,8 +335,8 @@ I will cover more details in a later section, where we go more into detail about
 
 #### Aggregating computing power
 
-- 147 nodes totalling 6808 CPU cores and 64 GPUs (totalling 751616 CUDA cores, 33472 TENSOR cores + 960 matrix cores, 284 RT cores)  
-    - Compared to 4-8 cores in a common modern laptop
+- 95 nodes totalling 4792 CPU cores and 84 GPUs (totalling 1055744 CUDA cores, 43076 TENSOR cores + 960 matrix cores, 4544 RT cores)  
+    - Compared to 4-8 cores in a common modern laptop + maybe 1 GPU 
 
 #### Higher performance
 

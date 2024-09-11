@@ -65,6 +65,6 @@ When you have a project / have become member of a project, you can apply for an 
 
 Your account request will be processed within a week. You will then get an email with information about logging in and links to getting started information. 
 
-More information on the account process can be found on HPC2N's documentation pages: [https://www.hpc2n.umu.se/documentation/access-and-accounts/users](https://www.hpc2n.umu.se/documentation/access-and-accounts/users) 
+More information on the account process can be found on HPC2N's documentation pages: <a href="https://docs.hpc2n.umu.se/documentation/accounts-rules/" target="_blank">https://docs.hpc2n.umu.se/documentation/accounts-rules/</a>.  
 
 

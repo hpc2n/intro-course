@@ -42,6 +42,17 @@
 - Birgitte Brydsö, HPC2N
 - Pedro Ojeda-May, HPC2N
 
+## Important info
+
+- We have a course project: ``hpc2n2024-084``.
+- The course project has default project storage. You can find that here: ``/proj/nobackup/intro-hpc2n``.
+- You should create a subdirectory under ``/proj/nobackup/intro-hpc2n`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
+- As mentioned further up on the page, you can download the material for the course. Placing it in your directory on the project storage is a good idea. You can fetch it there with <code>git clone https://github.com/hpc2n/intro-course.git</code>. 
+- We have two reservations for the course (valid only during the course time). One L40s GPU (reservation ``intro-gpu``) and one AMD Zen4 CPU node (reservation ``intro-cpu``). 
+- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EcPoMJ8bnHlAg6pi97ufCagBBm2aMUHJIjcheFzp_uI2xQ?e=1wcfQl" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EcPoMJ8bnHlAg6pi97ufCagBBm2aMUHJIjcheFzp_uI2xQ?e=1wcfQl</a>.
+- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQuc6COR0CFPtf0LXt3gIjgBB6z2gVObifWb6RnW_jKm1w?e=xUVztb" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQuc6COR0CFPtf0LXt3gIjgBB6z2gVObifWb6RnW_jKm1w?e=xUVztb</a>. 
+- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/pipEictYtN" target="_blank">https://forms.office.com/e/pipEictYtN</a>. 
+
 ## Preliminary schedule
 
 
@@ -49,7 +60,7 @@
 | ---- | ----- | -------- |
 | 11:15 | Welcome+Syllabus | |
 | 11:20 | Introduction to Kebnekaise and HPC2N | Lecture |
-| 11:45 | Projects and accounts | Lecture |  
+| 11:40 | Projects and accounts | Lecture |  
 | 11:50 | Logging in & editors | Lecture+exercise | 
 | 12:05 | The File System | Lecture+code along |
 | 12:15 | LUNCH BREAK | |  
