@@ -42,9 +42,9 @@ Modules are:
 
 !!! Warning "Important!" 
 
-    Not all the modules (and versions) are the same on the skylake/broadwell nodes and the zen3/zen4 nodes. 
+    Not all the modules (and versions) are the same on the skylake nodes and the zen3/zen4 nodes. 
 
-    The regular login node ``kebnekaise.hpc2n.umu.se`` has the modules available on skylake/broadwell nodes. (ThinLinc: ``kebnekaise-tl.hpc2n.umu.se``)
+    The regular login node ``kebnekaise.hpc2n.umu.se`` has the modules available on skylake nodes. (ThinLinc: ``kebnekaise-tl.hpc2n.umu.se``)
 
     In order to check if a module is available on the zen3/zen4 nodes, login to ``kebnekaise-amd.hpc2n.umu.se``. (ThinLinc: ``kebnekaise-amd-tl.hpc2n.umu.se``). 
 
