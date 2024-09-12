@@ -29,7 +29,7 @@ Using a job script is often recommended.
 
 !!! NOTE
 
-    When you submit a job, the system will return the Job ID. You can also get it with ``squeue -me``. See below. 
+    When you submit a job, the system will return the Job ID. You can also get it with ``squeue --me``. See below. 
 
 In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job ID for your job, assigned by Slurm. USERNAME is your username. 
 
@@ -181,19 +181,21 @@ srun ./my_mpi_program
 
 ### Exercises
 
-If you have not already done so, clone the material from the website <a href="https://github.com/hpc2n/intro-course" target="_blank">https://github.com/hpc2n/intro-course</a>: 
+!!! note
 
-1. Change to the storage area you created under ``/proj/nobackup/intro-hpc2n/``. 
-2. Clone the material: 
-```bash
-git clone https://github.com/hpc2n/intro-course.git
-```
-3. Change to the subdirectory with the exercises:
-```bash
-cd intro-course/exercises/simple
-```
+    If you have not already done so, clone the material from the website <a href="https://github.com/hpc2n/intro-course" target="_blank">https://github.com/hpc2n/intro-course</a>: 
 
-You will now find several small programs and batch scripts which are used in this section and the next, "Simple examples". 
+    1. Change to the storage area you created under ``/proj/nobackup/intro-hpc2n/``. 
+    2. Clone the material: 
+    ```bash
+    git clone https://github.com/hpc2n/intro-course.git
+    ```
+    3. Change to the subdirectory with the exercises:
+    ```bash
+    cd intro-course/exercises/simple
+    ```
+
+    You will now find several small programs and batch scripts which are used in this section and the next, "Simple examples". 
 
 In this section, we are just going to try submitting a few jobs, checking their status, cancelling a job, and looking at the output. 
 
@@ -211,7 +213,9 @@ In this section, we are just going to try submitting a few jobs, checking their 
 
 !!! Exercise "Exercise: sbatch and squeue"
 
-    Submit (``sbatch``) one of the batch scripts listed in 3. under preparations. Check with ``squeue --me`` if it is running, pending, or completing. 
+    Submit (``sbatch``) one of the batch scripts listed in 3. under preparations. 
+
+    Check with ``squeue --me`` if it is running, pending, or completing. 
 
 !!! Exercise "Exercise: sbatch and scontrol show job" 
 
@@ -225,21 +229,23 @@ In this section, we are just going to try submitting a few jobs, checking their 
 
     Do ``squeue --me`` and see the jobs listed. Pick one and do ``scancel JOBID`` on it. Do ``squeue --me`` again to see it is no longer there. 
 
-!!! Exercise "Exercise: check output"
+!!! Exercise "Exercise: check output, change output files"
 
-    Use ``nano`` to open one of the output files ``slurm-JOBID.out``. 
+    1. Use ``nano`` to open one of the output files ``slurm-JOBID.out`` and looks at the content. 
 
-    Try adding ``#SBATCH --error=job.%J.err`` and ``#SBATCH --output=job.%J.out`` to one of the batch scripts (you can edit it with ``nano``). Submit the batch script again. See that the expected files get created. 
+    2. Try adding ``#SBATCH --error=job.%J.err`` and ``#SBATCH --output=job.%J.out`` to one of the batch scripts (you can edit it with ``nano``). Submit the batch script again. See that the expected files get created. 
 
 ## Using the different parts of Kebnekaise 
 
 As mentioned under the introduction, Kebnekaise is a very heterogeneous system, comprised of several different types of CPUs and GPUs. The batch system reflects these several different types of resources. 
 
-At the top we have partitions, which are similar to queues. Each partition is made up of a specific set of nodes. At HPC2N we have three classes of partitions, one for CPU-only nodes, one for GPU nodes and one for large memory nodes. Each node type also has a set of features that can be used to select which node(s) the job should run on.
+At the top we have partitions, which are similar to queues. Each partition is made up of a specific set of nodes. At HPC2N we have three classes of partitions, one for CPU-only nodes, one for GPU nodes and one for large memory nodes. Each node type also has a set of features that can be used to select (constrain) which node(s) the job should run on.
 
-The three types of nodes also have corresponding resources one must apply for in SUPR to be able to use them.
+!!! note 
 
-While Kebnekaise has multiple partitions, one for each major type of resource, there is only a single partition, ``batch``, that users can submit jobs to. The system then figures out which partition(s) the job should be sent to, based on the requested features. 
+    The three types of nodes also have corresponding resources one must apply for in SUPR to be able to use them.
+
+While Kebnekaise has multiple partitions, one for each major type of resource, there is only a single partition, ``batch``, that users can submit jobs to. The system then figures out which partition(s) the job should be sent to, based on the requested features (constraints). 
 
 !!! NOTE "Node overview" 
 
@@ -249,7 +255,6 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
     | CPU | Memory/core | number nodes | Type | 
     | ---- | ----------- | ------------ | -------- |
-    | 2 x 14 core Intel broadwell | 4460 MB | 48 | broadwell (intel_cpu) |
     | 2 x 14 core Intel skylake | 6785 MB | 52 | skylake (intel_cpu) | 
     | 2 x 64 core AMD zen3 | 8020 MB | 1 | zen3 (amd_cpu) | 
     | 2 x 128 core AMD zen4 | 2516 MB | 8 | zen4 (amd_cpu) | 
@@ -258,13 +263,14 @@ While Kebnekaise has multiple partitions, one for each major type of resource, t
 
     | CPU | Memory/core | GPU card | number nodes | Type | 
     | ---- | ----------- | -------- | ------------ | -------- | 
-    | 2 x 14 core Intel broadwell | 9000 MB | 2 x Nvidia A40 | 4 | a40 | 
     | 2 x 14 core Intel skylake | 6785 MB | 2 x Nvidia V100 | 10 | v100 | 
     | 2 x 24 core AMD zen3 | 10600 MB | 2 x Nvidia A100 | 2 | a100 | 
     | 2 x 24 core AMD zen3 | 10600 MB | 2 x AMD MI100 | 1 | mi100 | 
     | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia A6000 | 1 | a6000 | 
     | 2 x 24 core AMD zen4 | 6630 MB | 2 x Nvidia L40s | 10 | l40s | 
     | 2 x 48 core AMD zen4 | 6630 MB | 4 x Nvidia H100 SXM5 | 2 | h100 | 
+    | 2 x 32 core AMD zen4 | 11968 MB | 6 x Nvidia L40s | 2 | l40s | 
+    | 2 x 32 core AMD zen4 | 11968 MB | 8 x Nvidia A40 | 2 | a40 | 
 
     **Large memory nodes**
  
@@ -319,7 +325,13 @@ List of constraints:
     - h100
     - mi100
 
-For GPUs, the above GPU list of constraints can be used either as a specifier to ``--gpu=type:number`` or as a constraint together with an unspecified gpu request ``--gpu=number``.
+For GPUs, the above GPU list of constraints can be used either as a specifier to ``--gpus=type:number`` or as a constraint together with an unspecified gpu request ``--gpus=number`` or ``gpus-per-node=number``.
+
+!!! Note 
+
+    For some MPI jobs, ``mpirun`` may fail on some GPU nodes if you specify GPUs with <br>``--gpus=type:number`` instead of using ``--gpus-per-node=number`` and a constraint for type of GPU. 
+
+    The problem should not appear if you use ``srun`` instead of ``mpirun``
 
 !!! Note "For selecting GPUs with certain features"
 
@@ -378,17 +390,23 @@ To use GPU resources one has to explicitly ask for one or more GPUs. Requests fo
 
     As mentioned before, for GPUs, constraints can be used either as a specifier to 
  
-    ``--gpu=type:number`` 
+    ``--gpus=type:number`` 
 
     or as a constraint together with an unspecified gpu request 
 
-    ``--gpu=number``.
+    ``--gpus=number``
+
+    or 
+
+    ``--gpus-per-node=number``
+
+    In the batch job you would write something like this: 
 
     ```bash
-    #SBATCH --gpus=Type:NUMBER
+    #SBATCH --gpus=type:number
     ```
 
-    where Type is, as mentioned:  
+    where type is, as mentioned:  
 
     - v100
     - a40
@@ -406,7 +424,7 @@ To use GPU resources one has to explicitly ask for one or more GPUs. Requests fo
 # Expected time for job to complete 
 #SBATCH --time=00:10:00
 # Number of GPU cards needed. Here asking for 2 V100 cards
-#SBATCH --gpu=v100:2
+#SBATCH --gpus=v100:2
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
@@ -429,5 +447,5 @@ ml fosscuda/2021b
     - To submit a job, you first need to create a batch submit script, which you then submit with ``sbatch SUBMIT-SCRIPT``. 
     - You can get a list of your running and pending jobs with ``squeue --me``. 
     - Kebnekaise has many different nodes, both CPU and GPU. It is possible to constrain the the job to run only on specific types of nodes. 
-    - If your job is an MPI job, you need to use ``srun`` in front of your executable in the batch script (unless you use software which handles the parallelization itself). 
+    - If your job is an MPI job, you need to use ``srun`` (or ``mpirun``) in front of your executable in the batch script (unless you use software which handles the parallelization itself). 
 

@@ -26,7 +26,7 @@ You need to compile any programs mentioned in a batch script in order to run the
 
     1. For these test examples I would suggest using the ``foss`` compiler toolchain, version 2022b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts.
     2. To submit a job script, do ``sbatch JOBSCRIPT``
-    3. In most of the examples, I name the executable when I compile. The flag ``-o`` tells the compiler you want to name the executable. If you don't include that and a name, you will get an executable named ``a.out``. Of course, you do not have to name the executable ``hello``. This is just an example. In general, I have named all the executables the same as the program (without the suffix).
+    3. In most of the examples, I name the executable when I compile. The flag ``-o`` tells the compiler you want to name the executable. If you don't include that and a name, you will get an executable named ``a.out``. Of course, you do not have to name the executable as I do. It is just an example. In general, I have named all the executables the same as the program (without the suffix). If you change the name, remember to make the change in the submit script as well. 
 
 ## Serial batch job
 
