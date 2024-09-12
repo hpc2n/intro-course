@@ -73,17 +73,6 @@ Note that you are authenticating through SUPR, using *that* service’s login cr
 
     It will first ask for your current password. Type in that and press enter. Then type in the new password, enter, and repeat. You have changed the password.
 
-## Get the material
-
-!!! Exercise "Exercise" 
-
-    If you have not already created a directory under the project storage and downloaded the material there, now is a good time to do so! 
-
-    1. After logging in, change directory to ``/proj/nobackup/intro-hpc2n``.
-    2. Create a subdirectory for yourself, if you have not already done so.
-    3. Change to the subdirectory you just created.
-    4. Clone the material from GitHub: ``git clone https://github.com/hpc2n/intro-course.git``
-
 ## File transfers 
 
 We are not going to transfer any files as part of this course, but you may have to do so as part of your workflow when using Kebnekaise (or another HPC centre) for your research. 

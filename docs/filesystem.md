@@ -60,7 +60,7 @@ Project storage is located below <code>/proj/nobackup/</code> in the directory n
 
     Go to the course project storage and create a subdirectory for yourself. 
 
-Now is a good time to prepare the course material and download the exercises. The easiest way to do so is by cloning the whole intro-course repository from GitHub. 
+Now is a good time to prepare the course material and download the exercises, if you have not already done so. The easiest way to do so is by cloning the whole intro-course repository from GitHub. 
 
 !!! note "Exercise"
 
