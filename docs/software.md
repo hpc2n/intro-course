@@ -663,6 +663,36 @@ AMD node that lacks that installation.
     plots from 15m to 1m for instance. It takes a few minutes before you can
     see the results on the plots.
 
+## Gromacs
+
+Gromacs (GROningen MAchine for Chemical Simulations) is a versatile package to perform molecular 
+dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles
+
+### How to find Gromacs
+
+Gromacs is installed as a module on Kebnekaise. Notice that on the Intel nodes there are 
+more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. 
+
+### Exercises
+
+??? Note "Exercise 1: Running a MPI job"
+
+    The input files for this exercise are located in [exercises/GROMACS/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI){:target="_blank"}.
+    Go to this folder and run the script [job-mpi-gromacs.sh](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI/job-mpi-gromacs.sh){:target="_blank"} by using different values of the
+    number of MPI tasks (-n). Submit this file to the batch queue (**sbatch job-mpi-gromacs.sh**). Use the 
+    number you get from sbatch (this is called job ID) to get an URL on the command line by typing:  
+    ``job-usage job_ID``.
+
+    Then, copy and paste that URL on your local browser. After ~1 min. you will start
+    to see the usage of the resources. Tip: In the top-right corner change the updating
+    default 15m to 30s.
+
+    In the plot for CPU usage, you can see how efficiently are the requested resources
+    being used (in percentage). How efficient is your simulation?
+
 
 !!! Keypoints "Keypoints" 
 
