@@ -680,7 +680,7 @@ AMD node that lacks that installation.
 
 ??? Note "Exercise 1: Running a MPI job"
 
-    The input files for this exercise are located in [exercises/GROMACS/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI){:target="_blank"}.
+    The input files for this exercise are located in [GROMACS/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI){:target="_blank"}.
     Go to this folder and run the script [job-mpi-gromacs.sh](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI/job-mpi-gromacs.sh){:target="_blank"} by using different values of the
     number of MPI tasks (-n). Submit this file to the batch queue (**sbatch job-mpi-gromacs.sh**). Use the 
     number you get from sbatch (this is called job ID) to get an URL on the command line by typing:  
@@ -692,6 +692,31 @@ AMD node that lacks that installation.
 
     In the plot for CPU usage, you can see how efficiently are the requested resources
     being used (in percentage). How efficient is your simulation?
+
+??? Note "Exercise 2: Running a GPU job"
+
+    In the [GROMACS/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU){:target="_blank"} folder, take a look at the script [job-gpu-gromacs.sh](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}. 
+    At the end of the script you will find three different ways to run Gromacs, the first one being the
+    default one (no Offloading any task to GPUs), the second one the MPI version where nonbonded/PME
+    interactions are offloaded to GPUs, and the third one being the Threaded-MPI version with nonbonded/PME
+    interactions offloaded to GPUs. Submit the job to the queue and monitor the usage
+    with the **job-usage** command that was introduced in the previous exercise.
+
+    When the script finishes, you should see a step-like plot (in the **graphana** interface for 
+    **job-usage** results) for the CPU/GPU usage where each step denotes each simulation. Based on these 
+    results, what is the best of the three options in the script (for the current nr. of cores and GPUs) 
+    for running Gromacs?
+
+    You can check if this analysis agrees with the performance for each run as reported
+    in the log file measured in ns/day.
+
+    What is the percentage of the GPUs used in the simulation based on the results from
+    **job-usage**?
+
+    How is the performance on GPUs version compared to that on CPU-only version in the previous examples?
+
+    More information on Gromacs performance can be found in the documentation for 
+    [performance improvement](https://manual.gromacs.org/current/user-guide/mdrun-performance.html){:target="_blank"} of this software.
 
 
 !!! Keypoints "Keypoints" 
