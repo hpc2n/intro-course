@@ -681,7 +681,8 @@ AMD node that lacks that installation.
 ??? Note "Exercise 1: Running a MPI job"
 
     The input files for this exercise are located in [GROMACS/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI){:target="_blank"}.
-    Go to this folder and run the script [job-mpi-gromacs.sh](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI/job-mpi-gromacs.sh){:target="_blank"} by using different values of the
+    Go to this folder and run the script [job-mpi-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/MPI/job-mpi-gromacs.sh){:target="_blank"} 
+    by using different values of the
     number of MPI tasks (-n). Submit this file to the batch queue (**sbatch job-mpi-gromacs.sh**). Use the 
     number you get from sbatch (this is called job ID) to get an URL on the command line by typing:  
     ``job-usage job_ID``.
@@ -695,7 +696,7 @@ AMD node that lacks that installation.
 
 ??? Note "Exercise 2: Running a GPU job"
 
-    In the [GROMACS/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU){:target="_blank"} folder, take a look at the script [job-gpu-gromacs.sh](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}. 
+    In the [GROMACS/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU){:target="_blank"} folder, take a look at the script [job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}. 
     At the end of the script you will find three different ways to run Gromacs, the first one being the
     default one (no Offloading any task to GPUs), the second one the MPI version where nonbonded/PME
     interactions are offloaded to GPUs, and the third one being the Threaded-MPI version with nonbonded/PME
