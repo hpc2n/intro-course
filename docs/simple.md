@@ -308,7 +308,9 @@ Just like for the multiple serial jobs simultaneously example, you need to add `
 
 ## Compiling and running in the batch job
 
-Sometimes you have a program that takes a long time to compile, or that you need to recompile before each run. To see a simple example of compiling and running from the batch job, look at the batch script ``compile-run.sh``. 
+Sometimes you have a program that takes a long time to compile, or that you need to recompile before each run. It could also be that you are optimizing for the architecture in your compilation and that you don't know which architecture your job will end up running on (for instance, Kebnekaise has Intel and AMD CPUs, as well as Nvidia and AMD GPUs). 
+
+To see a simple example of compiling and running from the batch job, look at the batch script ``compile-run.sh``. 
 
 In this case it compiles and runs the ``mpi_hello.c`` program. 
 
@@ -411,6 +413,22 @@ The batch script gpu.sh compiles and runs a small cuda program called ``hello-wo
     ```
 
     Use ``squeue --me`` or ``scontrol show job JOBID`` to see that the job runs in the correct partition/node types. 
+
+!!! important
+
+    Instead of ``#SBATCH --gpus=v100:1`` you could have used 
+
+    ```bash
+    #SBATCH --gpus=1
+    #SBATCH -C v100
+    ```
+
+    or 
+
+    ```bash 
+    #SBATCH --gpus-per-node=1
+    #SBATCH -C v100
+    ```
 
 ### A100 - AMD Zen3
 
