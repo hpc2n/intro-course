@@ -6,7 +6,7 @@
 # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
 #SBATCH --time=04:20:00
 # If you use the GPU nodes uncomment the following lines
-#SBATCH --gpus=l40s:2
+#SBATCH --gpus-per-node=l40s:2
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
