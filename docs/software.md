@@ -631,7 +631,7 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
     and send it to the queue. 
     As in previous exercises, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. If you cloned this repository
     you will have a copy of the [matlab_kernel.ipynb](https://github.com/hpc2n/intro-course/blob/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb){:target="_blank"}
-    notebook. Choose the ``MATLAB kernel`` to execute this notebook:
+    notebook under ``exercises/JUPYTERNOTEBOOKS/MATLAB``. Choose the ``MATLAB kernel`` to execute this notebook:
 
     ![infomap](images/matlab-kernel.png)
 
