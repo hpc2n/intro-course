@@ -603,6 +603,33 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
     exercise, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. Choose the
     kernel **mandelenv** you recently created.
 
+??? Note "Exercise 4: Matlab in a Jupyter notebook"
+
+    One can run a Jupyter notebook with a [Matlab kernel](https://github.com/mathworks/jupyter-matlab-proxy){:target="_blank"} and also take
+    advantage of the Python environment to execute Python code, such as common AI libraries, in Matlab. You can follow these steps
+    to get this combo working:
+
+    ```bash
+    # Load Matlab 
+    ml MATLAB/2023a.Update4
+    # Load a Python version compatible with Matlab and also CUDA (if you will run on GPUs)
+    ml GCCcore/11.3.0  Python/3.10.4 CUDA/11.7.0
+    # Create an environment called matlabenv (you can change this name)
+    python -m venv ./matlabenv
+    # Activate this environment
+    source matlabenv/bin/activate
+    # Perform installations: upgrade pip, and packages that you will need
+    pip install --upgrade pip
+    pip install -U scikit-learn
+    # Install Jupyterlab
+    pip install jupyterlab
+    # Install the Matlab proxy
+    pip install jupyter-matlab-proxy
+    ```
+
+    Fix the project ID in the batch job [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/job.sh){:target="_blank"} 
+    and send it to the queue. 
+
 ## AMBER
 
 Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
