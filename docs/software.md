@@ -629,6 +629,11 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
 
     Fix the project ID in the batch job [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/job.sh){:target="_blank"} 
     and send it to the queue. 
+    As in previous exercises, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. If you cloned this repository
+    you will have a copy of the [matlab_kernel.ipynb](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb){:target="_blank"}
+    notebook. Choose the ``MATLAB kernel`` to execute this notebook:
+
+    ![infomap](images/matlab-kernel.png)
 
 ## AMBER
 
