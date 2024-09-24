@@ -635,6 +635,9 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
 
     ![infomap](images/matlab-kernel.png)
 
+    When you try to run the notebook, Matlab will ask for a [type of license](https://github.com/mathworks/matlab-proxy/blob/main/MATLAB-Licensing-Info.md){:target="_blank"}. Because
+    you are running this notebook on our HPC center, you can choose the option **Existing License** and then *Start MATLAB*.
+
 ## AMBER
 
 Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
