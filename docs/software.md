@@ -630,13 +630,15 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
     Fix the project ID in the batch job [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/job.sh){:target="_blank"} 
     and send it to the queue. 
     As in previous exercises, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. If you cloned this repository
-    you will have a copy of the [matlab_kernel.ipynb](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb){:target="_blank"}
+    you will have a copy of the [matlab_kernel.ipynb](https://github.com/hpc2n/intro-course/blob/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb){:target="_blank"}
     notebook. Choose the ``MATLAB kernel`` to execute this notebook:
 
     ![infomap](images/matlab-kernel.png)
 
     When you try to run the notebook, Matlab will ask for a [type of license](https://github.com/mathworks/matlab-proxy/blob/main/MATLAB-Licensing-Info.md){:target="_blank"}. Because
     you are running this notebook on our HPC center, you can choose the option **Existing License** and then *Start MATLAB*.
+
+    In the same notebook at the bottom, we show you how to run a simple Python script [digits.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/digits.py){:target="_blank"} in Matlab with the ``pyrunfile`` command. This Python script uses an AI library.
 
 ## AMBER
 
