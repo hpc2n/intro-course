@@ -713,6 +713,12 @@ version that is only installed on the Intel nodes, you will need to add the inst
 ``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
 AMD node that lacks that installation. 
 
+We performed a benchmark of Gromacs on the different Nvidia GPUs that are available on Kebnekaise using the batch script 
+[job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}.
+The results can be seen in the following plot. A dashed red line at  25 ns/day is added for better visualization.
+
+![gromacs-benchmark](images/benchmark-nvidia-gpus.png)
+
 ### Exercises
 
 ??? Note "Exercise 1: Running a MPI job"
