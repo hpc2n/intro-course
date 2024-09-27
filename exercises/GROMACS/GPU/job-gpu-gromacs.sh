@@ -3,10 +3,10 @@
 # Remember to change the following to your own Project ID! 
 #SBATCH -A Project_ID
 #SBATCH -J Gromacs
-#SBATCH -t 00:40:00
+#SBATCH -t 00:20:00
 #SBATCH -n 4
 # Asking for Type X of GPU
-#SBATCH --gpus-per-node=l40s:2
+#SBATCH --gpus-per-node=Type:2
 
 # It is a good idea to do a ml purge before loading other modules
 ml purge > /dev/null 2>&1
