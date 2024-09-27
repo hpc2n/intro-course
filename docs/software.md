@@ -715,7 +715,8 @@ AMD node that lacks that installation.
 
 We performed a benchmark of Gromacs on the different Nvidia GPUs that are available on Kebnekaise using the batch script 
 [job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}.
-The results can be seen in the following plot. A dashed red line at  25 ns/day is added for better visualization.
+The results can be seen in the following plot. The labels 1,2, and 3 refer to the three different and common options to run 
+Gromacs written in this batch job. A dashed red line at  25 ns/day is added for better visualization.
 
 ![gromacs-benchmark](images/benchmark-nvidia-gpus.png)
 
