@@ -200,6 +200,12 @@ If you are not familiar with any of these, a good recommendation would be to use
     5. Save by clicking “<code>Save</code>” in the menu.
     6. The menu on the top right (the three horizontal lines) gives you several other options, including “<code>Find</code>” and “<code>Find and Replace</code>”.
 
+## The future - HPC2N Open OnDemand desktop
+
+HPC2N is currently working on another way to connect to our systems, through an "Open OnDemand desktop". If you have used LUNARC's systems, you may have tried their desktop OnDemand. 
+
+Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser. The Open OnDemand project was funded by NSF and is currently maintained by the <a href="https://www.osc.edu/" target="_blank">Ohio SuperComputing Centre</a>. Read more about OpenOnDemand at <a href="https://openondemand.org/" target="_blank">OpenOndemand.org</a>. 
+
 !!! note "Keypoints"
 
     - You can login with ThinLinc or another SSH client
