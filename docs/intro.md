@@ -253,7 +253,7 @@ The GPU enabled nodes are:
 - 2 x 32 core AMD zen4
     - 11968 MB / core
     - 8 x Nvidia A40
-    - 2 nodes
+    - 1 nodes
 
 The large memory nodes are:
 
@@ -279,6 +279,7 @@ GPUs can have different types of cores:
 | H100 | 16896 | 528 | | 
 
 NOTE that just like you cannot really compare CPU cores directly (speed etc.) you also cannot just compare CUDA/TENSOR/RT etc. cores directly (more efficient design, faster, etc.)  
+
 ### Kebnekaise - HPC2N storage
   
 Basically four types of storage are available at HPC2N: 
@@ -298,7 +299,7 @@ Basically four types of storage are available at HPC2N:
 
 Also 
 
-- **SweStore** --- disk based (dCache)
+- disk based (dCache)
     - Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG
 
 ### Kebnekaise - projects
