@@ -201,7 +201,7 @@ In this section, we are just going to try submitting a few jobs, checking their 
 
 !!! Note "Preparations"
 
-    1. Load the module ``foss/2022b`` (``ml foss/2022b``) on the regular login node. This module is available on all nodes. 
+    1. Load the module ``foss/2021b`` (``ml foss/2021b``) on the regular login node. This module is available on all nodes. 
     2. Compile the following programs: ``hello.c``, ``mpi_hello.c``, ``mpi_greeting.c``, and ``mpi_hi.c``
     ```bash
     gcc -o hello hello.c
