@@ -24,14 +24,12 @@ Various additions and changes, including porting to mkdocs by Birgitte Brydsö, 
     
 HPC2N provides state-of-the-art resources and expertise:
 
-- Scalable and parallel **HPC**
-- Large-scale **storage facilities** (Project storage (Lustre), SweStore, Tape)
+- **HPC** resources and e-Infrastructure
+- Large-scale **storage facilities** (Project storage, WLCG storage (dCache, Tape))
 - **Grid and cloud** computing (WLCG NT1, Swedish Science Cloud)
 - National Data Science Node in ”Epidemiology and Biology of Infections” (Data-Driven Life Science - DDLS)
-- Software for e-Science applications
-- All levels of user support 
-    - Primary, advanced, dedicated
-    - Application Experts (AEs)
+- Training and support for our users
+- A wide range of scientific software, applications, libraries, and compilers available
 
 !!! note "Primary objective"
 
@@ -79,18 +77,20 @@ Involved in several **projects and collaborations**:
     - Research group meetings @ UmU
     - Also at the partner sites
     - Online "HPC2N fika"  
+    - Online intro seminars 
 - **User training and education program**
     - 0.5 -- 5 days; presentations and ready-to-run exercises
     - intro courses: our system, Linux, R, Python, Julia, Matlab, Git
     - intermediate courses
     - - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
-- **Courses this fall**
-    - Introduction to Linux, 16 September 2024
-    - Introduction to HPC2N and Kebnekaise, 16 September 2024
-    - Basic Singularity, 16 October 2024
-    - Introduction to running R, Python, Julia, and Matlab in HPC, 22-25 October 2024
-    - Introduction to Git, 25-29 November 2024 
-    - Using Python in an HPC environment, 5-6 December 2024
+- **Courses this spring**
+    - Introduction to Linux, 21 January 2025
+    - Introduction to HPC2N and Kebnekaise, 22 January 2025
+    - Basic Containers (Singularity, Apptainer), 13 February 2025
+    - Introduction to running R, Julia, and Matlab in HPC, 24-26 March 2025
+    - Introduction to Linux, 3 April 2025 
+    - Introduction to Python and Using Python in an HPC environment, 24-25 + 28-29 April 2025 
+    - Cluster architecture and job submission, 27 May 2025
     - **Updated list:** <a href="https://www.hpc2n.umu.se/events/courses" target="_blank">https://www.hpc2n.umu.se/events/courses</a> 
 - Workshops and seminars 
 - NGSSC / SeSE & university courses
@@ -163,7 +163,7 @@ System and support:
 
 ### HPC2N users by software
 
-![software-users](images/software_v2.png)
+![software-users](images/core-hour-usage-per-soft-kebnekaise-2024.png)
 
 ## Kebnekaise
 
