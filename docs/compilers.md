@@ -256,6 +256,59 @@ Using the environment variable (prefaced with $) for linking is highly recommend
     gcc -o PROGRAM PROGRAM.c $LIBLAPACK
     ```
 
+!!! tip Code-along
+
+    Not all compiler toolchains have a ``buildenv`` installed for them (yet). You can always ask for it if you need it. 
+
+    In this example we will use the toolchain ``foss/2021b`` since that is the newest that has a matching ``buildenv`` installed. 
+
+    1. Unload any modules you have loaded. Here we just ``purge`` all of them. 
+    ```bash 
+    b-an01 [~]$ ml purge
+    The following modules were not unloaded:
+      (Use "module --force purge" to unload all):
+
+      1) snicenvironment   2) systemdefault
+    b-an01 [~]$ 
+    ```
+    2. Load the ``foss/2021b`` toolchain
+    ```bash
+    b-an01 [~]$ ml foss/2021b
+    b-an01 [~]$ 
+    ```
+    3. Load a matching ``buildenv`` module 
+    ```bash
+    b-an01 [~]$ ml buildenv
+    b-an01 [~]$
+    ```
+    4. Do ``ml show buildenv`` to see the environment variables that are now available 
+    ```bash
+    b-an01 [~]$ ml show buildenv
+    ----------------------------------------------------------------------------
+       /hpc2n/eb/modules/all/MPI/GCC/11.2.0/OpenMPI/4.1.1/buildenv/default.lua:
+    ----------------------------------------------------------------------------
+    help([[
+    Description
+    ===========
+    This module sets a group of environment variables for compilers, linkers, maths libraries, etc., that you can use to easily transition between toolchains when building your software. To query the variables being set please use: module show <this module name>
+
+
+    More information
+    ================
+     - Homepage: None
+    ]])
+    whatis("Description: This module sets a group of environment variables for compilers, linkers, maths libraries, etc., that you can use to easily transition between toolchains when building your software. To query the variables being set please use: module show <this module name>")
+    whatis("Homepage: None")
+    whatis("URL: None")
+    conflict("buildenv")
+    depends_on("FlexiBLAS/3.0.4")
+    depends_on("FFTW/3.3.10")
+    depends_on("ScaLAPACK/2.1.0-fb")
+    setenv("EBROOTBUILDENV","/hpc2n/eb/software/buildenv/default-foss-2021b")
+    setenv("EBVERSIONBUILDENV","default")
+    ...
+    ```
+
 !!! note
 
     You can see a list of all the libraries on Kebnekaise (June 2024) here: <a href="https://docs.hpc2n.umu.se/documentation/compiling/#libraries" target="_blank">https://docs.hpc2n.umu.se/documentation/compiling/#libraries</a>. 
