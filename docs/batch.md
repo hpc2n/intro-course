@@ -400,10 +400,15 @@ To use GPU resources one has to explicitly ask for one or more GPUs. Requests fo
 
     ``--gpus-per-node=number``
 
+    If doing one of the latter two, you need to add the constraint 
+
+    ``#SBATCH -C type``
+
     In the batch job you would write something like this: 
 
     ```bash
-    #SBATCH --gpus=type:number
+    #SBATCH --gpus=number
+    #SBATCH -C type
     ```
 
     where type is, as mentioned:  
@@ -424,7 +429,8 @@ To use GPU resources one has to explicitly ask for one or more GPUs. Requests fo
 # Expected time for job to complete 
 #SBATCH --time=00:10:00
 # Number of GPU cards needed. Here asking for 2 V100 cards
-#SBATCH --gpus=v100:2
+#SBATCH --gpus=2
+#SBATCH -C v100 
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
@@ -436,10 +442,10 @@ ml fosscuda/2021b
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2024-084
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2024-084`` 
-    - We have a storage project linked to the compute project: **intro-hpc2n**. 
-        - You find it in ``/proj/nobackup/intro-hpc2n``. 
+    - The course project has the following project ID: hpc2n2025-014
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-014`` 
+    - We have a storage project linked to the compute project: **kebnekaise-intro**. 
+        - You find it in ``/proj/nobackup/kebnekaise-intro``. 
         - Remember to create your own directory under it. 
 
 !!! keypoints "Keypoints" 
