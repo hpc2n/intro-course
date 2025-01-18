@@ -434,8 +434,8 @@ To use GPU resources one has to explicitly ask for one or more GPUs. Requests fo
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
-# Load modules needed for your program - here fosscuda/2021b
-ml fosscuda/2021b
+# Load modules needed for your program - here fosscuda/2020b
+ml fosscuda/2020b
 
 ./my-gpu-program
 ```
