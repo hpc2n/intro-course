@@ -179,7 +179,7 @@ module load foss/2022b
 srun ./my_mpi_program
 ```
 
-### Exercises
+## Prepare the exercise environment
 
 !!! note
 
@@ -210,6 +210,8 @@ In this section, we are just going to try submitting a few jobs, checking their 
     mpicc -o mpi_hi mpi_hi.c
     ```
     3. If you compiled and named the executables as above, you should be able to submit the following batch scripts directly: ``simple.sh``, ``mpi_greeting.sh``, ``mpi_hello.sh``, ``mpi_hi.sh``, ``multiple-parallel-sequential.sh``, ``multiple-parallel.sh``, or ``multiple-parallel-simultaneous.sh``. 
+
+### Exercises
 
 !!! Exercise "Exercise: sbatch and squeue"
 
