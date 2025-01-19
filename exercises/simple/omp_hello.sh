@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 # Number of cores per task 
 #SBATCH -c 28
 #SBATCH --time=00:05:00
