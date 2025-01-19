@@ -3,6 +3,9 @@
 !!! Objectives
 
     - See and try out different types of simple batch script examples.
+        - Serial
+        - MPI
+        - GPU 
     - Try using constraints: how to allocate specific CPUs. 
     - Try using constraints: how to allocate specific GPUs.  
 
@@ -12,10 +15,10 @@ You need to compile any programs mentioned in a batch script in order to run the
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2024-084
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2024-084``
-    - We have a storage project linked to the compute project: **intro-hpc2n**. 
-        - You find it in ``/proj/nobackup/intro-hpc2n``. 
+    - The course project has the following project ID: hpc2n2025-014
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-014``
+    - We have a storage project linked to the compute project: **kebnekaise-intro**. 
+        - You find it in ``/proj/nobackup/kebnekaise-intro``. 
         - Remember to create your own directory under it. 
 
 !!! Hint 
@@ -24,7 +27,7 @@ You need to compile any programs mentioned in a batch script in order to run the
 
 !!! NOTE 
 
-    1. For these test examples I would suggest using the ``foss`` compiler toolchain, version 2022b, unless otherwise specified. If you decide to use a different one, you will have to make changes to some of the batch scripts.
+    1. For these test examples I would suggest using the ``foss`` compiler toolchain, version 2022b, unless otherwise specified, as it is available on both the Intel and AMD nodes. If you decide to use a different one, you will have to make changes to some of the batch scripts.
     2. To submit a job script, do ``sbatch JOBSCRIPT``
     3. In most of the examples, I name the executable when I compile. The flag ``-o`` tells the compiler you want to name the executable. If you don't include that and a name, you will get an executable named ``a.out``. Of course, you do not have to name the executable as I do. It is just an example. In general, I have named all the executables the same as the program (without the suffix). If you change the name, remember to make the change in the submit script as well. 
 
@@ -41,7 +44,7 @@ gcc hello.c -o hello
 ```bash
 #!/bin/bash
 # Project id - change to your own after the course!
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for a walltime of 1 min
@@ -71,7 +74,7 @@ mpicc mpi_hello.c -o mpi_hello
 ```bash 
 #!/bin/bash
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 # Number of tasks - default is 1 core per task 
 #SBATCH -n 14
 #SBATCH --time=00:05:00
@@ -101,7 +104,7 @@ gcc -fopenmp omp_hello.c -o omp_hello
 
 ```bash
 #!/bin/bash
-#SBATCH -A hpc2n2024-084 
+#SBATCH -A hpc2n2025-014 
 # Number of cores per task 
 #SBATCH -c 28
 #SBATCH --time=00:05:00
@@ -127,6 +130,10 @@ export OMP_NUM_THREADS=$omp_threads
 
     Set ``OMP_NUM_THREADS`` to some value between 1 and 28 (``export OMP_NUM_THREADS=value``). Submit the job with ``sbatch``. Take a look at the output (``slurm-JOBID.out``) with nano or your favourite editor. Change the value of ``OMP_NUM_THREADS``). Submit it again and check on the output to see the change.  
 
+    !!! note "NOTE"
+
+        The reason we are setting ``OMP_NUM_THREADS`` to at most 28 is that we in the batch script said we were asking for that number of cores. 28 is the number of cores on the Intel Skylake nodes, which has the fewest number of cores. You can see the list of nodes here: <a href="https://docs.hpc2n.umu.se/documentation/batchsystem/resources/#nodes" target="_blank">https://docs.hpc2n.umu.se/documentation/batchsystem/resources/#nodes</a>. 
+
 ## Multiple serial jobs from same submit file  
 
 This submit file shows one way of running several programs from inside the same submit file. 
@@ -150,7 +157,7 @@ When the C programs have been compiled, submit the ``multiple-serial.sh`` progra
 
     ```bash
     #!/bin/bash
-    #SBATCH -A hpc2n2024-084
+    #SBATCH -A hpc2n2025-014
     # Add enough cores that all jobs can run at the same time 
     #SBATCH -n 5
     # Make sure that the time is long enough that the longest job will have time to finish 
@@ -200,7 +207,7 @@ To try an example, we have included a small Python script ``hello-world-array.py
     ```bash
     #!/bin/bash
     # This is a very simple example of how to run a Python script with a job array
-    #SBATCH -A hpc2n2024-084 # Change to your own after the course!
+    #SBATCH -A hpc2n2025-014 # Change to your own after the course!
     #SBATCH --time=00:05:00 # Asking for 5 minutes
     #SBATCH --array=1-10   # how many tasks in the array
     #SBATCH -c 1 # Asking for 1 core    # one core per task
@@ -231,7 +238,7 @@ When the MPI C programs have been compiled, submit the ``multiple-parallel-seque
 
 ```bash
 #!/bin/bash
-#SBATCH -A hpc2n2024-084 
+#SBATCH -A hpc2n2025-014
 # Since the files are run sequentially I only need enough cores for the largest of them to run 
 #SBATCH -c 28
 # Remember to ask for enough time for all jobs to complete
@@ -281,7 +288,7 @@ When the MPI C programs have been compiled, submit the ``multiple-parallel-simul
 
 ```bash 
 #!/bin/bash
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 # Since the files run simultaneously I need enough cores for all of them to run 
 #SBATCH -n 56
 # Remember to ask for enough time for all jobs to complete
@@ -319,7 +326,7 @@ In this case it compiles and runs the ``mpi_hello.c`` program.
     ```bash
     #!/bin/bash
     # CHANGE THE PROJECT ID TO YOUR OWN PROJECT ID AFTER THE COURSE!
-    #SBATCH -A hpc2n2024-084
+    #SBATCH -A hpc2n2025-014
     #Name the job, for easier finding in the list
     #SBATCH -J compiler-run
     #SBATCH -t 00:10:00
@@ -344,7 +351,7 @@ As a default, Slurm throws both errors and other output to the same file, named 
 ```bash
 #!/bin/bash 
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 #SBATCH -n 8 
 #SBATCH --time=00:05:00
 
@@ -391,9 +398,10 @@ We recommend ``fosscuda/2020b`` (contains ``GCC``, ``OpenMPI``, ``OpenBLAS``/``L
 #!/bin/bash 
 # This job script is for running on 1 V100 GPU. 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2024-084 
+#SBATCH -A hpc2n2025-014 
 #SBATCH --time=00:05:00
-#SBATCH --gpus=v100:1
+#SBATCH --gpus=1
+#SBATCH -C v100 
 
 ml purge > /dev/null 2>&1
 ml fosscuda/2020b
@@ -416,12 +424,16 @@ The batch script gpu.sh compiles and runs a small cuda program called ``hello-wo
 
 !!! important
 
-    Instead of ``#SBATCH --gpus=v100:1`` you could have used 
+    Instead of  
 
     ```bash
     #SBATCH --gpus=1
     #SBATCH -C v100
     ```
+   
+    you could have used 
+
+    ``#SBATCH --gpus=v100:1``
 
     or 
 
@@ -461,7 +473,7 @@ The batch script ``gpu-a100.sh`` compiles and runs a small cuda program called `
 ```bash 
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=a100:1
 
@@ -474,7 +486,7 @@ nvcc hello-world.cu -o hello
 
 !!! note "Exercise: A100 GPU batch jobs"
 
-    The above script is found in the same directory as the other exercises (``intro-course/exercises/simple``). You can submit it directory: 
+    The above script is found in the same directory as the other exercises (``intro-course/exercises/simple``). You can submit it directly in that directory: 
 
     ```bash 
     sbatch gpu-a100.sh
@@ -489,7 +501,8 @@ Kebnekaise also has a few of the A40 GPUs. These are placed on Intel broadwell n
 In order to run on these, you add this to your batch script: 
 
 ```bash
-#SBATCH --gpus=a40:number
+#SBATCH --gpus=number
+#SBATCH -C a40
 ```
 
 where ``number`` is 1 or 2 (the number of GPU cards). 
@@ -503,7 +516,8 @@ Since these GPUs are located on AMD Zen4 nodes, you need to login to ``kebnekais
 Then, to ask for these nodes in your batch script, you add: 
 
 ```bash
-#SBATCH --gpus=l40s:number
+#SBATCH --gpus=number
+#SBATCH -C l40s
 ```
 
 where ``number`` is 1 or 2 (the number of GPU cards). 
@@ -515,7 +529,8 @@ The H100 GPUs are located on AMD Zen4 nodes. You can find the available modules 
 You ask for these GPUs in your batch script by adding: 
 
 ```bash
-#SBATCH --gpus=h100:number
+#SBATCH --gpus=number
+#SBATCH -C h100
 ```
 
 where ``number`` is 1, 2, 3, or 4 (the number of GPU cards you want to allocate). 
@@ -527,7 +542,8 @@ The A6000 GPUs are placed on AMD Zen4 nodes. That means you can find the availab
 To run on these GPUs, add this to your batch script: 
 
 ```bash 
-#SBATCH --gpus=a6000:number 
+#SBATCH --gpus=number 
+#SBATCH -C a6000 
 ```
 
 where ``number`` is 1 or 2 (the number of GPU cards you want to allocated). 
@@ -539,7 +555,8 @@ The MI100 GPUs are located on AMD Zen3 nodes. You can find the available modules
 To allocate MI100 GPUs, add this to your batch script: 
 
 ```bash
-#SBATCH --gpus=mi100:number
+#SBATCH --gpus=number
+#SBATCH -C mi100 
 ```
 
 where ``number`` is 1 or 2 (the number of GPU cards). 
@@ -551,7 +568,7 @@ where ``number`` is 1 or 2 (the number of GPU cards).
 ```bash
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2024-084 
+#SBATCH -A hpc2n2025-014 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C amd_gpu 
@@ -567,7 +584,7 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2024-084 
+#SBATCH -A hpc2n2025-014 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C nvidia_gpu 
@@ -578,12 +595,12 @@ ml CUDA/11.7.0
 ./myGPUcode
 ```
 
-**Sample batch script for allocating any Nvidia GPU on Intel node**
+**Sample batch script for allocating any Nvidia GPU on an Intel node**
 
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C 'nvidia_gpu&intel_cpu'
@@ -599,7 +616,7 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2024-084
+#SBATCH -A hpc2n2025-014
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C ''zen3|zen4'&GPU_AI'
@@ -628,6 +645,10 @@ ml CUDA/11.7.0
 ## Starting JupyterLab 
 
 On Kebnekaise, it is possible to run JupyterLab. This is done through a batch job, and is described in detail <a href ="https://docs.hpc2n.umu.se/tutorials/jupyter/" target="*blank">on our "Jupyter on Kebnekaise" documentation</a>.  
+
+!!! note "Exercise"
+
+    Try starting Jupyter as shown on the link above. 
 
 ## Keypoints 
 
