@@ -43,7 +43,7 @@
 
     * For **unrelated** issues open new tickets.
 
-    * If you consider that the error is solved, please let us know so that we can close the ticket.
+    * If you consider that the error is **solved**, please let us know so that we can close the ticket.
       This will help us to keep the ticket system clean. 
 
 ## Matlab
@@ -304,14 +304,26 @@ AMD node that lacks that installation.
 
 ### Exercises
 
-??? Note "Exercise 1: Running a monomer protein simulation"
+??? Note "Exercise 1: Running single jobs"
 
-    In the exercises folder ``ALPHAFOLD`` you will find a [fasta secuence](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/my_fasta_sequence.fasta){:target="_blank"} for a monomer and the 
-    corresponding batch file [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/job.sh){:target="_blank"} for running the simulation on
+    In the exercises folder ``ALPHAFOLD/SINGLEJOBS`` you will find a [fasta secuence](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/SINGLEJOB/my_fasta_sequence.fasta){:target="_blank"} for a monomer and the 
+    corresponding batch file [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/SINGLEJOB/job.sh){:target="_blank"} for running the simulation on
     GPUs. Try running the simulation with CPUs only and then with l40s, v100 and a100 GPUs. 
 
     Notice that the simulation will take ~1hrs. so the purpose of this exercise is to know
     if the simulation starts running well only.
+
+??? Note "Exercise 2: Running job arrays"
+
+    In the exercises folder ``ALPHAFOLD/JOBARRAYS`` you will find 8 fasta sequeces ``seq[1-8].fasta``,
+    these sequences are listed in the file [list_sequences.txt](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/JOBARRAYS/list_sequences.txt){:target="_blank"}.
+    The job script [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/JOBARRAYS/job.sh){:target="_blank"} will allow you to run several simulations 
+    in a compact manner where each fasta sequence is used as an input for Alphafold. In the present script, a suggestion for using 1 or 2 GPU cards is provided. 
+
+    Notes: 1) the simulation will take ~1hrs. so the purpose of this exercise is to know
+    if the simulation starts running well only. 2) Don't forget to monitor the resources by
+    using the ``job-usage`` tool.
+
 
 ## CryoSPARC
 
