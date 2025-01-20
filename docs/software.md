@@ -32,19 +32,19 @@
     Write to us: support@hpc2n.umu.se. This will create a ticket that will allow us to track the issue.
     Something to consider when you open a ticket:
 
-        * Describe the problem and the versions of the software you used
+    * Describe the problem and the versions of the software you used
 
-        * Provide a test case we can copy to try ourselves. The test case can be a **reduced** 
-          example or the real case. Pack **all** relevant files in a folder. Write in the ticket 
-          the path to the folder.
+    * Provide a test case we can copy to try ourselves. The test case can be a **reduced** 
+      example or the real case. Pack **all** relevant files in a folder. Write in the ticket 
+      the path to the folder.
 
-        * If you already opened a ticket use this ticket thread to discuss the issue instead of creating other 
-          tickets.
+    * If you already opened a ticket use this ticket thread to discuss the issue instead of creating other 
+      tickets.
 
-        * For **unrelated** issues open new tickets.
+    * For **unrelated** issues open new tickets.
 
-        * If you consider that the error is solved, please let us know so that we can close the ticket.
-          This will help us to keep the ticket system clean. 
+    * If you consider that the error is solved, please let us know so that we can close the ticket.
+      This will help us to keep the ticket system clean. 
 
 ## Matlab
 
