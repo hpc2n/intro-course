@@ -6,11 +6,11 @@
 # For a whole node, 2 GPU cards, (could be useful depending on the 
 # length of the sequence and number nmers
 ##SBATCH -c 28
-##SBATCH --gres=gpu:Type:2
+##SBATCH --gpus-per-node=Type:2
 ##SBATCH --exclusive
 # For short sequences and monomers half node, 1 GPU card, would work 
 #SBATCH -c 14 
-#SBATCH --gres=gpu:Type:1
+#SBATCH --gpus-per-node=Type:1
 
 # Clean the environment from loaded modules
 ml purge > /dev/null 2>&1
