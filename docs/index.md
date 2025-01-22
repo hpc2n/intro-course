@@ -6,7 +6,7 @@
 
     You can download the markdown files for the presentation as well as the exercises from <a href="https://github.com/hpc2n/intro-course " target="_blank">https://github.com/hpc2n/intro-course</a>
 
-    - Click the gren "Code" button
+    - Click the green "Code" button
          - Either copy the url for the repo under HTTPS and do <code>git clone https://github.com/hpc2n/intro-course.git</code> in a terminal window
          - OR pick "Download zip" to get a zip file with the content. 
  
