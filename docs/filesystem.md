@@ -64,7 +64,7 @@ Now is a good time to prepare the course material and download the exercises, if
 
 !!! note "Exercise"
 
-    1. Go to the subdirectory you created under <code>/proj/nobackup/intro-hpc2n</code>
+    1. Go to the subdirectory you created under <code>/proj/nobackup/kebnekaise-intro</code>
     2. Clone the repository for the course: <code>git clone https://github.com/hpc2n/intro-course.git</code>
 
     You will get a directory called <code>intro-course</code>. Below it you will find a directory called "exercises" where the majority of the exercises for the batch system section is located. 
