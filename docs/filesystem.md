@@ -90,6 +90,6 @@ More information about the file system, as well as archiving and compressing fil
     - When you login to Kebnekaise, you will end up in your home-directory.
     - Your home-directory is in <code>/home/u/username</code> and is pointed to by the environment variable <code>$HOME</code>.
     - Your project storage is located in <code>/proj/nobackup/NAME-YOU-PICKED</code>
-        - For this course it is <code>/proj/nobackup/intro-hpc2n</code>.
+        - For this course it is <code>/proj/nobackup/kebnekaise-intro</code>.
         - The project storage is NOT backed up.
     - You should run the batch jobs from your project storage. 
