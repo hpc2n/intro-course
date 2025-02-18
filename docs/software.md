@@ -804,7 +804,8 @@ the simulations.
 
 ### How to find Gaussian and GaussView 
 
-The modules for Gaussian and GaussView can be loaded directly without any requirement.  
+The modules for Gaussian and GaussView can be loaded directly without any requirement. More information about Gaussian 
+can be found [here]((https://www.hpc2n.umu.se/resources/software/gaussian){:target="_blank"}.
 
 ### Exercises
 
