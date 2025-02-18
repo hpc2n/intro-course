@@ -6,7 +6,6 @@
 #SBATCH -c 14
 ##SBATCH --exclusive        # uncomment this line if x = 2 by removing one # symbol 
 #SBATCH --gpus-per-node=h100:1
-#SBATCH -p newbatch
 ##SBATCH --gres=gpu:v100:1   # x = 1 or 2
 ##SBATCH -p skylake
 
