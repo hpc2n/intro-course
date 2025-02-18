@@ -794,6 +794,37 @@ Gromacs written in this batch job. A dashed red line at  25 ns/day is added for 
     More information on Gromacs performance can be found in the documentation for 
     [performance improvement](https://manual.gromacs.org/current/user-guide/mdrun-performance.html){:target="_blank"} of this software.
 
+## Gaussian/GaussView
+
+The license for Gaussian and GaussView at HPC2N is valid for users at UMU only. Gaussian is a program for
+computing the electronic structure of molecules. Its companion GaussView is a graphical interface
+that allows you to design molecules and Gaussian input scripts as well as analyze the results from 
+the simulations. 
+
+
+### How to find Gaussian and GaussView 
+
+The modules for Gaussian and GaussView can be loaded without any requirement.  
+
+### Exercises
+
+??? Note "Exercise 1: Load GaussView and open a file"
+
+    An input file for GaussView is located here [input.com](https://github.com/hpc2n/intro-course/tree/master/exercises/GAUSSIAN/input.com){:target="_blank"}.
+    In this test case you will compute the single point energy of two truncated ADP molecules with a single
+    Magnesium ion in between. The input files for Gaussian, such as *input.com*, can be generated through 
+    GaussView but the **Link 0** commands ``%cpu`` and ``%gpucpu`` which are relatively new in Gaussian will need to
+    be written manually. These commands replaced the previous ``%nprocshared`` from the Gaussian 09 version.
+
+    Load GaussView ``module load gaussview/6.1.1`` and start it on the command line ``vglrun gv``. Then, 
+    open the **input.com** file. It should look like this:
+
+    ![gaussview](images/gaussview.png)
+
+
+
+
+
 
 !!! Keypoints "Keypoints" 
 
