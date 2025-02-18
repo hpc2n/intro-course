@@ -808,7 +808,7 @@ The modules for Gaussian and GaussView can be loaded directly without any requir
 
 ### Exercises
 
-??? Note "Exercise 1: Load GaussView and open a file"
+??? Note "Exercise 1: Load GaussView and open a *.com* file"
 
     An input file for GaussView is located here [input.com](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/input.com){:target="_blank"}.
     In this test case you will compute the single point energy of two truncated ADP molecules with a single
@@ -817,11 +817,12 @@ The modules for Gaussian and GaussView can be loaded directly without any requir
     be written manually. These commands replaced the previous ``%nprocshared`` from the Gaussian 09 version.
 
     Load GaussView ``module load gaussview/6.1.1`` and start it on the command line ``vglrun gv``. Then, 
-    open the **input.com** file. It should look like this:
+    open the **input.com** file which is located in the folder ``exercises/GAUSSIAN``. It should look like this:
 
     ![gaussview](images/gaussview.png)
 
 
+??? Note "Exercise 2: Running a job through *sbatch*"
 
 
 
