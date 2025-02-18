@@ -808,7 +808,7 @@ The modules for Gaussian and GaussView can be loaded directly without any requir
 
 ### Exercises
 
-??? Note "Exercise 1: Load GaussView and open a *.com* file"
+??? Note "Exercise 1: Load GaussView and open a *.com* (or *.gjf*) file"
 
     An input file for GaussView is located here [input.com](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/input.com){:target="_blank"}.
     In this test case you will compute the single point energy of two truncated ADP molecules with a single
@@ -824,7 +824,23 @@ The modules for Gaussian and GaussView can be loaded directly without any requir
 
 ??? Note "Exercise 2: Running a job through *sbatch*"
 
+    If you already have a *.com* (or *.gjf*) file, for instance the one in the previous example, you can submit your job to the queue with
+    the ``sbatch job.sh`` command by using a batch job file like [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/job.sh){:target="_blank"}.
+    Here, you need to change the project ID to your own, the number of cores (-c), and the number of GPU cards (--gpus) needed.
+    For this exercise, you can use ``-c 4`` and ``--gpus=1``.
 
+    Notes: 
+
+         * If your *.com* (or *.gjf*) file contains the ``%nprocshared`` Link 0 command, it will be replaced to
+         the corresponding ``%cpu`` and ``%gpucpu`` by the script ``g16.set-cpu+gpu-list`` that is contained in the
+         *job.sh* script.
+
+         * If your *.com* (or *.gjf*) file already contains the ``%cpu`` and ``%gpucpu`` Link 0 commands, the values
+         will be replaced according to the *SBATCH* options in the *job.sh* script.
+
+         * If you only want to run on CPUs (maybe the method you are targeting doesn't have a GPU implementation, 
+         for instance), you will need to remove the ``%gpucpu`` command from the *input.com* file and the 
+         ``-C nvidia_gpu`` and ``--gpus`` options in the *job.sh* script.
 
 
 !!! Keypoints "Keypoints" 

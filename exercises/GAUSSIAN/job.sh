@@ -2,8 +2,9 @@
 #SBATCH -A Project_ID
 #SBATCH -t 20:10:00
 #SBATCH -N 1
-#SBATCH -c 10
-#SBATCH --gpus-per-node=Type:1
+#SBATCH -c X
+#SBATCH --gpus=Y
+#SBATCH -C nvidia_gpu
 #SBATCH --output=job_str.out
 #SBATCH --error=job_str.err
 
