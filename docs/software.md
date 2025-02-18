@@ -842,6 +842,24 @@ The modules for Gaussian and GaussView can be loaded directly without any requir
     for instance), you will need to remove the ``%gpucpu`` command from the *input.com* file and the 
     ``-C nvidia_gpu`` and ``--gpus`` options in the *job.sh* script.
 
+??? Note "Exercise 3: Running a job through GaussView"
+
+    In GaussView go to *Preferences* and in the *Job Setup* option choose execute using custom command line, and in the 
+    box write *sbatch job.sh* and then *Ok*:
+
+    ![gaussview](images/gaussian-slurm.png)
+
+
+    Put the [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/job.sh){:target="_blank"} script
+    in the current folder and fix the project ID, number of cores, and number of GPU cards as in the previous exercise.
+ 
+    Then, go to *Gaussian Calculation Setup* and *Submit* the job:
+
+    ![gaussview](images/gaussian-submit.png)
+
+    A warning message on the termination of the job without producing a log file will appear and you can *OK* to close this window.
+    You can check that the job is in the queue with the ``squeue --me`` command on the terminal.
+
 
 !!! Keypoints "Keypoints" 
 

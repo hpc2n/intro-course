@@ -1,7 +1,6 @@
 #!/bin/bash
 #SBATCH -A Project_ID
 #SBATCH -t 20:10:00
-#SBATCH -N 1
 #SBATCH -c X
 #SBATCH --gpus=Y
 #SBATCH -C nvidia_gpu
