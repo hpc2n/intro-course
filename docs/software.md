@@ -831,14 +831,14 @@ The modules for Gaussian and GaussView can be loaded directly without any requir
 
     Notes: 
 
-         * If your *.com* (or *.gjf*) file contains the ``%nprocshared`` Link 0 command, it will be replaced to
+         - If your *.com* (or *.gjf*) file contains the ``%nprocshared`` Link 0 command, it will be replaced to
          the corresponding ``%cpu`` and ``%gpucpu`` by the script ``g16.set-cpu+gpu-list`` that is contained in the
          *job.sh* script.
 
-         * If your *.com* (or *.gjf*) file already contains the ``%cpu`` and ``%gpucpu`` Link 0 commands, the values
+         - If your *.com* (or *.gjf*) file already contains the ``%cpu`` and ``%gpucpu`` Link 0 commands, the values
          will be replaced according to the *SBATCH* options in the *job.sh* script.
 
-         * If you only want to run on CPUs (maybe the method you are targeting doesn't have a GPU implementation, 
+         - If you only want to run on CPUs (maybe the method you are targeting doesn't have a GPU implementation, 
          for instance), you will need to remove the ``%gpucpu`` command from the *input.com* file and the 
          ``-C nvidia_gpu`` and ``--gpus`` options in the *job.sh* script.
 
