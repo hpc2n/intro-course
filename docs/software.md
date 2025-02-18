@@ -804,13 +804,13 @@ the simulations.
 
 ### How to find Gaussian and GaussView 
 
-The modules for Gaussian and GaussView can be loaded without any requirement.  
+The modules for Gaussian and GaussView can be loaded directly without any requirement.  
 
 ### Exercises
 
 ??? Note "Exercise 1: Load GaussView and open a file"
 
-    An input file for GaussView is located here [input.com](https://github.com/hpc2n/intro-course/tree/master/exercises/GAUSSIAN/input.com){:target="_blank"}.
+    An input file for GaussView is located here [input.com](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/input.com){:target="_blank"}.
     In this test case you will compute the single point energy of two truncated ADP molecules with a single
     Magnesium ion in between. The input files for Gaussian, such as *input.com*, can be generated through 
     GaussView but the **Link 0** commands ``%cpu`` and ``%gpucpu`` which are relatively new in Gaussian will need to
