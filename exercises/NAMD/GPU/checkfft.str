@@ -1,0 +1,5 @@
+return FFT grid size for PME
+
+usage:
+# checkfft.py A B C
+
