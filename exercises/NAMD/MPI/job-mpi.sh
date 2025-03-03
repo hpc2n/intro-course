@@ -15,4 +15,4 @@ ml NAMD/2.14-mpi
 srun namd2 step4_equilibration.inp > output-mpi1.dat
 
 # Running NAMD with Multi Time Stepping algorithm 
-srun namd2 step4_equilibration_mts.inp > output-mpi2.dat
+#srun namd2 step4_equilibration_mts.inp > output-mpi2.dat

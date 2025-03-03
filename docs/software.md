@@ -873,10 +873,13 @@ version that is only installed on the Intel nodes, you will need to add the inst
 ``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
 AMD node that lacks that installation. 
 
-We performed a benchmark of NAMD on the different Nvidia GPUs that are available on Kebnekaise using the batch script 
-[job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}.
-The results can be seen in the following plot. The labels 1,2, and 3 refer to the three different and common options to run 
-Gromacs written in this batch job. A dashed red line at  25 ns/day is added for better visualization.
+The figure below shows the best performance of NAMD on CPUs and GPUs. The benchmark case consisted 
+of 158944 particles, using 1 fs. for time step and a cutoff of 1.2 nm. for real space electrostatics 
+calculations. Particle mesh Ewald was used to solve long-range electrostatic interactions. Here, CL 
+refers to the classical simulations setup, MTS means multiple time stepping algorithm, and RM is the 
+resident mode implementation. Data used for this benchmarking can be obtained through the following 
+exercises.
+
 
 ![gromacs-benchmark](images/namd2025.png)
 
@@ -884,27 +887,44 @@ Gromacs written in this batch job. A dashed red line at  25 ns/day is added for 
 
 ??? Note "Exercise 1: Running a MPI job"
 
-    The input files for this exercise are located in [GROMACS/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI){:target="_blank"}.
+    *Classical simulations (CL)*
 
-    Go to the MPI/ folder and run the script job-mpi.sh (sbatch job-mpi.sh). Take a look
-    at the file "output_mpi.dat" and search for the lines starting with "Info: Benchmark", 
+    The input files for this exercise are located in [NAMD/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/NAMD/MPI){:target="_blank"}.
+    Go to the ``MPI/`` folder and run the script *job-mpi.sh* (``sbatch job-mpi.sh``) after. The input file for NAMD is ``step4_equilibration.inp``. Take a look
+    at the file *output_mpi.dat* and search for the lines starting with "Info: Benchmark", 
     they report the performance of NAMD in days/ns. 
+
+    Another way to see the performance is by using the Julia script located in the ``NAMD/`` folder. To 
+    do this load Julia on the terminal and execute it with the name of the output file from NAMD as an
+    input argument:
+
+    ```bash
+    ml Julia/1.9.3-linux-x86_64
+    julia ../ns_per_day.jl output_mpi.dat 
+    ```
+
+    *Multiple time step simulations (MTS)*
     
-    Instead of the step4_equilibration.inp input script in job-mpi.sh, use now the script
-    step4_equilibration_mts.inp which makes use of the multiple time step (MTS) algorithm.
+    Instead of the ``step4_equilibration.inp`` input script in *job-mpi.sh*, use now the script
+    ``step4_equilibration_mts.inp`` which makes use of the multiple time step (MTS) algorithm. This line is commented currently. You can remove the hash symbol on this line 
+    and comment the line where ``step4_equilibration.inp`` input file is used. In the MTS algorithm slow interactions (for instance coulombic) are computed less frequently than
+    the fast ones. This can lead to faster simulations.
     Get the performance as you did previously and compare it with the one you already have.
     
-    MTS is one way to speed up the simulations in NAMD.
 
 ??? Note "Exercise 2: Running a GPU job"
 
-    In the [GROMACS/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU){:target="_blank"} folder, take a look at the script [job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}. 
-    In the GPU/ folder you can find the script job-gpu.sh. Submit this script to the queue
-    with "sbatch job-gpu.sh" and use the number you get from sbatch (this is called 
+    *NVIDIA GPUs*
+
+    In the [NAMD/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/NAMD/GPU){:target="_blank"} folder you can see the relevant files for the simulation. 
+    The batch script is *job-gpu.sh*. Submit this script to the queue
+    with ``sbatch job-gpu.sh`` after choosing an NVIDIA GPU type. You can use the number you get from sbatch (this is called 
     job ID) to get an URL on the command line by typing:  
     
+    ```bash
     job-usage job_ID
-    
+    ```
+
     Then, copy and paste that URL on your local browser. After ~1 min. you will start
     to see the usage of the resources. Tip: In the top-right corner change the updating
     default 15m to 30s. When the script finishes, you should see a plot for
@@ -914,6 +934,10 @@ Gromacs written in this batch job. A dashed red line at  25 ns/day is added for 
     
     What is the percentage of the GPUs used in the simulation based on the results from
     job-usage?
+
+    AMD GPUs
+
+    
 
 
 !!! Keypoints "Keypoints" 

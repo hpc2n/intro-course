@@ -1,3 +1,7 @@
+# This Julia script is a simplified version of the original 
+# Python script ns_per_day.jl which was written by David J. Hardy:
+# https://www.ks.uiuc.edu/Research/namd/utilities/ns_per_day.py
+
 println(typeof(ARGS))
 println(ARGS[1])
 timing_str="TIMING:"
