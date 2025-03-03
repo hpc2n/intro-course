@@ -861,6 +861,60 @@ can be found [here](https://www.hpc2n.umu.se/resources/software/gaussian){:targe
     A warning message on the termination of the job without producing a log file will appear and you can *OK* to close this window.
     You can check that the job is in the queue with the ``squeue --me`` command on the terminal.
 
+## NAMD
+
+NAMD Molecular Dynamics Software is one of the fastest and highly scalable packages in the world for the simulation of molecular systems.
+
+### How to find NAMD
+
+NAMD is installed as a module on Kebnekaise. Notice that on the Intel nodes there are 
+more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. 
+
+We performed a benchmark of NAMD on the different Nvidia GPUs that are available on Kebnekaise using the batch script 
+[job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}.
+The results can be seen in the following plot. The labels 1,2, and 3 refer to the three different and common options to run 
+Gromacs written in this batch job. A dashed red line at  25 ns/day is added for better visualization.
+
+![gromacs-benchmark](images/namd2025.png)
+
+### Exercises
+
+??? Note "Exercise 1: Running a MPI job"
+
+    The input files for this exercise are located in [GROMACS/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI){:target="_blank"}.
+
+    Go to the MPI/ folder and run the script job-mpi.sh (sbatch job-mpi.sh). Take a look
+    at the file "output_mpi.dat" and search for the lines starting with "Info: Benchmark", 
+    they report the performance of NAMD in days/ns. 
+    
+    Instead of the step4_equilibration.inp input script in job-mpi.sh, use now the script
+    step4_equilibration_mts.inp which makes use of the multiple time step (MTS) algorithm.
+    Get the performance as you did previously and compare it with the one you already have.
+    
+    MTS is one way to speed up the simulations in NAMD.
+
+??? Note "Exercise 2: Running a GPU job"
+
+    In the [GROMACS/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU){:target="_blank"} folder, take a look at the script [job-gpu-gromacs.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh){:target="_blank"}. 
+    In the GPU/ folder you can find the script job-gpu.sh. Submit this script to the queue
+    with "sbatch job-gpu.sh" and use the number you get from sbatch (this is called 
+    job ID) to get an URL on the command line by typing:  
+    
+    job-usage job_ID
+    
+    Then, copy and paste that URL on your local browser. After ~1 min. you will start
+    to see the usage of the resources. Tip: In the top-right corner change the updating
+    default 15m to 30s. When the script finishes, you should see a plot for
+    the CPU/GPU usage. 
+    
+    What is the performance on GPUs w.r.t. the one obtained on CPUs?
+    
+    What is the percentage of the GPUs used in the simulation based on the results from
+    job-usage?
+
 
 !!! Keypoints "Keypoints" 
 
