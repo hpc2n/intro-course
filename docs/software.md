@@ -684,6 +684,11 @@ version that is only installed on the Intel nodes, you will need to add the inst
 ``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
 AMD node that lacks that installation. 
 
+A comparison of runs on the various types of nodes on Kebnekaise is displayed below. We evaluated the performance of different AMBER implementations including Sander-MPI (with 28 cores), PMEMD-MPI (with  28 cores), and PMEMD-GPU (with 1 MPI processes and 1 or 2 GPU card(s)). The figure below shows the best performance of AMBER. The benchmark case consisted of 158944 particles, using 1 fs. for time step and a cutoff of 1.2 nm. for real space electrostatics calculations. Particle mesh Ewald was used to solve long-range electrostatic interactions. Data used for this
+benchmarking can be obtained through the following  exercises.
+
+![namd-benchmark](images/amber2025.png)
+
 ### Exercises
 
 ??? Note "Exercise 1: Running a MPI PMEMD job"
