@@ -11,9 +11,9 @@ ml purge > /dev/null 2>&1
 
 echo "nr. cps on node" 
 echo  $SLURM_CPUS_ON_NODE
-# NAMD with some computations offloaded to the GPUs
-apptainer run /pfs/proj/nobackup/fs/projnb10/po_hpc/NAMD3_ROCM/namd3_3.0a9.sif namd3 step4_equilibration.inp +p$SLURM_CPUS_ON_NODE +setcpuaffinity  +devices 0 > output-amdgpu1.log
+# 1. NAMD with some computations offloaded to the GPUs
+apptainer run /path-to-my-folder/namd3_3.0a9.sif namd3 step4_equilibration.inp +p$SLURM_CPUS_ON_NODE +setcpuaffinity  +devices 0 > output-amdgpu1.log
 
-# NAMD Resident mode where most of computations are offloaded to the GPUs
-apptainer run /pfs/proj/nobackup/fs/projnb10/po_hpc/NAMD3_ROCM/namd3_3.0a9.sif namd3 step4_equilibration-amdgpu.inp +p$SLURM_CPUS_ON_NODE +setcpuaffinity  +devices 0 > output-amdgpu2.log
+# 2. NAMD Resident mode where most of computations are offloaded to the GPUs
+apptainer run /path-to-my-folder/namd3_3.0a9.sif namd3 step4_equilibration-amdgpu.inp +p$SLURM_CPUS_ON_NODE +setcpuaffinity  +devices 0 > output-amdgpu2.log
 

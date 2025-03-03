@@ -887,7 +887,7 @@ exercises.
 
 ??? Note "Exercise 1: Running a MPI job"
 
-    *Classical simulations (CL)*
+    **Classical simulations (CL)**
 
     The input files for this exercise are located in [NAMD/MPI](https://github.com/hpc2n/intro-course/tree/master/exercises/NAMD/MPI){:target="_blank"}.
     Go to the ``MPI/`` folder and run the script *job-mpi.sh* (``sbatch job-mpi.sh``) after. The input file for NAMD is ``step4_equilibration.inp``. Take a look
@@ -903,7 +903,7 @@ exercises.
     julia ../ns_per_day.jl output_mpi.dat 
     ```
 
-    *Multiple time step simulations (MTS)*
+    **Multiple time step simulations (MTS)**
     
     Instead of the ``step4_equilibration.inp`` input script in *job-mpi.sh*, use now the script
     ``step4_equilibration_mts.inp`` which makes use of the multiple time step (MTS) algorithm. This line is commented currently. You can remove the hash symbol on this line 
@@ -914,7 +914,7 @@ exercises.
 
 ??? Note "Exercise 2: Running a GPU job"
 
-    *NVIDIA GPUs*
+    **NVIDIA GPUs**
 
     In the [NAMD/GPU](https://github.com/hpc2n/intro-course/tree/master/exercises/NAMD/GPU){:target="_blank"} folder you can see the relevant files for the simulation. 
     The batch script is *job-gpu.sh*. Submit this script to the queue
@@ -935,7 +935,20 @@ exercises.
     What is the percentage of the GPUs used in the simulation based on the results from
     job-usage?
 
-    AMD GPUs
+    **AMD GPUs** 
+
+    There is one AMD GPU node on Kebnekaise where NAMD can run. At the moment this version is not installed as a module but you can try it to see its performance by using a container provided by [AMD](https://www.amd.com/en/developer/resources/infinity-hub/namd3.html){:target="_blank"}. Pay attention to the line "User(s) of the NAMD container(s) are reminded to register ...". 
+
+    In order to use the container, pull it with ``apptainer`` on the command line in a folder of your choice:
+
+    ```bash
+    mkdir my-folder && cd my-folder
+    apptainer pull docker://amdih/namd3:3.0a9
+    ```
+
+    Then, you can go to the directory where the ``.inp`` files of NAMD are (this directory can be the same as ``my-folder``) and use the script *job-amd-gpu.sh* to submit the job to the queue. In the option labeled as *1.*, a classical (CL) simulation will be run, while in the option *2.* the resident mode (RM) will be used where most of the computations are offloaded to the GPU. 
+
+    Compare the performance of these two cases. 
 
 
 
