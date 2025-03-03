@@ -881,7 +881,7 @@ resident mode implementation. Data used for this benchmarking can be obtained th
 exercises.
 
 
-![gromacs-benchmark](images/namd2025.png)
+![namd-benchmark](images/namd2025.png)
 
 ### Exercises
 
@@ -937,7 +937,7 @@ exercises.
 
     AMD GPUs
 
-    
+
 
 
 !!! Keypoints "Keypoints" 
