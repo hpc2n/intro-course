@@ -109,7 +109,17 @@ on [parallel computing](https://se.mathworks.com/help/parallel-computing/choosin
     * ``SPMD`` folder presents an example of a parallelized code using [SPMD](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SPMD/spmdex.m){:target="_blank"} paradigm. Submit this job to the queue through the MATLAB GUI. This
     example illustrates the use of *parpool* to run parallel code in a more interactive manner.
 
-??? Note "Exercise 3: Matlab GPU job"
+??? Note "Exercise 3: Job Arrays"
+
+    ``JOBARRAYS`` folder shows an [example](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/JOBARRAYS/funct.m){:target="_blank"} for job arrays.
+    The batch file is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/JOBARRAYS/job.sh){:target="_blank"}. In this exercise, one submits
+    an array of 28 tasks where the task IDs are used as input arguments for a MATLAB function which performs operations on a matrix whose size depends on the task ID. Submit the
+    script and notice what is written in the output files. 
+    
+    Instead of a single matrix, could you initialize two matrices of *(50\*sz,50\*sz)* and compute the summation of them, instead of the fast Fourier transform (FFT)?
+    Use only 14 tasks in the job array.
+
+??? Note "Exercise 4: Matlab GPU job"
 
     ``GPU`` folder contains a test case that computes a Mandelbrot set both 
     on CPU [mandelcpu.m](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelcpu.m){:target="_blank"} 
