@@ -1,0 +1,4 @@
+Sometimes it rains, sometimes it is sunny, and sometimes it snows. 
+This is not a long file, but it does have a few lines.
+What should I write?
+It matters not!
