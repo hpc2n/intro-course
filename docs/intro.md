@@ -83,14 +83,17 @@ Involved in several **projects and collaborations**:
     - intro courses: our system, Linux, R, Python, Julia, Matlab, Git
     - intermediate courses
     - - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
-- **Courses this spring**
-    - Introduction to Linux, 21 January 2025
-    - Introduction to HPC2N and Kebnekaise, 22 January 2025
-    - Basic Containers (Singularity, Apptainer), 13 February 2025
-    - Introduction to running R, Julia, and Matlab in HPC, 24-26 March 2025
-    - Introduction to Linux, 3 April 2025 
-    - Introduction to Python and Using Python in an HPC environment, 24-25 + 28-29 April 2025 
-    - Cluster architecture and job submission, 27 May 2025
+- **Courses this fall**
+    - Selecting software modules, 10 September 2025 
+    - Introduction to Linux, 22 September 2025
+    - Introduction to running R, Julia, and Matlab in HPC, 6-8 + 10 September 2025
+    - Running and building Singularity and Apptainer containers, 13 October 2025
+    - Linux Command Line 101, 20 October 2025 
+    - Introduction to Git, 3-7 November 2025 
+    - Selecting software modules, 10 November 2025
+    - Introduction to Python and Using Python in an HPC environment, 27-28 November + 1-2 December 2025  
+    - Cluster architecture and job submission, 25 november 2025
+    - Linux Command Line 201, 4-5 December 2025 
     - **Updated list:** <a href="https://www.hpc2n.umu.se/events/courses" target="_blank">https://www.hpc2n.umu.se/events/courses</a> 
 - Workshops and seminars 
 - NGSSC / SeSE & university courses
@@ -120,11 +123,12 @@ Others:
 
 System and support:
 
-- Erik Andersson
 - **Birgitte Brydsö**
 - Niklas Edmundsson (Tape coord)
 - My Karlsson 
+- Nathan Lövsund
 - Roger Oscarsson
+- Ali Rahmanian
 - **Åke Sandgren**
 - Mattias Wadenstein (NeIC, Tier1)
 
