@@ -6,7 +6,7 @@
 
     You can either join a project or apply for one yourself (if you fulfill the requirements). 
 
-There are both storage projects and compute projects. The storage projects are for when the amount of storage included with the compute project is not enough. 
+There are both storage projects and compute projects. The storage projects are for when the amount of storage included with the compute project (500GB) is not enough. 
 
 !!! important
 
@@ -21,7 +21,7 @@ There are both storage projects and compute projects. The storage projects are f
 
 Apply for **compute projects** in [SUPR](https://supr.naiss.se/round/compute). 
 
-- Login to SUPR (create SUPR account if you do not have one).
+- Login to SUPR (create a SUPR account if you do not have one).
 - Click “Rounds” in the left menu. Pick “Compute Rounds”. Pick “Centre Local Compute”.
 - Pick “HPC2N Local Compute YYYY”. Choose “Create New Proposal for HPC2N Local Compute YYYY”.
 - Create from scratch or use earlier proposal as starting point.
