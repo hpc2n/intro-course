@@ -1,10 +1,15 @@
 # Logging in 
 
-When you have your account, you can login to Kebnekaise. This can be done with any number of SSH clients or with ThinLinc (the easiest option if you need a graphical interface). 
+When you have your account, you can login to Kebnekaise. This can be done with 
+
+- any number of SSH clients 
+- with ThinLinc (easier if you need a graphical interface)
+- Desktop Open OnDemand. In this case you get a graphical interface on a compute node (Kebnekaise desktop, Jupyter notebook, RStudio, VSCode, or MATLAB). Here you are already running a batch job session so you can work interactive and run your programs directly. 
 
 !!! Objectives 
 
     - Login to Kebnekaise, either with ThinLinc or your SSH client of choice. 
+    - We will also look at Desktop Open OnDemand and let you login there. Later in the course you will try out the interactive applications there.  
 
 ## Kebnekaise login servers 
 
@@ -13,6 +18,7 @@ When you have your account, you can login to Kebnekaise. This can be done with a
     - The main login node of Kebnekaise: <code>kebnekaise.hpc2n.umu.se</code>
     - ThinLinc login node: <code>kebnekaise-tl.hpc2n.umu.se</code>
         - ThinLinc through a browser (less features): <code>https://kebnekaise-tl.hpc2n.umu.se:300/</code>
+    - The Desktop Open OnDemand is accessed from <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a> 
 
 In addition, there is a login node for the AMD-based nodes. We will talk more about this later: <code>kebnekaise-amd.hpc2n.umu.se</code>. For ThinLinc access: <code>kebnekaise-amd-tl.hpc2n.umu.se</code>
 
@@ -20,7 +26,7 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
 
     ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially useful when you need software with a graphical interface.
 
-    This is what we recommend you use for this course, unless you have a preferred SSH client. 
+    This is what we recommend you use for this course, unless you have a preferred SSH client. Most parts of the course can be done from a regular SSH terminal. For the application examples part, you may need a graphical interface but not for most of the other material. 
 
 ### Using ThinLinc 
 
@@ -51,7 +57,7 @@ Note that you are authenticating through SUPR, using *that* service’s login cr
 
     The HPC2N password and the SUPR password are separate! The HPC2N password and your university/department password are also separate!
 
-!!! Exercise "Exercise" 
+!!! Exercise "Exercise: Login" 
 
     Login to Kebnekaise. 
 
@@ -200,7 +206,7 @@ If you are not familiar with any of these, a good recommendation would be to use
     5. Save by clicking “<code>Save</code>” in the menu.
     6. The menu on the top right (the three horizontal lines) gives you several other options, including “<code>Find</code>” and “<code>Find and Replace</code>”.
 
-## HPC2N Open OnDemand desktop (teaser) 
+## HPC2N Open OnDemand desktop  
 
 HPC2N is currently working on another way to connect to our systems, through an "Open OnDemand desktop". If you have used LUNARC's systems, you may have tried their desktop OnDemand. 
 
