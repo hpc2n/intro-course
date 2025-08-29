@@ -18,8 +18,8 @@
 
 !!! note "Prerequisites"
 
-    - Basic knowledge about Linux (if you need a refresher, you could take the course "Introduction to Linux" which runs the day before this course. Info and registration here: <a href="https://www.hpc2n.umu.se/events/courses/2025/spring/linux-intro" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/spring/linux-intro</a>. 
-        - You can find recordings from the previous version of that course here: <a href="https://www.youtube.com/playlist?list=PL6jMHLEmPVLzoudy66m5isl2LD-YY_05L" target="_blank">https://www.youtube.com/playlist?list=PL6jMHLEmPVLzoudy66m5isl2LD-YY_05L</a>
+    - Basic knowledge about Linux (if you need a refresher, you can find the recordings from the previous version of that course here: <a href="https://www.youtube.com/watch?v=AmT6NA2j3Fk&list=PL6jMHLEmPVLzLr4i8ME2A-PUtawhkilbq" target="_blank">https://www.youtube.com/watch?v=AmT6NA2j3Fk&list=PL6jMHLEmPVLzLr4i8ME2A-PUtawhkilbq</a>
+        - If you want to take the "Introduction to Linux course, then it will be given again on 22 September 2025. You can find the information and registration page for that course here: <a href="https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux</a>
     - An account at SUPR and at HPC2N. You should have already been contacted about getting these if you did not have them already. 
 
 !!! note "Content"
@@ -46,14 +46,14 @@
 
 ## Important info
 
-- We have a course project: ``hpc2n2025-014``.
-- The course project has default project storage. You can find that here: ``/proj/nobackup/kebnekaise-intro``.
-- You should create a subdirectory under ``/proj/nobackup/kebnekaise-intro`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
+- We have a course project: ``hpc2n2025-151``.
+- The course project has default project storage. You can find that here: ``/proj/nobackup/fall-courses``.
+- You should create a subdirectory under ``/proj/nobackup/fall-courses`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
 - As mentioned further up on the page, you can download the material for the course. Placing it in your directory on the project storage is a good idea. You can fetch it there with <code>git clone https://github.com/hpc2n/intro-course.git</code>. 
 - We have two reservations for the course (valid only during the course time). One L40s GPU (reservation ``intro-gpu``) and one AMD Zen4 CPU node (reservation ``intro-cpu``). 
-- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EbF3-wvodZVMp373M4nC_bQBhfbvM798GgigXNw-AkrTDg" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EbF3-wvodZVMp373M4nC_bQBhfbvM798GgigXNw-AkrTDg</a>.
-- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EWkS3sShPo1IrNLfKFaxtFQBJ9G5PeauOWsSWgSgc1SiPw?e=jXjcQD" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EWkS3sShPo1IrNLfKFaxtFQBJ9G5PeauOWsSWgSgc1SiPw?e=jXjcQD</a>. 
-- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/DKHvTKUw3y" target="_blank">https://forms.office.com/e/DKHvTKUw3y</a>. 
+- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EUVzB_5AT2pAlQZWKeks6PEB2CMBLNXP7vuOPWCDiwm1vg?e=GW1vYO" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EUVzB_5AT2pAlQZWKeks6PEB2CMBLNXP7vuOPWCDiwm1vg?e=GW1vYO</a>
+- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQedrXAXwa1AsvZ7nG3StzUBl87szldizr82mR56ZNfIfA?e=O4GMjb" target="_blank">"https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQedrXAXwa1AsvZ7nG3StzUBl87szldizr82mR56ZNfIfA?e=O4GMjb</a> 
+- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/xFLgdD9TSU" target="_blank">https://forms.office.com/e/xFLgdD9TSU</a>. 
 
 ## Preliminary schedule
 
@@ -63,11 +63,11 @@
 | 09:00 | Welcome+Syllabus | |
 | 09:10 | Introduction to Kebnekaise and HPC2N | Lecture |
 | 09:35 | Projects and accounts | Lecture |  
-| 09:50 | Logging in & editors | Lecture+exercise | 
-| 10:10 | COFFEE BREAK (on your own)
-| 10:25 | The File System | Lecture+code along |
+| 09:50 | Logging in & editors (including Open OnDemand) | Lecture+exercise | 
+| 10:15 | COFFEE BREAK (on your own)
+| 10:30 | The File System | Lecture+code along |
 | 10:45 | The Module System | Lecture+code along+exercise |
-| 11:10 | Compiling | Lecture+code along+exercise |
+| 11:10 | Compiling | Lecture+code along |
 | 11:25 | The Batch System | Lecture+code along |
 | 12:00 | LUNCH BREAK | |  
 | 13:00 | Simple Batch scipts, examples | Lecture+exercises | 
