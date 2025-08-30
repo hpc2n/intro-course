@@ -24,7 +24,7 @@ You load a compiler toolchain the same way you load any other module. They are a
 
 !!! Hint
 
-    Code-along!
+    Code-along! Open a terminal to work in if you are using ThinLinc instead of a regular SSH conenction. 
 
 !!! Example "Example: Loading foss/2023b"
 
