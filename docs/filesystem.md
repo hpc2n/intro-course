@@ -3,7 +3,8 @@
 !!! note "Objectives" 
 
     - Learn about the file system on Kebnekaise
-    - Find the project storage for this course and create your own subdirectory 
+    - Find the project storage for this course and create your own subdirectory (terminal through SSH or ThinLinc) 
+    - Try also to create a directory through Open OnDemand desktop with the option "Files"
 
 ## Overview
 
@@ -53,21 +54,42 @@ Project storage is located below <code>/proj/nobackup/</code> in the directory n
 - The location of the storage project in the file system is <code>/proj/nobackup/NAME-YOU-PICKED</code>
 - Since the storage project is shared between all users of the project, you should go to that directory and create a subdirectory for your things, which you will then be using.- For this course the storage is in 
   ```bash
-  /proj/nobackup/intro-hpc2n
+  /proj/nobackup/fall-courses
   ```
 
-!!! note "Exercise"
+!!! note "Exercise - create a directory"
+ 
+    This exercise is done **on the terminal**
 
-    Go to the course project storage and create a subdirectory for yourself. 
+    - Go to the course project storage and create a subdirectory for yourself. 
+
+    **Note**: Remember, if you are logged in with ThinLinc, you get a terminal like this: go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.
 
 Now is a good time to prepare the course material and download the exercises, if you have not already done so. The easiest way to do so is by cloning the whole intro-course repository from GitHub. 
 
 !!! note "Exercise"
 
-    1. Go to the subdirectory you created under <code>/proj/nobackup/kebnekaise-intro</code>
+    1. Go to the subdirectory you created under <code>/proj/nobackup/fall-courses</code>
     2. Clone the repository for the course: <code>git clone https://github.com/hpc2n/intro-course.git</code>
 
-    You will get a directory called <code>intro-course</code>. Below it you will find a directory called "exercises" where the majority of the exercises for the batch system section is located. 
+    You will get a directory called <code>intro-course</code>. Below it you will find a directory called "exercises" where the majority of the exercises for the batch system section is located.
+
+#### OOD 
+
+Now let us try creating a sub directory to your directory ``/proj/nobackup/fall-courses/<your-dir>``, but using Open OnDemand. 
+
+!!! note "Exercise - use OOD to create a sub directory"
+
+    1. Go to the browser window where you have logged in to Open OnDemand desktop. (<a href="../login/#hpc2n__open__ondemand__desktop" target="_blank">Help here if you are not logged in</a>.
+    2. Click "Files" in the top menu 
+    ![filesystem-OOD](images/filesystem-OOD.png){: style="width: 500px"} 
+    3. Pick the ``/proj/nobackup/fall-courses`` directory and change to your directory under it (for me, ``bbrydsoe``)<br>
+    ![filesystem-OOD-projectdir-bbrydsoe](images/filesystem-OOD-projectdir-bbrydsoe.png){: style="width: 500px"}<br> 
+    You should have a subdirectory there called ``intro-course`` from cloning the material with the exercises. Do not enter that now. 
+    4. Create a new directory under ``/proj/nobackup/fall-courses/<your-dir>`` and call it whatever since it is just a test.<br> 
+    ![filesystem-OOD-projectdir-bbrydsoe-newdir](images/filesystem-OOD-projectdir-bbrydsoe-newdir.png){: style="width: 500px"}
+
+    You can also access the file tree from the interactive session "Kebnekaise desktop", when you have started that. We will do this later. 
 
 ### Quota
 
@@ -90,6 +112,7 @@ More information about the file system, as well as archiving and compressing fil
     - When you login to Kebnekaise, you will end up in your home-directory.
     - Your home-directory is in <code>/home/u/username</code> and is pointed to by the environment variable <code>$HOME</code>.
     - Your project storage is located in <code>/proj/nobackup/NAME-YOU-PICKED</code>
-        - For this course it is <code>/proj/nobackup/kebnekaise-intro</code>.
+        - For this course it is <code>/proj/nobackup/fall-courses</code>.
         - The project storage is NOT backed up.
+    - You can also access the file tree from the Open OnDemand desktop. 
     - You should run the batch jobs from your project storage. 

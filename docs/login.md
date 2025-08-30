@@ -45,6 +45,14 @@ In addition, there is a login node for the AMD-based nodes. We will talk more ab
 - Enter your HPC2N password. Click "Connect"
 - Click "Continue" when you are being told that the server's host key is not in the registry. Wait for the ThinLinc desktop to open.
 
+#### Open a terminal with ThinLinc
+
+You will need a terminal to enter many of the commands in this course. If you have logged in with ThinLinc, you start a terminal with: 
+
+1. Go to the menu at the top. 
+2. Click “Applications” → “System Tools” → “MATE Terminal”.
+3. You now have a terminal to work in. 
+
 ### Password
 
 You get your first, temporary HPC2N password from this page: <a href="https://www.hpc2n.umu.se/forms/user/suprauth?action=pwreset" target="_blank">HPC2N passwords</a>.
