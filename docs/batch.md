@@ -7,6 +7,7 @@
     - How to create a basic batch script. 
     - Managing your job: submitting, status, cancelling, checking... 
     - Learn how to allocate specific parts of Kebnekaise: skylake, zen3/zen4, GPUs... 
+    - Start a batch job (interactive app) through Open OnDemand desktop. 
 
 - Large/long/parallel jobs **must** be run through the batch system.
 - Kebnekaise is running <a href="http://slurm.schedmd.com/" target="_blank">Slurm</a>. 
@@ -15,6 +16,7 @@
     - Enforces local system resource usage and job scheduling policies. 
     - Manages a job queue, distributing work across resources according to policies. 
 - In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).
+- Starting an interactive session through Open OnDemand also runs a batch job. It starts on a compute node. We will look at Open OnDemand at the end of this section. 
 
 !!! Note
 
@@ -49,7 +51,7 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
 - Web url with graphical info about a job: ``job-usage JOBID``
 - More information: ``man sbatch``, ``man srun``, ``man ....``
 
-!!! Example 
+!!! note "Example: done in a terminal" 
 
     Submit job with ``sbatch``
 
@@ -136,8 +138,8 @@ A job submission file can either be very simple, with most of the job attributes
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
 
-# Load the module environment suitable for the job - here foss/2022b 
-module load foss/2022b
+# Load the module environment suitable for the job - here foss/2023b 
+module load foss/2023b
 
 # And finally run the serial jobs 
 ./my_serial_program
@@ -172,8 +174,8 @@ Let us go through the most commonly used arguments:
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
 
-# Load the module environment suitable for the job - here foss/2022b 
-module load foss/2022b
+# Load the module environment suitable for the job - here foss/2023b 
+module load foss/2023b
 
 # And finally run the job - use srun for MPI jobs, but not for serial jobs 
 srun ./my_mpi_program
@@ -185,7 +187,7 @@ srun ./my_mpi_program
 
     If you have not already done so, clone the material from the website <a href="https://github.com/hpc2n/intro-course" target="_blank">https://github.com/hpc2n/intro-course</a>: 
 
-    1. Change to the storage area you created under ``/proj/nobackup/kebnekaise-intro/``. 
+    1. Change to the storage directory you created under ``/proj/nobackup/fall-courses/``. 
     2. Clone the material: 
     ```bash
     git clone https://github.com/hpc2n/intro-course.git
@@ -201,7 +203,7 @@ In this section, we are just going to try submitting a few jobs, checking their 
 
 !!! Note "Preparations"
 
-    1. Load the module ``foss/2022b`` (``ml foss/2022b``) on the regular login node. This module is available on all nodes. 
+    1. Load the module ``foss/2023b`` (``ml foss/2023b``) on the regular login node (regular SSH or terminal opened in ThinLinc). This module is available on all nodes. 
     2. Compile the following programs: ``hello.c``, ``mpi_hello.c``, ``mpi_greeting.c``, and ``mpi_hi.c``
     ```bash
     gcc -o hello hello.c
@@ -444,11 +446,100 @@ ml fosscuda/2020b
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2025-014
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-014`` 
-    - We have a storage project linked to the compute project: **kebnekaise-intro**. 
-        - You find it in ``/proj/nobackup/kebnekaise-intro``. 
+    - The course project has the following project ID: hpc2n2025-151
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-151`` 
+    - We have a storage project linked to the compute project: **fall-courses**. 
+        - You find it in ``/proj/nobackup/fall-courses``. 
         - Remember to create your own directory under it. 
+
+## Open OnDemand desktop 
+
+Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser.
+
+### Kebnekaise desktop
+
+This is the first submenu point, under “Interactive Apps” -> “Desktops”. 
+
+This is used to start a desktop on one or more of the compute nodes after you have been allocated resources. This means you will be able to work as if on that node. That means that anything you run from the desktop immediately runs on the allocated resources, without you having to start (another) job.
+
+Very useful if you want to work interactively with one of the installed pieces of software or your own code.
+
+In addition to starting programs from the terminal, there are various applications available directly from the menu, like Libreoffice and Firefox. 
+
+When you choose this, there are some options: 
+
+- **Desktop Environment**: Here you can choose either “mate” (resembles Gnome 2/classic) or “xfce” (lightweight and fast). Personal preferrence.
+- **Compute Project**: Dropdown menu where you can choose (one of) your compute projects to launch with.
+- **Number of hours**: How long you want the job available for. Here you can choose 1-12 hours, but beware that it is a bad idea to pick longer than you need. Not only will it take longer to start, but it will also use up your allocation even if you are not actively doing anything on the desktop. Pick as long as you need to do your job.
+- **Number of cores**: How many cores you want access to. You can choose 1-28 and they each have 4GB memory. This is only a valid field to choose if you pick “any” or “Large memory” for the “Node type” selection.
+- **Node type**: Here you can choose “any”, “any GPU”, or “Large memory”. If you pick “any GPU” you will not pick anything for “Number of cores”.
+
+![open-ondemand-desktop](../images/open-ondemand-desktop.png)
+
+!!! note "Exercise: start an instance of the "Kebnekaise desktop" and play with it"
+
+    - Pick "compute project" as ``fall-courses``
+    - Pick "number of hours" to ``1`` so it starts fast. 
+    - Pick "Number of cores" to something between ``1-4``
+    - Pick "any" for "Node type" 
+    - Click "Launch" and wait for it to launch. It will say something like "Your session is currently starting... Please be patient as the process can take a few minutes." What happens here is that it is sitting in the queue and waiting for resources to be available and allocated. 
+    - When resources are allocated, it will look something like this, where it gives the host node: 
+    ![open-ondemand-desktop-started](../images/open-ondemand-desktop-started.png)
+    - You can now go to the desktop on the compute node with "Launch Kebnekaise desktop". 
+    - Look around, see that you can use a filetree, open terminals (do so and see the cores are on the node that was shown as host), etc. 
+        - A terminal is opened from "Applications" -> "System Tools" -> "MATE terminal" (or Xfce if you picked that). 
+    - If you asked for more than one core, you can do ``srun /bin/hostname`` in the terminal and see a list of nodes. 
+    - You can go to the ``/proj/nobackup/fall-courses/<your-dir>/intro-course/exercises`` directory and into the ``simple`` directory. Try run something directly on the command line - remember to load modules and compile if needed. 
+        - Example: run the small Python program ``mmmult.py``
+            - Load some modules: ``module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07``
+            - Run it: ``python mmmult.py`` (in directory "simple")
+        - Example: Python and graphics 
+            - Load some modules: ``module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07 matplotlib/3.7.2 Tkinter/3.11.3``
+            - Start Python and plot something with the dataset "scottish_hills.csv" (in directory "simple")
+            ```py
+            import pandas as pd
+            import matplotlib
+            import matplotlib.pyplot as plt
+            matplotlib.use('TkAgg')
+            dataframe = pd.read_csv("scottish_hills.csv")
+            x = dataframe.Height
+            y = dataframe.Latitude
+            plt.scatter(x, y)
+            plt.show()    
+            ```
+
+### Jupyter, MATLAB, RStudio, VSCode 
+
+Aside from starting a Kebnekaise desktop and running programs from there, you can also start some specific applications, namely 
+
+- Jupyter notebook
+- MATLAB
+- RStudio
+- VSCode
+
+They are started in much the same way as the Kebnekaise desktop, with the exception that you can generally pick a "Runtime environment" and/or a "Working Directory" to start in. The latter is picked by clicking and choosing in the filebrowser that opens. 
+
+There are more information here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand" target="_blank">Open OnDemand desktop in HPC2N's documentation</a>. 
+
+#### Runtime environment and multicore jobs 
+
+This is used if you have created your own environment you want to run in, for instance by adding extra and/or own installed Python modules or R packages. 
+
+- In order to use Jupyter with extra modules, you can follow this documentation I have made here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#example__-__jupyter__with__extra__modules" target="_blank">Jupyter with extra modules</a>. 
+- Using R with your own runtime environment I have described here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#example__-__running__on__the__multicore__allocation" target="_blank">R with own runtime environment</a>.
+- Running MATLAB as a multicore job is described here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#example__-__running__multicore__job" target="_blank">MATLAB with multicores</a>
+
+!!! note "Open OnDemand vs. regular batch script" 
+
+    - Open OnDemand is good for 
+        - shorter (<12 hours) jobs that requires more interactivity
+        - interactivity in general
+        - graphics
+    - Batch scripts are better for
+        - longer jobs
+        - very parallel jobs (more than 28 cores)
+        - multi-step jobs / workflows
+        - any job that can run on its own without input
 
 !!! keypoints "Keypoints" 
 
@@ -456,4 +547,6 @@ ml fosscuda/2020b
     - You can get a list of your running and pending jobs with ``squeue --me``. 
     - Kebnekaise has many different nodes, both CPU and GPU. It is possible to constrain the the job to run only on specific types of nodes. 
     - If your job is an MPI job, you need to use ``srun`` (or ``mpirun``) in front of your executable in the batch script (unless you use software which handles the parallelization itself). 
+    - The Open OnDemand (OOD) desktop is also using allocated resources and anything you run there is run directly on the allocated compute nodes
+    - OOD is good for interactivity and a simple way to allocate resources 
 
