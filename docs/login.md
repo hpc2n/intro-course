@@ -208,11 +208,39 @@ If you are not familiar with any of these, a good recommendation would be to use
 
 ## HPC2N Open OnDemand desktop  
 
-HPC2N is currently working on another way to connect to our systems, through an "Open OnDemand desktop". If you have used LUNARC's systems, you may have tried their desktop OnDemand. 
+HPC2N has recently opened up access to another way to connect to our systems, through an "Open OnDemand desktop" (OOD desktop). If you have used LUNARC's or C3SE's systems, you may have tried their Open OnDemand desktop. 
 
-<!-- Link: <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a> --> 
+Link to HPC2N's Open OnDemand desktop: <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a> 
+
+If you have an account and are member of a project at HPC2N, you can use our OOD desktop. 
 
 Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser. The Open OnDemand project was funded by NSF and is currently maintained by the <a href="https://www.osc.edu/" target="_blank">Ohio SuperComputing Centre</a>. Read more about OpenOnDemand at <a href="https://openondemand.org/" target="_blank">OpenOndemand.org</a>. 
+
+HPC2N currently offers these interactive applications: 
+
+- Kebnekaise desktop
+- Jupyter notebook
+- MATLAB
+- RStudio
+- VS Code
+
+We have some documentation here about our <a href="https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand" target="_blank">Open OnDemand desktop</a>. 
+
+!!! exercises "Exercise: Login to HPC2N's Open OnDemand desktop" 
+
+    - Open a browser and point it to <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a>. 
+    - Click the blue button labeled “Login to HPC2N OnDemand” 
+    - You are sent to the login window. Put your HPC2N username and password, then click “Sign In” 
+    
+    Look around a little. You can try click on the various menu points: 
+
+    - Files: Links to a file browser that starts in either your home directory or in (one of) your project storage directories
+    - Jobs: Links to a list of your “Active Jobs” and to a “Job Composer” to create new jobs
+    - Clusters: the submenu is for shell access (does not currently work)
+    - Interactive Apps: a list of apps that can be started directly from the dashboard (currently Jupyter, MATLAB, RStudio, VSCode) 
+    - My Interactive Sessions: overview of your current and recent apps sessions 
+
+    Later today we will try and start a few of the interactive apps.     
 
 !!! note "Keypoints"
 
@@ -220,6 +248,6 @@ Open OnDemand is a web service that allows HPC users to schedule jobs, run noteb
     - ThinLinc is easiest if you need a GUI
     - There are several command-line editors: vi/vim, nano, emacs, ...
     - And several GUI editors, which works best when using ThinLinc: gedit, pluma, atom, emacs (gui), nedit, ... 
-
+    - You can also access Kebnekaise through the Open OnDemand desktop 
 
 
