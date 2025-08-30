@@ -50,7 +50,7 @@ Modules are:
 
 !!! Hint "Hint"
 
-    Code-along!
+    Code-along! You should do this in a terminal (either regular SSH or terminal opened in ThinLinc). 
 
 ??? Admonition "Example: checking which versions exist of the module 'Python' on the regular login node"
 
