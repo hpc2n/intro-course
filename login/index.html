@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/login/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Logging in - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Logging in";
+        var mkdocs_page_input_path = "login.md";
+        var mkdocs_page_url = "/intro-course/login/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Logging in</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#kebnekaise__login__servers">Kebnekaise login servers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using__thinlinc">Using ThinLinc</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#open__a__terminal__with__thinlinc">Open a terminal with ThinLinc</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#password">Password</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change__password">Change password</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#file__transfers">File transfers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#linux__os__x">Linux, OS X</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#scp">scp</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#sftp">sftp</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#editors">Editors</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#command-line">Command-line</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gui">GUI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hpc2n__open__ondemand__desktop">HPC2N Open OnDemand desktop</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Logging in</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="logging__in">Logging in<a class="headerlink" href="#logging__in" title="Permanent link">&para;</a></h1>
+<p>When you have your account, you can login to Kebnekaise. This can be done with </p>
+<ul>
+<li>any number of SSH clients </li>
+<li>with ThinLinc (easier if you need a graphical interface)</li>
+<li>Desktop Open OnDemand. In this case you get a graphical interface on a compute node (Kebnekaise desktop, Jupyter notebook, RStudio, VSCode, or MATLAB). Here you are already running a batch job session so you can work interactive and run your programs directly. </li>
+</ul>
+<div class="admonition objectives">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Login to Kebnekaise, either with ThinLinc or your SSH client of choice. </li>
+<li>We will also look at Desktop Open OnDemand and let you login there. Later in the course you will try out the interactive applications there.  </li>
+</ul>
+</div>
+<h2 id="kebnekaise__login__servers">Kebnekaise login servers<a class="headerlink" href="#kebnekaise__login__servers" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The main login node of Kebnekaise: <code>kebnekaise.hpc2n.umu.se</code></li>
+<li>ThinLinc login node: <code>kebnekaise-tl.hpc2n.umu.se</code><ul>
+<li>ThinLinc through a browser (less features): <code>https://kebnekaise-tl.hpc2n.umu.se:300/</code></li>
+</ul>
+</li>
+<li>The Desktop Open OnDemand is accessed from <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a> </li>
+</ul>
+</div>
+<p>In addition, there is a login node for the AMD-based nodes. We will talk more about this later: <code>kebnekaise-amd.hpc2n.umu.se</code>. For ThinLinc access: <code>kebnekaise-amd-tl.hpc2n.umu.se</code></p>
+<div class="admonition note">
+<p class="admonition-title">ThinLinc is recommended for this course</p>
+<p>ThinLinc: a cross-platform remote desktop server from Cendio AB. Especially useful when you need software with a graphical interface.</p>
+<p>This is what we recommend you use for this course, unless you have a preferred SSH client. Most parts of the course can be done from a regular SSH terminal. For the application examples part, you may need a graphical interface but not for most of the other material. </p>
+</div>
+<h3 id="using__thinlinc">Using ThinLinc<a class="headerlink" href="#using__thinlinc" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Download the client from <a href="https://www.cendio.com/thinlinc/download" target="_blank">https://www.cendio.com/thinlinc/download</a>. <ul>
+<li>Install it.<ul>
+<li>Windows: Run the downloaded .exe file to install. </li>
+<li>macOS: Information on the <a href="https://www.cendio.com/resources/docs/tag/client_macos.html#installing-the-macos-client" target="_blank">ThinLinc macOS info page</a>. </li>
+<li>Linux Ubuntu: Download the .deb file. Run <code>sudo dpkg -i PATH-TO-FILE/FILE-YOU-DOWNLOADED.deb</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Start the client. </li>
+<li>Enter the name of the server: <code>kebnekaise-tl.hpc2n.umu.se</code>. Enter your username. 
+<br style="clear: both;">
+<img alt="thinlinc" src="../images/thinlinc.png" styles="width: 30%;" />
+<br style="clear: both;"></li>
+<li>Go to &ldquo;Options&rdquo; <span class="arithmatex">\(-&gt;\)</span> &ldquo;Security&rdquo;. Check that authentication method is set to password.</li>
+<li>Go to &ldquo;Options&rdquo; <span class="arithmatex">\(-&gt;\)</span> &ldquo;Screen&rdquo;. Uncheck &ldquo;Full screen mode&rdquo;.</li>
+<li>Enter your HPC2N password. Click &ldquo;Connect&rdquo;</li>
+<li>Click &ldquo;Continue&rdquo; when you are being told that the server&rsquo;s host key is not in the registry. Wait for the ThinLinc desktop to open.</li>
+</ul>
+<h4 id="open__a__terminal__with__thinlinc">Open a terminal with ThinLinc<a class="headerlink" href="#open__a__terminal__with__thinlinc" title="Permanent link">&para;</a></h4>
+<p>You will need a terminal to enter many of the commands in this course. If you have logged in with ThinLinc, you start a terminal with: </p>
+<ol>
+<li>Go to the menu at the top. </li>
+<li>Click “Applications” → “System Tools” → “MATE Terminal”.</li>
+<li>You now have a terminal to work in. </li>
+</ol>
+<h3 id="password">Password<a class="headerlink" href="#password" title="Permanent link">&para;</a></h3>
+<p>You get your first, temporary HPC2N password from this page: <a href="https://www.hpc2n.umu.se/forms/user/suprauth?action=pwreset" target="_blank">HPC2N passwords</a>.</p>
+<p>That page can also be used to reset your HPC2N password if you have forgotten it.</p>
+<p>Note that you are authenticating through SUPR, using <em>that</em> service’s login credentials!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The HPC2N password and the SUPR password are separate! The HPC2N password and your university/department password are also separate!</p>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise: Login</p>
+<p>Login to Kebnekaise. </p>
+<ul>
+<li>If you are using ThinLinc, first install the ThinLinc client. If you are using another SSH client, install it first if you have not already done so.</li>
+</ul>
+</div>
+<h2 id="change__password">Change password<a class="headerlink" href="#change__password" title="Permanent link">&para;</a></h2>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise: Change your password after first login</p>
+<p><strong>ONLY do this if you have logged in for the first time/is still using the termporary password you got from the HPC2N password reset service!</strong> </p>
+<p>Changing password is done using the passwd command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>passwd
+</span></code></pre></div>
+<p>Use a good password that combines letters of different case. Do not use dictionary words. Avoid using the same password that you also use in other places.</p>
+<p>It will first ask for your current password. Type in that and press enter. Then type in the new password, enter, and repeat. You have changed the password.</p>
+</div>
+<h2 id="file__transfers">File transfers<a class="headerlink" href="#file__transfers" title="Permanent link">&para;</a></h2>
+<p>We are not going to transfer any files as part of this course, but you may have to do so as part of your workflow when using Kebnekaise (or another HPC centre) for your research. </p>
+<p>This section will only talk briefly about file transfers. You can find more information and examples on HPC2N&rsquo;s <a href="https://docs.hpc2n.umu.se/documentation/filesystems/#file__transfer">File transfer documentation</a>. </p>
+<h3 id="linux__os__x">Linux, OS X<a class="headerlink" href="#linux__os__x" title="Permanent link">&para;</a></h3>
+<h4 id="scp">scp<a class="headerlink" href="#scp" title="Permanent link">&para;</a></h4>
+<p>SCP (Secure CoPy) is a simple way of transferring files between two machines that use the SSH (Secure SHell) protocol. You may use SCP to connect to any system where you have SSH (log-in) access. </p>
+<p>These examples show how to use scp from the command-line. Graphical programs exists for doing scp transfer. </p>
+<p>The command-lone scp program should already be installed. </p>
+<div class="admonition note">
+<p class="admonition-title">Remote to local</p>
+<p>Transfer a file from Kebnekaise to your local system, while on your local system</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>scp<span class="w"> </span>username@kebnekaise.hpc2n.umu.se:file<span class="w"> </span>.
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Local to remote</p>
+<p>Transfer a local file to Kebnekaise, while on your local system </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>scp<span class="w"> </span>file<span class="w"> </span>username@kebnekaise.hpc2n.umu.se:file
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Recursive directory copy from a local system to a remote system</p>
+<p>The directory <code>sourcedirectory</code> is here copied as a subdirectory to <code>somedir</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>sourcedirectory/<span class="w"> </span>username@kebnekaise.hpc2n.umu.se:somedir/
+</span></code></pre></div>
+</div>
+<h4 id="sftp">sftp<a class="headerlink" href="#sftp" title="Permanent link">&para;</a></h4>
+<p>SFTP (SSH File Transfer Protocol or sometimes called Secure File Transfer Protocol) is a network protocol that provides file transfer over a reliable data stream.</p>
+<p>SFTP is a command -line program on most Unix, Linux, and Mac OS X systems. It is also available as a protocol choice in some graphical file transfer programs. </p>
+<div class="admonition example">
+<p class="admonition-title">Example: From a local system to a remote system</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>enterprise-d<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>sftp<span class="w"> </span>user@kebnekaise.hpc2n.umu.se
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Connecting<span class="w"> </span>to<span class="w"> </span>kebnekaise.hpc2n.umu.se...
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>user@kebnekaise.hpc2n.umu.se<span class="err">&#39;</span>s<span class="w"> </span>password:
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>sftp&gt;<span class="w"> </span>put<span class="w"> </span>file.c<span class="w"> </span>C/file.c
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Uploading<span class="w"> </span>file.c<span class="w"> </span>to<span class="w"> </span>/home/u/user/C/file.c
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>file.c<span class="w">                          </span><span class="m">100</span>%<span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.0KB/s<span class="w">   </span><span class="m">00</span>:00
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>sftp&gt;<span class="w"> </span>put<span class="w"> </span>-P<span class="w"> </span>irf.png<span class="w"> </span>pic/
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Uploading<span class="w"> </span>irf.png<span class="w"> </span>to<span class="w"> </span>/home/u/user/pic/irf.png
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>irf.png<span class="w">                         </span><span class="m">100</span>%<span class="w"> </span><span class="m">2100</span><span class="w">    </span><span class="m">2</span>.1KB/s<span class="w">   </span><span class="m">00</span>:00
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>sftp&gt;
+</span></code></pre></div>
+</div>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<p>Here you need to download a client: WinSCP, FileZilla (sftp), PSCP/PSFTP, &hellip;</p>
+<p>You can transfer with sftp or scp. </p>
+<p>There is documentation in HPC2N&rsquo;s documentation pages for <a href="https://docs.hpc2n.umu.se/tutorials/connections/#file__transfers" target="_blank">Windows file transfers</a>. </p>
+<h2 id="editors">Editors<a class="headerlink" href="#editors" title="Permanent link">&para;</a></h2>
+<p>Since the editors on a Linux system are different to those you may be familiar with from Windows or macOS, here follows a short overview. </p>
+<p>There are command-line editors and graphical editors. If you are connecting with a regular SSH client, it will be simplest to use a command-line editor. If you are using ThinLinc, you can use command-line editors or graphical editors as you want. </p>
+<h3 id="command-line">Command-line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
+<p>These are all good editors for using on the command line: </p>
+<ul>
+<li><a href="https://www.nano-editor.org/" target="_blank">nano</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Vi" target="_blank">vi</a>, <a href="https://en.wikipedia.org/wiki/Vim_(text_editor)" target="_blank">vim</a></li>
+<li><a href="https://www.gnu.org/software/emacs/" target="_blank">emacs</a></li>
+</ul>
+<p>They are all installed on Kebnekaise.</p>
+<p>Of these, <code>vi/vim</code> as well as <code>emacs</code> are probably the most powerful, though the latter is better in a GUI environment. The easiest editor to use if you are not familiar with any of them is <code>nano</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nano</p>
+<ol>
+<li>Starting “nano”: Type <code>nano FILENAME</code> on the command line and press <code>Enter</code>. <code>FILENAME</code> is whatever you want to call your file.</li>
+<li>If <code>FILENAME</code> is a file that already exists, <code>nano</code> will open the file. If it dows not exist, it will be created.</li>
+<li>You now get an editor that looks like this:
+<img alt="nano editor" src="../images/nano.png" style="width: 99%;" /></li>
+<li>First thing to notice is that many of the commands are listed at the bottom.</li>
+<li>The <code>^</code> before the letter-commands means you should press <code>CTRL</code> and then the letter (while keeping <code>CTRL</code> down).</li>
+<li>Your prompt is in the editor window itself, and you can just type (or copy and paste) the content you want in your file.</li>
+<li>When you want to exit (and possibly save), you press <code>CTRL</code> and then <code>x</code> while holding <code>CTRL</code> down (this is written <code>CTRL-x</code> or <code>^x</code>). <code>nano</code> will ask you if you want to save the content of the buffer to the file. After that it will exit.</li>
+</ol>
+</div>
+<p>There is a <a href="https://www.nano-editor.org/dist/latest/nano.html" target="_blank">manual for <code>nano</code> here</a>.</p>
+<h3 id="gui">GUI<a class="headerlink" href="#gui" title="Permanent link">&para;</a></h3>
+<p>If you are connecting with <a href="#using__thinlinc">ThinLinc</a>, you will be presented with a graphical user interface (GUI). </p>
+<p>From there you can either </p>
+<ul>
+<li>open a terminal window/shell (<code>Applications</code> -&gt; <code>System Tools</code> -&gt; <code>MATE Terminal</code>) </li>
+<li>or you can choose editors from the menu by going to <code>Applications</code> -&gt; <code>Accessories</code>. This gives several editor options, of which these have a graphical interface:<ul>
+<li><a href="https://help.gnome.org/users/gedit/stable/" target="_blank">Text Editor (gedit)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pluma_(text_editor)" target="_blank">Pluma</a> - the default editor on the MATE desktop environments (that Thinlinc runs)</li>
+<li><a href="https://en.wikipedia.org/wiki/Atom_(text_editor)" target="_blank">Atom</a> - not just an editor, but an IDE</li>
+<li><a href="https://www.gnu.org/software/emacs/" target="_blank">Emacs (GUI)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/NEdit" target="_blank">NEdit “Nirvana Text Editor”</a></li>
+</ul>
+</li>
+</ul>
+<p>If you are not familiar with any of these, a good recommendation would be to use <code>Text Editor/gedit</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Text Editor/gedit</p>
+<ol>
+<li>Starting “<code>gedit</code>”: <ul>
+<li>From the menu, choose <code>Applications</code> -&gt; <code>Accessories</code> -&gt; <code>Text Editor</code>.</li>
+</ul>
+</li>
+<li>You then get a window that looks like this:
+<img alt="gedit editor" src="../images/gedit.png" style="width: 99%;" /> </li>
+<li>You can open files by clicking “<code>Open</code>” in the top menu.</li>
+<li>Clicking the small file icon with a green plus will create a new document.</li>
+<li>Save by clicking “<code>Save</code>” in the menu.</li>
+<li>The menu on the top right (the three horizontal lines) gives you several other options, including “<code>Find</code>” and “<code>Find and Replace</code>”.</li>
+</ol>
+</div>
+<h2 id="hpc2n__open__ondemand__desktop">HPC2N Open OnDemand desktop<a class="headerlink" href="#hpc2n__open__ondemand__desktop" title="Permanent link">&para;</a></h2>
+<p>HPC2N has recently opened up access to another way to connect to our systems, through an &ldquo;Open OnDemand desktop&rdquo; (OOD desktop). If you have used LUNARC&rsquo;s or C3SE&rsquo;s systems, you may have tried their Open OnDemand desktop. </p>
+<p>Link to HPC2N&rsquo;s Open OnDemand desktop: <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a> </p>
+<p>If you have an account and are member of a project at HPC2N, you can use our OOD desktop. </p>
+<p>Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser. The Open OnDemand project was funded by NSF and is currently maintained by the <a href="https://www.osc.edu/" target="_blank">Ohio SuperComputing Centre</a>. Read more about OpenOnDemand at <a href="https://openondemand.org/" target="_blank">OpenOndemand.org</a>. </p>
+<p>HPC2N currently offers these interactive applications: </p>
+<ul>
+<li>Kebnekaise desktop</li>
+<li>Jupyter notebook</li>
+<li>MATLAB</li>
+<li>RStudio</li>
+<li>VS Code</li>
+</ul>
+<p>We have some documentation here about our <a href="https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand" target="_blank">Open OnDemand desktop</a>. </p>
+<div class="admonition exercises">
+<p class="admonition-title">Exercise: Login to HPC2N&rsquo;s Open OnDemand desktop</p>
+<ul>
+<li>Open a browser and point it to <a href="https://portal.hpc2n.umu.se/" target="_blank">https://portal.hpc2n.umu.se/</a>. </li>
+<li>Click the blue button labeled “Login to HPC2N OnDemand” </li>
+<li>You are sent to the login window. Put your HPC2N username and password, then click “Sign In” </li>
+</ul>
+<p>Look around a little. You can try click on the various menu points: </p>
+<ul>
+<li>Files: Links to a file browser that starts in either your home directory or in (one of) your project storage directories</li>
+<li>Jobs: Links to a list of your “Active Jobs” and to a “Job Composer” to create new jobs</li>
+<li>Clusters: the submenu is for shell access (does not currently work)</li>
+<li>Interactive Apps: a list of apps that can be started directly from the dashboard (currently Jupyter, MATLAB, RStudio, VSCode) </li>
+<li>My Interactive Sessions: overview of your current and recent apps sessions </li>
+</ul>
+<p>Later today we will try and start a few of the interactive apps.     </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>You can login with ThinLinc or another SSH client</li>
+<li>ThinLinc is easiest if you need a GUI</li>
+<li>There are several command-line editors: vi/vim, nano, emacs, &hellip;</li>
+<li>And several GUI editors, which works best when using ThinLinc: gedit, pluma, atom, emacs (gui), nedit, &hellip; </li>
+<li>You can also access Kebnekaise through the Open OnDemand desktop </li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../projectsaccounts/" class="btn btn-neutral float-left" title="Projects and Accounts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../filesystem/" class="btn btn-neutral float-right" title="The File System">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../projectsaccounts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../filesystem/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
