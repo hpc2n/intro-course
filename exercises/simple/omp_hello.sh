@@ -1,13 +1,16 @@
 #!/bin/bash
-#SBATCH -A hpc2n2025-014
-# Number of cores per task 
-#SBATCH -c 28
+# Project id - change to your own after the workshop!
+#SBATCH -A hpc2n2025-151
+# Number of cores per tasks
+#SBATCH -c 8 
+# Asking for a walltime of 5 min
 #SBATCH --time=00:05:00
 
-# It is always a good idea to do ml purge before loading other modules 
-ml purge > /dev/null 2>&1
+# Load a compiler toolchain so we can run an OpenMPI C program
+module load foss/2023b
 
-ml add foss/2022b
+# Compile the OpenMP program omp_hello.c for ease
+gcc -fopenmp omp_hello.c -o omp_hello
 
 # Set OMP_NUM_THREADS to the same value as -c with a fallback in case it isn't set.
 # SLURM_CPUS_PER_TASK is set to the value of -c, but only if -c is explicitly set
@@ -19,4 +22,3 @@ fi
 export OMP_NUM_THREADS=$omp_threads
 
 ./omp_hello
-

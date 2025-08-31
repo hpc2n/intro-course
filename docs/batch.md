@@ -354,6 +354,19 @@ For GPUs, the above GPU list of constraints can be used either as a specifier to
 
     - largemem
 
+!!! important "More memory"
+
+    Aside from using the large memory nodes, you can also ask for more cores than you need (with ``-c #cores`` / ``--cores-per-task #cores``) and then only use some of them for running on, with the rest providing extra memory. 
+
+    Example: you need 4 cores but twice as much memory as they have. You ask for 8 cores and say 2 cores-per-task (1 is default): 
+
+    ```bash
+    ...
+    #SBATCH -n 8
+    #SBATCH -c 2
+    ... 
+    ``` 
+
 #### Examples, constraints 
 
 !!! Note "Only nodes with Zen4"

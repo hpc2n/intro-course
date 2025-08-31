@@ -1,6 +1,6 @@
 #!/bin/bash 
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2025-014 
+#SBATCH -A hpc2n2025-151 
 #SBATCH -n 8 
 #SBATCH --time=00:05:00
 
@@ -12,6 +12,6 @@
 #SBATCH --output=job.%J.out
 
 ml purge > /dev/null 2>&1
-ml foss/2022b
+ml foss/2023b
 
 mpirun ./mpi_hello 

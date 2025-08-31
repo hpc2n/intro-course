@@ -9,26 +9,28 @@
     - Try using constraints: how to allocate specific CPUs. 
     - Try using constraints: how to allocate specific GPUs.  
 
+<p style="background-color: #f5e687;padding: 10px;">NOTE: these exercises will be run from a terminal, either one started inside ThinLinc or the one used for regular SSH access. </p>
+
 For consistency, I have given all the example batch scripts the suffix ``.sh`` even though it is not required. Another commonly used suffix is ``.batch``, but any or none will work.
 
 You need to compile any programs mentioned in a batch script in order to run the examples, except for ``compile-run.sh`` and the ``CUDA`` examples, which includes compilation.
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2025-014
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-014``
-    - We have a storage project linked to the compute project: **kebnekaise-intro**. 
-        - You find it in ``/proj/nobackup/kebnekaise-intro``. 
-        - Remember to create your own directory under it. 
+    - The course project has the following project ID: hpc2n2025-151
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-151``
+    - We have a storage project linked to the compute project: **fall-courses**. 
+        - You find it in ``/proj/nobackup/fall-courses``. 
+        - Remember to create your own directory under it if you have not already done so. 
 
 !!! Hint 
 
-    Try to change the C programs, add different programs, and in general play around with the examples!
+    Try to make changes to the C programs, write/add different programs, change the cores/GPUs you ask for, and in general play around with the examples!
 
 !!! NOTE 
 
-    1. For these test examples I would suggest using the ``foss`` compiler toolchain, version 2022b, unless otherwise specified, as it is available on both the Intel and AMD nodes. If you decide to use a different one, you will have to make changes to some of the batch scripts.
-    2. To submit a job script, do ``sbatch JOBSCRIPT``
+    1. For these test examples I would suggest using the ``foss`` compiler toolchain, version 2023b, unless otherwise specified, as it is available on both the Intel and AMD nodes. If you decide to use a different one, you will have to make changes to some of the batch scripts.
+    2. To submit a job script named JOBSCRIPT, do ``sbatch JOBSCRIPT``
     3. In most of the examples, I name the executable when I compile. The flag ``-o`` tells the compiler you want to name the executable. If you don't include that and a name, you will get an executable named ``a.out``. Of course, you do not have to name the executable as I do. It is just an example. In general, I have named all the executables the same as the program (without the suffix). If you change the name, remember to make the change in the submit script as well. 
 
 ## Serial batch job
@@ -44,7 +46,7 @@ gcc hello.c -o hello
 ```bash
 #!/bin/bash
 # Project id - change to your own after the course!
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for a walltime of 1 min
@@ -52,7 +54,7 @@ gcc hello.c -o hello
  
 # Purge modules before loading new ones in a script.
 ml purge  > /dev/null 2>&1
-ml foss/2022b
+ml foss/2023b
 
 ./hello
 ```
@@ -74,7 +76,7 @@ mpicc mpi_hello.c -o mpi_hello
 ```bash 
 #!/bin/bash
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151
 # Number of tasks - default is 1 core per task 
 #SBATCH -n 14
 #SBATCH --time=00:05:00
@@ -82,7 +84,7 @@ mpicc mpi_hello.c -o mpi_hello
 # It is always a good idea to do ml purge before loading other modules 
 ml purge > /dev/null 2>&1
 
-ml add foss/2022b
+ml add foss/2023b
 
 # Use srun since this is an MPI program 
 srun ./mpi_hello
@@ -104,7 +106,7 @@ gcc -fopenmp omp_hello.c -o omp_hello
 
 ```bash
 #!/bin/bash
-#SBATCH -A hpc2n2025-014 
+#SBATCH -A hpc2n2025-151 
 # Number of cores per task 
 #SBATCH -c 28
 #SBATCH --time=00:05:00
@@ -112,7 +114,7 @@ gcc -fopenmp omp_hello.c -o omp_hello
 # It is always a good idea to do ml purge before loading other modules 
 ml purge > /dev/null 2>&1
 
-ml add foss/2022b
+ml add foss/2023b
 
 # Set OMP_NUM_THREADS to the same value as -c with a fallback in case it isn't set.
 # SLURM_CPUS_PER_TASK is set to the value of -c, but only if -c is explicitly set
@@ -157,14 +159,14 @@ When the C programs have been compiled, submit the ``multiple-serial.sh`` progra
 
     ```bash
     #!/bin/bash
-    #SBATCH -A hpc2n2025-014
+    #SBATCH -A hpc2n2025-151
     # Add enough cores that all jobs can run at the same time 
     #SBATCH -n 5
     # Make sure that the time is long enough that the longest job will have time to finish 
     #SBATCH --time=00:05:00
 
     module purge > /dev/null 2>&1
-    ml foss/2022b 
+    ml foss/2023b 
 
     srun -n 1 --exclusive ./hello &
     srun -n 1 --exclusive ./Greeting & 
@@ -207,10 +209,11 @@ To try an example, we have included a small Python script ``hello-world-array.py
     ```bash
     #!/bin/bash
     # This is a very simple example of how to run a Python script with a job array
-    #SBATCH -A hpc2n2025-014 # Change to your own after the course!
+    #SBATCH -A hpc2n2025-151 # Change to your own after the course!
     #SBATCH --time=00:05:00 # Asking for 5 minutes
     #SBATCH --array=1-10   # how many tasks in the array
     #SBATCH -c 1 # Asking for 1 core    # one core per task
+    # The environment variable %j contains the Job ID and %a contains the step number
     #SBATCH -o hello-world-%j-%a.out
 
     # Load any modules you need, here for Python 3.11.3
@@ -219,6 +222,19 @@ To try an example, we have included a small Python script ``hello-world-array.py
     # Run your Python script
     srun python hello-world-array.py $SLURM_ARRAY_TASK_ID
     ``` 
+
+??? note "Job arrays - examples" 
+
+    There are many ways to use arrays: 
+
+    - Default step of 1
+        - **Example**: ``#SBATCH --array=4-80``
+    - Give an index (here steps of 4)
+        - **Example**: ``#SBATCH --array=1-100:4``
+    - Give a list instead of a range
+        - **Example**: ``#SBATCH --array=5,8,33,38``
+    - Throttle jobs, so only a smaller number of jobs run at a time
+        - **Example**: ``#SBATCH --array1-400%4``
 
 !!! note "Exercise: job arrays" 
 
@@ -238,14 +254,14 @@ When the MPI C programs have been compiled, submit the ``multiple-parallel-seque
 
 ```bash
 #!/bin/bash
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151
 # Since the files are run sequentially I only need enough cores for the largest of them to run 
 #SBATCH -c 28
 # Remember to ask for enough time for all jobs to complete
 #SBATCH --time=00:10:00
  
 module purge > /dev/null 2>&1 
-ml foss/2022b
+ml foss/2023b
 
 # Here 14 tasks with 2 cores per task. Output to file - not needed if your job creates output in a file directly 
 # In this example I also copy the output somewhere else and then run another executable.
@@ -282,20 +298,20 @@ mpi_greeting.c
 mpi_hi.c
 ```
 
-As before, we recommend using the ``foss/2022b`` module for this. If you use a different one you need to change it in the ``multiple-parallel-simultaneous.sh`` batch script. 
+As before, we recommend using the ``foss/2023b`` module for this. If you use a different one you need to change it in the ``multiple-parallel-simultaneous.sh`` batch script. 
 
 When the MPI C programs have been compiled, submit the ``multiple-parallel-simultaneous.sh`` program:
 
 ```bash 
 #!/bin/bash
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151
 # Since the files run simultaneously I need enough cores for all of them to run 
 #SBATCH -n 56
 # Remember to ask for enough time for all jobs to complete
 #SBATCH --time=00:10:00
  
 module purge > /dev/null 2>&1 
-ml foss/2022b
+ml foss/2023b
 
 srun -n 14 --exclusive ./mpi_hello &
 srun -n 14 --exclusive ./mpi_greeting &
@@ -326,7 +342,7 @@ In this case it compiles and runs the ``mpi_hello.c`` program.
     ```bash
     #!/bin/bash
     # CHANGE THE PROJECT ID TO YOUR OWN PROJECT ID AFTER THE COURSE!
-    #SBATCH -A hpc2n2025-014
+    #SBATCH -A hpc2n2025-151
     #Name the job, for easier finding in the list
     #SBATCH -J compiler-run
     #SBATCH -t 00:10:00
@@ -334,7 +350,7 @@ In this case it compiles and runs the ``mpi_hello.c`` program.
 
     ml purge > /dev/null 2>&1
 
-    ml foss/2022b 
+    ml foss/2023b 
 
     mpicc mpi_hello.c -o mpi_hello 
     mpirun ./mpi_hello
@@ -351,7 +367,7 @@ As a default, Slurm throws both errors and other output to the same file, named 
 ```bash
 #!/bin/bash 
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151
 #SBATCH -n 8 
 #SBATCH --time=00:05:00
 
@@ -363,7 +379,7 @@ As a default, Slurm throws both errors and other output to the same file, named 
 #SBATCH --output=job.%J.out
 
 ml purge > /dev/null 2>&1
-ml foss/2022b
+ml foss/2023b
 
 mpirun ./mpi_hello 
 ```
@@ -372,7 +388,35 @@ You need the ``mpi_hello.c`` file compiled (and the executable named ``mpi_hello
 
 !!! note "Exercise: errors and outputs in separate files" 
 
-    Compile the file ``mpi_hello.s`` after loading the module ``foss/2022b``. Submit the job script with ``sbatch``. See that separate output and error files are created. 
+    Compile the file ``mpi_hello.s`` after loading the module ``foss/2023b``. Submit the job script with ``sbatch``. See that separate output and error files are created. 
+
+## Dependencies 
+
+Sometimes your workflow has jobs that depend on a previous job (a pipeline). This can be handled through Slurm (if many interconnected jobs, make a script):
+
+- Submit your first job: ``sbatch my-job.sh``
+- Make Slurm wait for that job to finish before starting next job:
+  ``sbatch -d afterok:<prev-JOBID> my-next-job.sh``
+
+Generally:
+
+- ``after:jobid[:jobid…]`` begin after specified jobs have started
+- ``afterany:jobid[:jobid…]`` begin after specified jobs have terminated
+- ``afternotok:jobid[:jobid…]`` begin after specified jobs have failed
+- ``afterok:jobid[:jobid…]`` begin after specified jobs have run to completion with exit code zero
+- ``singleton`` begin execution after all previously launched jobs with the same name and user have ended
+
+??? note "Small script taking jobid from first job and using as prereq"
+
+    ```bash
+    #!/bin/bash
+
+    # first job - no dependencies
+    jid1=$(sbatch --parsable firstjob.sh)
+
+    # Next job depend on first job 
+    sbatch --dependency=afterany:${jid1} second-job.sh
+    ```
 
 ## CUDA/GPU programs  
 
@@ -398,7 +442,7 @@ We recommend ``fosscuda/2020b`` (contains ``GCC``, ``OpenMPI``, ``OpenBLAS``/``L
 #!/bin/bash 
 # This job script is for running on 1 V100 GPU. 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-014 
+#SBATCH -A hpc2n2025-151 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C v100 
@@ -473,7 +517,7 @@ The batch script ``gpu-a100.sh`` compiles and runs a small cuda program called `
 ```bash 
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-014 
+#SBATCH -A hpc2n2025-151 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=a100:1
 
@@ -568,7 +612,7 @@ where ``number`` is 1 or 2 (the number of GPU cards).
 ```bash
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-014 
+#SBATCH -A hpc2n2025-151 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C amd_gpu 
@@ -584,7 +628,7 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-014 
+#SBATCH -A hpc2n2025-151 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C nvidia_gpu 
@@ -600,7 +644,7 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C 'nvidia_gpu&intel_cpu'
@@ -616,7 +660,7 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2025-014
+#SBATCH -A hpc2n2025-151 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C ''zen3|zen4'&GPU_AI'
@@ -642,13 +686,21 @@ ml CUDA/11.7.0
 
     Check with ``squeue --me`` which partition/node type the job ends up in, and that it fits. More information can be found with ``scontrol show job JOBID``. 
 
+!!! important 
+
+    Remember to always load the GPU enabled version of a module (and sometimes CUDA also) when you need that!  
+
 ## Starting JupyterLab 
 
-On Kebnekaise, it is possible to run JupyterLab. This is done through a batch job, and is described in detail <a href ="https://docs.hpc2n.umu.se/tutorials/jupyter/" target="*blank">on our "Jupyter on Kebnekaise" documentation</a>.  
+On Kebnekaise, it is possible to run JupyterLab. This is done either
+
+- through a batch job, and is described in detail <a href ="https://docs.hpc2n.umu.se/tutorials/jupyter/" target="*blank">on our "Jupyter on Kebnekaise" documentation</a>.
+- On Open OnDemand desktop 
 
 !!! note "Exercise"
 
-    Try starting Jupyter as shown on the link above. 
+    - Try starting Jupyter as shown on the link above. 
+    - Also try it through Open OnDemand desktop 
 
 ## Keypoints 
 

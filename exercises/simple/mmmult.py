@@ -5,8 +5,8 @@ starttime = timeit.default_timer()
 
 np.random.seed(1701)
 
-A = np.random.randint(-4000, 4000, size=(1024,512))
-B = np.random.randint(-4000, 4000, size =(512,512))
+A = np.random.randint(-1000000, 1000000, size=(8192,4096))
+B = np.random.randint(-1000000, 1000000, size =(4096,4096))
 
 print("This is matrix A:\n", A)
 print("The shape of matrix A is ", A.shape)
@@ -20,6 +20,10 @@ print()
 C = np.matmul(A, B)
 
 print("The product of matrices A and B is:\n", C)
+
 print("The shape of the resulting matrix is ", C.shape)
+
 print()
+
 print("Time elapsed for generating matrices and multiplying them is ", timeit.default_timer() - starttime)
+
