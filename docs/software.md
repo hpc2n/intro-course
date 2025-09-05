@@ -52,13 +52,13 @@
 
 Matlab is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
 a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
-[here](https://www.hpc2n.umu.se/resources/software/matlab){:target="_blank"}. 
+[here](https://docs.hpc2n.umu.se/software/apps/MATLAB/){:target="_blank"}. 
 
 ### First time configuration
 
 The first time you access Matlab on Kebnekaise, you need to configure it by following these guidelines 
-[Configuring Matlab](https://www.hpc2n.umu.se/resources/software/configure-matlab-2018){:target="_blank"}. After configuring the cluster, it is a good practice to validate the
-cluster (HOME -> Parallel -> Create and Manage Clusters):
+[Configuring Matlab](https://docs.hpc2n.umu.se/software/apps/MATLAB-files/MATLAB-configure/){:target="_blank"}. After configuring 
+the cluster, it is a good practice to validate the cluster (HOME -> Parallel -> Create and Manage Clusters):
 
 ![clustervalidation](images/clusterProfileManager.png)
 
@@ -136,12 +136,12 @@ on [parallel computing](https://se.mathworks.com/help/parallel-computing/choosin
 
 Similar to Matlab, R is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
 a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
-[here](https://www.hpc2n.umu.se/resources/software/r){:target="_blank"}. 
+[here](https://docs.hpc2n.umu.se/software/apps/R/){:target="_blank"}. 
 
 ### First time configuration
 
 The first time you access R on Kebnekaise, you need to configure it by following the 
-[Preparations](https://www.hpc2n.umu.se/resources/software/user_installed/r){:target="_blank"} step.
+[Preparations](https://docs.hpc2n.umu.se/software/userinstalls/#rcran){:target="_blank"} step.
 
 ### Recommendations
 
@@ -198,7 +198,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 ??? important "Requirements"
 
     Prior to running the examples, you will need to install several packages.
-    Follow these [instructions](https://www.hpc2n.umu.se/resources/software/user_installed/r){:target="_blank"}:
+    Follow these [instructions](https://docs.hpc2n.umu.se/software/userinstalls/#rcran)){:target="_blank"}:
 
     * The packages needed are:
 
@@ -306,7 +306,8 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
 ### How to find Alphafold
 
-Alphafold is installed as a module. Notice that on the Intel nodes there are more
+Alphafold is installed as a module, see the [documentation page](https://docs.hpc2n.umu.se/software/apps/#alphafold){:target="_blank"}. 
+Notice that on the Intel nodes there are more
 versions of Alphafold installed than on the AMD nodes. Thus, if you are targeting one
 version that is only installed on the Intel nodes, you will need to add the instruction
 ``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
@@ -339,7 +340,7 @@ AMD node that lacks that installation.
 
 ### How to find CryoSPARC 
 
-The version 4.5.3 of CryoSPARC is installed as a module. 
+The version 4.5.3 of CryoSPARC is installed as a module, here is the [documentation page](https://docs.hpc2n.umu.se/software/apps/#cryosparc){:target="_blank"}. 
 
 ### First time configuration
 
@@ -352,7 +353,9 @@ it in the first line of this file. In the second line of the file write your ema
 ### Using CryoSPARC on Kebnekaise
 
 Create a suitable folder in your project directory, for instance ``/proj/nobackup/hpc2n202X-XYZ/cryosparc``
-and move into this folder. Download/copy the ``lane*tar`` files that are located [here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"} to the cryosparc folder and untar them here (``tar -xvf lane_CPU.tar`` as an example).
+and move into this folder. Download/copy the ``lane*tar`` files that are located 
+[here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"} to the cryosparc 
+folder and untar them here (``tar -xvf lane_CPU.tar`` as an example).
 
 ??? Important "Fix your Project_ID and time" 
 
@@ -409,7 +412,7 @@ Otherwise the server keeps running on the login node.
 Additional information can be obtained from a tutorial given during a [workshop on Berzelius](https://nsc.liu.se/support/presto/BerzeLiUs_CryoSparc_workshop-20240415_latest.pdf){:target="_blank"}
  and also
 from the [NSC documentation](https://www.nsc.liu.se/support/presto/CryoEM-PReSTO/cryosparc_berzelius/){:target="_blank"}. Notice that although the guidelines are for machines different to Kebnekaise,
-the systems are very similar and you could get ideas from them. For instance, the ``cryosparc copylanes`` is not
+the systems are very similar and you could get ideas from them. For instance, the ``cryosparc copylanes`` is not yet
 supported on Kebnekaise and you will need to follow the step above (manually copying the lanes) for getting lanes working. 
 
 
@@ -546,7 +549,7 @@ software, on Intel nodes there are more versions of this software installed than
 
 ### Using Jupyter Notebooks on Kebnekaise 
 
-Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https://www.hpc2n.umu.se/resources/software/jupyter-python){:target="_blank"}.
+Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https://docs.hpc2n.umu.se/software/jupyter/){:target="_blank"}.
 
 ### Exercises
 
@@ -684,7 +687,7 @@ Guidelines for running Jupyter Notebooks on Kebnekaise can be found [here](https
 ## AMBER
 
 Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
-and analyzing the dynamical trajectories.
+and analyzing the dynamical trajectories, see the [documentation page](https://docs.hpc2n.umu.se/software/apps/Amber/){:target="_blank"}.
 
 ### How to find AMBER
 
@@ -749,7 +752,8 @@ benchmarking can be obtained through the following  exercises.
 ## Gromacs
 
 Gromacs (GROningen MAchine for Chemical Simulations) is a versatile package to perform molecular 
-dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles
+dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles, 
+see the [documentation page](https://docs.hpc2n.umu.se/software/apps/GROMACS/){:target="_blank"}.
 
 ### How to find Gromacs
 
@@ -820,7 +824,8 @@ the simulations.
 ### How to find Gaussian and GaussView 
 
 The modules for Gaussian and GaussView can be loaded directly without any requirement. More information about Gaussian 
-can be found [here](https://www.hpc2n.umu.se/resources/software/gaussian){:target="_blank"}.
+can be found [here](https://docs.hpc2n.umu.se/software/apps/#gaussian){:target="_blank"} and for GaussView 
+[here](https://docs.hpc2n.umu.se/software/apps/#gaussview){:target="_blank"}.
 
 ### Exercises
 
@@ -882,7 +887,8 @@ NAMD Molecular Dynamics Software is one of the fastest and highly scalable packa
 
 ### How to find NAMD
 
-NAMD is installed as a module on Kebnekaise. Notice that on the Intel nodes there are 
+NAMD is installed as a module on Kebnekaise, see the [documentation page](https://docs.hpc2n.umu.se/software/apps/NAMD/){:target="_blank"}. 
+Notice that on the Intel nodes there are 
 more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
 version that is only installed on the Intel nodes, you will need to add the instruction
 ``#SBATCH -C skylake`` to your batch script, otherwise the job could arrive to an
