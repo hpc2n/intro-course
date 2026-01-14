@@ -1,10 +1,10 @@
-# Introduction to HPC2N and Kebnekaise - September 2025
+# Introduction to HPC2N and Kebnekaise - January 2026
 
 ## Course description
 
-**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Introduction to Linux" which was most recently given 3 April 2025. It will be gven again on 22 September. You can find the course page and registration here: [https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux](https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux)
+**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Linux Command Line 101" which was most recently given 20 October 2025. It will be gven again on 2 February 2026, as part of the NAISS intro week. You can find the course page and registration linked from here: [https://naiss-training.github.io/NAISS-intro-week/](https://naiss-training.github.io/NAISS-intro-week/)
 
-This course begins with an introduction to HPC and HPC2N, then move on to a walkthrough of the Kebnekaise system, including the GPUs. We will go into some detail about the newest hardware as well as the Desktop onDemand way of logging in. 
+This course begins with an introduction to HPC and HPC2N, then moves on to a walkthrough of the Kebnekaise system, including the GPUs. We will go into some detail about the newer hardware as well as the Desktop onDemand way of logging in. 
 
 After this, we go through the module system and take a brief look at how to submit jobs from the command line. We will also look at how to run interactive Jupyter/VSCode/MATLAB/RStudio/etc. jobs on the compute nodes. During the afternoon, there will be hands-ons where you will get the opportunity to try loading modules, compile a program, and submit a job to the Kebnekaise cluster, as well as try out the Desktop OnDemand.
 
@@ -27,10 +27,10 @@ Lecture recordings: TBA
 
 **Lecture recordings from the current course will be posted to HPC2N's YouTube page:** https://www.youtube.com/user/HPC2N
 
-Date: 09 September 2025
+Date: 20 January 2026 
 
 Time: 09:00-17:00
 
 Location: Online (ZOOM)
 
-Instructors: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)
+Instructors: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N) 
