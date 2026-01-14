@@ -18,7 +18,7 @@
 
 !!! note "Prerequisites"
 
-    - Basic knowledge about Linux (if you need a refresher, you can find the recordings from the previous version of that course here: <a href="https://www.youtube.com/watch?v=AmT6NA2j3Fk&list=PL6jMHLEmPVLzLr4i8ME2A-PUtawhkilbq" target="_blank">https://www.youtube.com/watch?v=AmT6NA2j3Fk&list=PL6jMHLEmPVLzLr4i8ME2A-PUtawhkilbq</a>
+    - Basic knowledge about Linux (if you need a refresher, you can find the recordings from the previous version of the "Linux Command Line 101" here: <a href="https://www.youtube.com/playlist?list=PL6jMHLEmPVLz7nfvCupvR-SX6MlFwboS8" target="_blank">https://www.youtube.com/watch?v=VVFpoDo9--M&list=PL6jMHLEmPVLz7nfvCupvR-SX6MlFwboS8</a>
         - If you want to take the "Introduction to Linux course, then it will be given again on 22 September 2025. You can find the information and registration page for that course here: <a href="https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux</a>
     - An account at SUPR and at HPC2N. You should have already been contacted about getting these if you did not have them already. 
 
