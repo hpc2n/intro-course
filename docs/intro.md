@@ -59,7 +59,7 @@ Funded mainly by **Umeå University**, with contributions from the **other HPC2N
 Involved in several **projects and collaborations**: 
 
 ![essence-logo](images/essence.png){: style="height: 85px; float: left;padding: 5px;"}
-![prace-logo](images/prace.png){: style="height: 85px;padding: 5px;"}
+![mimer-logo](images/mimer.png){: style="height: 85px;padding: 5px;"}
 ![algoryx-logo](images/algoryx.png){: style="height: 80px;padding: 5px;"}
 
 ![WLCG-logo](images/WLCG-logo.png){: style="height: 90px;padding: 5px;"}
@@ -78,22 +78,29 @@ Involved in several **projects and collaborations**:
     - Also at the partner sites
     - Online "HPC2N fika"  
     - Online intro seminars 
-- **User training and education program**
+- **User training and education program** (many together with NAISS)
     - 0.5 -- 5 days; presentations and ready-to-run exercises
     - intro courses: our system, Linux, R, Python, Julia, Matlab, Git
     - intermediate courses
     - - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
-- **Courses this fall**
-    - Selecting software modules, 10 September 2025 
-    - Introduction to Linux, 22 September 2025
-    - Introduction to running R, Julia, and Matlab in HPC, 6-8 + 10 September 2025
-    - Running and building Singularity and Apptainer containers, 13 October 2025
-    - Linux Command Line 101, 20 October 2025 
-    - Introduction to Git, 3-7 November 2025 
-    - Selecting software modules, 10 November 2025
-    - Introduction to Python and Using Python in an HPC environment, 27-28 November + 1-2 December 2025  
-    - Cluster architecture and job submission, 25 november 2025
-    - Linux Command Line 201, 4-5 December 2025 
+- **Courses this spring**
+    - NAISS intro week, 2-6 January 2026 
+        - Command Line 101
+        - Connecting and File Transfer
+        - Selecting software modules
+        - Running jobs on clusters 
+        - Linux Command Line 201 
+        - Running AI/ML workloads on NAISS systems 
+        - Handling sensitive data at NAISS 
+    - Introduction to Python and Using Python in an HPC environment, 20 + 22-24 April 2026
+    - Linux Command Line 101, 11 May 2026
+    - NAISS intro day
+        - shortened version of 
+            - Connecting and File Transfer
+            - Selecting software modules
+            - Running jobs on clusters  
+            - Running AI/ML workloads on NAISS systems (possibly) 
+    - Linux Command Line 201, 1-2 June 2026 
     - **Updated list:** <a href="https://www.hpc2n.umu.se/events/courses" target="_blank">https://www.hpc2n.umu.se/events/courses</a> 
 - Workshops and seminars 
 - NGSSC / SeSE & university courses
@@ -308,15 +315,15 @@ Also
 
 ### Kebnekaise - projects
 
-!!! note "Compute projects"
+!!! note "Projects"
   
-    To use Kebnekaise, you must be a member of a **compute project**.
+    To use Kebnekaise, you must be a member of a **project**.
 
-    - A compute project has a certain number of **core hours** allocated for it per month
+    - Previously, there were both compute and storage projects, but they have now been merged so there is only one type of projects. 
+    - A project has a certain number of **core hours** allocated for it per month
     - A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more
     - Not a hard limit but projects that go over the allocation get lower priority
-
-A compute project contains a certain amount of storage. If more storage is required, you must be a member of a **storage project**. 
+    - A project contains a certain amount of default storage. If more storage is required, you have to ask for that (and give arguments for why you need it, etc.). 
 
 !!! note 
 
