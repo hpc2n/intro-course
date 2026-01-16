@@ -19,7 +19,7 @@
 !!! note "Prerequisites"
 
     - Basic knowledge about Linux (if you need a refresher, you can find the recordings from the previous version of the "Linux Command Line 101" here: <a href="https://www.youtube.com/playlist?list=PL6jMHLEmPVLz7nfvCupvR-SX6MlFwboS8" target="_blank">https://www.youtube.com/watch?v=VVFpoDo9--M&list=PL6jMHLEmPVLz7nfvCupvR-SX6MlFwboS8</a>
-        - If you want to take the "Introduction to Linux course, then it will be given again on 22 September 2025. You can find the information and registration page for that course here: <a href="https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux" target="_blank">https://www.hpc2n.umu.se/events/courses/2025/fall/1/intro-linux</a>
+        - If you want to take the "Linux Command Line 101 course, then it will be given again on 2 February 2026, as part of the "NAISS Intro week". You can find the information and registration page for that course here: <a href="https://naiss-training.github.io/NAISS-intro-week/" target="_blank">https://naiss-training.github.io/NAISS-intro-week/</a>
     - An account at SUPR and at HPC2N. You should have already been contacted about getting these if you did not have them already. 
 
 !!! note "Content"
@@ -46,14 +46,14 @@
 
 ## Important info
 
-- We have a course project: ``hpc2n2025-151``.
-- The course project has default project storage. You can find that here: ``/proj/nobackup/fall-courses``.
-- You should create a subdirectory under ``/proj/nobackup/fall-courses`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
+- We have a course project: ``hpc2n2026-002``.
+- The course project has default project storage. You can find that here: ``/proj/nobackup/spring-courses``.
+- You should create a subdirectory under ``/proj/nobackup/spring-courses`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
 - As mentioned further up on the page, you can download the material for the course. Placing it in your directory on the project storage is a good idea. You can fetch it there with <code>git clone https://github.com/hpc2n/intro-course.git</code>. 
-- We have two reservations for the course (valid only during the course time). One L40s GPU (reservation ``intro-gpu``) and one AMD Zen4 CPU node (reservation ``intro-cpu``). 
-- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EUVzB_5AT2pAlQZWKeks6PEB2CMBLNXP7vuOPWCDiwm1vg?e=GW1vYO" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EUVzB_5AT2pAlQZWKeks6PEB2CMBLNXP7vuOPWCDiwm1vg?e=GW1vYO</a>
-- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQedrXAXwa1AsvZ7nG3StzUBl87szldizr82mR56ZNfIfA?e=O4GMjb" target="_blank">"https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/EQedrXAXwa1AsvZ7nG3StzUBl87szldizr82mR56ZNfIfA?e=O4GMjb</a> 
-- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/xFLgdD9TSU" target="_blank">https://forms.office.com/e/xFLgdD9TSU</a>. 
+- We have two reservations for the course (valid only during the course time). Two L40s GPUs (reservation ``intro-gpu``) and two AMD Zen4 CPU node (reservation ``intro-cpu``). The reservations should be "magnetic", which means they should be used per default if you run in the course project, without you adding the reservation manually. 
+- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAz1nWMW7I6RYYRkt-SI_D-AdQNEvWgHt6sawjmsSH5zcE" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAz1nWMW7I6RYYRkt-SI_D-AdQNEvWgHt6sawjmsSH5zcE</a>
+- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQCKgB00THY4RJW1BNN6aHFfAah-JtvyPrDNyTKB7ulfLYU" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQCKgB00THY4RJW1BNN6aHFfAah-JtvyPrDNyTKB7ulfLYU</a> 
+- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/zvVAGnP2Mp" target="_blank">https://forms.office.com/e/zvVAGnP2Mp</a>. 
 
 ## Preliminary schedule
 
