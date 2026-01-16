@@ -52,9 +52,10 @@ Project storage is located below <code>/proj/nobackup/</code> in the directory n
 - If you have a storage project, you should use that to run your jobs.
 - You (your PI) will either choose a directory name when you/they apply for the storage project or get the project id as default name.
 - The location of the storage project in the file system is <code>/proj/nobackup/NAME-YOU-PICKED</code>
-- Since the storage project is shared between all users of the project, you should go to that directory and create a subdirectory for your things, which you will then be using.- For this course the storage is in 
+- Since the storage project is shared between all users of the project, you should go to that directory and create a subdirectory for your things, which you will then be using.
+- For this course the storage is in 
   ```bash
-  /proj/nobackup/fall-courses
+  /proj/nobackup/spring-courses
   ```
 
 !!! note "Exercise - create a directory"
@@ -69,25 +70,25 @@ Now is a good time to prepare the course material and download the exercises, if
 
 !!! note "Exercise"
 
-    1. Go to the subdirectory you created under <code>/proj/nobackup/fall-courses</code>
+    1. Go to the subdirectory you created under <code>/proj/nobackup/spring-courses</code>
     2. Clone the repository for the course: <code>git clone https://github.com/hpc2n/intro-course.git</code>
 
     You will get a directory called <code>intro-course</code>. Below it you will find a directory called "exercises" where the majority of the exercises for the batch system section is located.
 
 #### OOD 
 
-Now let us try creating a sub directory to your directory ``/proj/nobackup/fall-courses/<your-dir>``, but using Open OnDemand. 
+Now let us try creating a sub directory to your directory ``/proj/nobackup/spring-courses/<your-dir>``, but using Open OnDemand. 
 
 !!! note "Exercise - use OOD to create a sub directory"
 
     1. Go to the browser window where you have logged in to Open OnDemand desktop. (<a href="../login/#hpc2n__open__ondemand__desktop" target="_blank">Help here if you are not logged in</a>.
     2. Click "Files" in the top menu 
-    ![filesystem-OOD](images/filesystem-OOD.png){: style="width: 500px"} 
-    3. Pick the ``/proj/nobackup/fall-courses`` directory and change to your directory under it (for me, ``bbrydsoe``)<br>
-    ![filesystem-OOD-projectdir-bbrydsoe](images/filesystem-OOD-projectdir-bbrydsoe.png){: style="width: 500px"}<br> 
-    You should have a subdirectory there called ``intro-course`` from cloning the material with the exercises. Do not enter that now. 
-    4. Create a new directory under ``/proj/nobackup/fall-courses/<your-dir>`` and call it whatever since it is just a test.<br> 
-    ![filesystem-OOD-projectdir-bbrydsoe-newdir](images/filesystem-OOD-projectdir-bbrydsoe-newdir.png){: style="width: 500px"}
+    ![filesystem-OOD-spring](images/filesystem-OOD-spring.png){: style="width: 500px"} 
+    3. Pick the ``/proj/nobackup/spring-courses`` directory and change to your directory under it (for me, ``bbrydsoe``)<br>
+    ![filesystem-OOD-projectdir-bbrydsoe-spring](images/filesystem-OOD-projectdir-bbrydsoe-spring.png){: style="width: 500px"}<br> 
+    You should have a subdirectory there called ``intro-course`` from cloning the material with the exercises (I had not yet done so when screencapping this). Do not enter that now. 
+    4. Create a new directory under ``/proj/nobackup/spring-courses/<your-dir>`` and call it whatever you want to since it is just a test.<br> 
+    ![filesystem-OOD-projectdir-bbrydsoe-newdir2](images/filesystem-OOD-projectdir-bbrydsoe-newdir2.png){: style="width: 500px"}
 
     You can also access the file tree from the interactive session "Kebnekaise desktop", when you have started that. We will do this later. 
 
@@ -112,7 +113,7 @@ More information about the file system, as well as archiving and compressing fil
     - When you login to Kebnekaise, you will end up in your home-directory.
     - Your home-directory is in <code>/home/u/username</code> and is pointed to by the environment variable <code>$HOME</code>.
     - Your project storage is located in <code>/proj/nobackup/NAME-YOU-PICKED</code>
-        - For this course it is <code>/proj/nobackup/fall-courses</code>.
+        - For this course it is <code>/proj/nobackup/spring-courses</code>.
         - The project storage is NOT backed up.
     - You can also access the file tree from the Open OnDemand desktop. 
     - You should run the batch jobs from your project storage. 
