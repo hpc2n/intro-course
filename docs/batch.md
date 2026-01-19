@@ -56,14 +56,14 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
     Submit job with ``sbatch``
 
     ```bash
-    b-an01 [~]$ sbatch simple.sh 
+    b-cn1613 [~]$ sbatch simple.sh 
     Submitted batch job 27774852
     ```
 
     Check status with ``squeue --me``
 
     ```bash
-    b-an01 [~]$ squeue --me
+    b-cn1613 [~]$ squeue --me
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           27774852  cpu_zen4 simple.s bbrydsoe  R       0:00      1 b-cn1701
     ``` 
@@ -71,13 +71,13 @@ In the following, JOBSCRIPT is the name you have given your job script and JOBID
     Submit several jobs (here several instances of the same), check on the status
 
     ```bash
-    b-an01 [~]$ sbatch simple.sh 
+    b-cn1613 [~]$ sbatch simple.sh 
     Submitted batch job 27774872
-    b-an01 [~]$ sbatch simple.sh 
+    b-cn1613 [~]$ sbatch simple.sh 
     Submitted batch job 27774873
-    b-an01 [~]$ sbatch simple.sh 
+    b-cn1613 [~]$ sbatch simple.sh 
     Submitted batch job 27774874
-    b-an01 [~]$ squeue --me
+    b-cn1613 [~]$ squeue --me
                 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
              27774873  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
              27774874  cpu_zen4 simple.s bbrydsoe  R       0:02      1 b-cn1702
@@ -187,7 +187,7 @@ srun ./my_mpi_program
 
     If you have not already done so, clone the material from the website <a href="https://github.com/hpc2n/intro-course" target="_blank">https://github.com/hpc2n/intro-course</a>: 
 
-    1. Change to the storage directory you created under ``/proj/nobackup/fall-courses/``. 
+    1. Change to the storage directory you created for yourself under ``/proj/nobackup/spring-courses/``. 
     2. Clone the material: 
     ```bash
     git clone https://github.com/hpc2n/intro-course.git
@@ -451,19 +451,20 @@ To use GPU resources one has to explicitly ask for one or more GPUs. Requests fo
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
-# Load modules needed for your program - here fosscuda/2020b
-ml fosscuda/2020b
+# Load modules needed for your program - here foss/2023b and CUDA/12.9.1 
+ml foss/2023b
+ml CUDA/12.9.1
 
 ./my-gpu-program
 ```
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2025-151
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-151`` 
-    - We have a storage project linked to the compute project: **fall-courses**. 
-        - You find it in ``/proj/nobackup/fall-courses``. 
-        - Remember to create your own directory under it. 
+    - The course project has the following project ID: hpc2n2026-002
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2026-002`` 
+    - We have storage linked to the project: **spring-courses**. 
+        - You find it in ``/proj/nobackup/spring-courses``. 
+        - Remember to create your own directory under it if you have not already done so. 
 
 ## Open OnDemand desktop 
 
@@ -491,7 +492,7 @@ When you choose this, there are some options:
 
 !!! note "Exercise: start an instance of the "Kebnekaise desktop" and play with it"
 
-    - Pick "compute project" as ``fall-courses``
+    - Pick "compute project" as ``hpc2n2025-002``
     - Pick "number of hours" to ``1`` so it starts fast. 
     - Pick "Number of cores" to something between ``1-4``
     - Pick "any" for "Node type" 
@@ -502,7 +503,7 @@ When you choose this, there are some options:
     - Look around, see that you can use a filetree, open terminals (do so and see the cores are on the node that was shown as host), etc. 
         - A terminal is opened from "Applications" -> "System Tools" -> "MATE terminal" (or Xfce if you picked that). 
     - If you asked for more than one core, you can do ``srun /bin/hostname`` in the terminal and see a list of nodes. 
-    - You can go to the ``/proj/nobackup/fall-courses/<your-dir>/intro-course/exercises`` directory and into the ``simple`` directory. Try run something directly on the command line - remember to load modules and compile if needed. 
+    - You can go to the ``/proj/nobackup/spring-courses/<your-dir>/intro-course/exercises`` directory and into the ``simple`` directory. Try run something directly on the command line - remember to load modules and compile if needed. 
         - Example: run the small Python program ``mmmult.py``
             - Load some modules: ``module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07``
             - Run it: ``python mmmult.py`` (in directory "simple")
