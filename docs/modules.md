@@ -58,28 +58,21 @@ Modules are:
 
     Code-along! You should do this in a terminal (either regular SSH or terminal opened in ThinLinc). 
 
-??? Admonition "Example: checking which versions exist of the module 'Python' on the regular login node"
+??? Admonition "Example: checking which versions exist of the module 'Python' on the regular login node (b-cn1613)"
 
     ```bash
-    b-an01 [~]$ ml spider Python
+    b-cn1613 [~]$ ml spider Python
 
-    ---------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------
       Python:
-    ---------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------
         Description:
           Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
          Versions:
-            Python/2.7.15
-            Python/2.7.16
             Python/2.7.18-bare
             Python/2.7.18
-            Python/3.7.2
-            Python/3.7.4
-            Python/3.8.2
             Python/3.8.6
-            Python/3.9.5-bare
-            Python/3.9.5
             Python/3.9.6-bare
             Python/3.9.6
             Python/3.10.4-bare
@@ -88,31 +81,33 @@ Modules are:
             Python/3.10.8
             Python/3.11.3
             Python/3.11.5
+            Python/3.12.3
+            Python/3.13.1
+            Python/3.13.5
          Other possible modules matches:
-            Biopython  Boost.Python  Brotli-python  GitPython  IPython  Python-bundle-PyPI  flatbuffers-python  ...
+            Biopython  Boost.Python  Brotli-python  GitPython  IPython  Python-bundle-PyPI  bx-python  ...
 
-    ---------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------
       To find other possible module matches execute:
 
           $ module -r spider '.*Python.*'
 
-    ---------------------------------------------------------------------------------------------------------
+    -------------------------------------------------------------------------------------------------------
       For detailed information about a specific "Python" package (including how to load the modules) use the module's full name.
       Note that names that have a trailing (E) are extensions provided by other modules.
       For example:
 
-         $ module spider Python/3.11.5
-    ---------------------------------------------------------------------------------------------------------
-
+         $ module spider Python/3.13.5
+    -------------------------------------------------------------------------------------------------------
  
 
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
 
 ??? Admonition "Example: Check how to load a specific Python version (3.11.5 in this example) on the regular login node"
 
     ```bash 
-    b-an01 [~]$ ml spider Python/3.11.5
+    b-cn1613 [~]$ ml spider Python/3.11.5
 
     ---------------------------------------------------------------------------------------------------------
       Python: Python/3.11.5
@@ -147,7 +142,7 @@ Modules are:
 
  
 
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
 
 ??? Admonition "Example: Load Python/3.11.5 and its prerequisite(s) (on the regular login node)"
@@ -155,7 +150,7 @@ Modules are:
     Here we also show the loaded module before and after the load. For illustration, we use first <code>ml</code> and then <code>module list</code>:
 
     ```bash
-    b-an01 [~]$ ml
+    b-cn1613 [~]$ ml
 
     Currently Loaded Modules:
       1) snicenvironment (S)   2) systemdefault (S)
@@ -165,11 +160,11 @@ Modules are:
 
  
 
-    b-an01 [~]$ module load GCCcore/13.2.0 Python/3.11.5
-    b-an01 [~]$ module list
+    b-cn1613 [~]$ module load GCCcore/13.2.0 Python/3.11.5
+    b-cn1613 [~]$ module list
 
     Currently Loaded Modules:
-      1) snicenvironment (S)   4) zlib/1.2.13     7) ncurses/6.4      10) SQLite/3.43.1  13) OpenSSL/1.1
+      1) snicenvironment (S)   4) zlib/1.2.13     7) ncurses/6.4      10) SQLite/3.43.1  13) OpenSSL/3
       2) systemdefault   (S)   5) binutils/2.40   8) libreadline/8.2  11) XZ/5.4.4       14) Python/3.11.5
       3) GCCcore/13.2.0        6) bzip2/1.0.8     9) Tcl/8.6.13       12) libffi/3.4.4
 
@@ -178,7 +173,7 @@ Modules are:
 
  
 
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
 
 ??? Admonition "Example: Unloading the module <code>Python/3.11.5</code> (on the regular login node)"
@@ -186,10 +181,10 @@ Modules are:
     In this example we unload the module <code>Python/3.11.5</code>, but not the prerequisite <code>GCCcore/13.2.0</code>. We also look at the output of <code>module list</code> before and after. 
 
     ```bash
-    b-an01 [~]$ module list
+    b-cn1613 [~]$ module list
 
     Currently Loaded Modules:
-      1) snicenvironment (S)   4) zlib/1.2.13     7) ncurses/6.4      10) SQLite/3.43.1  13) OpenSSL/1.1
+      1) snicenvironment (S)   4) zlib/1.2.13     7) ncurses/6.4      10) SQLite/3.43.1  13) OpenSSL/3
       2) systemdefault   (S)   5) binutils/2.40   8) libreadline/8.2  11) XZ/5.4.4       14) Python/3.11.5
       3) GCCcore/13.2.0        6) bzip2/1.0.8     9) Tcl/8.6.13       12) libffi/3.4.4
 
@@ -197,8 +192,8 @@ Modules are:
        S:  Module is Sticky, requires --force to unload or purge
 
  
-    b-an01 [~]$ ml unload Python/3.11.5
-    b-an01 [~]$ module list
+    b-cn1613 [~]$ ml unload Python/3.11.5
+    b-cn1613 [~]$ module list
 
     Currently Loaded Modules:
       1) snicenvironment (S)   2) systemdefault (S)   3) GCCcore/13.2.0
@@ -208,7 +203,7 @@ Modules are:
 
  
 
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ``` 
 
     As you can see, the prerequisite did not get unloaded. This is on purpose, because you may have other things loaded which uses the prerequisite. 
@@ -218,13 +213,13 @@ Modules are:
     First we load some modules. Here Python 3.11.5, SciPy-bundle, and prerequisites for them. We also do <code>module list</code> after loading the modules and after using <code>module purge</code>. 
 
     ```bash
-    b-an01 [~]$ ml GCC/13.2.0 
-    b-an01 [~]$ ml Python/3.11.5 ml SciPy-bundle/2023.11 
-    b-an01 [~]$ ml list
+    b-cn1613 [~]$ ml GCC/13.2.0 
+    b-cn1613 [~]$ ml Python/3.11.5 ml SciPy-bundle/2023.11 
+    b-cn1613 [~]$ ml list
 
     Currently Loaded Modules:
       1) snicenvironment (S)   7) bzip2/1.0.8      13) libffi/3.4.4     19) cffi/1.15.1
-      2) systemdefault   (S)   8) ncurses/6.4      14) OpenSSL/1.1      20) cryptography/41.0.5
+      2) systemdefault   (S)   8) ncurses/6.4      14) OpenSSL/3      20) cryptography/41.0.5
        3) GCCcore/13.2.0        9) libreadline/8.2  15) Python/3.11.5    21) virtualenv/20.24.6
        4) zlib/1.2.13          10) Tcl/8.6.13       16) OpenBLAS/0.3.24  22) Python-bundle-PyPI/2023.10
        5) binutils/2.40        11) SQLite/3.43.1    17) FlexiBLAS/3.3.1  23) pybind11/2.11.1
@@ -235,12 +230,12 @@ Modules are:
 
 
 
-    b-an01 [~]$ ml purge
+    b-cn1613 [~]$ ml purge
     The following modules were not unloaded:
       (Use "module --force purge" to unload all):
 
       1) snicenvironment   2) systemdefault
-    b-an01 [~]$ ml list
+    b-cn1613 [~]$ ml list
 
     Currently Loaded Modules:
       1) snicenvironment (S)   2) systemdefault (S)
@@ -250,7 +245,7 @@ Modules are:
 
  
 
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
 
 !!! NOTE 
