@@ -17,10 +17,10 @@ You need to compile any programs mentioned in a batch script in order to run the
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2025-151
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2025-151``
-    - We have a storage project linked to the compute project: **fall-courses**. 
-        - You find it in ``/proj/nobackup/fall-courses``. 
+    - The course project has the following project ID: **hpc2n2026-002**
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2026-002``
+    - We have a storage project linked to the compute project: **spring-courses**. 
+        - You find it in ``/proj/nobackup/spring-courses``. 
         - Remember to create your own directory under it if you have not already done so. 
 
 !!! Hint 
@@ -46,7 +46,7 @@ gcc hello.c -o hello
 ```bash
 #!/bin/bash
 # Project id - change to your own after the course!
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2026-002
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for a walltime of 1 min
@@ -65,7 +65,7 @@ ml foss/2023b
 
 ## MPI batch job 
 
-To compile an MPI program, like ``mpi_hello.c`` (and create an executable named ``mpi_hello``) with gcc, do:
+To compile an MPI program, like ``mpi_hello.c`` (and create an executable named ``mpi_hello``) with gcc, do (after loading a suitable module, like foss/2023b):
 
 ```bash 
 mpicc mpi_hello.c -o mpi_hello
@@ -76,7 +76,7 @@ mpicc mpi_hello.c -o mpi_hello
 ```bash 
 #!/bin/bash
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2026-002
 # Number of tasks - default is 1 core per task 
 #SBATCH -n 14
 #SBATCH --time=00:05:00
@@ -106,7 +106,7 @@ gcc -fopenmp omp_hello.c -o omp_hello
 
 ```bash
 #!/bin/bash
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002 
 # Number of cores per task 
 #SBATCH -c 28
 #SBATCH --time=00:05:00
@@ -159,7 +159,7 @@ When the C programs have been compiled, submit the ``multiple-serial.sh`` progra
 
     ```bash
     #!/bin/bash
-    #SBATCH -A hpc2n2025-151
+    #SBATCH -A hpc2n2026-002
     # Add enough cores that all jobs can run at the same time 
     #SBATCH -n 5
     # Make sure that the time is long enough that the longest job will have time to finish 
@@ -209,7 +209,7 @@ To try an example, we have included a small Python script ``hello-world-array.py
     ```bash
     #!/bin/bash
     # This is a very simple example of how to run a Python script with a job array
-    #SBATCH -A hpc2n2025-151 # Change to your own after the course!
+    #SBATCH -A hpc2n2026-002 # Change to your own after the course!
     #SBATCH --time=00:05:00 # Asking for 5 minutes
     #SBATCH --array=1-10   # how many tasks in the array
     #SBATCH -c 1 # Asking for 1 core    # one core per task
@@ -254,7 +254,7 @@ When the MPI C programs have been compiled, submit the ``multiple-parallel-seque
 
 ```bash
 #!/bin/bash
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2026-002
 # Since the files are run sequentially I only need enough cores for the largest of them to run 
 #SBATCH -c 28
 # Remember to ask for enough time for all jobs to complete
@@ -304,7 +304,7 @@ When the MPI C programs have been compiled, submit the ``multiple-parallel-simul
 
 ```bash 
 #!/bin/bash
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2026-002
 # Since the files run simultaneously I need enough cores for all of them to run 
 #SBATCH -n 56
 # Remember to ask for enough time for all jobs to complete
@@ -342,7 +342,7 @@ In this case it compiles and runs the ``mpi_hello.c`` program.
     ```bash
     #!/bin/bash
     # CHANGE THE PROJECT ID TO YOUR OWN PROJECT ID AFTER THE COURSE!
-    #SBATCH -A hpc2n2025-151
+    #SBATCH -A hpc2n2026-002
     #Name the job, for easier finding in the list
     #SBATCH -J compiler-run
     #SBATCH -t 00:10:00
@@ -367,7 +367,7 @@ As a default, Slurm throws both errors and other output to the same file, named 
 ```bash
 #!/bin/bash 
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2026-002
 #SBATCH -n 8 
 #SBATCH --time=00:05:00
 
@@ -434,7 +434,7 @@ To run a piece of software that uses GPUs, you need to load a module version whi
 
 This example runs a small CUDA code. 
 
-We recommend ``fosscuda/2020b`` (contains ``GCC``, ``OpenMPI``, ``OpenBLAS``/``LAPACK``, ``FFTW``, ``ScaLAPACK``, and ``CUDA``) or ``intelcuda/2019a`` (contains ``icc``, ``ifort``, ``IntelMPI``, ``IntelMKL``, and ``CUDA``)
+You need to load a CUDA module to run it. Here we load CUDA/12.9.1. 
 
 **Sample batch script ``gpu-skylake.sh``**
 
@@ -442,13 +442,13 @@ We recommend ``fosscuda/2020b`` (contains ``GCC``, ``OpenMPI``, ``OpenBLAS``/``L
 #!/bin/bash 
 # This job script is for running on 1 V100 GPU. 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C v100 
 
 ml purge > /dev/null 2>&1
-ml fosscuda/2020b
+ml CUDA/12.9.1
 
 nvcc hello-world.cu -o hello
 ./hello
@@ -501,10 +501,10 @@ The job can be submitted from the regular login node, though.
 
     After that, you check for a suitable CUDA toolchain: ``ml spider CUDA``.
 
-    You can then load it (here ``CUDA/11.7.0``) and use ``nvcc`` to compile the program ``hello-world.cu``: 
+    You can then load it (here ``CUDA/12.9.1``) and use ``nvcc`` to compile the program ``hello-world.cu``: 
 
     ```bash 
-    ml CUDA/11.7.0
+    ml CUDA/12.9.1
     nvcc hello-world.cu -o hello
     ```
 
@@ -517,12 +517,12 @@ The batch script ``gpu-a100.sh`` compiles and runs a small cuda program called `
 ```bash 
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002
 #SBATCH --time=00:05:00
 #SBATCH --gpus=a100:1
 
 ml purge > /dev/null 2>&1
-ml CUDA/11.7.0
+ml CUDA/12.9.1
 
 nvcc hello-world.cu -o hello
 ./hello
@@ -612,13 +612,13 @@ where ``number`` is 1 or 2 (the number of GPU cards).
 ```bash
 #!/bin/bash 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C amd_gpu 
 
 ml purge > /dev/null 2>&1
-ml CUDA/11.7.0
+ml CUDA/12.9.1
 
 ./myGPUcode
 ```
@@ -628,13 +628,13 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C nvidia_gpu 
 
 ml purge > /dev/null 2>&1
-ml CUDA/11.7.0
+ml CUDA/12.9.1
 
 ./myGPUcode
 ```
@@ -644,13 +644,13 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002 
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C 'nvidia_gpu&intel_cpu'
 
 ml purge > /dev/null 2>&1
-ml CUDA/11.7.0
+ml CUDA/12.9.1
 
 ./myGPUcode
 ```
@@ -660,13 +660,13 @@ ml CUDA/11.7.0
 ```bash 
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2025-151 
+#SBATCH -A hpc2n2026-002
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C ''zen3|zen4'&GPU_AI'
 
 ml purge > /dev/null 2>&1
-ml CUDA/11.7.0
+ml CUDA/12.9.1
 
 ./myGPUcode
 ```
