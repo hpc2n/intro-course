@@ -1,6 +1,6 @@
 #!/bin/bash
 # Change to your own project ID! 
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2025-002
 #SBATCH --time=00:08:00 # Asking for 8 minutes
 #SBATCH -n 1 # Asking for 1 core
 

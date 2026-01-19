@@ -1,6 +1,6 @@
 #!/bin/bash
 # Remember to change this to your own Project ID after the course! 
-#SBATCH -A hpc2n2025-151
+#SBATCH -A hpc2n2026-002
 # Number of tasks - default is 1 core per task 
 #SBATCH -n 14
 #SBATCH --time=00:05:00
