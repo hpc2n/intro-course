@@ -31,8 +31,8 @@ You load a compiler toolchain the same way you load any other module. They are a
     This compiler toolchain contains: <code>GCC/13.2.0</code>, <code>BLAS</code> (with <code>LAPACK</code>), <code>ScaLAPACK</code>, and <code>FFTW</code>. 
 
     ```bash
-    b-an01 [~]$ ml foss/2023b
-    b-an01 [~]$ ml
+    b-cn1613 [~]$ ml foss/2023b
+    b-cn1613 [~]$ ml
 
     Currently Loaded Modules:
       1) snicenvironment (S)   7) numactl/2.0.16     13) libevent/2.1.12  19) FlexiBLAS/3.3.1
@@ -40,14 +40,14 @@ You load a compiler toolchain the same way you load any other module. They are a
       3) GCCcore/13.2.0        9) libxml2/2.11.5     15) PMIx/4.2.6       21) FFTW.MPI/3.3.10
       4) zlib/1.2.13          10) libpciaccess/0.17  16) UCC/1.2.0        22) ScaLAPACK/2.2.0-fb
       5) binutils/2.40        11) hwloc/2.9.2        17) OpenMPI/4.1.6    23) foss/2023b
-      6) GCC/13.2.0           12) OpenSSL/1.1        18) OpenBLAS/0.3.24
+      6) GCC/13.2.0           12) OpenSSL/3        18) OpenBLAS/0.3.24
 
       Where:
        S:  Module is Sticky, requires --force to unload or purge
 
  
 
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
 
 ## Compiling
@@ -85,7 +85,7 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     In this example we compile the C program <code>hello.c</code> and name the output (the executable) <code>hello</code>. 
 
     ```bash
-    b-an01 [~]$ gcc hello.c -o hello 
+    b-cn1613 [~]$ gcc hello.c -o hello 
     ```
 
     You can run the executable with ``./hello``
@@ -97,7 +97,7 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     In this example we compile the MPI C program <code>mpi_hello.c</code> and name the output (the executable) <code>mpi_hello</code>. 
 
     ```bash
-    b-an01 [~]$ mpicc mpi_hello.c -o mpi_hello 
+    b-cn1613 [~]$ mpicc mpi_hello.c -o mpi_hello 
     ```
 
     You then run with ```mpirun mpi_hello``
@@ -140,7 +140,7 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     In this example we compile the OpenMP C program <code>omp_hello.c</code> and name the output (executable) <code>omp_hello</code>. 
 
     ```bash 
-    b-an01 [~]$ gcc -fopenmp omp_hello.c -o omp_hello
+    b-cn1613 [~]$ gcc -fopenmp omp_hello.c -o omp_hello
     ```
 
 !!! note
@@ -156,17 +156,17 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     Run the binary <code>omp_hello</code> that we got in the previous example. Set the number of threads to 4 and then rerun the binary. 
 
     ```bash
-    b-an01 [~]$ ./omp_hello 
+    b-cn1613 [~]$ ./omp_hello 
     Thread 0 says: Hello World
     Thread 0 reports: the number of threads are 1
-    b-an01 [~]$ export OMP_NUM_THREADS=4
-    b-an01 [~]$ ./omp_hello 
+    b-cn1613 [~]$ export OMP_NUM_THREADS=4
+    b-cn1613 [~]$ ./omp_hello 
     Thread 1 says: Hello World
     Thread 0 says: Hello World
     Thread 0 reports: the number of threads are 4
     Thread 3 says: Hello World
     Thread 2 says: Hello World
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
 
 !!! Note "Exercise"
@@ -196,7 +196,7 @@ In order to access the MPI compilers, load [a compiler toolchain which contains 
     We are again compiling the <code>hello.c</code> program from before. This time we name the executable <code>hello_intel</code> to not overwrite the previously created executable. 
 
     ```bash
-    b-an01 [~]$ icc hello.c -o hello 
+    b-cn1613 [~]$ icc hello.c -o hello 
     ```
 
 #### Flags 
@@ -260,31 +260,31 @@ Using the environment variable (prefaced with $) for linking is highly recommend
 
     Not all compiler toolchains have a ``buildenv`` installed for them (yet). You can always ask for it if you need it. 
 
-    In this example we will use the toolchain ``foss/2021b`` since that is the newest that has a matching ``buildenv`` installed. 
+    In this example we will use the toolchain ``foss/2021b``. 
 
     1. Unload any modules you have loaded. Here we just ``purge`` all of them. 
     ```bash 
-    b-an01 [~]$ ml purge
+    b-cn1613 [~]$ ml purge
     The following modules were not unloaded:
       (Use "module --force purge" to unload all):
 
       1) snicenvironment   2) systemdefault
-    b-an01 [~]$ 
+    b-cn1613 [~]$ 
     ```
     2. Load the ``foss/2021b`` toolchain
     ```bash
-    b-an01 [~]$ ml foss/2021b
-    b-an01 [~]$ 
+    b-cn1613 [~]$ ml foss/2021b
+    b-cn1613 [~]$ 
     ```
     3. Load a matching ``buildenv`` module 
     ```bash
-    b-an01 [~]$ ml buildenv
-    b-an01 [~]$
+    b-cn1613 [~]$ ml buildenv
+    b-cn1613 [~]$
     ```
     4. Do ``ml show buildenv`` to see the environment variables that are now available 
     ```bash
-    b-an01 [~]$ ml show buildenv
-    ----------------------------------------------------------------------------
+    b-cn1613 [~]$ ml show buildenv
+    --------                                                      --------------------------------------------------------------------
        /hpc2n/eb/modules/all/MPI/GCC/11.2.0/OpenMPI/4.1.1/buildenv/default.lua:
     ----------------------------------------------------------------------------
     help([[
