@@ -2,7 +2,7 @@
 
 ## Course description
 
-**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Linux Command Line 101" which was most recently given 20 October 2025. It will be gven again on 2 February 2026, as part of the NAISS intro week. You can find the course page and registration linked from here: [https://naiss-training.github.io/NAISS-intro-week/](https://naiss-training.github.io/NAISS-intro-week/)
+**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Linux Command Line 101" which was most recently given 20 October 2025. It will be given again on 2 February 2026, as part of the NAISS intro week. You can find the course page and registration linked from here: [https://naiss-training.github.io/NAISS-intro-week/](https://naiss-training.github.io/NAISS-intro-week/)
 
 This course begins with an introduction to HPC and HPC2N, then moves on to a walkthrough of the Kebnekaise system, including the GPUs. We will go into some detail about the newer hardware as well as the Desktop onDemand way of logging in. 
 

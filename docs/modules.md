@@ -42,11 +42,17 @@ Modules are:
 
 !!! Warning "Important!" 
 
-    Not all the modules (and versions) are the same on the skylake nodes and the zen3/zen4 nodes. 
+    <s>Not all the modules (and versions) are the same on the skylake nodes and the zen3/zen4 nodes.</s> 
 
-    The regular login node ``kebnekaise.hpc2n.umu.se`` has the modules available on skylake nodes. (ThinLinc: ``kebnekaise-tl.hpc2n.umu.se``)
+    <s>The regular login node ``kebnekaise.hpc2n.umu.se`` has the modules available on skylake nodes. (ThinLinc: ``kebnekaise-tl.hpc2n.umu.se``)</s>
 
-    In order to check if a module is available on the zen3/zen4 nodes, login to ``kebnekaise-amd.hpc2n.umu.se``. (ThinLinc: ``kebnekaise-amd-tl.hpc2n.umu.se``). 
+    <s>In order to check if a module is available on the zen3/zen4 nodes, login to ``kebnekaise-amd.hpc2n.umu.se``. (ThinLinc: ``kebnekaise-amd-tl.hpc2n.umu.se``). </s>
+
+    The nodes were recently upgraded to Linux Ubuntu 24.04, and at the same time the modules and module versions have been/are being syncronized. 
+
+    This means the modules and module versions will be the same on the Intel Skylake nodes and the AMD Zen3/Zen4 nodes, but also that much of the older software and older versions of software will no longer be available. 
+
+    If you find that you are missing some software, please contact support. Do note that we will not install (too) old versions. 
 
 !!! Hint "Hint"
 
