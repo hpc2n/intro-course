@@ -33,4 +33,4 @@ Time: 09:00-17:00
 
 Location: Online (ZOOM)
 
-Instructors: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N) 
+Instructors: Pedro Ojeda-May (HPC2N), Birgitte Brydsö (HPC2N)
