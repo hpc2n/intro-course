@@ -29,7 +29,8 @@
 
 ??? important "Problems with software?"
 
-    Write to us: support@hpc2n.umu.se. This will create a ticket that will allow us to track the issue.
+    Create a support ticket on SUPR for HPC2N (recommended option). If you are in a hurry, write to us 
+    via email: support@hpc2n.umu.se, to create a ticket that will allow us to track the issue.
     Something to consider when you open a ticket:
 
     * Describe the problem and the versions of the software you used
