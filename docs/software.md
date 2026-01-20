@@ -1,6 +1,6 @@
 # Application examples
 
-### Best practices
+### Good practices
 
 ??? important "Use your project directory instead of the home directory" 
 
