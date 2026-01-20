@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/batch/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>The Batch System - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The Batch System";
+        var mkdocs_page_input_path = "batch.md";
+        var mkdocs_page_url = "/intro-course/batch/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">The Batch System</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#basic__commands">Basic commands</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#job__scripts__and__output">Job scripts and output</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#job__scripts">Job scripts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prepare__the__exercise__environment">Prepare the exercise environment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using__the__different__parts__of__kebnekaise">Using the different parts of Kebnekaise</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requesting__features">Requesting features</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#examples__constraints">Examples, constraints</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#examples__requesting__gpus">Examples, requesting GPUs</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#open__ondemand__desktop">Open OnDemand desktop</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#kebnekaise__desktop">Kebnekaise desktop</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jupyter__matlab__rstudio__vscode">Jupyter, MATLAB, RStudio, VSCode</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#runtime__environment__and__multicore__jobs">Runtime environment and multicore jobs</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The Batch System</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the__batch__system__slurm">The Batch System (SLURM)<a class="headerlink" href="#the__batch__system__slurm" title="Permanent link">&para;</a></h1>
+<div class="admonition objectives">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Get information about what a batch system is and which one is used at HPC2N.</li>
+<li>Learn basic commands for the batch system used at HPC2N. </li>
+<li>How to create a basic batch script. </li>
+<li>Managing your job: submitting, status, cancelling, checking&hellip; </li>
+<li>Learn how to allocate specific parts of Kebnekaise: skylake, zen3/zen4, GPUs&hellip; </li>
+<li>Start a batch job (interactive app) through Open OnDemand desktop. </li>
+</ul>
+</div>
+<ul>
+<li>Large/long/parallel jobs <strong>must</strong> be run through the batch system.</li>
+<li>Kebnekaise is running <a href="http://slurm.schedmd.com/" target="_blank">Slurm</a>. </li>
+<li>Slurm is an Open Source job scheduler, which provides three key functions.<ul>
+<li>Keeps track of available system resources.</li>
+<li>Enforces local system resource usage and job scheduling policies. </li>
+<li>Manages a job queue, distributing work across resources according to policies. </li>
+</ul>
+</li>
+<li>In order to run a batch job, you need to create and submit a SLURM submit file (also called a batch submit file, a batch script, or a job script).</li>
+<li>Starting an interactive session through Open OnDemand also runs a batch job. It starts on a compute node. We will look at Open OnDemand at the end of this section. </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Guides and documentation for the batch system at HPC2N here at: <a href="https://docs.hpc2n.umu.se/documentation/batchsystem/intro/" target="_blank">HPC2N&rsquo;s batch system documentation</a>. </p>
+</div>
+<h2 id="basic__commands">Basic commands<a class="headerlink" href="#basic__commands" title="Permanent link">&para;</a></h2>
+<p>Using a job script is often recommended. </p>
+<ul>
+<li>If you ask for the resources on the command line, you will wait for the program to run before you can use the window again (unless you can send it to the background with &amp;).</li>
+<li>If you use a job script you have an easy record of the commands you used, to reuse or edit for later use.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you submit a job, the system will return the Job ID. You can also get it with <code>squeue --me</code>. See below. </p>
+</div>
+<p>In the following, JOBSCRIPT is the name you have given your job script and JOBID is the job ID for your job, assigned by Slurm. USERNAME is your username. </p>
+<ul>
+<li><strong>Submit job</strong>: <code>sbatch JOBSCRIPT</code> </li>
+<li><strong>Get list of your jobs</strong>: <code>squeue -u USERNAME</code> or <code>squeue --me</code></li>
+<li><strong>Give the Slurm commands on the command line</strong>: <code>srun commands-for-your-job/program</code> </li>
+<li><strong>Check on a specific job</strong>: <code>scontrol show job JOBID</code> </li>
+<li><strong>Delete a specific job</strong>: <code>scancel JOBID</code></li>
+<li><strong>Delete all your own jobs</strong>: <code>scancel -u USERNAME</code></li>
+<li><strong>Request an interactive allocation</strong>: <code>salloc -A PROJECT-ID .......</code> <ul>
+<li>Note that you will still be on the login node when the prompt returns and you MUST preface with <code>srun</code> to run on the allocated resources.</li>
+<li>I.e. <code>srun MYPROGRAM</code></li>
+</ul>
+</li>
+<li><strong>Get more detailed info about jobs</strong>: <br><code>sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize</code><ul>
+<li>More flags etc. can be found with <code>man sacct</code></li>
+<li>The output will be <strong>very</strong> wide. To view in a friendlier format, use <br><code>sacct -l -j JOBID -o jobname,NTasks,nodelist,MaxRSS,MaxVMSize | less -S</code> <ul>
+<li>this makes it sideways scrollable, using the left/right arrow key</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Web url with graphical info about a job: <code>job-usage JOBID</code></li>
+<li>More information: <code>man sbatch</code>, <code>man srun</code>, <code>man ....</code></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Example: done in a terminal</p>
+<p>Submit job with <code>sbatch</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>simple.sh<span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">27774852</span>
+</span></code></pre></div>
+<p>Check status with <code>squeue --me</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>--me
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">         </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">      </span><span class="m">27774852</span><span class="w">  </span>cpu_zen4<span class="w"> </span>simple.s<span class="w"> </span>bbrydsoe<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:00<span class="w">      </span><span class="m">1</span><span class="w"> </span>b-cn1701
+</span></code></pre></div>
+<p>Submit several jobs (here several instances of the same), check on the status</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>simple.sh<span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">27774872</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>simple.sh<span class="w"> </span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">27774873</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>sbatch<span class="w"> </span>simple.sh<span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">27774874</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>squeue<span class="w"> </span>--me
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">            </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">         </span><span class="m">27774873</span><span class="w">  </span>cpu_zen4<span class="w"> </span>simple.s<span class="w"> </span>bbrydsoe<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>b-cn1702
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">         </span><span class="m">27774874</span><span class="w">  </span>cpu_zen4<span class="w"> </span>simple.s<span class="w"> </span>bbrydsoe<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>b-cn1702
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">         </span><span class="m">27774872</span><span class="w">  </span>cpu_zen4<span class="w"> </span>simple.s<span class="w"> </span>bbrydsoe<span class="w">  </span>CG<span class="w">      </span><span class="m">0</span>:04<span class="w">      </span><span class="m">1</span><span class="w"> </span>b-cn1702
+</span></code></pre></div>
+<p>The status &ldquo;R&rdquo; means it is running. &ldquo;CG&rdquo; means completing. When a job is pending it has the state &ldquo;PD&rdquo;. </p>
+<p>In these examples the jobs all ended up on nodes in the partition cpu_zen4. We will soon talk more about different types of nodes. </p>
+</div>
+<h2 id="job__scripts__and__output">Job scripts and output<a class="headerlink" href="#job__scripts__and__output" title="Permanent link">&para;</a></h2>
+<p>The official name for batch scripts in Slurm is Job Submission Files, but here we will use both names interchangeably. If you search the internet, you will find several other names used, including Slurm submit file, batch submit file, batch script, job script. </p>
+<p>A job submission file can contain any of the commands that you would otherwise issue yourself from the command line. It is, for example, possible to both compile and run a program and also to set any necessary environment values (though remember that Slurm exports the environment variables in your shell per default, so you can also just set them all there before submitting the job).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The results from compiling or running your programs can generally be seen after the job has completed, though as Slurm will write to the output file during the run, some results will be available quicker.</p>
+</div>
+<p>Outputs and any errors will per default be placed in the directory you are running from, though this can be changed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This directory should preferrably be placed under your project storage, since your home directory only has 25 GB of space. </p>
+</div>
+<p>The output file from the job run will default be named <code>slurm-JOBID.out</code>. It will contain both output as well as any errors. You can look at the content with <code>vi</code>, <code>nano</code>, <code>emacs</code>, <code>cat</code>, <code>less</code>…</p>
+<p>The exception is if your program creates its own output files, or if you name the output file(s) differently within your jobscript.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use Slurm commands within your job script to split the error and output in separate files, and name them as you want. It is highly recommended to include the environment variable <code>%J</code> (the job ID) in the name, as that is an easy way to get a new name for each time you run the script and thus avoiding the previous output being overwritten.</p>
+<p>Example, using the environment variable <code>%J</code>:</p>
+<ul>
+<li>Error file: <code>#SBATCH --error=job.%J.err</code></li>
+<li>Output file: <code>#SBATCH --output=job.%J.out</code></li>
+</ul>
+</div>
+<h3 id="job__scripts">Job scripts<a class="headerlink" href="#job__scripts" title="Permanent link">&para;</a></h3>
+<p>A job submission file can either be very simple, with most of the job attributes specified on the command line, or it may consist of several Slurm directives, comments and executable statements. A Slurm directive provides a way of specifying job attributes in addition to the command line options.</p>
+<p><strong>Naming</strong>: You can name your script anything, including the suffix. It does not matter. Just name it something that makes sense to you and helps you remember what the script is for. The standard is to name it with a suffix of <code>.sbatch</code> or <code>.sh</code>.</p>
+<p><strong>Simple, serial job script</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># The name of the account you are running in, mandatory.</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">#SBATCH -A hpc2nXXXX-YYY</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Request resources - here for a serial job</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># tasks per core is 1 as default (can be changed with ``-c``)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Request runtime for the job (HHH:MM:SS) where 168 hours is the maximum. Here asking for 15 min. </span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">#SBATCH --time=00:15:00 </span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Clear the environment from any previously loaded modules</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># Load the module environment suitable for the job - here foss/2023b </span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>module<span class="w"> </span>load<span class="w"> </span>foss/2023b
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1"># And finally run the serial jobs </span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>./my_serial_program
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>You have to always include <code>#!/bin/bash</code> at the beginning of the script, since bash is the only supported shell. Some things may work under other shells, but not everything.</li>
+<li>All Slurm directives start with <code>#SBATCH</code>.</li>
+<li>One (or more) <code>#</code> in front of a text line means it is a comment, with the exception of the string <code>#SBATCH</code>. In order to comment out the Slurm directives, you need to put one more <code>#</code> in front of the <code>#SBATCH</code>.</li>
+<li>It is important to use capital letters for <code>#SBATCH</code>. Otherwise the line will be considered a comment, and ignored.</li>
+</ul>
+</div>
+<p>Let us go through the most commonly used arguments:</p>
+<ul>
+<li><strong>-A PROJ-ID</strong>: The project that should be accounted. It is a simple conversion from the SUPR project id. You can also find your project account with the command <code>projinfo</code>. The <strong>PROJ-ID</strong> argument is of the form<ul>
+<li>hpc2nXXXX-YYY (HPC2N local project)</li>
+</ul>
+</li>
+<li><strong>-N</strong>: number of nodes. If this is not given, enough will be allocated to fullfill the requirements of -n and/or -c. A range can be given. If you ask for, say, 1-1, then you will get 1 and only 1 node, no matter what you ask for otherwise. It will also assure that all the processors will be allocated on the same node.</li>
+<li><strong>-n</strong>: number of tasks. </li>
+<li><strong>-c</strong>: cores per task. Request that a specific number of cores be allocated to each task. This can be useful if the job is multi-threaded and requires more than one core per task for optimal performance. The default is one core per task.</li>
+</ul>
+<p><strong>Simple MPI program</strong> </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># The name of the account you are running in, mandatory.</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">#SBATCH -A hpc2nXXXX-YYY</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Request resources - here for eight MPI tasks</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">#SBATCH -n 8</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Request runtime for the job (HHH:MM:SS) where 168 hours is the maximum. Here asking for 15 min. </span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">#SBATCH --time=00:15:00 </span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># Clear the environment from any previously loaded modules</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c1"># Load the module environment suitable for the job - here foss/2023b </span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>module<span class="w"> </span>load<span class="w"> </span>foss/2023b
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c1"># And finally run the job - use srun for MPI jobs, but not for serial jobs </span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>srun<span class="w"> </span>./my_mpi_program
+</span></code></pre></div>
+<h2 id="prepare__the__exercise__environment">Prepare the exercise environment<a class="headerlink" href="#prepare__the__exercise__environment" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not already done so, clone the material from the website <a href="https://github.com/hpc2n/intro-course" target="_blank">https://github.com/hpc2n/intro-course</a>: </p>
+<ol>
+<li>Change to the storage directory you created for yourself under <code>/proj/nobackup/spring-courses/</code>. </li>
+<li>Clone the material: 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hpc2n/intro-course.git
+</span></code></pre></div></li>
+<li>Change to the subdirectory with the exercises:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>intro-course/exercises/simple
+</span></code></pre></div></li>
+</ol>
+<p>You will now find several small programs and batch scripts which are used in this section and the next, &ldquo;Simple examples&rdquo;. </p>
+</div>
+<p>In this section, we are just going to try submitting a few jobs, checking their status, cancelling a job, and looking at the output. </p>
+<div class="admonition note">
+<p class="admonition-title">Preparations</p>
+<ol>
+<li>Load the module <code>foss/2023b</code> (<code>ml foss/2023b</code>) on the regular login node (regular SSH or terminal opened in ThinLinc). This module is available on all nodes. </li>
+<li>Compile the following programs: <code>hello.c</code>, <code>mpi_hello.c</code>, <code>mpi_greeting.c</code>, and <code>mpi_hi.c</code>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>gcc<span class="w"> </span>-o<span class="w"> </span>hello<span class="w"> </span>hello.c
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>mpicc<span class="w"> </span>-o<span class="w"> </span>mpi_hello<span class="w"> </span>mpi_hello.c
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>mpicc<span class="w"> </span>-o<span class="w"> </span>mpi_greeting<span class="w"> </span>mpi_greeting.c
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>mpicc<span class="w"> </span>-o<span class="w"> </span>mpi_hi<span class="w"> </span>mpi_hi.c
+</span></code></pre></div></li>
+<li>If you compiled and named the executables as above, you should be able to submit the following batch scripts directly: <code>simple.sh</code>, <code>mpi_greeting.sh</code>, <code>mpi_hello.sh</code>, <code>mpi_hi.sh</code>, <code>multiple-parallel-sequential.sh</code>, <code>multiple-parallel.sh</code>, or <code>multiple-parallel-simultaneous.sh</code>. </li>
+</ol>
+</div>
+<h3 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h3>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise: sbatch and squeue</p>
+<p>Submit (<code>sbatch</code>) one of the batch scripts listed in 3. under preparations. </p>
+<p>Check with <code>squeue --me</code> if it is running, pending, or completing. </p>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise: sbatch and scontrol show job</p>
+<p>Submit a few instances of <code>multiple-parallel.sh</code> and <code>multiple-parallel-sequential.sh</code> (so they do not finish running before you have time to check on them).</p>
+<p>Do <code>scontrol show job JOBID</code> on one or more of the job IDs. You should be able to see node assigned (unless the job has not yet had one allocated), expected runtime, etc. If the job is running, you can see how long it has run. You will also get paths to submit directory etc. </p>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise: sbatch and scancel</p>
+<p>Submit a few instances of <code>multiple-parallel.sh</code> and <code>multiple-parallel-sequential.sh</code> (so they do not finish running before you have time to check on them).</p>
+<p>Do <code>squeue --me</code> and see the jobs listed. Pick one and do <code>scancel JOBID</code> on it. Do <code>squeue --me</code> again to see it is no longer there. </p>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise: check output, change output files</p>
+<ol>
+<li>
+<p>Use <code>nano</code> to open one of the output files <code>slurm-JOBID.out</code> and looks at the content. </p>
+</li>
+<li>
+<p>Try adding <code>#SBATCH --error=job.%J.err</code> and <code>#SBATCH --output=job.%J.out</code> to one of the batch scripts (you can edit it with <code>nano</code>). Submit the batch script again. See that the expected files get created. </p>
+</li>
+</ol>
+</div>
+<h2 id="using__the__different__parts__of__kebnekaise">Using the different parts of Kebnekaise<a class="headerlink" href="#using__the__different__parts__of__kebnekaise" title="Permanent link">&para;</a></h2>
+<p>As mentioned under the introduction, Kebnekaise is a very heterogeneous system, comprised of several different types of CPUs and GPUs. The batch system reflects these several different types of resources. </p>
+<p>At the top we have partitions, which are similar to queues. Each partition is made up of a specific set of nodes. At HPC2N we have three classes of partitions, one for CPU-only nodes, one for GPU nodes and one for large memory nodes. Each node type also has a set of features that can be used to select (constrain) which node(s) the job should run on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The three types of nodes also have corresponding resources one must apply for in SUPR to be able to use them.</p>
+</div>
+<p>While Kebnekaise has multiple partitions, one for each major type of resource, there is only a single partition, <code>batch</code>, that users can submit jobs to. The system then figures out which partition(s) the job should be sent to, based on the requested features (constraints). </p>
+<div class="admonition note">
+<p class="admonition-title">Node overview</p>
+<p>The &ldquo;Type&rdquo; can be used if you need a specific type of node. More about that later. </p>
+<p><strong>CPU-only nodes</strong></p>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>Memory/core</th>
+<th>number nodes</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 x 14 core Intel skylake</td>
+<td>6785 MB</td>
+<td>52</td>
+<td>skylake (intel_cpu)</td>
+</tr>
+<tr>
+<td>2 x 64 core AMD zen3</td>
+<td>8020 MB</td>
+<td>1</td>
+<td>zen3 (amd_cpu)</td>
+</tr>
+<tr>
+<td>2 x 128 core AMD zen4</td>
+<td>2516 MB</td>
+<td>8</td>
+<td>zen4 (amd_cpu)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GPU enabled nodes</strong></p>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>Memory/core</th>
+<th>GPU card</th>
+<th>number nodes</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 x 14 core Intel skylake</td>
+<td>6785 MB</td>
+<td>2 x Nvidia V100</td>
+<td>10</td>
+<td>v100</td>
+</tr>
+<tr>
+<td>2 x 24 core AMD zen3</td>
+<td>10600 MB</td>
+<td>2 x Nvidia A100</td>
+<td>2</td>
+<td>a100</td>
+</tr>
+<tr>
+<td>2 x 24 core AMD zen3</td>
+<td>10600 MB</td>
+<td>2 x AMD MI100</td>
+<td>1</td>
+<td>mi100</td>
+</tr>
+<tr>
+<td>2 x 24 core AMD zen4</td>
+<td>6630 MB</td>
+<td>2 x Nvidia A6000</td>
+<td>1</td>
+<td>a6000</td>
+</tr>
+<tr>
+<td>2 x 24 core AMD zen4</td>
+<td>6630 MB</td>
+<td>2 x Nvidia L40s</td>
+<td>10</td>
+<td>l40s</td>
+</tr>
+<tr>
+<td>2 x 48 core AMD zen4</td>
+<td>6630 MB</td>
+<td>4 x Nvidia H100 SXM5</td>
+<td>2</td>
+<td>h100</td>
+</tr>
+<tr>
+<td>2 x 32 core AMD zen4</td>
+<td>11968 MB</td>
+<td>6 x Nvidia L40s</td>
+<td>2</td>
+<td>l40s</td>
+</tr>
+<tr>
+<td>2 x 32 core AMD zen4</td>
+<td>11968 MB</td>
+<td>8 x Nvidia A40</td>
+<td>2</td>
+<td>a40</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Large memory nodes</strong></p>
+<table>
+<thead>
+<tr>
+<th>CPU</th>
+<th>Memory/core</th>
+<th>number nodes</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 x 18 core Intel broadwell</td>
+<td>41666 MB</td>
+<td>8</td>
+<td>largemem</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="requesting__features">Requesting features<a class="headerlink" href="#requesting__features" title="Permanent link">&para;</a></h3>
+<p>To make it possible to target nodes in more detail there are a couple of features defined on each group of nodes. To select a feature one can use the <code>-C</code> option to <code>sbatch</code> or <code>salloc</code>. This sets <em>constraints</em> on the job.</p>
+<p>There are several reasons why one might want to do that, including for benchmarks, to be able to replicate results (in some cases), because specific modules are only available for certain architectures, etc. </p>
+<p>To constrain a job to a certain feature, use </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">#SBATCH -C Type</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Features can be combined using “and” (<code>&amp;</code>) or “or” (<code>|</code>). They should be wrapped in <code>'</code>&rsquo;s.</p>
+<p>Example: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">#SBATCH -C &#39;zen3|zen4&#39;</span>
+</span></code></pre></div>
+</div>
+<p>List of constraints: </p>
+<div class="admonition note">
+<p class="admonition-title">For selecting type of CPU</p>
+<p>Type is:</p>
+<ul>
+<li>intel_cpu</li>
+<li>broadwell</li>
+<li>skylake</li>
+<li>amd_cpu</li>
+<li>zen3</li>
+<li>zen4</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">For selecting type of GPU</p>
+<p>Type is:</p>
+<ul>
+<li>v100</li>
+<li>a40</li>
+<li>a6000</li>
+<li>a100</li>
+<li>l40s</li>
+<li>h100</li>
+<li>mi100</li>
+</ul>
+</div>
+<p>For GPUs, the above GPU list of constraints can be used either as a specifier to <code>--gpus=type:number</code> or as a constraint together with an unspecified gpu request <code>--gpus=number</code> or <code>gpus-per-node=number</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For some MPI jobs, <code>mpirun</code> may fail on some GPU nodes if you specify GPUs with <br><code>--gpus=type:number</code> instead of using <code>--gpus-per-node=number</code> and a constraint for type of GPU. </p>
+<p>The problem should not appear if you use <code>srun</code> instead of <code>mpirun</code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">For selecting GPUs with certain features</p>
+<p>Type is: </p>
+<ul>
+<li>nvidia_gpu (Any Nvidia GPU)</li>
+<li>amd_gpu (Any AMD GPU)</li>
+<li>GPU_SP (GPU with single precision capability)</li>
+<li>GPU_DP (GPU with double precision capability)</li>
+<li>GPU_AI (GPU with AI features, like half precisions and lower)</li>
+<li>GPU_ML (GPU with ML features, like half precisions and lower)</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">For selecting large memory nodes</p>
+<p>Type is: </p>
+<ul>
+<li>largemem</li>
+</ul>
+</div>
+<div class="admonition important">
+<p class="admonition-title">More memory</p>
+<p>Aside from using the large memory nodes, you can also ask for more cores than you need (with <code>-c #cores</code> / <code>--cores-per-task #cores</code>) and then only use some of them for running on, with the rest providing extra memory. </p>
+<p>Example: you need 4 cores but twice as much memory as they have. You ask for 8 cores and say 2 cores-per-task (1 is default): </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>...
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1">#SBATCH -n 8</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">#SBATCH -c 2</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>...<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<h4 id="examples__constraints">Examples, constraints<a class="headerlink" href="#examples__constraints" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Only nodes with Zen4</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">#SBATCH -C zen4</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nodes with a combination of features: a Zen4 CPU and a GPU with AI features</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">#SBATCH -C &#39;zen4&amp;GPU_AI&#39;</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nodes with either a Zen3 CPU or a Zen4 CPU</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">#SBATCH -C &#39;zen3|zen4&#39;</span>
+</span></code></pre></div>
+</div>
+<h4 id="examples__requesting__gpus">Examples, requesting GPUs<a class="headerlink" href="#examples__requesting__gpus" title="Permanent link">&para;</a></h4>
+<p>To use GPU resources one has to explicitly ask for one or more GPUs. Requests for GPUs can be done either in total for the job or per node of the job.</p>
+<div class="admonition note">
+<p class="admonition-title">Ask for one GPU of any kind</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">#SBATCH --gpus=1</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Another way to ask for one GPU of any kind</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">#SBATCH --gpus-per-node=1</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Asking for a specific type of GPU</p>
+<p>As mentioned before, for GPUs, constraints can be used either as a specifier to </p>
+<p><code>--gpus=type:number</code> </p>
+<p>or as a constraint together with an unspecified gpu request </p>
+<p><code>--gpus=number</code></p>
+<p>or </p>
+<p><code>--gpus-per-node=number</code></p>
+<p>If doing one of the latter two, you need to add the constraint </p>
+<p><code>#SBATCH -C type</code></p>
+<p>In the batch job you would write something like this: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">#SBATCH --gpus=number</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1">#SBATCH -C type</span>
+</span></code></pre></div>
+<p>where type is, as mentioned:  </p>
+<ul>
+<li>v100</li>
+<li>a40</li>
+<li>a6000</li>
+<li>a100</li>
+<li>l40s</li>
+<li>h100</li>
+<li>mi100</li>
+</ul>
+</div>
+<p><strong>Simple GPU Job - V100</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1">#SBATCH -A hpc2nXXXX-YYY</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Expected time for job to complete </span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1">#SBATCH --time=00:10:00</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1"># Number of GPU cards needed. Here asking for 2 V100 cards</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1">#SBATCH --gpus=2</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1">#SBATCH -C v100 </span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1"># Clear the environment from any previously loaded modules</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1"># Load modules needed for your program - here foss/2023b and CUDA/12.9.1 </span>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>ml<span class="w"> </span>foss/2023b
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>./my-gpu-program
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li>The course project has the following project ID: hpc2n2026-002</li>
+<li>In order to use it in a batch job, add this to the batch script: <code>#SBATCH -A hpc2n2026-002</code> </li>
+<li>We have storage linked to the project: <strong>spring-courses</strong>. <ul>
+<li>You find it in <code>/proj/nobackup/spring-courses</code>. </li>
+<li>Remember to create your own directory under it if you have not already done so. </li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="open__ondemand__desktop">Open OnDemand desktop<a class="headerlink" href="#open__ondemand__desktop" title="Permanent link">&para;</a></h2>
+<p>Open OnDemand is a web service that allows HPC users to schedule jobs, run notebooks and work interactively on a remote cluster from any device that supports a modern browser.</p>
+<h3 id="kebnekaise__desktop">Kebnekaise desktop<a class="headerlink" href="#kebnekaise__desktop" title="Permanent link">&para;</a></h3>
+<p>This is the first submenu point, under “Interactive Apps” -&gt; “Desktops”. </p>
+<p>This is used to start a desktop on one or more of the compute nodes after you have been allocated resources. This means you will be able to work as if on that node. That means that anything you run from the desktop immediately runs on the allocated resources, without you having to start (another) job.</p>
+<p>Very useful if you want to work interactively with one of the installed pieces of software or your own code.</p>
+<p>In addition to starting programs from the terminal, there are various applications available directly from the menu, like Libreoffice and Firefox. </p>
+<p>When you choose this, there are some options: </p>
+<ul>
+<li><strong>Desktop Environment</strong>: Here you can choose either “mate” (resembles Gnome 2/classic) or “xfce” (lightweight and fast). Personal preferrence.</li>
+<li><strong>Compute Project</strong>: Dropdown menu where you can choose (one of) your compute projects to launch with.</li>
+<li><strong>Number of hours</strong>: How long you want the job available for. Here you can choose 1-12 hours, but beware that it is a bad idea to pick longer than you need. Not only will it take longer to start, but it will also use up your allocation even if you are not actively doing anything on the desktop. Pick as long as you need to do your job.</li>
+<li><strong>Number of cores</strong>: How many cores you want access to. You can choose 1-28 and they each have 4GB memory. This is only a valid field to choose if you pick “any” or “Large memory” for the “Node type” selection.</li>
+<li><strong>Node type</strong>: Here you can choose “any”, “any GPU”, or “Large memory”. If you pick “any GPU” you will not pick anything for “Number of cores”.</li>
+</ul>
+<p><img alt="open-ondemand-desktop" src="../images/open-ondemand-desktop.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Exercise: start an instance of the &ldquo;Kebnekaise desktop&rdquo; and play with it</p>
+<ul>
+<li>Pick &ldquo;compute project&rdquo; as <code>hpc2n2025-002</code></li>
+<li>Pick &ldquo;number of hours&rdquo; to <code>1</code> so it starts fast. </li>
+<li>Pick &ldquo;Number of cores&rdquo; to something between <code>1-4</code></li>
+<li>Pick &ldquo;any&rdquo; for &ldquo;Node type&rdquo; </li>
+<li>Click &ldquo;Launch&rdquo; and wait for it to launch. It will say something like &ldquo;Your session is currently starting&hellip; Please be patient as the process can take a few minutes.&rdquo; What happens here is that it is sitting in the queue and waiting for resources to be available and allocated. </li>
+<li>When resources are allocated, it will look something like this, where it gives the host node: 
+<img alt="open-ondemand-desktop-started" src="../images/open-ondemand-desktop-started.png" /></li>
+<li>You can now go to the desktop on the compute node with &ldquo;Launch Kebnekaise desktop&rdquo;. </li>
+<li>Look around, see that you can use a filetree, open terminals (do so and see the cores are on the node that was shown as host), etc. <ul>
+<li>A terminal is opened from &ldquo;Applications&rdquo; -&gt; &ldquo;System Tools&rdquo; -&gt; &ldquo;MATE terminal&rdquo; (or Xfce if you picked that). </li>
+</ul>
+</li>
+<li>If you asked for more than one core, you can do <code>srun /bin/hostname</code> in the terminal and see a list of nodes. </li>
+<li>You can go to the <code>/proj/nobackup/spring-courses/&lt;your-dir&gt;/intro-course/exercises</code> directory and into the <code>simple</code> directory. Try run something directly on the command line - remember to load modules and compile if needed. <ul>
+<li>Example: run the small Python program <code>mmmult.py</code><ul>
+<li>Load some modules: <code>module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07</code></li>
+<li>Run it: <code>python mmmult.py</code> (in directory &ldquo;simple&rdquo;)</li>
+</ul>
+</li>
+<li>Example: Python and graphics <ul>
+<li>Load some modules: <code>module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07 matplotlib/3.7.2 Tkinter/3.11.3</code></li>
+<li>Start Python and plot something with the dataset &ldquo;scottish_hills.csv&rdquo; (in directory &ldquo;simple&rdquo;)
+<div class="language-py highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;TkAgg&#39;</span><span class="p">)</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;scottish_hills.csv&quot;</span><span class="p">)</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="n">x</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">Height</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">y</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">Latitude</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+</span></code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="jupyter__matlab__rstudio__vscode">Jupyter, MATLAB, RStudio, VSCode<a class="headerlink" href="#jupyter__matlab__rstudio__vscode" title="Permanent link">&para;</a></h3>
+<p>Aside from starting a Kebnekaise desktop and running programs from there, you can also start some specific applications, namely </p>
+<ul>
+<li>Jupyter notebook</li>
+<li>MATLAB</li>
+<li>RStudio</li>
+<li>VSCode</li>
+</ul>
+<p>They are started in much the same way as the Kebnekaise desktop, with the exception that you can generally pick a &ldquo;Runtime environment&rdquo; and/or a &ldquo;Working Directory&rdquo; to start in. The latter is picked by clicking and choosing in the filebrowser that opens. </p>
+<p>There are more information here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#open__ondemand" target="_blank">Open OnDemand desktop in HPC2N&rsquo;s documentation</a>. </p>
+<h4 id="runtime__environment__and__multicore__jobs">Runtime environment and multicore jobs<a class="headerlink" href="#runtime__environment__and__multicore__jobs" title="Permanent link">&para;</a></h4>
+<p>This is used if you have created your own environment you want to run in, for instance by adding extra and/or own installed Python modules or R packages. </p>
+<ul>
+<li>In order to use Jupyter with extra modules, you can follow this documentation I have made here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#example__-__jupyter__with__extra__modules" target="_blank">Jupyter with extra modules</a>. </li>
+<li>Using R with your own runtime environment I have described here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#example__-__running__on__the__multicore__allocation" target="_blank">R with own runtime environment</a>.</li>
+<li>Running MATLAB as a multicore job is described here: <a href="https://docs.hpc2n.umu.se/tutorials/connections/#example__-__running__multicore__job" target="_blank">MATLAB with multicores</a></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Open OnDemand vs. regular batch script</p>
+<ul>
+<li>Open OnDemand is good for <ul>
+<li>shorter (&lt;12 hours) jobs that requires more interactivity</li>
+<li>interactivity in general</li>
+<li>graphics</li>
+</ul>
+</li>
+<li>Batch scripts are better for<ul>
+<li>longer jobs</li>
+<li>very parallel jobs (more than 28 cores)</li>
+<li>multi-step jobs / workflows</li>
+<li>any job that can run on its own without input</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition keypoints">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>To submit a job, you first need to create a batch submit script, which you then submit with <code>sbatch SUBMIT-SCRIPT</code>. </li>
+<li>You can get a list of your running and pending jobs with <code>squeue --me</code>. </li>
+<li>Kebnekaise has many different nodes, both CPU and GPU. It is possible to constrain the the job to run only on specific types of nodes. </li>
+<li>If your job is an MPI job, you need to use <code>srun</code> (or <code>mpirun</code>) in front of your executable in the batch script (unless you use software which handles the parallelization itself). </li>
+<li>The Open OnDemand (OOD) desktop is also using allocated resources and anything you run there is run directly on the allocated compute nodes</li>
+<li>OOD is good for interactivity and a simple way to allocate resources </li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../compilers/" class="btn btn-neutral float-left" title="Compiling"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../simple/" class="btn btn-neutral float-right" title="Simple examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../compilers/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../simple/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

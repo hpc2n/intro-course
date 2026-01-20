@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/filesystem/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>The File System - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The File System";
+        var mkdocs_page_input_path = "filesystem.md";
+        var mkdocs_page_url = "/intro-course/filesystem/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">The File System</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#home">$HOME</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project__storage">Project storage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using__project__storage">Using project storage</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#ood">OOD</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quota">Quota</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scratch">/scratch</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The File System</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the__file__system">The File System<a class="headerlink" href="#the__file__system" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Learn about the file system on Kebnekaise</li>
+<li>Find the project storage for this course and create your own subdirectory (terminal through SSH or ThinLinc) </li>
+<li>Try also to create a directory through Open OnDemand desktop with the option &ldquo;Files&rdquo;</li>
+</ul>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Project storage</strong></th>
+<th><strong>$HOME</strong></th>
+<th><strong>/scratch</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recommended for <br>batch jobs</td>
+<td>Yes</td>
+<td>No (size)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Backed up</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Accessible by <br>batch system</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes (node only)</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>High</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Default readability</td>
+<td>Group only</td>
+<td>Owner</td>
+<td>Owner</td>
+</tr>
+<tr>
+<td>Permissions <br>management</td>
+<td>chmod, chgrp, ACL</td>
+<td>chmod, chgrp, ACL</td>
+<td>N/A for batch jobs</td>
+</tr>
+<tr>
+<td>Notes</td>
+<td>Storage your group get <br>allocated through the <br>storage projects</td>
+<td>Your home-directory</td>
+<td>Per node</td>
+</tr>
+</tbody>
+</table>
+<h2 id="home">$HOME<a class="headerlink" href="#home" title="Permanent link">&para;</a></h2>
+<p>This is your home-directory (pointed to by the <code>$HOME</code> variable). It has a quota limit of 25GB per default. Your home directory is backed up regularly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the home directory is quite small, it should not be used for most production jobs. These should instead be run from project storage directories.</p>
+</div>
+<p>To find the path to your home directory, either run <code>pwd</code> just after logging in, or do the following:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>b-an01<span class="w"> </span><span class="o">[</span>~/store<span class="o">]</span>$<span class="w"> </span><span class="nb">cd</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>b-an01<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">pwd</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>/home/u/username
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>b-an01<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$
+</span></code></pre></div>
+<h2 id="project__storage">Project storage<a class="headerlink" href="#project__storage" title="Permanent link">&para;</a></h2>
+<p>Project storage is where a project’s members have the majority of their storage. It is applied for through SUPR, as a storage project. While storage projects needs to be applied for separately, they are usually linked to a compute project.</p>
+<p>This is where you should keep your data and run your batch jobs from. It offers high performance when accessed from the nodes making it suitable for storage that are to be accessed from parallel jobs, and your home directory (usually) has too little space.</p>
+<p>Project storage is located below <code>/proj/nobackup/</code> in the directory name selected during the creation of the proposal.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The project storage is not intended for permanent storage and there is NO BACKUP of <code>/proj/nobackup</code>.</p>
+</div>
+<h3 id="using__project__storage">Using project storage<a class="headerlink" href="#using__project__storage" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If you have a storage project, you should use that to run your jobs.</li>
+<li>You (your PI) will either choose a directory name when you/they apply for the storage project or get the project id as default name.</li>
+<li>The location of the storage project in the file system is <code>/proj/nobackup/NAME-YOU-PICKED</code></li>
+<li>Since the storage project is shared between all users of the project, you should go to that directory and create a subdirectory for your things, which you will then be using.</li>
+<li>For this course the storage is in 
+  <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/proj/nobackup/spring-courses
+</span></code></pre></div></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Exercise - create a directory</p>
+<p>This exercise is done <strong>on the terminal</strong></p>
+<ul>
+<li>Go to the course project storage and create a subdirectory for yourself. </li>
+</ul>
+<p><strong>Note</strong>: Remember, if you are logged in with ThinLinc, you get a terminal like this: go to the menu at the top. Click “Applications” → “System Tools” → “MATE Terminal”.</p>
+</div>
+<p>Now is a good time to prepare the course material and download the exercises, if you have not already done so. The easiest way to do so is by cloning the whole intro-course repository from GitHub. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise</p>
+<ol>
+<li>Go to the subdirectory you created under <code>/proj/nobackup/spring-courses</code></li>
+<li>Clone the repository for the course: <code>git clone https://github.com/hpc2n/intro-course.git</code></li>
+</ol>
+<p>You will get a directory called <code>intro-course</code>. Below it you will find a directory called &ldquo;exercises&rdquo; where the majority of the exercises for the batch system section is located.</p>
+</div>
+<h4 id="ood">OOD<a class="headerlink" href="#ood" title="Permanent link">&para;</a></h4>
+<p>Now let us try creating a sub directory to your directory <code>/proj/nobackup/spring-courses/&lt;your-dir&gt;</code>, but using Open OnDemand. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise - use OOD to create a sub directory</p>
+<ol>
+<li>Go to the browser window where you have logged in to Open OnDemand desktop. (<a href="../login/#hpc2n__open__ondemand__desktop" target="_blank">Help here if you are not logged in</a>.</li>
+<li>Click &ldquo;Files&rdquo; in the top menu 
+<img alt="filesystem-OOD-spring" src="../images/filesystem-OOD-spring.png" style="width: 500px" /> </li>
+<li>Pick the <code>/proj/nobackup/spring-courses</code> directory and change to your directory under it (for me, <code>bbrydsoe</code>)<br>
+<img alt="filesystem-OOD-projectdir-bbrydsoe-spring" src="../images/filesystem-OOD-projectdir-bbrydsoe-spring.png" style="width: 500px" /><br> 
+You should have a subdirectory there called <code>intro-course</code> from cloning the material with the exercises (I had not yet done so when screencapping this). Do not enter that now. </li>
+<li>Create a new directory under <code>/proj/nobackup/spring-courses/&lt;your-dir&gt;</code> and call it whatever you want to since it is just a test.<br> 
+<img alt="filesystem-OOD-projectdir-bbrydsoe-newdir2" src="../images/filesystem-OOD-projectdir-bbrydsoe-newdir2.png" style="width: 500px" /></li>
+</ol>
+<p>You can also access the file tree from the interactive session &ldquo;Kebnekaise desktop&rdquo;, when you have started that. We will do this later. </p>
+</div>
+<h3 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">&para;</a></h3>
+<p>The size of the storage depends on the allocation. There are small, medium, and large storage projects, each with their own requirements. You can read about this on SUPR. The quota limits are specific for the project as such, there are no user level quotas on that space.</p>
+<h2 id="scratch">/scratch<a class="headerlink" href="#scratch" title="Permanent link">&para;</a></h2>
+<p>Our recommendation is that you use the project storage instead of <code>/scratch</code> when working on Compute nodes or Login nodes.</p>
+<p>On the computers at HPC2N there is a directory called <code>/scratch</code>. It is a small local area split between the users using the node and it can be used for saving (temporary) files you create or need during your computations. Please do not save files in <code>/scratch</code> you don’t need when not running jobs on the machine, and please make sure your job removes any temporary files it creates.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When anybody need more space than available on <code>/scratch</code>, we will remove the oldest/largest files without any notices.</p>
+</div>
+<p>More information about the file system, as well as archiving and compressing files, at the <a href="https://docs.hpc2n.umu.se/documentation/filesystems/" target="_blank">HPC2N documentation about File Systems</a>. </p>
+<div class="admonition keypoints">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>When you login to Kebnekaise, you will end up in your home-directory.</li>
+<li>Your home-directory is in <code>/home/u/username</code> and is pointed to by the environment variable <code>$HOME</code>.</li>
+<li>Your project storage is located in <code>/proj/nobackup/NAME-YOU-PICKED</code><ul>
+<li>For this course it is <code>/proj/nobackup/spring-courses</code>.</li>
+<li>The project storage is NOT backed up.</li>
+</ul>
+</li>
+<li>You can also access the file tree from the Open OnDemand desktop. </li>
+<li>You should run the batch jobs from your project storage. </li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../login/" class="btn btn-neutral float-left" title="Logging in"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../modules/" class="btn btn-neutral float-right" title="The Module System">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../login/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../modules/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

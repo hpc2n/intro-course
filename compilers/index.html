@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/compilers/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Compiling - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Compiling";
+        var mkdocs_page_input_path = "compilers.md";
+        var mkdocs_page_url = "/intro-course/compilers/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Compiling</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installed__compilers">Installed compilers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#loading__compilers">Loading compilers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compiling">Compiling</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#compiling__with__gcc">Compiling with GCC</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#flags">Flags</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compiling__with__intel">Compiling with Intel</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#flags_1">Flags</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#linking">Linking</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#build__environment">Build environment</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Compiling</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="compiling__and__linking__with__libraries">Compiling and Linking with Libraries<a class="headerlink" href="#compiling__and__linking__with__libraries" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>Learn about the compilers at HPC2N<ul>
+<li>How to load the compiler toolchains</li>
+<li>How to use the compilers</li>
+<li>What are the popular flags</li>
+</ul>
+</li>
+<li>How to link with libraries. </li>
+</ul>
+</div>
+<h2 id="installed__compilers">Installed compilers<a class="headerlink" href="#installed__compilers" title="Permanent link">&para;</a></h2>
+<p>There are compilers available for Fortran 77, Fortran 90, Fortran 95, C, and C++. The compilers can produce both general-purpose code and architecture-specific optimized code to improve performance (loop-level optimizations, inter-procedural analysis and cache optimizations).</p>
+<h2 id="loading__compilers">Loading compilers<a class="headerlink" href="#loading__compilers" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to load a compiler suite (and possibly libraries, depending on what you need) before you can compile and link. </p>
+</div>
+<p>Use <code>ml av</code> to get a list of available <code>compiler toolchains</code> as mentioned in the <a href="../modules#compiler__toolchains">modules - compiler toolchains</a> section. </p>
+<p>You load a compiler toolchain the same way you load any other module. They are always available directly, without the need to load prerequisites first. </p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code-along! Open a terminal to work in if you are using ThinLinc instead of a regular SSH conenction. </p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example: Loading foss/2023b</p>
+<p>This compiler toolchain contains: <code>GCC/13.2.0</code>, <code>BLAS</code> (with <code>LAPACK</code>), <code>ScaLAPACK</code>, and <code>FFTW</code>. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>foss/2023b
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Currently<span class="w"> </span>Loaded<span class="w"> </span>Modules:
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>snicenvironment<span class="w"> </span><span class="o">(</span>S<span class="o">)</span><span class="w">   </span><span class="m">7</span><span class="o">)</span><span class="w"> </span>numactl/2.0.16<span class="w">     </span><span class="m">13</span><span class="o">)</span><span class="w"> </span>libevent/2.1.12<span class="w">  </span><span class="m">19</span><span class="o">)</span><span class="w"> </span>FlexiBLAS/3.3.1
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>systemdefault<span class="w">   </span><span class="o">(</span>S<span class="o">)</span><span class="w">   </span><span class="m">8</span><span class="o">)</span><span class="w"> </span>XZ/5.4.4<span class="w">           </span><span class="m">14</span><span class="o">)</span><span class="w"> </span>UCX/1.15.0<span class="w">       </span><span class="m">20</span><span class="o">)</span><span class="w"> </span>FFTW/3.3.10
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>GCCcore/13.2.0<span class="w">        </span><span class="m">9</span><span class="o">)</span><span class="w"> </span>libxml2/2.11.5<span class="w">     </span><span class="m">15</span><span class="o">)</span><span class="w"> </span>PMIx/4.2.6<span class="w">       </span><span class="m">21</span><span class="o">)</span><span class="w"> </span>FFTW.MPI/3.3.10
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>zlib/1.2.13<span class="w">          </span><span class="m">10</span><span class="o">)</span><span class="w"> </span>libpciaccess/0.17<span class="w">  </span><span class="m">16</span><span class="o">)</span><span class="w"> </span>UCC/1.2.0<span class="w">        </span><span class="m">22</span><span class="o">)</span><span class="w"> </span>ScaLAPACK/2.2.0-fb
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="m">5</span><span class="o">)</span><span class="w"> </span>binutils/2.40<span class="w">        </span><span class="m">11</span><span class="o">)</span><span class="w"> </span>hwloc/2.9.2<span class="w">        </span><span class="m">17</span><span class="o">)</span><span class="w"> </span>OpenMPI/4.1.6<span class="w">    </span><span class="m">23</span><span class="o">)</span><span class="w"> </span>foss/2023b
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="m">6</span><span class="o">)</span><span class="w"> </span>GCC/13.2.0<span class="w">           </span><span class="m">12</span><span class="o">)</span><span class="w"> </span>OpenSSL/3<span class="w">        </span><span class="m">18</span><span class="o">)</span><span class="w"> </span>OpenBLAS/0.3.24
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>Where:
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">   </span>S:<span class="w">  </span>Module<span class="w"> </span>is<span class="w"> </span>Sticky,<span class="w"> </span>requires<span class="w"> </span>--force<span class="w"> </span>to<span class="w"> </span>unload<span class="w"> </span>or<span class="w"> </span>purge
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<h2 id="compiling">Compiling<a class="headerlink" href="#compiling" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>OpenMP</strong>: All compilers has this included, so it is enough to load the module for a specific compiler toolchain and then add the appropriate flag.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you do not name the executable (with the flag <code>-o SOMENAME</code>, it will be named <code>a.out</code> as default. </p>
+<p>This also means that the next time you compile something, if you also do not name that executable, it will overwrite the previous <code>a.out</code> file. </p>
+</div>
+<h3 id="compiling__with__gcc">Compiling with GCC<a class="headerlink" href="#compiling__with__gcc" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Language</strong></th>
+<th><strong>Compiler name</strong></th>
+<th><strong>MPI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fortran77</td>
+<td>gfortran</td>
+<td>mpif77</td>
+</tr>
+<tr>
+<td>Fortran90</td>
+<td>gfortran</td>
+<td>mpif90</td>
+</tr>
+<tr>
+<td>Fortran95</td>
+<td>gfortran</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>C</td>
+<td>gcc</td>
+<td>mpicc</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>g++</td>
+<td>mpiCC</td>
+</tr>
+</tbody>
+</table>
+<p>In order to access the MPI compilers, load <a href="modules#compiler__toolchains">a compiler toolchain which contains an MPI library</a>.  </p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code-along!</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example: compiling a C program</p>
+<p>You can find the file <code>hello.c</code> in the exercises directory, in the subdirectory &ldquo;simple&rdquo;. Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/hello.c" target="_blank">hello.c</a>. </p>
+<p>In this example we compile the C program <code>hello.c</code> and name the output (the executable) <code>hello</code>. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>gcc<span class="w"> </span>hello.c<span class="w"> </span>-o<span class="w"> </span>hello<span class="w"> </span>
+</span></code></pre></div>
+<p>You can run the executable with <code>./hello</code></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example: compiling an MPI C program</p>
+<p>You can find the file <code>mpi_hello.c</code> in the exercises directory, in the subdirectory &ldquo;simple&rdquo;. Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/mpi_hello.c" target="_blank">mpi_hello.c</a>. </p>
+<p>In this example we compile the MPI C program <code>mpi_hello.c</code> and name the output (the executable) <code>mpi_hello</code>. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>mpicc<span class="w"> </span>mpi_hello.c<span class="w"> </span>-o<span class="w"> </span>mpi_hello<span class="w"> </span>
+</span></code></pre></div>
+<p>You then run with <code>`mpirun mpi_hello</code></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you later have loaded a different compiler than the one your program was compiled with, you should recompile your program before running it. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercise</p>
+<p>Try loading <code>foss/2023b</code> and compiling <code>mpi_hello.c</code>, then unload the module and instead load the module <code>intel/2023b</code> and see what happens if you try to run with <code>mpirun mpi_hello</code>. </p>
+</div>
+<h4 id="flags">Flags<a class="headerlink" href="#flags" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>List of commonly used flags:</p>
+<ul>
+<li><strong>-o file</strong> Place output in file ‘file’.</li>
+<li><strong>-c</strong> Compile or assemble the source files, but do not link.</li>
+<li><strong>-fopenmp</strong> Enable handling of the OpenMP directives.</li>
+<li><strong>-g</strong> Produce debugging information in the operating systems native format.</li>
+<li><strong>-O</strong> or <strong>-O1</strong> Optimize. The compiler tried to reduce code size and execution time.</li>
+<li><strong>-O2</strong> Optimize even more. GCC performs nearly all supported optimizations that do not involve a space-speed tradeoff.</li>
+<li><strong>-O3</strong> Optimize even more. The compiler will also do loop unrolling and function inlining. RECOMMENDED</li>
+<li><strong>-O0</strong> Do not optimize. This is the default.</li>
+<li><strong>-Os</strong> Optimize for size.</li>
+<li><strong>-Ofast</strong> Disregard strict standards compliance. -Ofast enables all -O3 optimizations. It also enables optimizations that are not valid for all standard-compliant programs. It turns on -ffast-math and the Fortran-specific -fno-protect-parens and -fstack-arrays.</li>
+<li><strong>-ffast-math</strong> Sets the options <strong>-fno-math-errno</strong>, <strong>-funsafe-math-optimizations</strong>, <strong>-ffinite-math-only</strong>, <strong>-fno-rounding-math</strong>, <strong>-fno-signaling-nans</strong> and <strong>-fcx-limited-range</strong>.</li>
+<li><strong>-l library</strong> Search the library named ‘library’ when linking.</li>
+</ul>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code-along!</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example: compiling an OpenMP C program</p>
+<p>You can find the file <code>omp_hello.c</code> in the exercises directory, in the subdirectory &ldquo;simple&rdquo;. Or you can download it here: <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/simple/omp_hello.c" target="_blank">omp_hello.c</a>. </p>
+<p>In this example we compile the OpenMP C program <code>omp_hello.c</code> and name the output (executable) <code>omp_hello</code>. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>gcc<span class="w"> </span>-fopenmp<span class="w"> </span>omp_hello.c<span class="w"> </span>-o<span class="w"> </span>omp_hello
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can change the number of threads with <code>export OMP_NUM_THREADS=#threads</code></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Code-along!</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Run the binary <code>omp_hello</code> that we got in the previous example. Set the number of threads to 4 and then rerun the binary. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>./omp_hello<span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Thread<span class="w"> </span><span class="m">0</span><span class="w"> </span>says:<span class="w"> </span>Hello<span class="w"> </span>World
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Thread<span class="w"> </span><span class="m">0</span><span class="w"> </span>reports:<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>threads<span class="w"> </span>are<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>./omp_hello<span class="w"> </span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Thread<span class="w"> </span><span class="m">1</span><span class="w"> </span>says:<span class="w"> </span>Hello<span class="w"> </span>World
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Thread<span class="w"> </span><span class="m">0</span><span class="w"> </span>says:<span class="w"> </span>Hello<span class="w"> </span>World
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>Thread<span class="w"> </span><span class="m">0</span><span class="w"> </span>reports:<span class="w"> </span>the<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>threads<span class="w"> </span>are<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>Thread<span class="w"> </span><span class="m">3</span><span class="w"> </span>says:<span class="w"> </span>Hello<span class="w"> </span>World
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>Thread<span class="w"> </span><span class="m">2</span><span class="w"> </span>says:<span class="w"> </span>Hello<span class="w"> </span>World
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercise</p>
+<p>Try yourself! Rerun with OMP_NUM_THREADS set to 1, 2, 4, 8. </p>
+<p><strong>NOTE</strong>: Normally you are not supposed to run anything on the command line, but these are very short and light-weight programs. </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercise</p>
+<p>You could try with a different toolchain (or version). Remember to unload/purge, load the new toolchain, compile the program again, and then run. </p>
+</div>
+<h3 id="compiling__with__intel">Compiling with Intel<a class="headerlink" href="#compiling__with__intel" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Language</strong></th>
+<th><strong>Compiler name</strong></th>
+<th><strong>MPI</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fortran77</td>
+<td>ifort</td>
+<td>mpiifort</td>
+</tr>
+<tr>
+<td>Fortran90</td>
+<td>ifort</td>
+<td>mpiifort</td>
+</tr>
+<tr>
+<td>Fortran95</td>
+<td>ifort</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>C</td>
+<td>icc</td>
+<td>mpiicc</td>
+</tr>
+<tr>
+<td>C++</td>
+<td>icpc</td>
+<td>mpiicc</td>
+</tr>
+</tbody>
+</table>
+<p>In order to access the MPI compilers, load <a href="../modules#compiler__toolchains">a compiler toolchain which contains an MPI library</a>.                                </p>
+<div class="admonition example">
+<p class="admonition-title">Example: compiling a C program</p>
+<p>We are again compiling the <code>hello.c</code> program from before. This time we name the executable <code>hello_intel</code> to not overwrite the previously created executable. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>icc<span class="w"> </span>hello.c<span class="w"> </span>-o<span class="w"> </span>hello<span class="w"> </span>
+</span></code></pre></div>
+</div>
+<h4 id="flags_1">Flags<a class="headerlink" href="#flags_1" title="Permanent link">&para;</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>List of commonly used flags:</p>
+<ul>
+<li><strong>-fast</strong> This option maximizes speed across the entire program.</li>
+<li><strong>-g</strong> Produce symbolic debug information in an object file. The <strong>-g</strong> option changes the default optimization from <strong>-O2</strong> to <strong>-O0</strong>. It is often a good idea to add <strong>-traceback</strong> also, so the compiler generates extra information in the object file to provide source file traceback information.</li>
+<li><strong>-debug all</strong> Enables generation of enhanced debugging information. You need to also specify <strong>-g</strong></li>
+<li><strong>-O0</strong> Disable optimizations. Use if you want to be certain of getting correct code. Otherwise use <strong>-O2</strong> for speed.</li>
+<li><strong>-O</strong> Same as <strong>-O2</strong></li>
+<li><strong>-O1</strong> Optimize to favor code size and code locality. Disables loop unrolling. <strong>-O1</strong> may improve performance for applications with very large code size, many branches, and execution time not dominated by code within loops. In most cases, <strong>-O2</strong> is recommended over <strong>-O1</strong>.</li>
+<li><strong>-O2</strong> (default) Optimize for code speed. This is the generally recommended optimization level.</li>
+<li><strong>-O3</strong> Enable <strong>-O2</strong> optimizations and in addition, enable more aggressive optimizations such as loop and memory access transformation, and prefetching. The <strong>-O3</strong> option optimizes for maximum speed, but may not improve performance for some programs and may in some cases even slow down code. </li>
+<li><strong>-Os</strong> Enable speed optimizations, but disable some optimizations that increase code size for small speed benefit.</li>
+<li><strong>-fpe{0,1,3}</strong> Allows some control over floating-point exception (divide by zero, overflow, invalid operation, underflow, denormalized number, positive infinity, negative infinity or a NaN) handling for the main program at runtime. Fortran only. </li>
+<li><strong>-qopenmp</strong> Enable the parallelizer to generate multi-threaded code based on the OpenMP directives. </li>
+<li><strong>-parallel</strong> Enable the auto-parallelizer to generate multi-threaded code for loops that can be safely executed in parallel. </li>
+</ul>
+</div>
+<h2 id="linking">Linking<a class="headerlink" href="#linking" title="Permanent link">&para;</a></h2>
+<h3 id="build__environment">Build environment<a class="headerlink" href="#build__environment" title="Permanent link">&para;</a></h3>
+<p>Using a compiler toolchain by itself is possible but requires a fair bit of manual work, figuring out which paths to add to <strong>-I</strong> or <strong>-L</strong> for including files and libraries, and similar.</p>
+<p>To make life as a software builder easier there is a special module available, <code>buildenv</code>, that can be loaded on top of any toolchain. If it is missing for some toolchain, send a mail to support@hpc2n.umu.se and let us know.</p>
+<p>This module defines a large number of environment variables with the relevant settings for the used toolchain. Among other things it sets CC, CXX, F90, FC, MPICC, MPICXX, MPIF90, CFLAGS, FFLAGS, and much more.</p>
+<p>To see all of them, <strong>after loading a toolchain</strong> do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ml<span class="w"> </span>show<span class="w"> </span>buildenv
+</span></code></pre></div>
+<p>To use the environment variables, load buildenv:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ml<span class="w"> </span>buildenv
+</span></code></pre></div>
+<p>Using the environment variable (prefaced with $) for linking is highly recommended!</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Linking with LAPACK (gcc, C program). </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>gcc<span class="w"> </span>-o<span class="w"> </span>PROGRAM<span class="w"> </span>PROGRAM.c<span class="w"> </span>-lflexiblas<span class="w"> </span>-lgfortran
+</span></code></pre></div>
+<p>OR use the environment variable <code>$LIBLAPACK</code>: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>gcc<span class="w"> </span>-o<span class="w"> </span>PROGRAM<span class="w"> </span>PROGRAM.c<span class="w"> </span><span class="nv">$LIBLAPACK</span>
+</span></code></pre></div>
+</div>
+<div class="admonition tip code-along">
+<p class="admonition-title">Tip</p>
+<p>Not all compiler toolchains have a <code>buildenv</code> installed for them (yet). You can always ask for it if you need it. </p>
+<p>In this example we will use the toolchain <code>foss/2021b</code>. </p>
+<ol>
+<li>Unload any modules you have loaded. Here we just <code>purge</code> all of them. 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>purge
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>The<span class="w"> </span>following<span class="w"> </span>modules<span class="w"> </span>were<span class="w"> </span>not<span class="w"> </span>unloaded:
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="o">(</span>Use<span class="w"> </span><span class="s2">&quot;module --force purge&quot;</span><span class="w"> </span>to<span class="w"> </span>unload<span class="w"> </span>all<span class="o">)</span>:
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>snicenvironment<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>systemdefault
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>
+</span></code></pre></div></li>
+<li>Load the <code>foss/2021b</code> toolchain
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>foss/2021b
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>
+</span></code></pre></div></li>
+<li>Load a matching <code>buildenv</code> module 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>buildenv
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$
+</span></code></pre></div></li>
+<li>Do <code>ml show buildenv</code> to see the environment variables that are now available 
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>b-cn1613<span class="w"> </span><span class="o">[</span>~<span class="o">]</span>$<span class="w"> </span>ml<span class="w"> </span>show<span class="w"> </span>buildenv
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>--------<span class="w">                                                      </span>--------------------------------------------------------------------
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">   </span>/hpc2n/eb/modules/all/MPI/GCC/11.2.0/OpenMPI/4.1.1/buildenv/default.lua:
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>----------------------------------------------------------------------------
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>help<span class="o">([[</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">Description</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="o">===========</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>This<span class="w"> </span>module<span class="w"> </span>sets<span class="w"> </span>a<span class="w"> </span>group<span class="w"> </span>of<span class="w"> </span>environment<span class="w"> </span>variables<span class="w"> </span><span class="k">for</span><span class="w"> </span>compilers,<span class="w"> </span>linkers,<span class="w"> </span>maths<span class="w"> </span>libraries,<span class="w"> </span>etc.,<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>use<span class="w"> </span>to<span class="w"> </span>easily<span class="w"> </span>transition<span class="w"> </span>between<span class="w"> </span>toolchains<span class="w"> </span>when<span class="w"> </span>building<span class="w"> </span>your<span class="w"> </span>software.<span class="w"> </span>To<span class="w"> </span>query<span class="w"> </span>the<span class="w"> </span>variables<span class="w"> </span>being<span class="w"> </span><span class="nb">set</span><span class="w"> </span>please<span class="w"> </span>use:<span class="w"> </span>module<span class="w"> </span>show<span class="w"> </span>&lt;this<span class="w"> </span>module<span class="w"> </span>name&gt;
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>More<span class="w"> </span><span class="nv">information</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="o">================</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w"> </span>-<span class="w"> </span>Homepage:<span class="w"> </span>None
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="o">]])</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>whatis<span class="o">(</span><span class="s2">&quot;Description: This module sets a group of environment variables for compilers, linkers, maths libraries, etc., that you can use to easily transition between toolchains when building your software. To query the variables being set please use: module show &lt;this module name&gt;&quot;</span><span class="o">)</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>whatis<span class="o">(</span><span class="s2">&quot;Homepage: None&quot;</span><span class="o">)</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>whatis<span class="o">(</span><span class="s2">&quot;URL: None&quot;</span><span class="o">)</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>conflict<span class="o">(</span><span class="s2">&quot;buildenv&quot;</span><span class="o">)</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>depends_on<span class="o">(</span><span class="s2">&quot;FlexiBLAS/3.0.4&quot;</span><span class="o">)</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>depends_on<span class="o">(</span><span class="s2">&quot;FFTW/3.3.10&quot;</span><span class="o">)</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>depends_on<span class="o">(</span><span class="s2">&quot;ScaLAPACK/2.1.0-fb&quot;</span><span class="o">)</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a>setenv<span class="o">(</span><span class="s2">&quot;EBROOTBUILDENV&quot;</span>,<span class="s2">&quot;/hpc2n/eb/software/buildenv/default-foss-2021b&quot;</span><span class="o">)</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>setenv<span class="o">(</span><span class="s2">&quot;EBVERSIONBUILDENV&quot;</span>,<span class="s2">&quot;default&quot;</span><span class="o">)</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>...
+</span></code></pre></div></li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can see a list of all the libraries on Kebnekaise (June 2024) here: <a href="https://docs.hpc2n.umu.se/documentation/compiling/#libraries" target="_blank">https://docs.hpc2n.umu.se/documentation/compiling/#libraries</a>. </p>
+</div>
+<div class="admonition keypoints">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>In order to compile a program, you must first load a &ldquo;compiler toolchain&rdquo; module </li>
+<li>Kebnekaise has both GCC and Intel compilers installed </li>
+<li>The GCC compilers are: <ul>
+<li>gfortran</li>
+<li>gcc</li>
+<li>g++</li>
+</ul>
+</li>
+<li>The Intel compilers are: <ul>
+<li>ifort</li>
+<li>icc</li>
+<li>icpc</li>
+</ul>
+</li>
+<li>Compiling MPI programs can be done after loading a compiler toolchains which contains MPI libraries </li>
+<li>The easiest way to figure out how to link with a library is to use <code>ml show buildenv</code> after loading a compiler toolchain </li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../modules/" class="btn btn-neutral float-left" title="The Module System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../batch/" class="btn btn-neutral float-right" title="The Batch System">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../modules/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../batch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

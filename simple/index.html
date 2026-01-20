@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/simple/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Simple examples - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Simple examples";
+        var mkdocs_page_input_path = "simple.md";
+        var mkdocs_page_url = "/intro-course/simple/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Simple examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#serial__batch__job">Serial batch job</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mpi__batch__job">MPI batch job</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#openmp__batch__job">OpenMP batch job</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multiple__serial__jobs__from__same__submit__file">Multiple serial jobs from same submit file</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#job__arrays">Job arrays</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multiple__parallel__jobs__sequentially">Multiple parallel jobs sequentially</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multiple__parallel__jobs__simultaneously">Multiple parallel jobs simultaneously</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compiling__and__running__in__the__batch__job">Compiling and running in the batch job</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting__errors__and__outputs__in__separate__files">Getting errors and outputs in separate files</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cudagpu__programs">CUDA/GPU programs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#v100__-__intel__skylake">V100 - Intel Skylake</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#a100__-__amd__zen3">A100 - AMD Zen3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#a40__-__intel__broadwell">A40 - Intel broadwell</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#l40s__-__amd__zen4">L40s - AMD Zen4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#h100__-__amd__zen4">H100 - AMD Zen4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#a6000__-__amd__zen4">A6000 - AMD Zen4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mi100__-__amd__zen3">MI100 - AMD Zen3</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gpu__features">GPU features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#starting__jupyterlab">Starting JupyterLab</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#keypoints">Keypoints</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Simple examples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="simple__batch__script__examples">Simple batch script examples<a class="headerlink" href="#simple__batch__script__examples" title="Permanent link">&para;</a></h1>
+<div class="admonition objectives">
+<p class="admonition-title">Objectives</p>
+<ul>
+<li>See and try out different types of simple batch script examples.<ul>
+<li>Serial</li>
+<li>MPI</li>
+<li>GPU </li>
+</ul>
+</li>
+<li>Try using constraints: how to allocate specific CPUs. </li>
+<li>Try using constraints: how to allocate specific GPUs.  </li>
+</ul>
+</div>
+<p style="background-color: #f5e687;padding: 10px;">NOTE: these exercises will be run from a terminal, either one started inside ThinLinc or the one used for regular SSH access. </p>
+
+<p>For consistency, I have given all the example batch scripts the suffix <code>.sh</code> even though it is not required. Another commonly used suffix is <code>.batch</code>, but any or none will work.</p>
+<p>You need to compile any programs mentioned in a batch script in order to run the examples, except for <code>compile-run.sh</code> and the <code>CUDA</code> examples, which includes compilation.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li>The course project has the following project ID: <strong>hpc2n2026-002</strong></li>
+<li>In order to use it in a batch job, add this to the batch script: <code>#SBATCH -A hpc2n2026-002</code></li>
+<li>We have a storage project linked to the compute project: <strong>spring-courses</strong>. <ul>
+<li>You find it in <code>/proj/nobackup/spring-courses</code>. </li>
+<li>Remember to create your own directory under it if you have not already done so. </li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Try to make changes to the C programs, write/add different programs, change the cores/GPUs you ask for, and in general play around with the examples!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol>
+<li>For these test examples I would suggest using the <code>foss</code> compiler toolchain, version 2023b, unless otherwise specified, as it is available on both the Intel and AMD nodes. If you decide to use a different one, you will have to make changes to some of the batch scripts.</li>
+<li>To submit a job script named JOBSCRIPT, do <code>sbatch JOBSCRIPT</code></li>
+<li>In most of the examples, I name the executable when I compile. The flag <code>-o</code> tells the compiler you want to name the executable. If you don&rsquo;t include that and a name, you will get an executable named <code>a.out</code>. Of course, you do not have to name the executable as I do. It is just an example. In general, I have named all the executables the same as the program (without the suffix). If you change the name, remember to make the change in the submit script as well. </li>
+</ol>
+</div>
+<h2 id="serial__batch__job">Serial batch job<a class="headerlink" href="#serial__batch__job" title="Permanent link">&para;</a></h2>
+<p>To compile a serial program, like <code>hello.c</code> with gcc do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gcc<span class="w"> </span>hello.c<span class="w"> </span>-o<span class="w"> </span>hello
+</span></code></pre></div>
+<p><strong>Sample batch script (hello.sh)</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Project id - change to your own after the course!</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Asking for 1 core</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">#SBATCH -n 1</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Asking for a walltime of 1 min</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">#SBATCH --time=00:01:00</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Purge modules before loading new ones in a script.</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>ml<span class="w"> </span>purge<span class="w">  </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>ml<span class="w"> </span>foss/2023b
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>./hello
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: serial job</p>
+<p>Submit the job with <code>sbatch</code>. Check on it with <code>squeue --me</code>. Take a look at the output (<code>slurm-JOBID.out</code>) with <code>nano</code> or your favourite editor. </p>
+</div>
+<h2 id="mpi__batch__job">MPI batch job<a class="headerlink" href="#mpi__batch__job" title="Permanent link">&para;</a></h2>
+<p>To compile an MPI program, like <code>mpi_hello.c</code> (and create an executable named <code>mpi_hello</code>) with gcc, do (after loading a suitable module, like foss/2023b):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mpicc<span class="w"> </span>mpi_hello.c<span class="w"> </span>-o<span class="w"> </span>mpi_hello
+</span></code></pre></div>
+<p><strong>Sample batch script (mpi_hello.sh)</strong> </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Remember to change this to your own Project ID after the course! </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Number of tasks - default is 1 core per task </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">#SBATCH -n 14</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># It is always a good idea to do ml purge before loading other modules </span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>ml<span class="w"> </span>add<span class="w"> </span>foss/2023b
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># Use srun since this is an MPI program </span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>srun<span class="w"> </span>./mpi_hello
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: MPI job</p>
+<p>Submit the job with <code>sbatch</code>. Check on it with <code>squeue --me</code>. Take a look at the output (<code>slurm-JOBID.out</code>) with <code>nano</code> or your favourite editor. Try running it more than once to see that the order of the tasks are random. </p>
+</div>
+<h2 id="openmp__batch__job">OpenMP batch job<a class="headerlink" href="#openmp__batch__job" title="Permanent link">&para;</a></h2>
+<p>To compile an OpenMP program, like <code>omp_hello.c</code> (and create an executable named <code>omp_hello</code>) with gcc, do:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>gcc<span class="w"> </span>-fopenmp<span class="w"> </span>omp_hello.c<span class="w"> </span>-o<span class="w"> </span>omp_hello
+</span></code></pre></div>
+<p><strong>Sample batch script (omp_hello.sh)</strong> </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">#SBATCH -A hpc2n2026-002 </span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Number of cores per task </span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">#SBATCH -c 28</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># It is always a good idea to do ml purge before loading other modules </span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>ml<span class="w"> </span>add<span class="w"> </span>foss/2023b
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="c1"># Set OMP_NUM_THREADS to the same value as -c with a fallback in case it isn&#39;t set.</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># SLURM_CPUS_PER_TASK is set to the value of -c, but only if -c is explicitly set</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SLURM_CPUS_PER_TASK</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">  </span><span class="nv">omp_threads</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="k">else</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="nv">omp_threads</span><span class="o">=</span><span class="m">1</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="k">fi</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="nv">$omp_threads</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>./omp_hello
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: OpenMP job</p>
+<p>Set <code>OMP_NUM_THREADS</code> to some value between 1 and 28 (<code>export OMP_NUM_THREADS=value</code>). Submit the job with <code>sbatch</code>. Take a look at the output (<code>slurm-JOBID.out</code>) with nano or your favourite editor. Change the value of <code>OMP_NUM_THREADS</code>). Submit it again and check on the output to see the change.  </p>
+<div class="admonition note">
+<p class="admonition-title">NOTE</p>
+<p>The reason we are setting <code>OMP_NUM_THREADS</code> to at most 28 is that we in the batch script said we were asking for that number of cores. 28 is the number of cores on the Intel Skylake nodes, which has the fewest number of cores. You can see the list of nodes here: <a href="https://docs.hpc2n.umu.se/documentation/batchsystem/resources/#nodes" target="_blank">https://docs.hpc2n.umu.se/documentation/batchsystem/resources/#nodes</a>. </p>
+</div>
+</div>
+<h2 id="multiple__serial__jobs__from__same__submit__file">Multiple serial jobs from same submit file<a class="headerlink" href="#multiple__serial__jobs__from__same__submit__file" title="Permanent link">&para;</a></h2>
+<p>This submit file shows one way of running several programs from inside the same submit file. </p>
+<p>To run this example, you need to compile the following serial C programs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>hello.c
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Greeting.c
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Adding2.c
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Mult2.c
+</span></code></pre></div>
+<p>When the C programs have been compiled, submit the <code>multiple-serial.sh</code> program:</p>
+<details class="note">
+<summary>multiple-serial.sh</summary>
+<p>All jobs run at the same time, so you need as many cores as they need combined. You also need to ask for long enough time that even the longest of the jobs will finish. </p>
+<p>Note that here you submit with <code>srun</code> even if it is serial jobs. You use <code>&amp;</code> to send the job to the background. Also note the <code>wait</code> at the end. If you do not add that, the whole batch job will finish when the first of the jobs inside ends. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Add enough cores that all jobs can run at the same time </span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1">#SBATCH -n 5</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># Make sure that the time is long enough that the longest job will have time to finish </span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>ml<span class="w"> </span>foss/2023b<span class="w"> </span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>./hello<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>./Greeting<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>./Adding2<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>/bin/hostname<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>./Mult2<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="nb">wait</span>
+</span></code></pre></div>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Exercise: multiple serial jobs</p>
+<p>Compile the above mentioned programs. Submit the batch script with  </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sbatch<span class="w"> </span>multiple-serial.sh
+</span></code></pre></div>
+<p>If you run it several times you will notice that the order is random.</p>
+</div>
+<h2 id="job__arrays">Job arrays<a class="headerlink" href="#job__arrays" title="Permanent link">&para;</a></h2>
+<p>Job arrays offer a mechanism for submitting and managing collections of similar jobs. All jobs must have the same initial options (e.g. size, time limit, etc.), however it is possible to change some of these options after the job has begun execution using the scontrol command specifying the JobID of the array or individual ArrayJobID.</p>
+<p>More information here on <a href="https://slurm.schedmd.com/job_array.html" target="_blank">the official Slurm documentation pages</a>. </p>
+<p>To try an example, we have included a small Python script <code>hello-world-array.py</code> and a batch script <code>hello-world-array.sh</code>. Both can also be found in the <code>exercises/simple</code> directory you have cloned. </p>
+<div class="admonition note">
+<p class="admonition-title">hello-world-array.py</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># import sys library (we need this for the command line args)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>import<span class="w"> </span>sys
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># print task number</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>print<span class="o">(</span><span class="s1">&#39;Hello world! from task number: &#39;</span>,<span class="w"> </span>sys.argv<span class="o">[</span><span class="m">1</span><span class="o">])</span>
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">hello-world-array.sh</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># This is a very simple example of how to run a Python script with a job array</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">#SBATCH -A hpc2n2026-002 # Change to your own after the course!</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1">#SBATCH --time=00:05:00 # Asking for 5 minutes</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1">#SBATCH --array=1-10   # how many tasks in the array</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1">#SBATCH -c 1 # Asking for 1 core    # one core per task</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># The environment variable %j contains the Job ID and %a contains the step number</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="c1">#SBATCH -o hello-world-%j-%a.out</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Load any modules you need, here for Python 3.11.3</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>ml<span class="w"> </span>GCC/12.3.0<span class="w"> </span>Python/3.11.3
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># Run your Python script</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>srun<span class="w"> </span>python<span class="w"> </span>hello-world-array.py<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span>
+</span></code></pre></div>
+</div>
+<details class="note">
+<summary>Job arrays - examples</summary>
+<p>There are many ways to use arrays: </p>
+<ul>
+<li>Default step of 1<ul>
+<li><strong>Example</strong>: <code>#SBATCH --array=4-80</code></li>
+</ul>
+</li>
+<li>Give an index (here steps of 4)<ul>
+<li><strong>Example</strong>: <code>#SBATCH --array=1-100:4</code></li>
+</ul>
+</li>
+<li>Give a list instead of a range<ul>
+<li><strong>Example</strong>: <code>#SBATCH --array=5,8,33,38</code></li>
+</ul>
+</li>
+<li>Throttle jobs, so only a smaller number of jobs run at a time<ul>
+<li><strong>Example</strong>: <code>#SBATCH --array1-400%4</code></li>
+</ul>
+</li>
+</ul>
+</details>
+<div class="admonition note">
+<p class="admonition-title">Exercise: job arrays</p>
+<p>Submit the batch script. Look at the output files. Change the number of tasks in the array. Rerun. See the change. </p>
+</div>
+<h2 id="multiple__parallel__jobs__sequentially">Multiple parallel jobs sequentially<a class="headerlink" href="#multiple__parallel__jobs__sequentially" title="Permanent link">&para;</a></h2>
+<p>To run this example, you need to compile the following parallel C programs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>mpi_hello.c
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>mpi_greeting.c
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>mpi_hi.c
+</span></code></pre></div>
+<p>When the MPI C programs have been compiled, submit the <code>multiple-parallel-sequential.sh</code> program:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># Since the files are run sequentially I only need enough cores for the largest of them to run </span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">#SBATCH -c 28</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Remember to ask for enough time for all jobs to complete</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1">#SBATCH --time=00:10:00</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>ml<span class="w"> </span>foss/2023b
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="c1"># Here 14 tasks with 2 cores per task. Output to file - not needed if your job creates output in a file directly </span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># In this example I also copy the output somewhere else and then run another executable.</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">14</span><span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>./mpi_hello<span class="w"> </span>&gt;<span class="w"> </span>myoutput1<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>cp<span class="w"> </span>myoutput1<span class="w"> </span>mydatadir
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">14</span><span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>./mpi_greeting<span class="w"> </span>&gt;<span class="w"> </span>myoutput2<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>cp<span class="w"> </span>myoutput2<span class="w"> </span>mydatadir
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">14</span><span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>./mpi_hi<span class="w"> </span>&gt;<span class="w"> </span>myoutput3<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>cp<span class="w"> </span>myoutput3<span class="w"> </span>mydatadir
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sbatch<span class="w"> </span>multiple-parallel-sequential.sh
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: multiple parallel jobs sequentially</p>
+<p>Submit the job: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sbatch<span class="w"> </span>multiple-parallel-sequential.sh
+</span></code></pre></div>
+<p>See that output data are thrown to files and copied to the directory <code>mydatadir</code>. </p>
+</div>
+<h2 id="multiple__parallel__jobs__simultaneously">Multiple parallel jobs simultaneously<a class="headerlink" href="#multiple__parallel__jobs__simultaneously" title="Permanent link">&para;</a></h2>
+<p>To run this example, you need to compile the following parallel C programs:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mpi_hello.c
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>mpi_greeting.c
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>mpi_hi.c
+</span></code></pre></div>
+<p>As before, we recommend using the <code>foss/2023b</code> module for this. If you use a different one you need to change it in the <code>multiple-parallel-simultaneous.sh</code> batch script. </p>
+<p>When the MPI C programs have been compiled, submit the <code>multiple-parallel-simultaneous.sh</code> program:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Since the files run simultaneously I need enough cores for all of them to run </span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1">#SBATCH -n 56</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># Remember to ask for enough time for all jobs to complete</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="c1">#SBATCH --time=00:10:00</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>module<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>ml<span class="w"> </span>foss/2023b
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">14</span><span class="w"> </span>--exclusive<span class="w"> </span>./mpi_hello<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">14</span><span class="w"> </span>--exclusive<span class="w"> </span>./mpi_greeting<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>srun<span class="w"> </span>-n<span class="w"> </span><span class="m">14</span><span class="w"> </span>--exclusive<span class="w"> </span>./mpi_hi<span class="w"> </span><span class="p">&amp;</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="nb">wait</span>
+</span></code></pre></div>
+<p>Just like for the multiple serial jobs simultaneously example, you need to add <code>wait</code> to make sure the batch job will not finish when the first of the jobs in it finishes. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise: multiple parallel jobs simultaneously</p>
+<p>When you have compiled the needed programs, as mentioned above, submit with </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sbatch<span class="w"> </span>multiple-parallel-simultaneous.sh
+</span></code></pre></div>
+</div>
+<h2 id="compiling__and__running__in__the__batch__job">Compiling and running in the batch job<a class="headerlink" href="#compiling__and__running__in__the__batch__job" title="Permanent link">&para;</a></h2>
+<p>Sometimes you have a program that takes a long time to compile, or that you need to recompile before each run. It could also be that you are optimizing for the architecture in your compilation and that you don&rsquo;t know which architecture your job will end up running on (for instance, Kebnekaise has Intel and AMD CPUs, as well as Nvidia and AMD GPUs). </p>
+<p>To see a simple example of compiling and running from the batch job, look at the batch script <code>compile-run.sh</code>. </p>
+<p>In this case it compiles and runs the <code>mpi_hello.c</code> program. </p>
+<div class="admonition note">
+<p class="admonition-title">compile-run.sh</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1"># CHANGE THE PROJECT ID TO YOUR OWN PROJECT ID AFTER THE COURSE!</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1">#Name the job, for easier finding in the list</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1">#SBATCH -J compiler-run</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1">#SBATCH -t 00:10:00</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1">#SBATCH -n 12</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>ml<span class="w"> </span>foss/2023b<span class="w"> </span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>mpicc<span class="w"> </span>mpi_hello.c<span class="w"> </span>-o<span class="w"> </span>mpi_hello<span class="w"> </span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>mpirun<span class="w"> </span>./mpi_hello
+</span></code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: compile and run in a batch job</p>
+<p>This batch script can be submitted directly, without compiling anything first, as that happens in the batch script. Try submitting it with <code>sbatch</code> and see what happens. Which files are created? You could try changing the program it compiles and runs to a different one. Remember to change the compiler if you are not using an MPI program.     </p>
+</div>
+<h2 id="getting__errors__and__outputs__in__separate__files">Getting errors and outputs in separate files<a class="headerlink" href="#getting__errors__and__outputs__in__separate__files" title="Permanent link">&para;</a></h2>
+<p>As a default, Slurm throws both errors and other output to the same file, named <code>slurm-JOBID.out</code>. If you want the errors and other output to separate files, you can do as in the example <code>separate-err-out.sh</code>: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="ch">#!/bin/bash </span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># Remember to change this to your own Project ID after the course! </span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1">#SBATCH -n 8 </span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># Putting the output in a separate output file and the errors in an </span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="c1"># error file instead of putting it all in slurm-JOBID.out </span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1"># Note the environment variable %J, which contains the job ID. It is handy to </span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="c1"># avoid naming the files the same for different runs, and thus overwriting them.  </span>
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="c1">#SBATCH --error=job.%J.err</span>
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="c1">#SBATCH --output=job.%J.out</span>
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>ml<span class="w"> </span>foss/2023b
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>mpirun<span class="w"> </span>./mpi_hello<span class="w"> </span>
+</span></code></pre></div>
+<p>You need the <code>mpi_hello.c</code> file compiled (and the executable named <code>mpi_hello</code>) for this to run without changes. Of course, you can also just add your own programs. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise: errors and outputs in separate files</p>
+<p>Compile the file <code>mpi_hello.s</code> after loading the module <code>foss/2023b</code>. Submit the job script with <code>sbatch</code>. See that separate output and error files are created. </p>
+</div>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<p>Sometimes your workflow has jobs that depend on a previous job (a pipeline). This can be handled through Slurm (if many interconnected jobs, make a script):</p>
+<ul>
+<li>Submit your first job: <code>sbatch my-job.sh</code></li>
+<li>Make Slurm wait for that job to finish before starting next job:
+  <code>sbatch -d afterok:&lt;prev-JOBID&gt; my-next-job.sh</code></li>
+</ul>
+<p>Generally:</p>
+<ul>
+<li><code>after:jobid[:jobid…]</code> begin after specified jobs have started</li>
+<li><code>afterany:jobid[:jobid…]</code> begin after specified jobs have terminated</li>
+<li><code>afternotok:jobid[:jobid…]</code> begin after specified jobs have failed</li>
+<li><code>afterok:jobid[:jobid…]</code> begin after specified jobs have run to completion with exit code zero</li>
+<li><code>singleton</code> begin execution after all previously launched jobs with the same name and user have ended</li>
+</ul>
+<details class="note">
+<summary>Small script taking jobid from first job and using as prereq</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># first job - no dependencies</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="nv">jid1</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>firstjob.sh<span class="k">)</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># Next job depend on first job </span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>sbatch<span class="w"> </span>--dependency<span class="o">=</span>afterany:<span class="si">${</span><span class="nv">jid1</span><span class="si">}</span><span class="w"> </span>second-job.sh
+</span></code></pre></div>
+</details>
+<h2 id="cudagpu__programs">CUDA/GPU programs<a class="headerlink" href="#cudagpu__programs" title="Permanent link">&para;</a></h2>
+<p>To run programs/software that uses GPUs, you need to allocated GPUs in the job script. They will not be allocated by your program. </p>
+<p>To compile a cuda program, like <code>hello-world.cu</code> you need to load a toolchain containing CUDA compilers/load CUDA compilers. </p>
+<p>To run a piece of software that uses GPUs, you need to load a module version which is GPU aware. In many cases there are several versions of a module, only some of which are for running on GPUs. </p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember to check the modules, versions, and prerequisites! Also make sure you check for the correct node type. Some of the GPUs are on Intel nodes (check modules on <code>kebnekaise.hpc2n.umu.se</code>), some on AMD nodes (check modules on <code>kebnekaise-amd.hpc2n.umu.se</code>). </p>
+</div>
+<h3 id="v100__-__intel__skylake">V100 - Intel Skylake<a class="headerlink" href="#v100__-__intel__skylake" title="Permanent link">&para;</a></h3>
+<p>This example runs a small CUDA code. </p>
+<p>You need to load a CUDA module to run it. Here we load CUDA/12.9.1. </p>
+<p><strong>Sample batch script <code>gpu-skylake.sh</code></strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="ch">#!/bin/bash </span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># This job script is for running on 1 V100 GPU. </span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># Remember to change this to your own project ID after the course! </span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1">#SBATCH -C v100 </span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
+</span><span id="__span-21-12"><a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>nvcc<span class="w"> </span>hello-world.cu<span class="w"> </span>-o<span class="w"> </span>hello
+</span><span id="__span-21-13"><a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>./hello
+</span></code></pre></div>
+<p>The batch script gpu.sh compiles and runs a small cuda program called <code>hello-world.cu</code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise: V100 GPU job</p>
+<p>To submit it, just do: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sbatch<span class="w"> </span>gpu.sh
+</span></code></pre></div>
+<p>Use <code>squeue --me</code> or <code>scontrol show job JOBID</code> to see that the job runs in the correct partition/node types. </p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Instead of  </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1">#SBATCH -C v100</span>
+</span></code></pre></div>
+<p>you could have used </p>
+<p><code>#SBATCH --gpus=v100:1</code></p>
+<p>or </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1">#SBATCH --gpus-per-node=1</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1">#SBATCH -C v100</span>
+</span></code></pre></div>
+</div>
+<h3 id="a100__-__amd__zen3">A100 - AMD Zen3<a class="headerlink" href="#a100__-__amd__zen3" title="Permanent link">&para;</a></h3>
+<p>Remember, in order to find the correct modules, as well as compile a program if you need that, you must login to one of the AMD login nodes with either SSH (<code>kebnekaise-amd.hpc2n.umu.se</code>) or ThinLinc (<code>kebnekaise-amd-tl.kebnekaise.hpc2n.umu.se</code>). 
+The job can be submitted from the regular login node, though. </p>
+<div class="admonition note">
+<p class="admonition-title">Exercise: login to the AMD login node and find a suitable module</p>
+<p>If you are logged in to the regular Kebnekaise login node, then you can easiest login to the AMD login node by typing this in a terminal window: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ssh<span class="w"> </span>kebnekaise-amd.hpc2n.umu.se
+</span></code></pre></div>
+<p>After that, you check for a suitable CUDA toolchain: <code>ml spider CUDA</code>.</p>
+<p>You can then load it (here <code>CUDA/12.9.1</code>) and use <code>nvcc</code> to compile the program <code>hello-world.cu</code>: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>nvcc<span class="w"> </span>hello-world.cu<span class="w"> </span>-o<span class="w"> </span>hello
+</span></code></pre></div>
+<p>Now logout from the AMD login node again. </p>
+</div>
+<p>The batch script <code>gpu-a100.sh</code> compiles and runs a small cuda program called <code>hello-world.cu</code>. </p>
+<p><strong>Sample A100 GPU job script: gpu-a100.sh</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/bin/bash </span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="c1"># Remember to change this to your own project ID after the course! </span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="c1">#SBATCH --gpus=a100:1</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
+</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>nvcc<span class="w"> </span>hello-world.cu<span class="w"> </span>-o<span class="w"> </span>hello
+</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>./hello
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: A100 GPU batch jobs</p>
+<p>The above script is found in the same directory as the other exercises (<code>intro-course/exercises/simple</code>). You can submit it directly in that directory: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sbatch<span class="w"> </span>gpu-a100.sh
+</span></code></pre></div>
+<p>Like for the A100, you are encouraged to use <code>squeue --me</code> and/or <code>scontrol show job JOBID</code> to see that the job gets the correct partition/node type allocated. </p>
+</div>
+<h3 id="a40__-__intel__broadwell">A40 - Intel broadwell<a class="headerlink" href="#a40__-__intel__broadwell" title="Permanent link">&para;</a></h3>
+<p>Kebnekaise also has a few of the A40 GPUs. These are placed on Intel broadwell nodes. </p>
+<p>In order to run on these, you add this to your batch script: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1">#SBATCH --gpus=number</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1">#SBATCH -C a40</span>
+</span></code></pre></div>
+<p>where <code>number</code> is 1 or 2 (the number of GPU cards). </p>
+<p>You can find the available modules on the regular login node, <code>kebnekaise.hpc2n.umu.se</code>. </p>
+<h3 id="l40s__-__amd__zen4">L40s - AMD Zen4<a class="headerlink" href="#l40s__-__amd__zen4" title="Permanent link">&para;</a></h3>
+<p>Since these GPUs are located on AMD Zen4 nodes, you need to login to <code>kebnekaise-amd.hpc2n.umu.se</code> to check available modules. </p>
+<p>Then, to ask for these nodes in your batch script, you add: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1">#SBATCH --gpus=number</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="c1">#SBATCH -C l40s</span>
+</span></code></pre></div>
+<p>where <code>number</code> is 1 or 2 (the number of GPU cards). </p>
+<h3 id="h100__-__amd__zen4">H100 - AMD Zen4<a class="headerlink" href="#h100__-__amd__zen4" title="Permanent link">&para;</a></h3>
+<p>The H100 GPUs are located on AMD Zen4 nodes. You can find the available modules by logging in to <code>kebnekaise-amd.hpc2n.umu.se</code>. </p>
+<p>You ask for these GPUs in your batch script by adding: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1">#SBATCH --gpus=number</span>
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1">#SBATCH -C h100</span>
+</span></code></pre></div>
+<p>where <code>number</code> is 1, 2, 3, or 4 (the number of GPU cards you want to allocate). </p>
+<h3 id="a6000__-__amd__zen4">A6000 - AMD Zen4<a class="headerlink" href="#a6000__-__amd__zen4" title="Permanent link">&para;</a></h3>
+<p>The A6000 GPUs are placed on AMD Zen4 nodes. That means you can find the available modules by logging in to <code>kebnekaise-amd.hpc2n.umu.se</code>. </p>
+<p>To run on these GPUs, add this to your batch script: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1">#SBATCH --gpus=number </span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="c1">#SBATCH -C a6000 </span>
+</span></code></pre></div>
+<p>where <code>number</code> is 1 or 2 (the number of GPU cards you want to allocated). </p>
+<h3 id="mi100__-__amd__zen3">MI100 - AMD Zen3<a class="headerlink" href="#mi100__-__amd__zen3" title="Permanent link">&para;</a></h3>
+<p>The MI100 GPUs are located on AMD Zen3 nodes. You can find the available modules by logging in to <code>kebnekaise-amd.hpc2n.umu.se</code>. </p>
+<p>To allocate MI100 GPUs, add this to your batch script: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1">#SBATCH --gpus=number</span>
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="c1">#SBATCH -C mi100 </span>
+</span></code></pre></div>
+<p>where <code>number</code> is 1 or 2 (the number of GPU cards). </p>
+<h2 id="gpu__features">GPU features<a class="headerlink" href="#gpu__features" title="Permanent link">&para;</a></h2>
+<p><strong>Sample batch script for allocating any AMD GPU</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="ch">#!/bin/bash </span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="c1"># Remember to change this to your own project ID after the course! </span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="c1">#SBATCH -A hpc2n2026-002 </span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="c1">#SBATCH -C amd_gpu </span>
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-34-10"><a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
+</span><span id="__span-34-11"><a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>./myGPUcode
+</span></code></pre></div>
+<p><strong>Sample batch script for allocating any Nvidia GPU</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="c1"># Remember to change this to your own project ID after the course! </span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a><span class="c1">#SBATCH -C nvidia_gpu </span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>./myGPUcode
+</span></code></pre></div>
+<p><strong>Sample batch script for allocating any Nvidia GPU on an Intel node</strong></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># Remember to change this to your own project ID after the course!</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="c1">#SBATCH -A hpc2n2026-002 </span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="c1">#SBATCH -C &#39;nvidia_gpu&amp;intel_cpu&#39;</span>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>./myGPUcode
+</span></code></pre></div>
+<p><strong>Sample batch script for allocating any GPU with AI features and on a Zen node</strong> </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="c1"># Remember to change this to your own project ID after the course!</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="c1">#SBATCH -A hpc2n2026-002</span>
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="c1">#SBATCH --time=00:05:00</span>
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a><span class="c1">#SBATCH -C &#39;&#39;zen3|zen4&#39;&amp;GPU_AI&#39;</span>
+</span><span id="__span-37-7"><a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>
+</span><span id="__span-37-8"><a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>ml<span class="w"> </span>purge<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span><span id="__span-37-9"><a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>ml<span class="w"> </span>CUDA/12.9.1
+</span><span id="__span-37-10"><a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>
+</span><span id="__span-37-11"><a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>./myGPUcode
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Exercise: GPU features</p>
+<p>In order to run these examples, you can change <code>./myGPUcode</code> to </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>nvcc<span class="w"> </span>hello-world.cu<span class="w"> </span>-o<span class="w"> </span>hello
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>./hello
+</span></code></pre></div>
+<p>or any other GPU program of your choice. </p>
+<p>The <code>gpu-features.sh</code> example script in the <code>exercises/simple</code> directory is prepared for the &ldquo;any GPU with AI features and on a Zen node&rdquo;. You can either run it as is, or make changes to it and try any of the other combinations here (or try new combinations yourself). </p>
+<p>Check with <code>squeue --me</code> which partition/node type the job ends up in, and that it fits. More information can be found with <code>scontrol show job JOBID</code>. </p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember to always load the GPU enabled version of a module (and sometimes CUDA also) when you need that!  </p>
+</div>
+<h2 id="starting__jupyterlab">Starting JupyterLab<a class="headerlink" href="#starting__jupyterlab" title="Permanent link">&para;</a></h2>
+<p>On Kebnekaise, it is possible to run JupyterLab. This is done either</p>
+<ul>
+<li>through a batch job, and is described in detail <a href ="https://docs.hpc2n.umu.se/tutorials/jupyter/" target="*blank">on our &ldquo;Jupyter on Kebnekaise&rdquo; documentation</a>.</li>
+<li>On Open OnDemand desktop </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Exercise</p>
+<ul>
+<li>Try starting Jupyter as shown on the link above. </li>
+<li>Also try it through Open OnDemand desktop </li>
+</ul>
+</div>
+<h2 id="keypoints">Keypoints<a class="headerlink" href="#keypoints" title="Permanent link">&para;</a></h2>
+<div class="admonition keypoints">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>How to run serial, MPI, OpenMP, and GPU jobs</li>
+<li>How to use GPU features </li>
+<li>How to run several jobs from inside one batch job </li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../batch/" class="btn btn-neutral float-left" title="The Batch System"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../software/" class="btn btn-neutral float-right" title="Application examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../batch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../software/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

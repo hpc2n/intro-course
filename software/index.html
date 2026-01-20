@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/software/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Application examples - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Application examples";
+        var mkdocs_page_input_path = "software.md";
+        var mkdocs_page_url = "/intro-course/software/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Application examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#good__practices">Good practices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#matlab">Matlab</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__matlab">How to find Matlab</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#first__time__configuration">First time configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tools__for__efficient__simulations">Tools for efficient simulations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#r">R</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__r">How to find R</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#first__time__configuration_1">First time configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recommendations">Recommendations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_1">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alphafold">Alphafold</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__alphafold">How to find Alphafold</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_2">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cryosparc">CryoSPARC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__cryosparc">How to find CryoSPARC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#first__time__configuration_2">First time configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using__cryosparc__on__kebnekaise">Using CryoSPARC on Kebnekaise</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nextflow">Nextflow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__nextflow">How to find Nextflow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_3">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#apptainer">Apptainer</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__apptainer">How to find Apptainer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_4">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tensorflow">TensorFlow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__tensorflow">How to find TensorFlow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_5">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#jupyter__notebooks">Jupyter Notebooks</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__jupyterlab">How to find JupyterLab</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using__jupyter__notebooks__on__kebnekaise">Using Jupyter Notebooks on Kebnekaise</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_6">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#amber">AMBER</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__amber">How to find AMBER</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_7">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gromacs">Gromacs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__gromacs">How to find Gromacs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_8">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gaussiangaussview">Gaussian/GaussView</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__gaussian__and__gaussview">How to find Gaussian and GaussView</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_9">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#namd">NAMD</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#how__to__find__namd">How to find NAMD</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercises_10">Exercises</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Application examples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="application__examples">Application examples<a class="headerlink" href="#application__examples" title="Permanent link">&para;</a></h1>
+<h3 id="good__practices">Good practices<a class="headerlink" href="#good__practices" title="Permanent link">&para;</a></h3>
+<details class="important">
+<summary>Use your project directory instead of the home directory</summary>
+<p>The HOME directory has a limited storage space (~25 GB). Your project directory
+<code>/proj/nobackup/hpc2n202X-XYZ</code> has a much larger space.</p>
+</details>
+<details class="important">
+<summary>Create a soft-link to your storage project</summary>
+<p>It will be very convinient to create a soft-link to your storage project in your
+home directory for a faster navigation:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">     </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">     </span>ln<span class="w"> </span>-s<span class="w"> </span>/proj/nobackup/hpc2n202X-XYZ<span class="w"> </span>choose-a-name
+</span></code></pre></div>
+</details>
+<details class="important">
+<summary>Monitoring the use of resources</summary>
+<p>Most likely you will allocate many cores and many GPUs for your simulations. You can
+monitor the use of these resources with the <code>job-usage job_ID</code> command, where <code>job_ID</code>
+is the output number of the <code>sbatch</code> command. You can also see this number if you type
+<code>squeue -u my-username</code>. <code>job-usage</code> outputs a url that you can copy/paste in your
+local browser where you can see how resources are being used:</p>
+<p><img alt="job-usage" src="../images/job-usage.png" /></p>
+</details>
+<details class="important">
+<summary>Problems with software?</summary>
+<p>Create a support ticket on SUPR for HPC2N (recommended option). If you are in a hurry, write to us 
+via email: support@hpc2n.umu.se, to create a ticket that will allow us to track the issue.
+Something to consider when you open a ticket:</p>
+<ul>
+<li>
+<p>Describe the problem and the versions of the software you used</p>
+</li>
+<li>
+<p>Provide a test case we can copy to try ourselves. The test case can be a <strong>reduced</strong> 
+  example or the real case. Pack <strong>all</strong> relevant files in a folder. Write in the ticket 
+  the path to the folder.</p>
+</li>
+<li>
+<p>If you already opened a ticket use this ticket thread to discuss the issue instead of creating other 
+  tickets.</p>
+</li>
+<li>
+<p>For <strong>unrelated</strong> issues open new tickets.</p>
+</li>
+<li>
+<p>If you consider that the error is <strong>solved</strong>, please let us know so that we can close the ticket.
+  This will help us to keep the ticket system clean. </p>
+</li>
+</ul>
+</details>
+<h2 id="matlab">Matlab<a class="headerlink" href="#matlab" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__matlab">How to find Matlab<a class="headerlink" href="#how__to__find__matlab" title="Permanent link">&para;</a></h3>
+<p>Matlab is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
+a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
+<a href="https://docs.hpc2n.umu.se/software/apps/MATLAB/" target="_blank">here</a>. </p>
+<h3 id="first__time__configuration">First time configuration<a class="headerlink" href="#first__time__configuration" title="Permanent link">&para;</a></h3>
+<p>The first time you access Matlab on Kebnekaise, you need to configure it by following these guidelines 
+<a href="https://docs.hpc2n.umu.se/software/apps/MATLAB-files/MATLAB-configure/" target="_blank">Configuring Matlab</a>. After configuring 
+the cluster, it is a good practice to validate the cluster (HOME -&gt; Parallel -&gt; Create and Manage Clusters):</p>
+<p><img alt="clustervalidation" src="../images/clusterProfileManager.png" /></p>
+<p>Notice that it is recommended to use a small number of workers for the validation, in this case 4. </p>
+<h3 id="tools__for__efficient__simulations">Tools for efficient simulations<a class="headerlink" href="#tools__for__efficient__simulations" title="Permanent link">&para;</a></h3>
+<p>Chart flow for a more efficient Matlab code using existing tools adapted from Mathworks documentation
+on <a href="https://se.mathworks.com/help/parallel-computing/choosing-a-parallel-computing-solution.html" target="_blank">parallel computing</a>:</p>
+<p><img alt="pctworkflow" src="../images/pctworkflow.png" /></p>
+<div class="admonition important">
+<p class="admonition-title">MATLAB on GPUs</p>
+<p>Notice that MATLAB currently supports only NVIDIA GPUs (v100,a40,a6000,a100,l40s,h100),
+with v100 and l40s being the most abundant (10 nodes each).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Use MATLAB for lightweight tasks on the login nodes</p>
+<p>Remember that login nodes are used by many users and if you run heavy jobs there,
+you will interfere with the workflow of them.</p>
+</div>
+<h3 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Matlab serial job</summary>
+<p>The folder <code>SERIAL</code> contains a function <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/funct.m" target="_blank">funct.m</a> 
+which performs a FFT on a matrix.
+The execution time is obtained with tic/toc and written down in the output file called
+<strong>log.out</strong>. Run the function by using the MATLAB GUI with the help of the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/submit.m" target="_blank">submit.m</a>.</p>
+<p>As an alternative, you can submit the job via a batch script 
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SERIAL/job.sh" target="_blank">job.sh</a>. 
+Here, you will need to fix the <em>Project_ID</em> with the one provided for the present course and the Matlab version.</p>
+</details>
+<details class="note">
+<summary>Exercise 2: Matlab parallel job</summary>
+<ul>
+<li>
+<p><code>PARFOR</code> folder contains an <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/parallel_example.m" target="_blank">example</a> of a parallelized loop with the &ldquo;parfor&rdquo; directive. A pause()
+function is included in the loop to make it heavy. This function can be
+submitted to the queue by running the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/PARFOR/submit.m" target="_blank">submit.m</a> in the MATLAB GUI.
+The number of workers can be set by replacing the string <em>FIXME</em> (in the &ldquo;submit.m&rdquo;
+file) with the number you desire. 
+  Try different values for the number of workers from 1 to 10 and take a note
+  of the simulation time output at the end of the simulation. Where does the
+  code achieve its peak performance? </p>
+</li>
+<li>
+<p><code>SPMD</code> folder presents an example of a parallelized code using <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/SPMD/spmdex.m" target="_blank">SPMD</a> paradigm. Submit this job to the queue through the MATLAB GUI. This
+example illustrates the use of <em>parpool</em> to run parallel code in a more interactive manner.</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Exercise 3: Job Arrays</summary>
+<p><code>JOBARRAYS</code> folder shows an <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/JOBARRAYS/funct.m" target="_blank">example</a> for job arrays.
+The batch file is <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/JOBARRAYS/job.sh" target="_blank">job.sh</a>. In this exercise, one submits
+an array of 28 tasks where the task IDs are used as input arguments for a MATLAB function which performs operations on a matrix whose size depends on the task ID. Submit the
+script and notice what is written in the output files. </p>
+<p>Instead of a single matrix, could you initialize two matrices of <em>(50*sz,50*sz)</em> and compute the summation of them, instead of the fast Fourier transform (FFT)?
+Use only 14 tasks in the job array.</p>
+</details>
+<details class="note">
+<summary>Exercise 4: Matlab GPU job</summary>
+<p><code>GPU</code> folder contains a test case that computes a Mandelbrot set both 
+on CPU <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelcpu.m" target="_blank">mandelcpu.m</a> 
+and on GPU <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/mandelgpu.m" target="_blank">mandelgpu.m</a>. You can submit the jobs through 
+the MATLAB GUI using the <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitcpu.m" target="_blank">submitcpu.m</a> and <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/MATLAB/GPU/submitgpu.m" target="_blank">submitgpu.m</a>  files. </p>
+<p>The final output if everything ran well are two .png figures
+which display the timings for both architectures. Use the &ldquo;eom&rdquo; command on the
+terminal to visualize the images (eom out-X.png)</p>
+</details>
+<h2 id="r">R<a class="headerlink" href="#r" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__r">How to find R<a class="headerlink" href="#how__to__find__r" title="Permanent link">&para;</a></h3>
+<p>Similar to Matlab, R is available through the Menu bar if you are using ThinLinc client (recommended). Additionally, you can load 
+a Matlab module on a Linux terminal on Kebnekaise. Details for these two options can be found 
+<a href="https://docs.hpc2n.umu.se/software/apps/R/" target="_blank">here</a>. </p>
+<h3 id="first__time__configuration_1">First time configuration<a class="headerlink" href="#first__time__configuration_1" title="Permanent link">&para;</a></h3>
+<p>The first time you access R on Kebnekaise, you need to configure it by following the 
+<a href="https://docs.hpc2n.umu.se/software/userinstalls/#rcran" target="_blank">Preparations</a> step.</p>
+<h3 id="recommendations">Recommendations<a class="headerlink" href="#recommendations" title="Permanent link">&para;</a></h3>
+<details class="warning">
+<summary>Be aware of data duplication in R</summary>
+<p>Some parallel functions <code>mcapply</code> in this example, tend to replicate the data for 
+the workers (cores) if the dataframe is modified by them. This can be crucial if you
+are working with a large data frame and you are employing several parallel functions,
+for instance during the training of machine learning models because your simulation could
+easily exceed the available memory per node.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">   </span>library<span class="o">(</span>parallel<span class="o">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">   </span>library<span class="o">(</span>pryr<span class="o">)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">   </span>prev<span class="w"> </span>&lt;-<span class="w"> </span>mem_used<span class="o">()</span><span class="w">                                                         </span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">   </span>print<span class="o">(</span>paste<span class="o">(</span><span class="s2">&quot;Memory initially allocated by R:&quot;</span>,<span class="w"> </span>prev/1e6,<span class="w"> </span><span class="s2">&quot;MB&quot;</span><span class="o">))</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">   </span><span class="c1"># Define a relatively large dataframe</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">   </span>data_df<span class="w"> </span>&lt;-<span class="w"> </span>data.frame<span class="o">(</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">   </span><span class="nv">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>seq<span class="o">(</span><span class="m">1</span>,<span class="w"> </span>1e7<span class="o">)</span>,
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">   </span><span class="nv">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>runif<span class="o">(</span>1e7<span class="o">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">   </span><span class="o">)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">   </span><span class="c1"># Create a function to be applied to each row (or a subset of rows)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">   </span>process_function<span class="w"> </span>&lt;-<span class="w"> </span><span class="k">function</span><span class="o">(</span>i,<span class="w"> </span>df<span class="o">)</span><span class="w"> </span><span class="o">{</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">   </span><span class="c1"># do some modification the i-th row </span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">   </span><span class="k">return</span><span class="o">(</span>df<span class="nv">$Value</span><span class="o">[</span>i<span class="o">]</span><span class="w"> </span>*<span class="w"> </span><span class="m">2</span><span class="o">)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">   </span><span class="o">}</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">   </span>prev<span class="w"> </span>&lt;-<span class="w"> </span>mem_used<span class="o">()</span><span class="w"> </span>-<span class="w"> </span>prev
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">   </span>print<span class="o">(</span>paste<span class="o">(</span><span class="s2">&quot;Memory after the serial code execution:&quot;</span>,<span class="w"> </span>prev/1e6,<span class="w"> </span><span class="s2">&quot;MB&quot;</span><span class="o">))</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">   </span><span class="c1"># Use mclapply to process the dataframe in parallel</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">   </span>num_cores<span class="w"> </span>&lt;-<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">   </span>results<span class="w"> </span>&lt;-<span class="w"> </span>mclapply<span class="o">(</span><span class="m">1</span>:nrow<span class="o">(</span>data_df<span class="o">)</span>,<span class="w"> </span><span class="k">function</span><span class="o">(</span>i<span class="o">)</span><span class="w"> </span>process_function<span class="o">(</span>i,<span class="w"> </span>data_df<span class="o">)</span>,<span class="w"> </span>mc.cores<span class="w"> </span><span class="o">=</span><span class="w"> </span>num_cores<span class="o">)</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">   </span>prev<span class="w"> </span>&lt;-<span class="w"> </span>mem_used<span class="o">()</span><span class="w"> </span>-<span class="w"> </span>prev
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">   </span>print<span class="o">(</span>paste<span class="o">(</span><span class="s2">&quot;Memory after parallel code execution:&quot;</span>,<span class="w"> </span>prev/1e6,<span class="w"> </span><span class="s2">&quot;MB&quot;</span><span class="o">))</span>
+</span></code></pre></div>
+<p>In this example <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/MEMDUP/mem-dup.R" target="_blank">mem-dup.R</a>, I used the function <code>mem_used()</code> provided by the <code>pryr</code> package
+to monitor the memory usage. The batch script for this example is <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/MEMDUP/job.sh" target="_blank">job.sh</a>.</p>
+<p>One possible solution for data duplication could be to use use a data frame for each worker that includes
+only the relevant data for that particular computation.</p>
+</details>
+<div class="admonition warning">
+<p class="admonition-title">Use R for lightweight tasks on the login nodes</p>
+<p>Remember that login nodes are used by many users and if you run heavy jobs there,
+you will interfere with the workflow of them.</p>
+</div>
+<h3 id="exercises_1">Exercises<a class="headerlink" href="#exercises_1" title="Permanent link">&para;</a></h3>
+<details class="important">
+<summary>Requirements</summary>
+<p>Prior to running the examples, you will need to install several packages.
+Follow these <a href="https://docs.hpc2n.umu.se/software/userinstalls/#rcran">instructions</a>){:target=&rdquo;_blank&rdquo;}:</p>
+<ul>
+<li>
+<p>The packages needed are:</p>
+<p>For this R version (check if they are not already installed)</p>
+<p>ml GCC/10.2.0 OpenMPI/4.0.5 R/4.0.4</p>
+<p>Rmpi</p>
+<p>doParallel</p>
+<p>caret</p>
+<p>MASS</p>
+<p>klaR</p>
+<p>nnet</p>
+<p>e1071</p>
+<p>rpart</p>
+<p>mlbench</p>
+<p>parallel</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Exercise 1: R serial job</summary>
+<p>In the <code>SERIAL</code> folder, a <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/SERIAL/serial.R" target="_blank">serial</a> is provided. Submit the script 
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/SERIAL/job.sh" target="_blank">job.sh</a> with the command <em>R CMD</em> and also with <em>Rscript</em>. Where could
+it be more suitable to use <em>Rscript</em> over <em>R CMD</em>?</p>
+<p>Why do we need the flag <strong>#SBATCH -C &lsquo;skylake&rsquo;</strong> in the batch script?</p>
+</details>
+<details class="note">
+<summary>Exercise 2: Job Arrays</summary>
+<p><code>JOB-ARRAYS</code> folder shows an <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/JOB-ARRAYS/script_arrays.R" target="_blank">example</a> for job arrays, the batch file is <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/JOB-ARRAYS/job.sh" target="_blank">job.sh</a>. Submit the
+script and notice what is written in the output files. </p>
+<p>Could you use job arrays in your simulations if you need to run many simulations where some parameters are changed? As an example, imagine that you need to run 28 simulations 
+where a single parameter, such as the temperature, is changed from 2 to 56 C. Could you 
+use the variable <em>task_id</em> in the previous script to get that range of temperatures so
+that each simulation prints out a different temperature?</p>
+</details>
+<details class="note">
+<summary>Exercise 3: Parallel jobs with Rmpi</summary>
+<p>In the folder <code>RMPI</code>, you can find the R script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/RMPI/Rmpi.R" target="_blank">Rmpi.R</a> which uses 5
+MPI slaves to apply the runif() function on an array &ldquo;c&rdquo;. The submit file is
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/RMPI/job_Rmpi.sh" target="_blank">job_Rmpi.sh</a>. As a result, you will see the random numbers
+generated by the slaves in the slurm output file</p>
+</details>
+<details class="note">
+<summary>Exercise 4: Parallel jobs with doParallel</summary>
+<p>The folder <code>DOPARALLEL</code> contains two examples:</p>
+<ol>
+<li>
+<p><a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/FOREACH/doParallel.R" target="_blank">doParallel.R</a> 
+      shows how to use the <strong>foreach</strong> function in sequential mode
+      (1 core) and the parallel mode using 4 cores. What is the difference in the usage
+      of <strong>foreach</strong> for these two modes?</p>
+<p>Submit the <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/FOREACH/job_doParallel.sh" target="_blank">job_doParallel.sh</a> script and compare the timings of the
+  sequential and parallel codes.</p>
+<p>How many <em>workers</em> are allocated for this simulation? If you want to allocate
+  more or less, what changes must be made to these files?</p>
+</li>
+<li>
+<p><a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/ML/doParallel_ML.R" target="_blank">doParallel_ML.R</a> presents the evaluation of several ML models in both
+   sequential and parallel modes using the standard &ldquo;iris&rdquo; database. The 
+   difference is basically in the use of %dopar% instead of %do% function. </p>
+<p>Submit the batch script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/DOPARALLEL/ML/job_doParallel_ML.sh" target="_blank">job_doParallel_ML.sh</a> to the queue.</p>
+<p>In the output file observe the resulting elapsed times for the sequential
+  and the 4 cores parallel simulation.</p>
+<p>Upon submitting the job to the queue you will get a number called job ID.
+  Use the command:</p>
+<p><code>job-usage job_ID</code></p>
+<p>to obtain a URL which you can copy/paste in your local browser. Tip: refresh
+  your browser several times to get the statistics. </p>
+<p>Can you see how the CPU is used? What about the memory?</p>
+<p>Note 1: In order to run this exercise, you need to have all the packages 
+  listed at the beginning of this document installed. </p>
+<p>Note 2: If you want to try a different number of cores for running the 
+  scripts, you should change that number in both the <em>.R and </em>.sh scripts</p>
+</li>
+</ol>
+</details>
+<details class="note">
+<summary>Exercise 5: Machine Learning jobs</summary>
+<p>In the folder <code>ML</code> we show a ML model using a sonar database
+and Random Forest as the training method (<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/Rscript.R" target="_blank">Rscript.R</a>). The simulations are done both in serial
+and parallel modes. You may change the values for the number of cores (1 in the present case) 
+to other values. Notice that the number of cores needs to be the same in the
+files <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/job.sh" target="_blank">job.sh</a> and <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/Rscript.R" target="_blank">Rscript.R</a>. </p>
+<p>Try a different number of cores and monitor the timings which are reported at
+the end of the output file.</p>
+</details>
+<h2 id="alphafold">Alphafold<a class="headerlink" href="#alphafold" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__alphafold">How to find Alphafold<a class="headerlink" href="#how__to__find__alphafold" title="Permanent link">&para;</a></h3>
+<p>Alphafold is installed as a module, see the <a href="https://docs.hpc2n.umu.se/software/apps/#alphafold" target="_blank">documentation page</a>. 
+Notice that on the Intel nodes there are more
+versions of Alphafold installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+<code>#SBATCH -C skylake</code> to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. </p>
+<h3 id="exercises_2">Exercises<a class="headerlink" href="#exercises_2" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Running single jobs</summary>
+<p>In the exercises folder <code>ALPHAFOLD/SINGLEJOBS</code> you will find a <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/SINGLEJOB/my_fasta_sequence.fasta" target="_blank">fasta secuence</a> for a monomer and the 
+corresponding batch file <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/SINGLEJOB/job.sh" target="_blank">job.sh</a> for running the simulation on
+GPUs. Try running the simulation with CPUs only and then with l40s, v100 and a100 GPUs. </p>
+<p>Notice that the simulation will take ~1hrs. so the purpose of this exercise is to know
+if the simulation starts running well only.</p>
+</details>
+<details class="note">
+<summary>Exercise 2: Running job arrays</summary>
+<p>In the exercises folder <code>ALPHAFOLD/JOBARRAYS</code> you will find 8 fasta sequeces <code>seq[1-8].fasta</code>,
+these sequences are listed in the file <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/JOBARRAYS/list_sequences.txt" target="_blank">list_sequences.txt</a>.
+The job script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/JOBARRAYS/job.sh" target="_blank">job.sh</a> will allow you to run several simulations 
+in a compact manner where each fasta sequence is used as an input for Alphafold. In the present script, a suggestion for using 1 or 2 GPU cards is provided. </p>
+<p>Notes: 1) the simulation will take ~1hrs. so the purpose of this exercise is to know
+if the simulation starts running well only. 2) Don&rsquo;t forget to monitor the resources by
+using the <code>job-usage</code> tool.</p>
+</details>
+<h2 id="cryosparc">CryoSPARC<a class="headerlink" href="#cryosparc" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__cryosparc">How to find CryoSPARC<a class="headerlink" href="#how__to__find__cryosparc" title="Permanent link">&para;</a></h3>
+<p>The version 4.5.3 of CryoSPARC is installed as a module, here is the <a href="https://docs.hpc2n.umu.se/software/apps/#cryosparc" target="_blank">documentation page</a>. </p>
+<h3 id="first__time__configuration_2">First time configuration<a class="headerlink" href="#first__time__configuration_2" title="Permanent link">&para;</a></h3>
+<p>One needs a license for using this software. For
+academic purposes a free of charge license can be requested at the website
+<a href="https://cryosparc.com/" target="_blank">cryosparc.com</a> (one working day for the processing). 
+Once you obtain your license ID copy it, create a file called <code>/home/u/username/.cryosparc-license</code> and paste
+it in the first line of this file. In the second line of the file write your email address. </p>
+<h3 id="using__cryosparc__on__kebnekaise">Using CryoSPARC on Kebnekaise<a class="headerlink" href="#using__cryosparc__on__kebnekaise" title="Permanent link">&para;</a></h3>
+<p>Create a suitable folder in your project directory, for instance <code>/proj/nobackup/hpc2n202X-XYZ/cryosparc</code>
+and move into this folder. Download/copy the <code>lane*tar</code> files that are located 
+<a href="https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC" target="_blank">here</a> to the cryosparc 
+folder and untar them here (<code>tar -xvf lane_CPU.tar</code> as an example).</p>
+<details class="important">
+<summary>Fix your Project_ID and time</summary>
+<p>Change the string <em>Project_ID</em> in the file <code>lane*/cluster_script.sh</code> to reflect your current project.
+Also, the time was set to 20 min. in these files but for your realistic simulations you can change it to
+longer times (<code>-t 00:20:00</code>).</p>
+</details>
+<p>The lanes should be recognized by CryoSPARC when it starts running.</p>
+<p>Load the CryoSPARC modules. Start CryoSPARC and accept the request which asks about continuing using
+cryostart and that the folder was not used before. List the users on the server (which should be only yourself
+for this type of license), check the email address that is displayed for this user (it should be the one you
+added in the license file) and reset the password to. These steps are summarized here:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">$cryosparc</span><span class="w"> </span>start<span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>...
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Do<span class="w"> </span>you<span class="w"> </span>wish<span class="w"> </span>to<span class="w"> </span><span class="k">continue</span><span class="w"> </span>starting<span class="w"> </span>cryosparc?<span class="w"> </span><span class="o">[</span>yN<span class="o">]</span>:<span class="w"> </span>y
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>...
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>CryoSPARC<span class="w"> </span>master<span class="w"> </span>started.<span class="w"> </span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w"> </span>From<span class="w"> </span>this<span class="w"> </span>machine,<span class="w"> </span>access<span class="w"> </span>CryoSPARC<span class="w"> </span>and<span class="w"> </span>CryoSPARC<span class="w"> </span>Live<span class="w"> </span>at
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span>http://localhost:39007
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>...
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nv">$cryosparc</span><span class="w"> </span>listusers
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>cryosparc<span class="w"> </span>resetpassword<span class="w"> </span>--email<span class="w"> </span><span class="s2">&quot;myemail@mail.com&quot;</span><span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;choose-a-password&quot;</span>
+</span></code></pre></div>
+<p>Copy and paste the line which has the localhost port (notice that port number can change) to a browser on Kebnekaise:</p>
+<p><img alt="cryosparc-ini" src="../images/cryosparc-ini.png" /></p>
+<p>After loging in, you will be able to see the CryoSPARC&rsquo;s dashboard:</p>
+<p><img alt="cryosparc-dash" src="../images/cryosparc-snapshot.png" /></p>
+<p>There are several tutorials at the CryoSPARC website, in the previous picture I followed the
+<a href="https://guide.cryosparc.com/processing-data/get-started-with-cryosparc-introductory-tutorial#step-3-download-the-tutorial-dataset" target="_blank">Introductory Tutorial (v4.0+)</a>. </p>
+<div class="admonition important">
+<p class="admonition-title">Use <code>cryosparc</code> instead of <code>cryosparcm</code></p>
+<p>On Kebnekaise the command <code>cryosparc</code> should be used and not the one cited in the tutorial <code>cryosparcm</code></p>
+</div>
+<p>Depending on the job type, CryoSPARC would suggest the hardware resources. For instance, in the tutorial
+above <em>Step 4: Import Movies</em> suggests using 1 CPU upon queueing it, but <em>Step 5: Motion Correction</em> suggests
+using 1 GPU. For CPU-only jobs you can choose the CPU lane, and if your job uses GPUs you can choose 
+among L40s, V100, A100, and H100. Notice that the V100 and L40s are the most abundant at the moment:</p>
+<p><img alt="cryosparc-dash" src="../images/cryosparc-path-motion.png" /></p>
+<p>When you finish your analysis with CryoSPARC, shut it down with the command <code>cryosparc stop</code> on the terminal.
+Otherwise the server keeps running on the login node.</p>
+<p>Additional information can be obtained from a tutorial given during a <a href="https://nsc.liu.se/support/presto/BerzeLiUs_CryoSparc_workshop-20240415_latest.pdf" target="_blank">workshop on Berzelius</a>
+ and also
+from the <a href="https://www.nsc.liu.se/support/presto/CryoEM-PReSTO/cryosparc_berzelius/" target="_blank">NSC documentation</a>. Notice that although the guidelines are for machines different to Kebnekaise,
+the systems are very similar and you could get ideas from them. For instance, the <code>cryosparc copylanes</code> is not yet
+supported on Kebnekaise and you will need to follow the step above (manually copying the lanes) for getting lanes working. </p>
+<h2 id="nextflow">Nextflow<a class="headerlink" href="#nextflow" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__nextflow">How to find Nextflow<a class="headerlink" href="#how__to__find__nextflow" title="Permanent link">&para;</a></h3>
+<p>Nextflow is installed as a module that can be loaded directly without any requirements.
+Notice that on the Intel nodes there are more versions of this software installed
+than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+<code>#SBATCH -C skylake</code> to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. </p>
+<h3 id="exercises_3">Exercises<a class="headerlink" href="#exercises_3" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Arabidopsis</summary>
+<p>The data for running this example can be found in this <a href="https://onlinelibrary.wiley.com/doi/10.1111/tpj.13312" target="_blank">paper</a> and more details about the analysis can be found there as well. We have downloaded the
+data for you and you can get it by copying the files to your working project:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$cd</span><span class="w"> </span>/proj/nobackup/your-project
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$mkdir</span><span class="w"> </span>nextflow-arabidopsis<span class="w"> </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">$cd</span><span class="w"> </span>nextflow-arabidopsis
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">$cp</span><span class="w"> </span>/proj/nobackup/hpc2n/SR*gz<span class="w"> </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/design_test.csv
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/ARABIDOPSIS/job.sh
+</span></code></pre></div>
+<p>Fix the Project_ID to match the current project you are part of and send the job to the queue. This example
+takes ~3 hrs. so the purpose of this exercise is just to show you how to run this job with Nextflow.  </p>
+</details>
+<details class="note">
+<summary>Exercise 2: Interactive job submission</summary>
+<p>Nextflow allows you to submit jobs interactively on the Kebnekaise&rsquo;s command line. You need to write a file
+with the instructions to be executed by Nextflow, in the present case, it is a file <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/wc.nf" target="_blank">wc.nf</a> which
+unzips a file <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/file.txt.gz" target="_blank">file.txt.gz</a> and counts the number of lines in it. A configuration file
+for the cluster <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config" target="_blank">hpc2n.config</a> is needed with some parameters that need to be changed with your
+personal information. Similarly to the previous exercise, you can follow these commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$cd</span><span class="w"> </span>/proj/nobackup/your-project
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$mkdir</span><span class="w"> </span>nextflow-interactive<span class="w"> </span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">$cd</span><span class="w"> </span>nextflow-interactive<span class="w"> </span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/wc.nf
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/file.txt.gz
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/hpc2n.config
+</span></code></pre></div>
+<p>load the Nextflow module and send the job interactively by typing the command on the Kebnekaise&rsquo;s terminal (fix the project ID):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$ml</span><span class="w"> </span>Nextflow/24.04.2
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">$nextflow</span><span class="w"> </span>run<span class="w"> </span>wc.nf<span class="w"> </span>-c<span class="w"> </span>hpc2n.config<span class="w"> </span>--input<span class="w"> </span>file.txt.gz<span class="w"> </span>--project<span class="w"> </span>hpc2n202X-XYZ<span class="w"> </span>--clusterOptions<span class="w"> </span><span class="s2">&quot;-t 00:05:00 -n 28 -N 1&quot;</span>
+</span></code></pre></div>
+<p>Here, you will run the job on 28 cores. On a different terminal tab you can check that the job is submitted/running with the command <code>squeue -u your-username</code>. </p>
+</details>
+<h2 id="apptainer">Apptainer<a class="headerlink" href="#apptainer" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__apptainer">How to find Apptainer<a class="headerlink" href="#how__to__find__apptainer" title="Permanent link">&para;</a></h3>
+<p>Apptainer is site-installed meaning that you can run it without loading a module. Apptainer is supported on 
+Kebnekaise instead of Singularity. The recipes that are built/run with Singularity can also be built/run with
+Apptainer with the same parameters. You will need to replace the command <code>singularity</code> by <code>apptainer</code>. 
+If you are curious, you will notice that the command <code>singularity</code> is also available on Kebnekaise but it is just
+a soft-link to <code>apptainer</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">$which</span><span class="w"> </span>singularity<span class="w"> </span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>/bin/singularity
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">$ls</span><span class="w"> </span>-lahrt<span class="w"> </span>/bin/singularity<span class="w"> </span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">9</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">18</span>:30<span class="w"> </span>/bin/singularity<span class="w"> </span>-&gt;<span class="w"> </span>apptainer
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Use R for lightweight tasks on the login nodes</p>
+<p>As with any other software, use Apptainer on the login node for simple tasks, for instance building a
+lightweight image, otherwise run a batch job. </p>
+</div>
+<h3 id="exercises_4">Exercises<a class="headerlink" href="#exercises_4" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Building and running an Apptainer image</summary>
+<p>This is an example for building a software called Gromacs. Build a Gromacs container 
+as follows in the directory which contains the <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/APPTAINER/gromacs.def" target="_blank">gromacs.def</a> definition file:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">$apptainer</span><span class="w"> </span>build<span class="w"> </span>gromacs.sif<span class="w"> </span>gromacs.def
+</span></code></pre></div>
+<p>Download the <strong>benchMEM.tpr</strong> file <a href="https://www.mpinat.mpg.de/grubmueller/bench" target="_blank">here</a> and 
+place it in the directory where the .sif is generated. In fact you can place the files at 
+any other location but then you will need to modify the paths in the <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/APPTAINER/job.sh" target="_blank">job.sh</a> batch script.</p>
+<p>Submit the <strong>job.sh</strong> file to the queue. The output of Gromacs including its performance at 
+the bottom of it (line with the ns/day string) is written in the <em>md.log</em> files. As a comparison,
+after running the Apptainer image, the module of Gromacs is loaded and the same simulation is run. </p>
+</details>
+<h2 id="tensorflow">TensorFlow<a class="headerlink" href="#tensorflow" title="Permanent link">&para;</a></h2>
+<h3 id="how__to__find__tensorflow">How to find TensorFlow<a class="headerlink" href="#how__to__find__tensorflow" title="Permanent link">&para;</a></h3>
+<p>Several versions of TensorFlow are installed as modules on Kebnekaise. Similarly to other software, on
+Intel nodes there are more versions of this software installed than on the AMD nodes.</p>
+<h3 id="exercises_5">Exercises<a class="headerlink" href="#exercises_5" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Running TensorFlow simulations</summary>
+<p>In this exercise, you will run a script with TensorFlow v. 2.15 on GPUs. Notice that 
+because this version of TensorFlow is available on all the NVIDIA GPUs, you just need
+to write the type of GPUs you want to use, in the present case <em>l40s</em>. There are 
+three different examples in the <code>TENSORFLOW</code> folder under the exercises one:
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/hello_tensorflow.py" target="_blank">hello_tensorflow.py</a> (prints out <em>Hello, TensorFlow!</em> string),
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/loss.py" target="_blank">loss.py</a> (it computes a loss in a model), and 
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/mnist_mlp.py" target="_blank">mnist_mlp.py</a> (which runs a model using the MNIST database). </p>
+<p>The batch script is <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/job.sh" target="_blank">job.sh</a>. Submit the job with different types of GPUs.</p>
+</details>
+<h2 id="jupyter__notebooks">Jupyter Notebooks<a class="headerlink" href="#jupyter__notebooks" title="Permanent link">&para;</a></h2>
+<p>You can use Jupyter Notebooks on Kebnekaise through JupyterLab. Jupyter Notebooks allow you to
+work in a more interactive manner which is convenient when you are at the development phase of
+your project. There are available kernels for most popular languages: R, Python, Matlab, and
+Julia to work in a Jupyter Notebook.</p>
+<h3 id="how__to__find__jupyterlab">How to find JupyterLab<a class="headerlink" href="#how__to__find__jupyterlab" title="Permanent link">&para;</a></h3>
+<p>Several versions of JupyterLab are installed as modules on Kebnekaise. Similarly to other 
+software, on Intel nodes there are more versions of this software installed than on the AMD nodes.</p>
+<h3 id="using__jupyter__notebooks__on__kebnekaise">Using Jupyter Notebooks on Kebnekaise<a class="headerlink" href="#using__jupyter__notebooks__on__kebnekaise" title="Permanent link">&para;</a></h3>
+<p>Guidelines for running Jupyter Notebooks on Kebnekaise can be found <a href="https://docs.hpc2n.umu.se/software/jupyter/" target="_blank">here</a>.</p>
+<h3 id="exercises_6">Exercises<a class="headerlink" href="#exercises_6" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Running a Jupyter Notebook</summary>
+<p>Because the tasks executed in a Jupyter Notebook are, in general, computationally expensive
+it is more convenient to run them on a compute node instead of the login nodes. To do this, 
+you need to prepare a batch script like this one <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/SIMPLE/job.sh" target="_blank">job.sh</a>. </p>
+<p>Once you submit your job and it starts running, check the output file <strong>slurm*out</strong> and search for
+the string <strong>http://b-cnwxyz.hpc2n.umu.se:8888/lab?token=xy&hellip;z</strong>. Copy this string and paste it in
+a browser on Kebnekaise. You will be directed to the dashboard of JupyterLab. </p>
+<p>A couple of notes: </p>
+<ul>
+<li>
+<p>You can change the type of the GPU where you want to run the notebook</p>
+</li>
+<li>
+<p>Cancel the job (<code>scancel job_ID</code>) if you stop using the notebook</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Exercise 2: Running Infomap in a Jupyter Notebook</summary>
+<p>Infomap is a software for network community detection. It could be convenient for you to work
+in a Jupyter Notebook if the simulations are not long and you need to see the graphical results
+right away. Here, there are the steps you can follow to get Infomap running on a notebook:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Create a suitable folder in your project and move into it</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">$mkdir</span><span class="w"> </span>/proj/nobackup/hpc2n202Q-XYZ/infomap-workspace
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">$cd</span><span class="w"> </span>/proj/nobackup/hpc2n202Q-XYZ/infomap-workspace
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Purge and load JupyterLab module and dependencies</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">$module</span><span class="w"> </span>purge
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nv">$module</span><span class="w"> </span>load<span class="w"> </span>GCCcore/13.2.0<span class="w"> </span>JupyterLab/4.2.0
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Create a isolated environment for this project called &quot;infmpenv&quot; and activate it</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nv">$python</span><span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./infmpenv<span class="w"> </span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nv">$source</span><span class="w"> </span>infmpenv/bin/activate
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># Install ipykernel to be able to create your own kernel for this environment</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="nv">$pip</span><span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--no-build-isolation<span class="w"> </span>ipykernel
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="c1"># Install Infomap, Networkx, and Matplotlib</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="nv">$pip</span><span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>infomap<span class="w"> </span>networkx<span class="w"> </span>matplotlib
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="c1"># Install the kernel</span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="nv">$python</span><span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>infmpenv
+</span></code></pre></div>
+<p>After doing these installations, download the Jupyter Notebook for Infomap, create a <em>data</em>
+and <em>output</em> folders as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/mapequation/infomap-notebooks/master/1_1_infomap_intro.ipynb
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">$mkdir</span><span class="w"> </span>data
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">$cd</span><span class="w"> </span>data<span class="w"> </span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/mapequation/infomap-notebooks/master/data/ninetriangles.net
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">$cd</span><span class="w"> </span>..
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nv">$mkdir</span><span class="w"> </span>output
+</span></code></pre></div>
+<p>Fix the project ID in the batch job <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/INFOMAP/job.sh" target="_blank">job.sh</a> and send it to the queue. As in the previous
+exercise, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. Then,
+open the notebook you downloaded and choose the kernel you just created:</p>
+<p><img alt="infomap" src="../images/infomap.png" /></p>
+</details>
+<details class="note">
+<summary>Exercise 3: CPU and GPU code for Julia set</summary>
+<p>In this exercise, you will compute the Julia set in both CPU and GPU. The GPU part will be done by using
+the CuPy library. A nice feature in this example is that it shows you how you could use multi-GPUs by
+modifying the initial single GPU case. Here are the guidelines for running this notebook: </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Create a suitable folder in your project and move into it</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">$mkdir</span><span class="w"> </span>/proj/nobackup/hpc2n202Q-XYZ/juliaset-workspace
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">$cd</span><span class="w"> </span>/proj/nobackup/hpc2n202Q-XYZ/juliaset-workspace
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Purge and load JupyterLab module and dependencies</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">$module</span><span class="w"> </span>purge
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">$module</span><span class="w"> </span>load<span class="w"> </span>GCCcore/13.2.0<span class="w"> </span>JupyterLab/4.2.0
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Create a isolated environment for this project called &quot;infmpenv&quot; and activate it</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nv">$python</span><span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./mandelenv<span class="w"> </span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nv">$source</span><span class="w"> </span>mandelenv/bin/activate
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># Install ipykernel to be able to create your own kernel for this environment</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nv">$pip</span><span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--no-build-isolation<span class="w"> </span>ipykernel
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1"># Install the kernel</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="nv">$python</span><span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="o">=</span>mandelenv
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># Load a CUDA library</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nv">$ml</span><span class="w"> </span>CUDA/12.5.0
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1"># Install Numpy, Matplotlib, and CuPy</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="nv">$pip</span><span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>--no-build-isolation<span class="w"> </span>numpy<span class="w"> </span>matplotlib<span class="w"> </span>cupy-cuda12x
+</span></code></pre></div>
+<p>After these installations, download the Jupyter Notebook for Juliaset as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$wget</span><span class="w"> </span>https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/GPUS/Juliaset.ipynb
+</span></code></pre></div>
+<p>Fix the project ID in the batch job <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/GPUS/job.sh" target="_blank">job.sh</a> and send it to the queue. As in the previous
+exercise, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. Choose the
+kernel <strong>mandelenv</strong> you recently created.</p>
+</details>
+<details class="note">
+<summary>Exercise 4: Matlab in a Jupyter notebook</summary>
+<p>One can run a Jupyter notebook with a <a href="https://github.com/mathworks/jupyter-matlab-proxy" target="_blank">Matlab kernel</a> and also take
+advantage of the Python environment to execute Python code, such as common AI libraries, in Matlab. You can follow these steps
+to get this combo working:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Load Matlab </span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ml<span class="w"> </span>MATLAB/2023a.Update4
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># Load a Python version compatible with Matlab and also CUDA (if you will run on GPUs)</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>ml<span class="w"> </span>GCCcore/11.3.0<span class="w">  </span>Python/3.10.4<span class="w"> </span>CUDA/11.7.0
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Create an environment called matlabenv (you can change this name)</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./matlabenv
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="c1"># Activate this environment</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="nb">source</span><span class="w"> </span>matlabenv/bin/activate
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># Perform installations: upgrade pip, and packages that you will need</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>scikit-learn
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># Install Jupyterlab</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="c1"># Install the Matlab proxy</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>pip<span class="w"> </span>install<span class="w"> </span>jupyter-matlab-proxy
+</span></code></pre></div>
+<p>Fix the project ID in the batch job <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/job.sh" target="_blank">job.sh</a> 
+and send it to the queue. 
+As in previous exercises, copy and paste the url with the host name, port, and token to a browser on Kebnekaise. If you cloned this repository
+you will have a copy of the <a href="https://github.com/hpc2n/intro-course/blob/master/exercises/JUPYTERNOTEBOOKS/MATLAB/matlab_kernel.ipynb" target="_blank">matlab_kernel.ipynb</a>
+notebook under <code>exercises/JUPYTERNOTEBOOKS/MATLAB</code>. Choose the <code>MATLAB kernel</code> to execute this notebook:</p>
+<p><img alt="infomap" src="../images/matlab-kernel.png" /></p>
+<p>When you try to run the notebook, Matlab will ask for a <a href="https://github.com/mathworks/matlab-proxy/blob/main/MATLAB-Licensing-Info.md" target="_blank">type of license</a>. Because
+you are running this notebook on our HPC center, you can choose the option <strong>Existing License</strong> and then <em>Start MATLAB</em>.</p>
+<p>In the same notebook at the bottom, we show you how to run a simple Python script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/JUPYTERNOTEBOOKS/MATLAB/digits.py" target="_blank">digits.py</a> in Matlab with the <code>pyrunfile</code> command. This Python script uses an AI library.</p>
+</details>
+<h2 id="amber">AMBER<a class="headerlink" href="#amber" title="Permanent link">&para;</a></h2>
+<p>Amber (Assisted Model Building with Energy Refinement) is a suite of tools for running Molecular Dynamics
+and analyzing the dynamical trajectories, see the <a href="https://docs.hpc2n.umu.se/software/apps/Amber/" target="_blank">documentation page</a>.</p>
+<h3 id="how__to__find__amber">How to find AMBER<a class="headerlink" href="#how__to__find__amber" title="Permanent link">&para;</a></h3>
+<p>AMBER is installed as a module on Kebnekaise. Notice that on the Intel nodes there are 
+more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+<code>#SBATCH -C skylake</code> to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. </p>
+<p>A comparison of runs on the various types of nodes on Kebnekaise is displayed below. We evaluated the performance of different AMBER implementations including Sander-MPI (with 28 cores), PMEMD-MPI (with  28 cores), and PMEMD-GPU (with 1 MPI processes and 1 or 2 GPU card(s)). The figure below shows the best performance of AMBER. The benchmark case consisted of 158944 particles, using 1 fs. for time step and a cutoff of 1.2 nm. for real space electrostatics calculations. Particle mesh Ewald was used to solve long-range electrostatic interactions. Data used for this
+benchmarking can be obtained through the following  exercises.</p>
+<p><img alt="namd-benchmark" src="../images/amber2025.png" /></p>
+<h3 id="exercises_7">Exercises<a class="headerlink" href="#exercises_7" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Running a MPI PMEMD job</summary>
+<p>The input files for the exercises are located in the folder <a href="https://github.com/hpc2n/intro-course/tree/master/exercises/AMBER" target="_blank">exercises/AMBER</a>. Thus, if you clone this repository you will
+find the files in this folder.
+Run the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh" target="_blank">job-mpi-pmemd.sh</a> as it is and look at the performance of the simulation (average number of nanoseconds per day) which is written at the bottom of the output file <strong>03_Prod.mdout</strong>.</p>
+<p>Job submission command:  <em>sbatch job-mpi-pmemd.sh</em> (fix your project ID)</p>
+</details>
+<details class="note">
+<summary>Exercise 2: Optimal performance of a MPI PMEMD job</summary>
+<p>Running with more cores doesn&rsquo;t always mean better performance. Run the script 
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh" target="_blank">job-mpi-pmemd.sh</a> 
+with a different number of MPI tasks (-n) and obtain the value for the performance of AMBER 
+(as a function of the number of cores). The performance of AMBER can be obtained from the average
+number of nanoseconds per day (ns/day) in the file <strong>03_Prod.mdout</strong>.</p>
+<p>A plot of the number of ns/day vs. number of cores can help you to
+visualize the results. Is it worth it to go from 14 cores to 28 cores?
+What about going from 28 cores to 42 cores? Or even from 42 cores to 
+56 cores?</p>
+</details>
+<details class="note">
+<summary>Exercise 3: Optimal performance of a GPU PMEMD job</summary>
+<p>Run the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-gpu-pmemd.sh" target="_blank">job-gpu-pmemd.sh</a> 
+with a different number of MPI tasks (-n) and obtain the value for the performance of AMBER 
+(as a function of the number of cores). You are encourage to plot the average number of ns/day vs. 
+number of cores as in the previous case. What is the optimal value for the number of MPI tasks?</p>
+<p>Hint: Going above 4 MPI tasks will not give you better performance because in AMBER the number of MPI tasks
+are tightly bound to the number of GPU cards.</p>
+</details>
+<details class="note">
+<summary>Exercise 4: Monitoring the performance of your jobs</summary>
+<p>Change the number of steps (nstlim) to 100000 in the file <strong>03_Prod.in</strong>.
+Also, set the number of cores (-n) to 28 (1 node) and the time (-t) to
+15 min in the file <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/AMBER/job-mpi-pmemd.sh" target="_blank">job-mpi-pmemd.sh</a>. 
+By submitting the job to the queue with <strong>sbatch job-mpi-pmemd.sh</strong> you get a 
+number as output, this number is the job ID. On the command line, type 
+<strong>job-usage job_ID</strong>. This will generate a URL that you can copy/paste to 
+your local browser to monitor the efficiency of your simulation. How efficient is it in your case?</p>
+<p>Hint: on the top right corner you can change the update frequency of the
+plots from 15m to 1m for instance. It takes a few minutes before you can
+see the results on the plots.</p>
+</details>
+<h2 id="gromacs">Gromacs<a class="headerlink" href="#gromacs" title="Permanent link">&para;</a></h2>
+<p>Gromacs (GROningen MAchine for Chemical Simulations) is a versatile package to perform molecular 
+dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles, 
+see the <a href="https://docs.hpc2n.umu.se/software/apps/GROMACS/" target="_blank">documentation page</a>.</p>
+<h3 id="how__to__find__gromacs">How to find Gromacs<a class="headerlink" href="#how__to__find__gromacs" title="Permanent link">&para;</a></h3>
+<p>Gromacs is installed as a module on Kebnekaise. Notice that on the Intel nodes there are 
+more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+<code>#SBATCH -C skylake</code> to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. </p>
+<p>We performed a benchmark of Gromacs on the different Nvidia GPUs that are available on Kebnekaise using the batch script 
+<a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh" target="_blank">job-gpu-gromacs.sh</a>.
+The results can be seen in the following plot. The labels 1,2, and 3 refer to the three different and common options to run 
+Gromacs written in this batch job. A dashed red line at  25 ns/day is added for better visualization.</p>
+<p><img alt="gromacs-benchmark" src="../images/benchmark-nvidia-gpus.png" /></p>
+<h3 id="exercises_8">Exercises<a class="headerlink" href="#exercises_8" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Running a MPI job</summary>
+<p>The input files for this exercise are located in <a href="https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/MPI" target="_blank">GROMACS/MPI</a>.
+Go to this folder and run the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/MPI/job-mpi-gromacs.sh" target="_blank">job-mpi-gromacs.sh</a> 
+by using different values of the
+number of MPI tasks (-n). Submit this file to the batch queue (<strong>sbatch job-mpi-gromacs.sh</strong>). Use the 
+number you get from sbatch (this is called job ID) to get an URL on the command line by typing:<br />
+<code>job-usage job_ID</code>.</p>
+<p>Then, copy and paste that URL on your local browser. After ~1 min. you will start
+to see the usage of the resources. Tip: In the top-right corner change the updating
+default 15m to 30s.</p>
+<p>In the plot for CPU usage, you can see how efficiently are the requested resources
+being used (in percentage). How efficient is your simulation?</p>
+</details>
+<details class="note">
+<summary>Exercise 2: Running a GPU job</summary>
+<p>In the <a href="https://github.com/hpc2n/intro-course/tree/master/exercises/GROMACS/GPU" target="_blank">GROMACS/GPU</a> folder, take a look at the script <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GROMACS/GPU/job-gpu-gromacs.sh" target="_blank">job-gpu-gromacs.sh</a>. 
+At the end of the script you will find three different ways to run Gromacs, the first one being the
+default one (no Offloading any task to GPUs), the second one the MPI version where nonbonded/PME
+interactions are offloaded to GPUs, and the third one being the Threaded-MPI version with nonbonded/PME
+interactions offloaded to GPUs. Submit the job to the queue and monitor the usage
+with the <strong>job-usage</strong> command that was introduced in the previous exercise.</p>
+<p>When the script finishes, you should see a step-like plot (in the <strong>graphana</strong> interface for 
+<strong>job-usage</strong> results) for the CPU/GPU usage where each step denotes each simulation. Based on these 
+results, what is the best of the three options in the script (for the current nr. of cores and GPUs) 
+for running Gromacs?</p>
+<p>You can check if this analysis agrees with the performance for each run as reported
+in the log file measured in ns/day.</p>
+<p>What is the percentage of the GPUs used in the simulation based on the results from
+<strong>job-usage</strong>?</p>
+<p>How is the performance on GPUs version compared to that on CPU-only version in the previous examples?</p>
+<p>More information on Gromacs performance can be found in the documentation for 
+<a href="https://manual.gromacs.org/current/user-guide/mdrun-performance.html" target="_blank">performance improvement</a> of this software.</p>
+</details>
+<h2 id="gaussiangaussview">Gaussian/GaussView<a class="headerlink" href="#gaussiangaussview" title="Permanent link">&para;</a></h2>
+<p>The license for Gaussian and GaussView at HPC2N is valid for users at UMU only. Gaussian is a program for
+computing the electronic structure of molecules. Its companion GaussView is a graphical interface
+that allows you to design molecules and Gaussian input scripts as well as analyze the results from 
+the simulations. </p>
+<h3 id="how__to__find__gaussian__and__gaussview">How to find Gaussian and GaussView<a class="headerlink" href="#how__to__find__gaussian__and__gaussview" title="Permanent link">&para;</a></h3>
+<p>The modules for Gaussian and GaussView can be loaded directly without any requirement. More information about Gaussian 
+can be found <a href="https://docs.hpc2n.umu.se/software/apps/#gaussian" target="_blank">here</a> and for GaussView 
+<a href="https://docs.hpc2n.umu.se/software/apps/#gaussview" target="_blank">here</a>.</p>
+<h3 id="exercises_9">Exercises<a class="headerlink" href="#exercises_9" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Load GaussView and open a <em>.com</em> (or <em>.gjf</em>) file</summary>
+<p>An input file for GaussView is located here <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/input.com" target="_blank">input.com</a>.
+In this test case you will compute the single point energy of two truncated ADP molecules with a single
+Magnesium ion in between. The input files for Gaussian, such as <em>input.com</em>, can be generated through 
+GaussView but the <strong>Link 0</strong> commands <code>%cpu</code> and <code>%gpucpu</code> which are relatively new in Gaussian will need to
+be written manually. These commands replaced the previous <code>%nprocshared</code> from the Gaussian 09 version.</p>
+<p>Load GaussView <code>module load gaussview/6.1.1</code> and start it on the command line <code>vglrun gv</code>. Then, 
+open the <strong>input.com</strong> file which is located in the folder <code>exercises/GAUSSIAN</code>. It should look like this:</p>
+<p><img alt="gaussview" src="../images/gaussview.png" /></p>
+</details>
+<details class="note">
+<summary>Exercise 2: Running a job through <em>sbatch</em></summary>
+<p>If you already have a <em>.com</em> (or <em>.gjf</em>) file, for instance the one in the previous example, you can submit your job to the queue with
+the <code>sbatch job.sh</code> command by using a batch job file like <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/job.sh" target="_blank">job.sh</a>.
+Here, you need to change the project ID to your own, the number of cores (-c), and the number of GPU cards (&ndash;gpus) needed.
+For this exercise, you can use <code>-c 4</code> and <code>--gpus=1</code>.</p>
+<p>Notes: </p>
+<ul>
+<li>
+<p>If your <em>.com</em> (or <em>.gjf</em>) file contains the <code>%nprocshared</code> Link 0 command, it will be replaced to
+the corresponding <code>%cpu</code> and <code>%gpucpu</code> by the script <code>g16.set-cpu+gpu-list</code> that is contained in the
+<em>job.sh</em> script.</p>
+</li>
+<li>
+<p>If your <em>.com</em> (or <em>.gjf</em>) file already contains the <code>%cpu</code> and <code>%gpucpu</code> Link 0 commands, the values
+will be replaced according to the <em>SBATCH</em> options in the <em>job.sh</em> script.</p>
+</li>
+<li>
+<p>If you only want to run on CPUs (maybe the method you are targeting doesn&rsquo;t have a GPU implementation, 
+for instance), you will need to remove the <code>%gpucpu</code> command from the <em>input.com</em> file and the 
+<code>-C nvidia_gpu</code> and <code>--gpus</code> options in the <em>job.sh</em> script.</p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Exercise 3: Running a job through GaussView</summary>
+<p>In GaussView go to <em>Preferences</em> and in the <em>Job Setup</em> option choose execute using custom command line, and in the 
+box write <em>sbatch job.sh</em> and then <em>Ok</em>:</p>
+<p><img alt="gaussview" src="../images/gaussian-slurm.png" /></p>
+<p>Put the <a href="https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/GAUSSIAN/job.sh" target="_blank">job.sh</a> script
+in the current folder and fix the project ID, number of cores, and number of GPU cards as in the previous exercise.</p>
+<p>Then, go to <em>Gaussian Calculation Setup</em> and <em>Submit</em> the job:</p>
+<p><img alt="gaussview" src="../images/gaussian-submit.png" /></p>
+<p>A warning message on the termination of the job without producing a log file will appear and you can <em>OK</em> to close this window.
+You can check that the job is in the queue with the <code>squeue --me</code> command on the terminal.</p>
+</details>
+<h2 id="namd">NAMD<a class="headerlink" href="#namd" title="Permanent link">&para;</a></h2>
+<p>NAMD Molecular Dynamics Software is one of the fastest and highly scalable packages in the world for the simulation of molecular systems.</p>
+<h3 id="how__to__find__namd">How to find NAMD<a class="headerlink" href="#how__to__find__namd" title="Permanent link">&para;</a></h3>
+<p>NAMD is installed as a module on Kebnekaise, see the <a href="https://docs.hpc2n.umu.se/software/apps/NAMD/" target="_blank">documentation page</a>. 
+Notice that on the Intel nodes there are 
+more versions of this software installed than on the AMD nodes. Thus, if you are targeting one
+version that is only installed on the Intel nodes, you will need to add the instruction
+<code>#SBATCH -C skylake</code> to your batch script, otherwise the job could arrive to an
+AMD node that lacks that installation. </p>
+<p>The figure below shows the best performance of NAMD on CPUs and GPUs. The benchmark case consisted 
+of 158944 particles, using 1 fs. for time step and a cutoff of 1.2 nm. for real space electrostatics 
+calculations. Particle mesh Ewald was used to solve long-range electrostatic interactions. Here, CL 
+refers to the classical simulations setup, MTS means multiple time stepping algorithm, and RM is the 
+resident mode implementation. Data used for this benchmarking can be obtained through the following 
+exercises.</p>
+<p><img alt="namd-benchmark" src="../images/namd2025.png" /></p>
+<h3 id="exercises_10">Exercises<a class="headerlink" href="#exercises_10" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>Exercise 1: Running a MPI job</summary>
+<p><strong>Classical simulations (CL)</strong></p>
+<p>The input files for this exercise are located in <a href="https://github.com/hpc2n/intro-course/tree/master/exercises/NAMD/MPI" target="_blank">NAMD/MPI</a>.
+Go to the <code>MPI/</code> folder and run the script <em>job-mpi.sh</em> (<code>sbatch job-mpi.sh</code>) after. The input file for NAMD is <code>step4_equilibration.inp</code>. Take a look
+at the file <em>output_mpi.dat</em> and search for the lines starting with &ldquo;Info: Benchmark&rdquo;, 
+they report the performance of NAMD in days/ns. </p>
+<p>Another way to see the performance is by using the Julia script located in the <code>NAMD/</code> folder. To 
+do this load Julia on the terminal and execute it with the name of the output file from NAMD as an
+input argument:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ml<span class="w"> </span>Julia/1.9.3-linux-x86_64
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>julia<span class="w"> </span>../ns_per_day.jl<span class="w"> </span>output_mpi.dat<span class="w"> </span>
+</span></code></pre></div>
+<p><strong>Multiple time step simulations (MTS)</strong></p>
+<p>Instead of the <code>step4_equilibration.inp</code> input script in <em>job-mpi.sh</em>, use now the script
+<code>step4_equilibration_mts.inp</code> which makes use of the multiple time step (MTS) algorithm. This line is commented currently. You can remove the hash symbol on this line 
+and comment the line where <code>step4_equilibration.inp</code> input file is used. In the MTS algorithm slow interactions (for instance coulombic) are computed less frequently than
+the fast ones. This can lead to faster simulations.
+Get the performance as you did previously and compare it with the one you already have.</p>
+</details>
+<details class="note">
+<summary>Exercise 2: Running a GPU job</summary>
+<p><strong>NVIDIA GPUs</strong></p>
+<p>In the <a href="https://github.com/hpc2n/intro-course/tree/master/exercises/NAMD/GPU" target="_blank">NAMD/GPU</a> folder you can see the relevant files for the simulation. 
+The batch script is <em>job-gpu.sh</em>. Submit this script to the queue
+with <code>sbatch job-gpu.sh</code> after choosing an NVIDIA GPU type. You can use the number you get from sbatch (this is called 
+job ID) to get an URL on the command line by typing:  </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>job-usage<span class="w"> </span>job_ID
+</span></code></pre></div>
+<p>Then, copy and paste that URL on your local browser. After ~1 min. you will start
+to see the usage of the resources. Tip: In the top-right corner change the updating
+default 15m to 30s. When the script finishes, you should see a plot for
+the CPU/GPU usage. </p>
+<p>What is the performance on GPUs w.r.t. the one obtained on CPUs?</p>
+<p>What is the percentage of the GPUs used in the simulation based on the results from
+job-usage?</p>
+<p><strong>AMD GPUs</strong> </p>
+<p>There is one AMD GPU node on Kebnekaise where NAMD can run. At the moment this version is not installed as a module but you can try it to see its performance by using a container provided by <a href="https://www.amd.com/en/developer/resources/infinity-hub/namd3.html" target="_blank">AMD</a>. Pay attention to the line &ldquo;User(s) of the NAMD container(s) are reminded to register &hellip;&rdquo;. </p>
+<p>In order to use the container, pull it with <code>apptainer</code> on the command line in a folder of your choice:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mkdir<span class="w"> </span>my-folder<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my-folder
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>apptainer<span class="w"> </span>pull<span class="w"> </span>docker://amdih/namd3:3.0a9
+</span></code></pre></div>
+<p>Then, you can go to the directory where the <code>.inp</code> files of NAMD are (this directory can be the same as <code>my-folder</code>) and use the script <em>job-amd-gpu.sh</em> to submit the job to the queue. In the option labeled as <em>1.</em>, a classical (CL) simulation will be run, while in the option <em>2.</em> the resident mode (RM) will be used where most of the computations are offloaded to the GPU. </p>
+<p>Compare the performance of these two cases. </p>
+</details>
+<div class="admonition keypoints">
+<p class="admonition-title">Keypoints</p>
+<ul>
+<li>
+<p>Kebnekaise is a highly heterogeneous system. Thus, you will need to consciously decide the hardware where your
+  simulations will run.</p>
+</li>
+<li>
+<p>Notice that Intel nodes have at the moment more versions installed of some software than the AMD nodes.</p>
+</li>
+<li>
+<p>It is a good practice to monitor the usage of resources, we offer the command <code>job-usage job_ID</code> on Kebnekaise.</p>
+</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../simple/" class="btn btn-neutral float-left" title="Simple examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../simple/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

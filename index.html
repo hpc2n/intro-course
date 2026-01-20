@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Material for the course Introduction to Kebnekaise" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/intro-course/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".">
+          <img src="images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#important__info">Important info</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#preliminary__schedule">Preliminary schedule</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="intro/">Introduction to Kebnekaise and HPC2N</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="welcome__to__the__course__introduction__to__kebnekaise">Welcome to the course: Introduction to Kebnekaise<a class="headerlink" href="#welcome__to__the__course__introduction__to__kebnekaise" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">This material</p>
+<p>Here you will find the content of the workshop &ldquo;Introduction to Kebnekaise&rdquo;. </p>
+<p>You can download the markdown files for the presentation as well as the exercises from <a href="https://github.com/hpc2n/intro-course " target="_blank">https://github.com/hpc2n/intro-course</a></p>
+<ul>
+<li>Click the green &ldquo;Code&rdquo; button<ul>
+<li>Either copy the url for the repo under HTTPS and do <code>git clone https://github.com/hpc2n/intro-course.git</code> in a terminal window</li>
+<li>OR pick &ldquo;Download zip&rdquo; to get a zip file with the content. </li>
+</ul>
+</li>
+</ul>
+<p>Some useful links: </p>
+<ul>
+<li>Documentation about Linux at HPC2N: <a href="https://docs.hpc2n.umu.se/tutorials/linuxguide/" target="_blank">https://docs.hpc2n.umu.se/tutorials/linuxguide/</a></li>
+<li>Get started guide: <a href="https://docs.hpc2n.umu.se/tutorials/quickstart/" target="_blank">https://docs.hpc2n.umu.se/tutorials/quickstart/</a></li>
+<li>Documentation pages at HPC2N: <a href="https://docs.hpc2n.umu.se/" target="_blank">https://docs.hpc2n.umu.se/</a> </li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Prerequisites</p>
+<ul>
+<li>Basic knowledge about Linux (if you need a refresher, you can find the recordings from the previous version of the &ldquo;Linux Command Line 101&rdquo; here: <a href="https://www.youtube.com/playlist?list=PL6jMHLEmPVLz7nfvCupvR-SX6MlFwboS8" target="_blank">https://www.youtube.com/watch?v=VVFpoDo9&ndash;M&amp;list=PL6jMHLEmPVLz7nfvCupvR-SX6MlFwboS8</a><ul>
+<li>If you want to take the &ldquo;Linux Command Line 101 course, then it will be given again on 2 February 2026, as part of the &ldquo;NAISS Intro week&rdquo;. You can find the information and registration page for that course here: <a href="https://naiss-training.github.io/NAISS-intro-week/" target="_blank">https://naiss-training.github.io/NAISS-intro-week/</a></li>
+</ul>
+</li>
+<li>An account at SUPR and at HPC2N. You should have already been contacted about getting these if you did not have them already. </li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Content</p>
+<ul>
+<li>This course aims to give a brief, but comprehensive introduction to Kebnekaise.</li>
+<li>You will learn about</li>
+<li>HPC2N, HPC, and Kebnekaise hardware</li>
+<li>How to use our systems: <ul>
+<li>Projects and Accounts </li>
+<li>Logging in &amp; editors</li>
+<li>The File System</li>
+<li>The Module System</li>
+<li>Compiling and linking</li>
+<li>The Batch System</li>
+</ul>
+</li>
+<li>Simple examples (batch system)</li>
+<li>
+<p>Application examples (batch system)</p>
+</li>
+<li>
+<p>This course will consist of lectures and type-alongs, as well as a few exercises where you get to try out what you have just learned.    </p>
+</li>
+</ul>
+</div>
+<p><strong>Instructors</strong></p>
+<ul>
+<li>Birgitte Brydsö, HPC2N</li>
+<li>Pedro Ojeda-May, HPC2N</li>
+</ul>
+<h2 id="important__info">Important info<a class="headerlink" href="#important__info" title="Permanent link">&para;</a></h2>
+<ul>
+<li>We have a course project: <code>hpc2n2026-002</code>.</li>
+<li>The course project has default project storage. You can find that here: <code>/proj/nobackup/spring-courses</code>.</li>
+<li>You should create a subdirectory under <code>/proj/nobackup/spring-courses</code> for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.</li>
+<li>As mentioned further up on the page, you can download the material for the course. Placing it in your directory on the project storage is a good idea. You can fetch it there with <code>git clone https://github.com/hpc2n/intro-course.git</code>. </li>
+<li>We have two reservations for the course (valid only during the course time). Two L40s GPUs (reservation <code>intro-gpu</code>) and two AMD Zen4 CPU node (reservation <code>intro-cpu</code>). The reservations should be &ldquo;magnetic&rdquo;, which means they should be used per default if you run in the course project, without you adding the reservation manually. </li>
+<li>The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAz1nWMW7I6RYYRkt-SI_D-AdQNEvWgHt6sawjmsSH5zcE" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAz1nWMW7I6RYYRkt-SI_D-AdQNEvWgHt6sawjmsSH5zcE</a></li>
+<li>The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQCKgB00THY4RJW1BNN6aHFfAah-JtvyPrDNyTKB7ulfLYU" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQCKgB00THY4RJW1BNN6aHFfAah-JtvyPrDNyTKB7ulfLYU</a> </li>
+<li>There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/zvVAGnP2Mp" target="_blank">https://forms.office.com/e/zvVAGnP2Mp</a>. </li>
+</ul>
+<h2 id="preliminary__schedule">Preliminary schedule<a class="headerlink" href="#preliminary__schedule" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Topic</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>09:00</td>
+<td>Welcome+Syllabus</td>
+<td></td>
+</tr>
+<tr>
+<td>09:10</td>
+<td>Introduction to Kebnekaise and HPC2N</td>
+<td>Lecture</td>
+</tr>
+<tr>
+<td>09:35</td>
+<td>Projects and accounts</td>
+<td>Lecture</td>
+</tr>
+<tr>
+<td>09:50</td>
+<td>Logging in &amp; editors (including Open OnDemand)</td>
+<td>Lecture+exercise</td>
+</tr>
+<tr>
+<td>10:15</td>
+<td>COFFEE BREAK (on your own)</td>
+<td></td>
+</tr>
+<tr>
+<td>10:30</td>
+<td>The File System</td>
+<td>Lecture+code along</td>
+</tr>
+<tr>
+<td>10:45</td>
+<td>The Module System</td>
+<td>Lecture+code along+exercise</td>
+</tr>
+<tr>
+<td>11:10</td>
+<td>Compiling</td>
+<td>Lecture+code along</td>
+</tr>
+<tr>
+<td>11:25</td>
+<td>The Batch System</td>
+<td>Lecture+code along</td>
+</tr>
+<tr>
+<td>12:00</td>
+<td>LUNCH BREAK</td>
+<td></td>
+</tr>
+<tr>
+<td>13:00</td>
+<td>Simple Batch scipts, examples</td>
+<td>Lecture+exercises</td>
+</tr>
+<tr>
+<td>13:45</td>
+<td>Application Examples - part 1</td>
+<td>Lecture+code along+exercises</td>
+</tr>
+<tr>
+<td>14:45</td>
+<td>COFFEE BREAK</td>
+<td></td>
+</tr>
+<tr>
+<td>15:00</td>
+<td>Application Examples - part 2</td>
+<td>Lecture+code along+exercises</td>
+</tr>
+<tr>
+<td>16:30</td>
+<td>Questions+Summary</td>
+<td></td>
+</tr>
+<tr>
+<td>17:00</td>
+<td>END OF COURSE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="intro/" class="btn btn-neutral float-right" title="Introduction to Kebnekaise and HPC2N">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="assets/_markdown_exec_pyodide.js"></script>
+      <script src="search/main.js"></script>
+      <script src="js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-01-20 12:38:17.577285+00:00
+-->
