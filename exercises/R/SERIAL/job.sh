@@ -9,10 +9,10 @@
 #SBATCH --error=error%J.error
 
 ml purge > /dev/null 2>&1
-ml GCC/10.2.0  OpenMPI/4.0.5
-ml R/4.0.4
+ml GCC/13.2.0
+ml R/4.4.1
 
 # use the following instructions if you don't need command line arguments
 R CMD BATCH --no-save --no-restore serial.R
 # Rscript is recommended when command line arguments are used
-#Rscript --no-save --no-restore serial.R 3.14
+Rscript --no-save --no-restore serial.R 3.14
