@@ -9,7 +9,6 @@
 ##SBATCH --gpus-per-node=Type:2
 ##SBATCH --exclusive
 # For short sequences and monomers half node, 1 GPU card, would work 
-#SBATCH -c 14 
 #SBATCH --gpus-per-node=Type:1
 
 # Clean the environment from loaded modules
@@ -19,11 +18,6 @@ ml purge > /dev/null 2>&1
 ml GCC/12.3.0  OpenMPI/4.1.5
 ml AlphaFold/2.3.2-CUDA-12.1.1
 
-# Comment or uncomment the following exporting variables depending on whether
-# you want to use a whole node or half or the node
-# For a whole node as suggested above
-#export ALPHAFOLD_HHBLITS_N_CPU=28
-# For a half node as suggested above
-export ALPHAFOLD_HHBLITS_N_CPU=14
+export ALPHAFOLD_HHBLITS_N_CPU=8
 
-alphafold --fasta_paths=my_fasta_sequence.fasta --max_template_date=2024-01-10 --model_preset=monomer  --output_dir=$PWD 
+run_alphafold.py --fasta_paths=my_fasta_sequence.fasta --max_template_date=2024-01-10 --model_preset=monomer  --output_dir=$PWD 
