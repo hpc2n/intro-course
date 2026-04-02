@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://hpc2n.github.io/intro-course/intro/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Introduction to Kebnekaise and HPC2N - Introduction to Kebnekaise</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_markdown_exec_pyodide.css" rel="stylesheet" />
+        <link href="../assets/_markdown_exec_ansi.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../css/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction to Kebnekaise and HPC2N";
+        var mkdocs_page_input_path = "intro.md";
+        var mkdocs_page_url = "/intro-course/intro/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="..">
+          <img src="../images/intro-hpc2n-blue-text.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction to Kebnekaise and HPC2N</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#hpc2n">HPC2N</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__partners">HPC2N partners</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__funding__and__collaborations">HPC2N funding and collaborations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__training__and__other__services">HPC2N training and other services</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__personnel">HPC2N personnel</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__application__experts">HPC2N application experts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__users__by__discipline">HPC2N users by discipline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__users__by__discipline__largest__users">HPC2N users by discipline, largest users</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hpc2n__users__by__software">HPC2N users by software</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kebnekaise">Kebnekaise</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#current__hardware__in__kebnekaise">Current hardware in Kebnekaise</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kebnekaise__-__hpc2n__storage">Kebnekaise - HPC2N storage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#kebnekaise__-__projects">Kebnekaise - projects</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hpc">HPC</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__opening__the__definition">High Performance Computing - opening the definition</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#aggregating__computing__power">Aggregating computing power</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#higher__performance">Higher performance</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#solve__large__problems">Solve large problems</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__large__problems">High Performance Computing - large problems</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__what__counts__as__hpc">High Performance Computing - what counts as HPC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__other__reasons">High Performance Computing - other reasons</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__memory__models">High Performance Computing - memory models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__programming__models">High Performance Computing - programming models</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#high__performance__computing__-__software">High Performance Computing - software</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../projectsaccounts/">Projects and Accounts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../login/">Logging in</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../filesystem/">The File System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../modules/">The Module System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../compilers/">Compiling</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../batch/">The Batch System</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../simple/">Simple examples</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../software/">Application examples</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Introduction to Kebnekaise</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Introduction to Kebnekaise and HPC2N</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction__to__hpc2n__kebnekaise__and__hpc">Introduction to HPC2N, Kebnekaise and HPC<a class="headerlink" href="#introduction__to__hpc2n__kebnekaise__and__hpc" title="Permanent link">&para;</a></h1>
+<!--- This document as well as the corresponding figures were created by
+Mirko Myllykoski, Senior Research Engineer at CS/HPC2N, Umeå
+University, for the January 2021 version of the "Introduction to
+HPC2N" course. 
+Various additions and changes, including porting to mkdocs by Birgitte Brydsö, HPC2N, Umeå University, for later versions. -->
+
+<p><img alt="umu-logo" src="../images/umu-logo-left-EN.png" style="height: 44px; float: left;" />
+<img alt="naiss-logo" src="../images/naiss.png" style="height: 44px;" />
+<img alt="hpc2n-logo" src="../images/hpc2n-logo-text5.png" style="height: 44px;" /></p>
+<ul>
+<li>Welcome page and syllabus: <a href="https://hpc2n.github.io/intro-linux/index.html">https://hpc2n.github.io/intro-linux/index.html</a><ul>
+<li>Also link at the House symbol at the top of the page. </li>
+</ul>
+</li>
+</ul>
+<h2 id="hpc2n">HPC2N<a class="headerlink" href="#hpc2n" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>High Performance Computing Center North (HPC2N) is </p>
+<ul>
+<li>a competence center for Scientific and Parallel Computing</li>
+<li>part of <strong>National Academic Infrastructure for Super­computing in Sweden (NAISS)</strong></li>
+</ul>
+</div>
+<p>HPC2N provides state-of-the-art resources and expertise:</p>
+<ul>
+<li><strong>HPC</strong> resources and e-Infrastructure</li>
+<li>Large-scale <strong>storage facilities</strong> (Project storage, WLCG storage (dCache, Tape))</li>
+<li><strong>Grid and cloud</strong> computing (WLCG NT1, Swedish Science Cloud)</li>
+<li>National Data Science Node in ”Epidemiology and Biology of Infections” (Data-Driven Life Science - DDLS)</li>
+<li>Training and support for our users</li>
+<li>A wide range of scientific software, applications, libraries, and compilers available</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Primary objective</p>
+<p>To raise the national and local level of HPC competence and transfer HPC knowledge and technology to new users in academia and industry.</p>
+</div>
+<h3 id="hpc2n__partners">HPC2N partners<a class="headerlink" href="#hpc2n__partners" title="Permanent link">&para;</a></h3>
+<p>HPC2N is hosted by:</p>
+<p><img alt="umu-logo" src="../images/umu-logotyp-EN.png" style="height: 100px;float: left;" /> </p>
+<p><br><br style="clear: both;"></p>
+<p>Partners: </p>
+<p><img alt="irf-logo" src="../images/irf.png" style="height: 90px;float: left;padding: 4px;" /> 
+<img alt="ltu-logo" src="../images/ltu.preview.png" style="height: 90px;padding: 4px;" />
+<img alt="miun-logo" src="../images/mid_sweden_university.png" style="height: 90px;padding: 4px;" />
+<img alt="slu-logo" src="../images/slu_new.png" style="height: 90px;padding: 4px;" /></p>
+<p><br></p>
+<h3 id="hpc2n__funding__and__collaborations">HPC2N funding and collaborations<a class="headerlink" href="#hpc2n__funding__and__collaborations" title="Permanent link">&para;</a></h3>
+<p>Funded mainly by <strong>Umeå University</strong>, with contributions from the <strong>other HPC2N partners</strong>.</p>
+<p>Involved in several <strong>projects and collaborations</strong>: </p>
+<p><img alt="essence-logo" src="../images/essence.png" style="height: 85px; float: left;padding: 5px;" />
+<img alt="mimer-logo" src="../images/mimer.png" style="height: 85px;padding: 5px;" />
+<img alt="algoryx-logo" src="../images/algoryx.png" style="height: 80px;padding: 5px;" /></p>
+<p><img alt="WLCG-logo" src="../images/WLCG-logo.png" style="height: 90px;padding: 5px;" />
+<img alt="eosc-nordic-logo" src="../images/eosc-nordic.png" style="height: 85px;padding: 5px;" />
+<img alt="eiscat-logo" src="../images/eiscat-logo5.png" style="height: 95px;padding: 5px;" /></p>
+<p><img alt="scilifelab-logo" src="../images/SciLifeLab.png" style="height: 90px;padding: 5px;" />
+<img alt="skills4eosc" src="../images/skills4eosc.png" style="height: 90px;padding: 5px;" /></p>
+<p><br></p>
+<h3 id="hpc2n__training__and__other__services">HPC2N training and other services<a class="headerlink" href="#hpc2n__training__and__other__services" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>User support</strong> (primary, advanced, dedicated)<ul>
+<li>Research group meetings @ UmU</li>
+<li>Also at the partner sites</li>
+<li>Online &ldquo;HPC2N fika&rdquo;  </li>
+<li>Online intro seminars </li>
+</ul>
+</li>
+<li><strong>User training and education program</strong> (many together with NAISS)<ul>
+<li>0.5 &ndash; 5 days; presentations and ready-to-run exercises</li>
+<li>intro courses: our system, Linux, R, Python, Julia, Matlab, Git</li>
+<li>intermediate courses</li>
+<li>
+<ul>
+<li>Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, &hellip;)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Courses this spring</strong><ul>
+<li>NAISS intro week, 2-6 January 2026 <ul>
+<li>Command Line 101</li>
+<li>Connecting and File Transfer</li>
+<li>Selecting software modules</li>
+<li>Running jobs on clusters </li>
+<li>Linux Command Line 201 </li>
+<li>Running AI/ML workloads on NAISS systems </li>
+<li>Handling sensitive data at NAISS </li>
+</ul>
+</li>
+<li>Introduction to Python and Using Python in an HPC environment, 20 + 22-24 April 2026</li>
+<li>Linux Command Line 101, 11 May 2026</li>
+<li>NAISS intro day<ul>
+<li>shortened version of <ul>
+<li>Connecting and File Transfer</li>
+<li>Selecting software modules</li>
+<li>Running jobs on clusters  </li>
+<li>Running AI/ML workloads on NAISS systems (possibly) </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Linux Command Line 201, 1-2 June 2026 </li>
+<li><strong>Updated list:</strong> <a href="https://www.hpc2n.umu.se/events/courses" target="_blank">https://www.hpc2n.umu.se/events/courses</a> </li>
+</ul>
+</li>
+<li>Workshops and seminars </li>
+<li>NGSSC / SeSE &amp; university courses</li>
+</ul>
+<h3 id="hpc2n__personnel">HPC2N personnel<a class="headerlink" href="#hpc2n__personnel" title="Permanent link">&para;</a></h3>
+<p>Management:</p>
+<ul>
+<li>Paolo Bientinesi, director</li>
+<li>Björn Torkelsson, deputy director</li>
+<li>Lena Hellman, administrator</li>
+</ul>
+<p>Application experts:</p>
+<ul>
+<li>Jerry Eriksson</li>
+<li>Pedro Ojeda May</li>
+<li>Birgitte Brydsö</li>
+<li>Åke Sandgren</li>
+</ul>
+<p>Others:</p>
+<ul>
+<li>Mikael Rännar (WLCG coord)</li>
+<li>Research Engineers under DDLS, HPC2N/SciLifeLab<ul>
+<li>Paul Dulaud, System Developer, IT</li>
+<li>Abdullah Aziz, Data Engineer</li>
+<li>Nalina Hamsaiyni Venkatesh, Data Steward </li>
+</ul>
+</li>
+</ul>
+<p>System and support:</p>
+<ul>
+<li><strong>Birgitte Brydsö</strong></li>
+<li>Niklas Edmundsson (Tape coord)</li>
+<li>My Karlsson </li>
+<li>Nathan Lövsund</li>
+<li>Roger Oscarsson</li>
+<li>Ali Rahmanian</li>
+<li><strong>Åke Sandgren</strong></li>
+<li>Mattias Wadenstein (NeIC, Tier1)</li>
+</ul>
+<h3 id="hpc2n__application__experts">HPC2N application experts<a class="headerlink" href="#hpc2n__application__experts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HPC2N provides advanced and dedicated support in the form of <strong>Application Experts (AEs)</strong>:<ul>
+<li>Jerry Eriksson: Profiling, Machine learning (DNN), MPI, OpenMP, OpenACC </li>
+<li>Pedro Ojeda May: Molecular dynamics, Profiling, QM/MM, NAMD, Amber, Gromacs, GAUSSIAN, R, Python </li>
+<li>Åke Sandgren: General high level programming assistance, VASP, Gromacs, Amber </li>
+<li>Birgitte Brydsö: General HPC, R, Python </li>
+</ul>
+</li>
+<li>Contact through regular support </li>
+</ul>
+<h3 id="hpc2n__users__by__discipline">HPC2N users by discipline<a class="headerlink" href="#hpc2n__users__by__discipline" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Users from several scientific disciplines:<ul>
+<li>Biosciences and medicine </li>
+<li>Chemistry</li>
+<li>Computing science  </li>
+<li>Engineering </li>
+<li>Materials science</li>
+<li>Mathematics and statistics </li>
+<li>Physics including space physics</li>
+<li>ML, DL, and other AI</li>
+</ul>
+</li>
+</ul>
+<h3 id="hpc2n__users__by__discipline__largest__users">HPC2N users by discipline, largest users<a class="headerlink" href="#hpc2n__users__by__discipline__largest__users" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Users from several scientific disciplines:<ul>
+<li>Biosciences and medicine </li>
+<li><strong>Chemistry</strong></li>
+<li>Computing science  </li>
+<li>Engineering </li>
+<li><strong>Materials science</strong></li>
+<li>Mathematics and statistics </li>
+<li><strong>Physics including space physics</strong></li>
+<li><strong>Machine learning and artificial intelligence</strong> (several new projects)</li>
+</ul>
+</li>
+</ul>
+<h3 id="hpc2n__users__by__software">HPC2N users by software<a class="headerlink" href="#hpc2n__users__by__software" title="Permanent link">&para;</a></h3>
+<p><img alt="software-users" src="../images/core-hour-usage-per-soft-kebnekaise-2024.png" /></p>
+<h2 id="kebnekaise">Kebnekaise<a class="headerlink" href="#kebnekaise" title="Permanent link">&para;</a></h2>
+<p>The current supercomputer at HPC2N. It is a very heterogeneous system. </p>
+<ul>
+<li>Named after a massif (contains some of Sweden&rsquo;s highest mountain peaks)</li>
+<li>
+<p>Kebnekaise was </p>
+<ul>
+<li>delivered by Lenovo and </li>
+<li>installed during the summer 2016</li>
+<li>Opened up for general availability on November 7, 2016</li>
+<li>In 2018, Kebnekaise was extended with <ul>
+<li>52 Intel Xeon Gold 6132 (Skylake) nodes, as well as </li>
+<li>10 NVidian V100 (Volta) GPU nodes</li>
+</ul>
+</li>
+<li>In 2023, Kebnekaise was extended with <ul>
+<li>2 dual NVIDIA A100 GPU nodes</li>
+<li>one many-core AMD Zen3 CPU node</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>In 2024 Kebnekaise was extended with </p>
+<ul>
+<li>2 Dual socket GPU-nodes: Lenovo ThinkSystem SR675 V3<ul>
+<li>2 x AMD EPYC 9454 48C 290W 2.75GHz Processor</li>
+<li>768GB [24x 32GB TruDDR5 4800MHz RDIMM-A]</li>
+<li>1 x 3.84TB Read Intensive NVMe PCIe 4.0 x4 HS SSD</li>
+<li>1 x NVIDIA H100 SXM5 700W 80G HBM3 GPU Board</li>
+</ul>
+</li>
+<li>10 dual-socket GPU-nodes: ThinkSystem SR665 V3<ul>
+<li>2 x AMD EPYC 9254 24C 200W 2.9GHz Processor</li>
+<li>384GB [24x 16GB TruDDR5 4800MHz RDIMM-A]</li>
+<li>1 x 1.92TB Read Intensive NVMe PCIe 5.0 x4 HS SSD</li>
+<li>2 x NVIDIA L40S 48GB PCIe Gen4 Passive GPU</li>
+</ul>
+</li>
+<li>8 dual-socket CPU only: ThinkSystem SR645 V3<ul>
+<li>2 x AMD EPYC 9754 128C 360W 2.25GHz Processor</li>
+<li>768GB [24x 32GB TruDDR5 4800MHz RDIMM-A]</li>
+<li>1 x 1 3.84TB Read Intensive NVMe PCIe 4.0 x4 HS SSD</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Kebnekaise will be continuosly upgraded, as old hardware gets retired.</p>
+<h3 id="current__hardware__in__kebnekaise">Current hardware in Kebnekaise<a class="headerlink" href="#current__hardware__in__kebnekaise" title="Permanent link">&para;</a></h3>
+<p>Kebnekaise have CPU-only, GPU enabled and large memory nodes.</p>
+<p>The CPU-only nodes are:</p>
+<ul>
+<li>2 x 14 core Intel skylake<ul>
+<li>6785 MB memory / core</li>
+<li>52 nodes</li>
+<li>Total of 87 TFlops/s </li>
+</ul>
+</li>
+<li>2 x 64 core AMD zen3<ul>
+<li>8020 MB / core</li>
+<li>1 node</li>
+<li>Total of 11 TFlops/s  </li>
+</ul>
+</li>
+<li>2 x 128 core AMD zen4<ul>
+<li>2516 MB / core</li>
+<li>8 nodes</li>
+<li>Total of 216 TFlops/s </li>
+</ul>
+</li>
+</ul>
+<p>The GPU enabled nodes are:</p>
+<ul>
+<li>2 x 14 core Intel skylake<ul>
+<li>6785 MB memory / core</li>
+<li>2 x Nvidia V100</li>
+<li>10 nodes</li>
+<li>Total of 75 TFlops/s</li>
+</ul>
+</li>
+<li>2 x 24 core AMD zen3<ul>
+<li>10600 MB / core</li>
+<li>2 x Nvidia A100</li>
+<li>2 nodes</li>
+</ul>
+</li>
+<li>2 x 24 core AMD zen3<ul>
+<li>10600 MB / core</li>
+<li>2 x AMD MI100</li>
+<li>1 node</li>
+</ul>
+</li>
+<li>2 x 24 core AMD zen4<ul>
+<li>6630 MB / core</li>
+<li>2 x Nvidia A6000</li>
+<li>1 node</li>
+</ul>
+</li>
+<li>2 x 24 core AMD zen4<ul>
+<li>6630 MB / core</li>
+<li>2 x Nvidia L40s</li>
+<li>10 nodes</li>
+</ul>
+</li>
+<li>2 x 48 core AMD zen4<ul>
+<li>6630 MB / core</li>
+<li>4 x Nvidia H100 SXM5</li>
+<li>2 nodes</li>
+</ul>
+</li>
+<li>2 x 32 core AMD zen4<ul>
+<li>11968 MB / core</li>
+<li>6 x Nvidia L40s</li>
+<li>2 nodes</li>
+<li>Can only use 10 cores/GPU</li>
+</ul>
+</li>
+<li>2 x 32 core AMD zen4<ul>
+<li>11968 MB / core</li>
+<li>8 x Nvidia A40</li>
+<li>1 nodes</li>
+</ul>
+</li>
+</ul>
+<p>The large memory nodes are:</p>
+<ul>
+<li>4 x 18 core Intel broadwell<ul>
+<li>41666 MB memory / core</li>
+<li>8 nodes</li>
+<li>Total of 13.6 TFlops/s for all these nodes </li>
+</ul>
+</li>
+</ul>
+<p>GPUs can have different types of cores: </p>
+<ul>
+<li><strong>CUDA cores</strong>: General-purpose cores for a variety of parallel computing tasks. Not as efficicent as specizalized cores. CUDA cores is only on NVidia. The (mostly) equivalent is called stream processors on AMD. </li>
+<li><strong>Tensor cores</strong>: Made for matrix multiplications. Good for deep learning and AI workloads involving large matrix operations. Can be used for general-purpose as well, but less efficient for this. Tensor cores is the NVidia name. AMD has a somewhat equivalent core type called <strong>matrix cores</strong>. </li>
+<li><strong>RT (ray tracing) cores</strong>: Cores that are optimized for tasks involving ray tracing, like rendering images or video. </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>GPU Type</th>
+<th>CUDA cores / stream processors</th>
+<th>TENSOR cores / matrix cores</th>
+<th>RT cores</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A40</td>
+<td>10752</td>
+<td>336</td>
+<td></td>
+</tr>
+<tr>
+<td>V100</td>
+<td>5120</td>
+<td>640</td>
+<td></td>
+</tr>
+<tr>
+<td>A100</td>
+<td>6912</td>
+<td>432</td>
+<td></td>
+</tr>
+<tr>
+<td>MI100</td>
+<td>7680</td>
+<td>480</td>
+<td></td>
+</tr>
+<tr>
+<td>A6000</td>
+<td>10752</td>
+<td>386</td>
+<td></td>
+</tr>
+<tr>
+<td>L40S</td>
+<td>18176</td>
+<td>568</td>
+<td>142</td>
+</tr>
+<tr>
+<td>H100</td>
+<td>16896</td>
+<td>528</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>NOTE that just like you cannot really compare CPU cores directly (speed etc.) you also cannot just compare CUDA/TENSOR/RT etc. cores directly (more efficient design, faster, etc.)  </p>
+<h3 id="kebnekaise__-__hpc2n__storage">Kebnekaise - HPC2N storage<a class="headerlink" href="#kebnekaise__-__hpc2n__storage" title="Permanent link">&para;</a></h3>
+<p>Basically four types of storage are available at HPC2N: </p>
+<ul>
+<li>Home directory<ul>
+<li><code>/home/X/Xyz</code>, <code>$HOME</code>, <code>~</code></li>
+<li>25 GB, user owned</li>
+</ul>
+</li>
+<li>Project storage<ul>
+<li><code>/proj/nobackup/abc</code></li>
+<li>Shared among project members</li>
+</ul>
+</li>
+<li>Local scratch space<ul>
+<li><code>$SNIC_TMP</code></li>
+<li>SSD (170GB), per job, per node, &ldquo;volatile&rdquo;</li>
+</ul>
+</li>
+<li>Tape Storage<ul>
+<li>Backup</li>
+<li>Long term storage</li>
+</ul>
+</li>
+</ul>
+<p>Also </p>
+<ul>
+<li>disk based (dCache)<ul>
+<li>Research Data Storage Infrastructure, for active research data and operated by NAISS, WLCG</li>
+</ul>
+</li>
+</ul>
+<h3 id="kebnekaise__-__projects">Kebnekaise - projects<a class="headerlink" href="#kebnekaise__-__projects" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Projects</p>
+<p>To use Kebnekaise, you must be a member of a <strong>project</strong>.</p>
+<ul>
+<li>Previously, there were both compute and storage projects, but they have now been merged so there is only one type of projects. </li>
+<li>A project has a certain number of <strong>core hours</strong> allocated for it per month</li>
+<li>A regular CPU core cost 1 core hour per hour, other resources (e.g., GPUs) cost more</li>
+<li>Not a hard limit but projects that go over the allocation get lower priority</li>
+<li>A project contains a certain amount of default storage. If more storage is required, you have to ask for that (and give arguments for why you need it, etc.). </li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As Kebnekaise is a local cluster, you need to be affiliated with UmU, IRF, SLU, Miun, or LTU to use it. </p>
+</div>
+<p>Projects are applied for through SUPR (<a href="https://supr.naiss.se" target="_blank">https://supr.naiss.se</a>). </p>
+<p>I will cover more details in a later section, where we go more into detail about HPC2N and Kebnekaise. </p>
+<h2 id="hpc">HPC<a class="headerlink" href="#hpc" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">What is HPC?</p>
+<p>High Performance Computing (definition)</p>
+<p>&ldquo;High Performance Computing most generally refers to the practice of <strong>aggregating computing power</strong> in a way that delivers much <strong>higher performance</strong> than one could get out of a typical desktop computer or workstation in order to <strong>solve large problems</strong> in science, engineering, or business.&rdquo;</p>
+<p>From: <a href="https://insidehpc.com/hpc-basic-training/what-is-hpc/" target="_blank">https://insidehpc.com/hpc-basic-training/what-is-hpc/</a> </p>
+</div>
+<h3 id="high__performance__computing__-__opening__the__definition">High Performance Computing - opening the definition<a class="headerlink" href="#high__performance__computing__-__opening__the__definition" title="Permanent link">&para;</a></h3>
+<h4 id="aggregating__computing__power">Aggregating computing power<a class="headerlink" href="#aggregating__computing__power" title="Permanent link">&para;</a></h4>
+<ul>
+<li>95 nodes totalling 4792 CPU cores and 84 GPUs (totalling 1055744 CUDA cores, 43076 TENSOR cores + 960 matrix cores, 4544 RT cores)  <ul>
+<li>Compared to 4-8 cores in a common modern laptop + maybe 1 GPU </li>
+</ul>
+</li>
+</ul>
+<h4 id="higher__performance">Higher performance<a class="headerlink" href="#higher__performance" title="Permanent link">&para;</a></h4>
+<ul>
+<li>More than 527,000,000,000,000 arithmetical operations per second (527 trillion (billion)) in the CPU cores<ul>
+<li>Compared to 200,000,000,000 Flops in a modern laptop (200 billion (milliard)</li>
+</ul>
+</li>
+</ul>
+<h4 id="solve__large__problems">Solve large problems<a class="headerlink" href="#solve__large__problems" title="Permanent link">&para;</a></h4>
+<ul>
+<li>When does a problem become large enough for HPC?</li>
+<li>Are there other reasons for using HPC resources? (Memory, software, support, etc.) </li>
+</ul>
+<h3 id="high__performance__computing__-__large__problems">High Performance Computing - large problems<a class="headerlink" href="#high__performance__computing__-__large__problems" title="Permanent link">&para;</a></h3>
+<p>A problem can be large for two main reasons:</p>
+<ul>
+<li><strong>Execution time</strong>: The time required to form a solution to the problem is very long</li>
+<li><strong>Memory / storage use</strong>: The solution of the problem requires a lot of memory and/or storage</li>
+</ul>
+<p>The former can be remedied by <strong>increasing the performance</strong></p>
+<ul>
+<li>More cores, more nodes, GPUs, &hellip;</li>
+</ul>
+<p>The latter by <strong>adding more memory / storage</strong></p>
+<ul>
+<li>More memory per node (including large memory nodes), more nodes, &hellip;<ul>
+<li>Kebnekaise: 128GB - 192GB, 384GB, 512GB, 768GB, 3TB</li>
+</ul>
+</li>
+<li>Large storage solutions, &hellip;</li>
+</ul>
+<h3 id="high__performance__computing__-__what__counts__as__hpc">High Performance Computing - what counts as HPC<a class="headerlink" href="#high__performance__computing__-__what__counts__as__hpc" title="Permanent link">&para;</a></h3>
+<p><img alt="hpc" src="../images/hpc.gif" style="width: 99%;float: left;" /></p>
+<p><br><br style="clear: both;"></p>
+<h3 id="high__performance__computing__-__other__reasons">High Performance Computing - other reasons<a class="headerlink" href="#high__performance__computing__-__other__reasons" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Specialized (expensive) hardware<ul>
+<li>GPUs, including those optimized for AI <ul>
+<li>Kebnekaise has V100, A100, A40, MI100, A6000, L40S, H100 </li>
+</ul>
+</li>
+<li>High-end CPUs (AVX-512 etc) and ECC memory</li>
+</ul>
+</li>
+<li>Software<ul>
+<li>HPC2N holds <strong>licenses</strong> for several softwares</li>
+<li>Software is <strong>pre-configured and ready-to-use</strong> </li>
+</ul>
+</li>
+<li>Support and documentation</li>
+</ul>
+<h3 id="high__performance__computing__-__memory__models">High Performance Computing - memory models<a class="headerlink" href="#high__performance__computing__-__memory__models" title="Permanent link">&para;</a></h3>
+<p>Two memory models are relevant for HPC:</p>
+<ul>
+<li>Shared memory: Single memory space for all data.
+<img alt="sm" src="../images/sm.png" style="width: 50%;float: left;" />
+<br><br style="clear: both;"><ul>
+<li>Everyone can access the same data</li>
+<li>Straightforward to use </li>
+</ul>
+</li>
+<li>Distributed memory: Multiple <strong>distinct</strong> memory spaces.
+<img alt="dm" src="../images/dm.png" style="width: 50%; float: left;" />
+<br><br style="clear: both;"><ul>
+<li>Everyone has direct access <strong>only to the local data</strong> </li>
+<li>Requires <strong>communication</strong></li>
+</ul>
+</li>
+</ul>
+<p><img alt="memory" src="../images/memory.png" style="width:80%;" />
+<br><br style="clear: both;"></p>
+<h3 id="high__performance__computing__-__programming__models">High Performance Computing - programming models<a class="headerlink" href="#high__performance__computing__-__programming__models" title="Permanent link">&para;</a></h3>
+<p>The programming model changes when we aim for extra performance and/or memory:</p>
+<ul>
+<li>Single-core: Matlab, Python, C, Fortran, &hellip;<ul>
+<li>Single stream of operations</li>
+</ul>
+</li>
+<li>Multi-core: Vectorized Matlab, pthreads, OpenMP <ul>
+<li>Multiple streams of operations</li>
+<li>Work distribution, coordination (synchronization, etc), &hellip; </li>
+</ul>
+</li>
+<li>Distributed memory: MPI, &hellip; <ul>
+<li>Multiple streams of operations</li>
+<li>Work distribution, coordination (synchronization, etc), &hellip; </li>
+<li>Data distribution and communication </li>
+</ul>
+</li>
+<li>GPUs: CUDA, OpenCL, OpenACC, OpenMP, &hellip; <ul>
+<li>Many lightweight streams of operations</li>
+<li>Work distribution, coordination (synchronization, etc), &hellip; </li>
+<li>Data distribution across memory spaces and movement</li>
+</ul>
+</li>
+</ul>
+<h3 id="high__performance__computing__-__software">High Performance Computing - software<a class="headerlink" href="#high__performance__computing__-__software" title="Permanent link">&para;</a></h3>
+<p>Complexity grows when we aim for extra performance and/or memory/storage:</p>
+<ol>
+<li>Single-core: LAPACK, &hellip; <ul>
+<li>Load correct toolchain etc</li>
+</ul>
+</li>
+<li>Multi-core: LAPACK + parallel BLAS, &hellip; <ul>
+<li>Load correct toolchain etc</li>
+<li><strong>Allocate</strong> correct number of cores, <strong>configure</strong> software to use correct number of cores, &hellip; </li>
+</ul>
+</li>
+<li>Distributed memory}: ScaLAPACK, &hellip; <ul>
+<li>Load correct toolchain etc</li>
+<li>Allocate correct number of <strong>nodes and cores</strong>, configure software to use correct number of <strong>nodes and cores</strong>, &hellip; </li>
+<li>Data distribution, storage, &hellip; </li>
+</ul>
+</li>
+<li>GPUs: MAGMA, TensorFlow, &hellip; <ul>
+<li>Load correct toolchain etc</li>
+<li>Allocate correct number of <strong>cores and GPUs</strong>, configure software to use correct number of <strong>cores and GPUs</strong>, &hellip; </li>
+</ul>
+</li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../projectsaccounts/" class="btn btn-neutral float-right" title="Projects and Accounts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../projectsaccounts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../assets/_markdown_exec_pyodide.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/open_in_new_tab.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
