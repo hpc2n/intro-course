@@ -492,7 +492,10 @@ AMD node that lacks that installation.
 
     Notes: 1) PyTorch is only an example, if you already have a pipeline and PyTorch is not needed you can comment out
     the line ``container = "./pytorch_22.01.sif"`` in the config file. 2) The necessary variables in ``params`` section 
-    of the config file are the time, cpus, memory, and project ID, the others are optional.
+    of the config file are the time, cpus, memory, and project ID, the others are optional. 3) In this exercise,
+    1 GPU card of a L40 GPU was requested. If you need other types of GPUs, you will need to change tha in both
+    the batch and config files (other options can be found in our 
+    [Documentation on resources](https://docs.hpc2n.umu.se/documentation/batchsystem/resources/){:target="_blank"}).
 
 ## Apptainer
 
