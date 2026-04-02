@@ -473,6 +473,27 @@ AMD node that lacks that installation.
 
     Here, you will run the job on 28 cores. On a different terminal tab you can check that the job is submitted/running with the command ``squeue -u your-username``. 
 
+??? Note "Exercise 3: GPU jobs"
+
+    One can run jobs that are GPU aware in Nextflow. In this example, we will use a PyTorch container and run it
+    within Nextflow using GPUs. 
+
+    ```bash
+    cd /choose-a-folder-in-your-storage-project
+    apptainer pull pytorch_22.01.sif docker://nvcr.io/nvidia/pytorch:22.01-py3
+    ```
+    
+    Copy and paste the configure and batch scripts in this folder:
+    [gpu.config](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/GPU/gpu.config){:target="_blank"} and
+    [job-gpu.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/NEXTFLOW/INTERACTIVE/GPU/job-gpu.sh){:target="_blank"}
+    Then, correct the project ID and the time in the configure and batch scripts.
+
+    Submit the job to the queue: ``sbatch job-gpu.sh``
+
+    Notes: 1) PyTorch is only an example, if you already have a pipeline and PyTorch is not needed you can comment out
+    the line ``container = "./pytorch_22.01.sif"`` in the config file. 2) The necessary variables in ``params`` section 
+    of the config file are the time, cpus, memory, and project ID, the others are optional.
+
 ## Apptainer
 
 ### How to find Apptainer
