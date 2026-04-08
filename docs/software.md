@@ -325,7 +325,15 @@ AMD node that lacks that installation.
     Notice that the simulation will take ~1hrs. so the purpose of this exercise is to know
     if the simulation starts running well only.
 
-??? Note "Exercise 2: Running job arrays"
+??? Note "Exercise 2: Running ColabFold jobs"
+
+    One can also use [ColabFold](https://github.com/sokrypton/colabfold){:target="_blank"} to make protein structure predictions. One advantage of using ColabFold
+    instead of plain AlphaFold is that one can separate the multiple sequence alignment (MSA) step, which runs on CPUs, and the prediction step, which runs on GPUs. 
+    A batch script for running a simulation using the same fasta sequence as in the previous exercise can be found here: 
+    [job-colab.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/SINGLEJOB/job-colab.sh){:target="_blank"}. Currently, the MSA 
+    step is performed in the script. For the prediction step, you can comment out the CPU resources and the corresponding command line for ColabFold.
+
+??? Note "Exercise 3: Running job arrays"
 
     In the exercises folder ``ALPHAFOLD/JOBARRAYS`` you will find 8 fasta sequeces ``seq[1-8].fasta``,
     these sequences are listed in the file [list_sequences.txt](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ALPHAFOLD/JOBARRAYS/list_sequences.txt){:target="_blank"}.
