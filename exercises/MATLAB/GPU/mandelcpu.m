@@ -27,13 +27,16 @@ end
 
 count = log( count );
 cpuTime = toc( t );
-
-figure;
-fig = gcf;
-fig.Position = [200 200 600 600];
-imagesc( x, y, count );
-axis image
-colormap( [jet();flipud( jet() );0 0 0] );
-title( sprintf( '%1.2fsecs (CPU)', cpuTime ) );
-print('out-cpu','-dpng');
+%figure;
+%fig = gcf;
+%fig.Position = [200 200 600 600];
+%imagesc( x, y, count );
+%axis image
+%colormap( [jet();flipud( jet() );0 0 0] );
+%title( sprintf( '%1.2fsecs (CPU)', cpuTime ) );
+%print('out-cpu','-dpng');
+filename = 'log-cpu.out';
+mid=fopen(filename,'w');
+fprintf(mid,'Time = %16.12f\n',cpuTime);
+fclose(mid);
 end

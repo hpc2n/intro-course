@@ -82,6 +82,10 @@ on [parallel computing](https://se.mathworks.com/help/parallel-computing/choosin
     Remember that login nodes are used by many users and if you run heavy jobs there,
     you will interfere with the workflow of them.
 
+!!! Warning "Use the latest version of MATLAB " 
+
+    Several versions of MATLAB are installed; however, we recommend using the latest version.
+
 ### Exercises
 
 ??? Note "Exercise 1: Matlab serial job"

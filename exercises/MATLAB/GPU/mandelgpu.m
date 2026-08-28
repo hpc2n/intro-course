@@ -23,18 +23,21 @@ for n = 0:maxIterations
     count = count + inside;
 end
 
-count = log( count );
-
 % show
 
+count = log( count );
 count = gather( count ); % Fetch the data back from the GPU
 nativeGPUTime = toc( t );
-figure;
-fig = gcf;
-fig.Position = [200 200 600 600];
-imagesc( x, y, count );
-axis image
-colormap( [jet();flipud( jet() );0 0 0] );
-title( sprintf( '%1.2fsecs (GPU)', nativeGPUTime ) );
-print('out-gpu','-dpng');
+%figure;
+%fig = gcf;
+%fig.Position = [200 200 600 600];
+%imagesc( x, y, count );
+%axis image
+%colormap( [jet();flipud( jet() );0 0 0] );
+%title( sprintf( '%1.2fsecs (GPU)', nativeGPUTime ) );
+%print('out-gpu','-dpng');
+filename = 'log-gpu.out';
+mid=fopen(filename,'w');
+fprintf(mid,'Time = %16.12f\n',nativeGPUTime);
+fclose(mid);
 end
