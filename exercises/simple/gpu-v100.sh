@@ -1,7 +1,7 @@
 #!/bin/bash 
 # This job script is for running on 1 V100 GPU. 
 # Remember to change this to your own project ID after the course! 
-#SBATCH -A hpc2n2026-002
+#SBATCH -A hpc2ncourses2026-017
 #SBATCH --time=00:05:00
 #SBATCH --gpus=1
 #SBATCH -C v100

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Remember to change this to your own project ID after the course!
-#SBATCH -A hpc2n2026-002
+#SBATCH -A hpc2ncourses2026-017
 #SBATCH -t 00:15:00
 #SBATCH -N 1
 #SBATCH -n 24

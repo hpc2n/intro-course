@@ -29,15 +29,15 @@ This is your home-directory (pointed to by the <code>$HOME</code> variable). It 
 To find the path to your home directory, either run <code>pwd</code> just after logging in, or do the following:
 
 ```bash
-b-an01 [~/store]$ cd
-b-an01 [~]$ pwd
+b-cn1613 [~/store]$ cd
+b-cn1613 [~]$ pwd
 /home/u/username
-b-an01 [~]$
+b-cn1613 [~]$
 ```
 
 ## Project storage
 
-Project storage is where a project’s members have the majority of their storage. It is applied for through SUPR, as a storage project. While storage projects needs to be applied for separately, they are usually linked to a compute project.
+Project storage is where a project’s members have the majority of their storage. It is applied for through SUPR, as part of the project. 
 
 This is where you should keep your data and run your batch jobs from. It offers high performance when accessed from the nodes making it suitable for storage that are to be accessed from parallel jobs, and your home directory (usually) has too little space.
 
@@ -50,12 +50,12 @@ Project storage is located below <code>/proj/nobackup/</code> in the directory n
 ### Using project storage
 
 - If you have a storage project, you should use that to run your jobs.
-- You (your PI) will either choose a directory name when you/they apply for the storage project or get the project id as default name.
-- The location of the storage project in the file system is <code>/proj/nobackup/NAME-YOU-PICKED</code>
-- Since the storage project is shared between all users of the project, you should go to that directory and create a subdirectory for your things, which you will then be using.
+- You (your PI) will either choose a directory name when you/they apply for the project or get the project id as default name.
+- The location of the project storage in the file system is <code>/proj/nobackup/NAME-YOU-PICKED</code>
+- Since the project storage is shared between all users of the project, you should go to that directory and create a subdirectory for your things, which you will then be using.
 - For this course the storage is in 
   ```bash
-  /proj/nobackup/spring-courses
+  /proj/nobackup/fall-courses-2026
   ```
 
 !!! note "Exercise - create a directory"
@@ -70,31 +70,31 @@ Now is a good time to prepare the course material and download the exercises, if
 
 !!! note "Exercise"
 
-    1. Go to the subdirectory you created under <code>/proj/nobackup/spring-courses</code>
+    1. Go to the subdirectory you created under <code>/proj/nobackup/fall-courses-2026</code>
     2. Clone the repository for the course: <code>git clone https://github.com/hpc2n/intro-course.git</code>
 
     You will get a directory called <code>intro-course</code>. Below it you will find a directory called "exercises" where the majority of the exercises for the batch system section is located.
 
 #### OOD 
 
-Now let us try creating a sub directory to your directory ``/proj/nobackup/spring-courses/<your-dir>``, but using Open OnDemand. 
+Now let us try creating a sub directory to your directory ``/proj/nobackup/fall-courses-2026/<your-dir>``, but using Open OnDemand. 
 
 !!! note "Exercise - use OOD to create a sub directory"
 
     1. Go to the browser window where you have logged in to Open OnDemand desktop. (<a href="../login/#hpc2n__open__ondemand__desktop" target="_blank">Help here if you are not logged in</a>.
     2. Click "Files" in the top menu 
     ![filesystem-OOD-spring](images/filesystem-OOD-spring.png){: style="width: 500px"} 
-    3. Pick the ``/proj/nobackup/spring-courses`` directory and change to your directory under it (for me, ``bbrydsoe``)<br>
+    3. Pick the ``/proj/nobackup/fall-courses-2026`` directory and change to your directory under it (for me, ``bbrydsoe``)<br>
     ![filesystem-OOD-projectdir-bbrydsoe-spring](images/filesystem-OOD-projectdir-bbrydsoe-spring.png){: style="width: 500px"}<br> 
     You should have a subdirectory there called ``intro-course`` from cloning the material with the exercises (I had not yet done so when screencapping this). Do not enter that now. 
-    4. Create a new directory under ``/proj/nobackup/spring-courses/<your-dir>`` and call it whatever you want to since it is just a test.<br> 
+    4. Create a new directory under ``/proj/nobackup/fall-courses-2026/<your-dir>`` and call it whatever you want to since it is just a test.<br> 
     ![filesystem-OOD-projectdir-bbrydsoe-newdir2](images/filesystem-OOD-projectdir-bbrydsoe-newdir2.png){: style="width: 500px"}
 
     You can also access the file tree from the interactive session "Kebnekaise desktop", when you have started that. We will do this later. 
 
 ### Quota
 
-The size of the storage depends on the allocation. There are small, medium, and large storage projects, each with their own requirements. You can read about this on SUPR. The quota limits are specific for the project as such, there are no user level quotas on that space.
+The size of the storage depends on the allocation. You can read about this on SUPR. The quota limits are specific for the project as such, there are no user level quotas on that space.
 
 ## /scratch
 
@@ -113,7 +113,7 @@ More information about the file system, as well as archiving and compressing fil
     - When you login to Kebnekaise, you will end up in your home-directory.
     - Your home-directory is in <code>/home/u/username</code> and is pointed to by the environment variable <code>$HOME</code>.
     - Your project storage is located in <code>/proj/nobackup/NAME-YOU-PICKED</code>
-        - For this course it is <code>/proj/nobackup/spring-courses</code>.
+        - For this course it is <code>/proj/nobackup/fall-courses-2026</code>.
         - The project storage is NOT backed up.
     - You can also access the file tree from the Open OnDemand desktop. 
     - You should run the batch jobs from your project storage. 

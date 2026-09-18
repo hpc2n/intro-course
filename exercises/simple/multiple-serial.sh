@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A hpc2n2026-002
+#SBATCH -A hpc2ncourses2026-017
 # Add enough cores that all jobs can run at the same time 
 #SBATCH -n 5
 # Make sure that the time is long enough that the longest job will have time to finish 

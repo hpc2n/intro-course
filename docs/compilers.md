@@ -260,7 +260,7 @@ Using the environment variable (prefaced with $) for linking is highly recommend
 
     Not all compiler toolchains have a ``buildenv`` installed for them (yet). You can always ask for it if you need it. 
 
-    In this example we will use the toolchain ``foss/2021b``. 
+    In this example we will use the toolchain ``foss/2023b``. 
 
     1. Unload any modules you have loaded. Here we just ``purge`` all of them. 
     ```bash 
@@ -271,9 +271,9 @@ Using the environment variable (prefaced with $) for linking is highly recommend
       1) snicenvironment   2) systemdefault
     b-cn1613 [~]$ 
     ```
-    2. Load the ``foss/2021b`` toolchain
+    2. Load the ``foss/2023b`` toolchain
     ```bash
-    b-cn1613 [~]$ ml foss/2021b
+    b-cn1613 [~]$ ml foss/2023b
     b-cn1613 [~]$ 
     ```
     3. Load a matching ``buildenv`` module 
@@ -285,7 +285,7 @@ Using the environment variable (prefaced with $) for linking is highly recommend
     ```bash
     b-cn1613 [~]$ ml show buildenv
     --------                                                      --------------------------------------------------------------------
-       /hpc2n/eb/modules/all/MPI/GCC/11.2.0/OpenMPI/4.1.1/buildenv/default.lua:
+       /hpc2n/eb/modules/all/MPI/GCC/13.2.0/OpenMPI/4.1.6/buildenv/default.lua:
     ----------------------------------------------------------------------------
     help([[
     Description
@@ -301,10 +301,11 @@ Using the environment variable (prefaced with $) for linking is highly recommend
     whatis("Homepage: None")
     whatis("URL: None")
     conflict("buildenv")
-    depends_on("FlexiBLAS/3.0.4")
+    depends_on("FlexiBLAS/3.3.1")
     depends_on("FFTW/3.3.10")
-    depends_on("ScaLAPACK/2.1.0-fb")
-    setenv("EBROOTBUILDENV","/hpc2n/eb/software/buildenv/default-foss-2021b")
+    depends_on("FFTW.MPI/3.3.10")
+    depends_on("ScaLAPACK/2.2.0-fb")
+    setenv("EBROOTBUILDENV","/hpc2n/eb/software/buildenv/default-foss-2023b")
     setenv("EBVERSIONBUILDENV","default")
     ...
     ```

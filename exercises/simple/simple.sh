@@ -1,6 +1,6 @@
 #!/bin/bash
 # Project id - change to your own after the course!
-#SBATCH -A hpc2n2026-002
+#SBATCH -A hpc2ncourses2026-017
 # Asking for 1 core
 #SBATCH -n 1
 # Asking for a walltime of 1 min

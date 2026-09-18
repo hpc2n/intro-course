@@ -1,6 +1,6 @@
 #!/bin/bash
 # CHANGE THE PROJECT ID TO YOUR OWN PROJECT ID AFTER THE COURSE!
-#SBATCH -A hpc2n2026-002
+#SBATCH -A hpc2ncourses2026-017
 #Name the job, for easier finding in the list
 #SBATCH -J compile-run
 #SBATCH -t 00:10:00

@@ -155,7 +155,7 @@ module load foss/2023b
 Let us go through the most commonly used arguments:
 
 - **-A PROJ-ID**: The project that should be accounted. It is a simple conversion from the SUPR project id. You can also find your project account with the command ``projinfo``. The **PROJ-ID** argument is of the form
-    - hpc2nXXXX-YYY (HPC2N local project)
+    - hpc2nXXXX-YYY (HPC2N local project) or hpc2ncoursesXXXX-YYY (HPC2N local course project). 
 - **-N**: number of nodes. If this is not given, enough will be allocated to fullfill the requirements of -n and/or -c. A range can be given. If you ask for, say, 1-1, then you will get 1 and only 1 node, no matter what you ask for otherwise. It will also assure that all the processors will be allocated on the same node.
 - **-n**: number of tasks. 
 - **-c**: cores per task. Request that a specific number of cores be allocated to each task. This can be useful if the job is multi-threaded and requires more than one core per task for optimal performance. The default is one core per task.
@@ -187,14 +187,14 @@ srun ./my_mpi_program
 
     If you have not already done so, clone the material from the website <a href="https://github.com/hpc2n/intro-course" target="_blank">https://github.com/hpc2n/intro-course</a>: 
 
-    1. Change to the storage directory you created for yourself under ``/proj/nobackup/spring-courses/``. 
+    1. Change to the storage directory `<mydir>` you created for yourself under ``/proj/nobackup/fall-courses-2026/``. 
     2. Clone the material: 
     ```bash
     git clone https://github.com/hpc2n/intro-course.git
     ```
     3. Change to the subdirectory with the exercises:
     ```bash
-    cd intro-course/exercises/simple
+    cd /proj/nobackup/fall-courses-2026/<mydir>/intro-course/exercises/simple
     ```
 
     You will now find several small programs and batch scripts which are used in this section and the next, "Simple examples". 
@@ -460,10 +460,10 @@ ml CUDA/12.9.1
 
 !!! Important
 
-    - The course project has the following project ID: hpc2n2026-002
-    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2n2026-002`` 
-    - We have storage linked to the project: **spring-courses**. 
-        - You find it in ``/proj/nobackup/spring-courses``. 
+    - The course project has the following project ID: `hpc2ncourses2026-017`
+    - In order to use it in a batch job, add this to the batch script: ``#SBATCH -A hpc2ncourses2026-017`` 
+    - We have storage linked to the project: **fall-courses-2026**. 
+        - You find it in ``/proj/nobackup/fall-courses-2026``. 
         - Remember to create your own directory under it if you have not already done so. 
 
 ## Open OnDemand desktop 
@@ -492,7 +492,7 @@ When you choose this, there are some options:
 
 !!! note "Exercise: start an instance of the "Kebnekaise desktop" and play with it"
 
-    - Pick "compute project" as ``hpc2n2025-002``
+    - Pick "compute project" as ``hpc2ncourses2026-017``
     - Pick "number of hours" to ``1`` so it starts fast. 
     - Pick "Number of cores" to something between ``1-4``
     - Pick "any" for "Node type" 
@@ -503,7 +503,7 @@ When you choose this, there are some options:
     - Look around, see that you can use a filetree, open terminals (do so and see the cores are on the node that was shown as host), etc. 
         - A terminal is opened from "Applications" -> "System Tools" -> "MATE terminal" (or Xfce if you picked that). 
     - If you asked for more than one core, you can do ``srun /bin/hostname`` in the terminal and see a list of nodes. 
-    - You can go to the ``/proj/nobackup/spring-courses/<your-dir>/intro-course/exercises`` directory and into the ``simple`` directory. Try run something directly on the command line - remember to load modules and compile if needed. 
+    - You can go to the ``/proj/nobackup/fall-courses-2026/<your-dir>/intro-course/exercises`` directory and into the ``simple`` directory. Try run something directly on the command line - remember to load modules and compile if needed. 
         - Example: run the small Python program ``mmmult.py``
             - Load some modules: ``module load GCC/12.3.0 Python/3.11.3 SciPy-bundle/2023.07``
             - Run it: ``python mmmult.py`` (in directory "simple")

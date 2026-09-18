@@ -1,6 +1,6 @@
 #!/bin/bash
 # Project id - change to your own after the workshop!
-#SBATCH -A hpc2n2026-002
+#SBATCH -A hpc2ncourses2026-017
 # Number of cores per tasks
 #SBATCH -c 8 
 # Asking for a walltime of 5 min

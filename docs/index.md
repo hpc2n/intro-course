@@ -46,14 +46,13 @@
 
 ## Important info
 
-- We have a course project: ``hpc2n2026-002``.
-- The course project has default project storage. You can find that here: ``/proj/nobackup/spring-courses``.
-- You should create a subdirectory under ``/proj/nobackup/spring-courses`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
+- We have a course project: ``hpc2ncourses2026-017``.
+- The course project has default project storage. You can find that here: ``/proj/nobackup/fall-courses-2026``.
+- You should create a subdirectory under ``/proj/nobackup/fall-courses-2026`` for yourself to do your exercises in. Make sure it is unique - your name/username is often a good option.
 - As mentioned further up on the page, you can download the material for the course. Placing it in your directory on the project storage is a good idea. You can fetch it there with <code>git clone https://github.com/hpc2n/intro-course.git</code>. 
-- We have two reservations for the course (valid only during the course time). Two L40s GPUs (reservation ``intro-gpu``) and two AMD Zen4 CPU node (reservation ``intro-cpu``). The reservations should be "magnetic", which means they should be used per default if you run in the course project, without you adding the reservation manually. 
-- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAz1nWMW7I6RYYRkt-SI_D-AdQNEvWgHt6sawjmsSH5zcE" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAz1nWMW7I6RYYRkt-SI_D-AdQNEvWgHt6sawjmsSH5zcE</a>
-- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQCKgB00THY4RJW1BNN6aHFfAah-JtvyPrDNyTKB7ulfLYU" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQCKgB00THY4RJW1BNN6aHFfAah-JtvyPrDNyTKB7ulfLYU</a> 
-- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.office.com/e/zvVAGnP2Mp" target="_blank">https://forms.office.com/e/zvVAGnP2Mp</a>. 
+- The Q/A page can be found here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAXvlcfmGrgR7ku7F7UetEHARwTr9yOwevAaFcRGJzK3p0?e=daoFt9" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQAXvlcfmGrgR7ku7F7UetEHARwTr9yOwevAaFcRGJzK3p0?e=daoFt9</a>
+- The important info page is here: <a href="https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQBQcKR__KrcRYh0m5Ww65dmAa0Wy8vTfPUjrYikPD7v7VA" target="_blank">https://umeauniversity.sharepoint.com/:w:/s/HPC2N630/IQBQcKR__KrcRYh0m5Ww65dmAa0Wy8vTfPUjrYikPD7v7VA</a> 
+- There is an evaluation survey for the course. Please help us by filling it! It is here: <a href="https://forms.cloud.microsoft/e/hjczrGCdts" target="_blank">https://forms.cloud.microsoft/e/hjczrGCdts</a>. 
 
 ## Preliminary schedule
 

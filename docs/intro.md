@@ -83,24 +83,25 @@ Involved in several **projects and collaborations**:
     - intro courses: our system, Linux, R, Python, Julia, Matlab, Git
     - intermediate courses
     - - Parallel programming and tools (OpenMP, MPI, debugging, perf. analyzers, Matlab, R, MD simulation, ML, GPU, ...)
-- **Courses this spring**
-    - NAISS intro week, 2-6 January 2026 
+- **Courses this fall**
+    - NAISS intro week, 14-18 September 2026 
         - Command Line 101
         - Connecting and File Transfer
         - Selecting software modules
         - Running jobs on clusters 
-        - Linux Command Line 201 
+        - Linux Command Line 102 
         - Running AI/ML workloads on NAISS systems 
         - Handling sensitive data at NAISS 
-    - Introduction to Python and Using Python in an HPC environment, 20 + 22-24 April 2026
-    - Linux Command Line 101, 11 May 2026
+    - Introduction to Running R, Matlab, and Julia in HPC, 19-22 October 2026
+    - Introduction to Python and Using Python in an HPC environment, 16-20 November 2026
     - NAISS intro day
         - shortened version of 
+            - Linux Command Line 101
             - Connecting and File Transfer
             - Selecting software modules
             - Running jobs on clusters  
             - Running AI/ML workloads on NAISS systems (possibly) 
-    - Linux Command Line 201, 1-2 June 2026 
+            - Linux Command Line 102 
     - **Updated list:** <a href="https://www.hpc2n.umu.se/events/courses" target="_blank">https://www.hpc2n.umu.se/events/courses</a> 
 - Workshops and seminars 
 - NGSSC / SeSE & university courses
