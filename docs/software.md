@@ -296,7 +296,14 @@ The first time you access R on Kebnekaise, you need to configure it by following
           Note 2: If you want to try a different number of cores for running the 
           scripts, you should change that number in both the *.R and *.sh scripts
 
-??? Note "Exercise 5: Machine Learning jobs"
+??? Note "Exercise 5: Parallel jobs with clusterapply"
+
+    The folder ``PARALLEL`` contains an example for applying a function to data in parallel mode with ``clusterapply``. The R script can be found here:
+    [clusterapply.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/PARALLEL/clusterapply.R){:target="_blank"}  and the 
+    submit the [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/PARALLEL/ob.sh){:target="_blank"} script. Compare the timings of the
+    sequential and parallel codes using different number of cores.
+
+??? Note "Exercise 6: Machine Learning jobs"
 
     In the folder ``ML`` we show a ML model using a sonar database
     and Random Forest as the training method ([Rscript.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/Rscript.R){:target="_blank"}). The simulations are done both in serial
@@ -307,7 +314,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
     Try a different number of cores and monitor the timings which are reported at
     the end of the output file.
 
-??? Note "Exercise 6: Machine Learning GPU jobs"
+??? Note "Exercise 7: Machine Learning GPU jobs"
 
     In the folder ``ML`` you can find a ML model using the MNIST database where the ``Keras3`` library is used.
     To run this example one need to install some prerequisites, load the following modules:
