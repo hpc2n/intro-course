@@ -300,7 +300,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
     The folder ``PARALLEL`` contains an example for applying a function to data in parallel mode with ``clusterapply``. The R script can be found here:
     [clusterapply.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/PARALLEL/clusterapply.R){:target="_blank"}  and the 
-    submit the [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/PARALLEL/ob.sh){:target="_blank"} script. Compare the timings of the
+    submit the [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/PARALLEL/job.sh){:target="_blank"} script. Compare the timings of the
     sequential and parallel codes using different number of cores.
 
 ??? Note "Exercise 6: Machine Learning jobs"
