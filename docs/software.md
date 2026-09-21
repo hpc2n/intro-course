@@ -575,7 +575,12 @@ lrwxrwxrwx 1 root root 9 Mar 14 18:30 /bin/singularity -> apptainer
     the bottom of it (line with the ns/day string) is written in the *md.log* files. As a comparison,
     after running the Apptainer image, the module of Gromacs is loaded and the same simulation is run. 
 
-## TensorFlow
+
+
+
+## Machine Learning
+
+Here you can find a ML example with Python using the MNIST dataset 
 
 ### How to find TensorFlow
 
@@ -596,13 +601,7 @@ Intel nodes there are more versions of this software installed than on the AMD n
 
     The batch script is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/job.sh){:target="_blank"}. Submit the job with different types of GPUs.
 
-
-## Machine Learning
-
-Here you can find a ML example with Python using the MNIST dataset 
-
-
-??? Note "Exercise 1: Running a ML job"
+??? Note "Exercise 2: Running a ML job"
 
     The Python script can be found here [ml.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ML/ml.py){:target="_blank"}
     and the batch script here [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ML/job.sh){:target="_blank"}
