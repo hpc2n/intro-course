@@ -1,8 +1,8 @@
-# Introduction to HPC2N and Kebnekaise - January 2026
+# Introduction to HPC2N and Kebnekaise - September 2026
 
 ## Course description
 
-**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Linux Command Line 101" which was most recently given 20 October 2025. It will be given again on 2 February 2026, as part of the NAISS intro week. You can find the course page and registration linked from here: [https://naiss-training.github.io/NAISS-intro-week/](https://naiss-training.github.io/NAISS-intro-week/)
+**NOTE**: if you need an introduction to Linux, we recommend signing up for the course "Linux Command Line 101" which was most recently given 14 September 2026. It will be given again in early December, as part of the NAISS intro week. You can find the list of NAISS courses here: https://hpc.pages.naiss.se/training/naiss-training/courses/upcoming/
 
 This course begins with an introduction to HPC and HPC2N, then moves on to a walkthrough of the Kebnekaise system, including the GPUs. We will go into some detail about the newer hardware as well as the Desktop onDemand way of logging in. 
 
@@ -27,7 +27,7 @@ Lecture recordings: TBA
 
 **Lecture recordings from the current course will be posted to HPC2N's YouTube page:** https://www.youtube.com/user/HPC2N
 
-Date: 20 January 2026 
+Date: 21 September 2026 
 
 Time: 09:00-17:00
 
