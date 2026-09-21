@@ -596,6 +596,18 @@ Intel nodes there are more versions of this software installed than on the AMD n
 
     The batch script is [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/TENSORFLOW/job.sh){:target="_blank"}. Submit the job with different types of GPUs.
 
+
+## Machine Learning
+
+Here you can find a ML example with Python using the MNIST dataset 
+
+
+??? Note "Exercise 1: Running a ML job"
+
+    The Python script can be found here [ml.py](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ML/ml.py){:target="_blank"}
+    and the batch script here [job.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/ML/job.sh){:target="_blank"}
+
+
 ## Jupyter Notebooks 
 
 You can use Jupyter Notebooks on Kebnekaise through JupyterLab. Jupyter Notebooks allow you to
