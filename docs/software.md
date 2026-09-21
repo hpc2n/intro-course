@@ -209,7 +209,7 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
         For this R version (check if they are not already installed)
 
-        ml GCC/10.2.0 OpenMPI/4.0.5 R/4.0.4
+        ml GCC/11.2.0 OpenMPI/4.1.1 R/4.1.2
 
         Rmpi
 
@@ -306,6 +306,23 @@ The first time you access R on Kebnekaise, you need to configure it by following
 
     Try a different number of cores and monitor the timings which are reported at
     the end of the output file.
+
+??? Note "Exercise 6: Machine Learning GPU jobs"
+
+    In the folder ``ML`` you can find a ML model using the MNIST database where the ``Keras3`` library is used.
+    To run this example one need to install some prerequisites, load the following modules:
+
+    ```bash
+    ml GCC/13.2.0 R/4.4.1
+    ml Python/3.11.5
+    ml CUDA/12.6.0
+    ml OpenSSL/3
+    ```
+
+    then, start an ``R`` session and install the packages ``Matrix`` and ``keras3``.
+
+    The model can be found here ([ML-GPU.R](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/ML-GPU.R){:target="_blank"})
+    and the batch script here [job-gpu.sh](https://raw.githubusercontent.com/hpc2n/intro-course/master/exercises/R/ML/job-gpu.sh){:target="_blank"}. 
 
 ## Alphafold
 
