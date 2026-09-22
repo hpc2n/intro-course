@@ -4,9 +4,9 @@
 # This example asks for 1 core
 #SBATCH -n 1         
 # Ask for a suitable amount of time. Remember, this is the time the Jupyter notebook will be available! HHH:MM:SS.
-#SBATCH --time=04:20:00
+#SBATCH --time=00:14:00
 # If you use the GPU nodes uncomment the following lines
-#SBATCH --gpus-per-node=l40s:2
+#SBATCH --gpus-per-node=l40s:1
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
@@ -15,7 +15,7 @@ module load GCCcore/13.2.0 JupyterLab/4.2.0
 module load CUDA/12.5.0
 
 # Source the environment
-source ./mandelenv/bin/activate
+#source ./mandelenv/bin/activate
 # Start JupyterLab
 jupyter lab --no-browser --ip $(hostname)
 
