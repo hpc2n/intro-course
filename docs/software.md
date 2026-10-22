@@ -390,17 +390,8 @@ it in the first line of this file. In the second line of the file write your ema
 ### Using CryoSPARC on Kebnekaise
 
 Create a suitable folder in your project directory, for instance ``/proj/nobackup/hpc2n202X-XYZ/cryosparc``
-and move into this folder. Download/copy the ``lane*tar`` files that are located 
-[here](https://github.com/hpc2n/intro-course/tree/master/exercises/CRYOSPARC){:target="_blank"} to the cryosparc 
-folder and untar them here (``tar -xvf lane_CPU.tar`` as an example).
-
-??? Important "Fix your Project_ID and time" 
-
-    Change the string *Project_ID* in the file ``lane*/cluster_script.sh`` to reflect your current project.
-    Also, the time was set to 20 min. in these files but for your realistic simulations you can change it to
-    longer times (``-t 00:20:00``).
-
-The lanes should be recognized by CryoSPARC when it starts running.
+and move into this folder. The supported lanes for CPU and GPUs are created and recognized by CryoSPARC 
+when it starts running.
 
 Load the CryoSPARC modules. Start CryoSPARC and accept the request which asks about continuing using
 cryostart and that the folder was not used before. List the users on the server (which should be only yourself
