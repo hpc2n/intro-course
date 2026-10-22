@@ -408,26 +408,31 @@ for this type of license), check the email address that is displayed for this us
 added in the license file) and reset the password to. These steps are summarized here:
 
 ```bash
-$cryosparc start 
+$cryosparc start
 ...
 Do you wish to continue starting cryosparc? [yN]: y
 ...
-CryoSPARC master started. 
+CryoSPARC master started.
  From this machine, access CryoSPARC and CryoSPARC Live at
-    http://localhost:39007
+    http://b-an04.hpc2n.umu.se:39000
 ...
 
 $cryosparc listusers
 cryosparc resetpassword --email "myemail@mail.com" --password "choose-a-password"
 ```
+Copy and paste the line which has the url ``http://b-...:3900`` port (notice that port number can change) to a browser on Kebnekaise:
+![cryosparc-ini](./cryosparc-files/cryosparc-ini.png)
 
-Copy and paste the line which has the localhost port (notice that port number can change) to a browser on Kebnekaise:
-
-![cryosparc-ini](images/cryosparc-ini.png)
-
+Accept the CroSPARC Non-commercial software license agreement.
 After loging in, you will be able to see the CryoSPARC's dashboard:
 
 ![cryosparc-dash](images/cryosparc-snapshot.png)
+
+Upon queueing a job, you can set the account (SUPR Project on Kebnekaise) and the time limit in hours:
+
+![slurm](./cryosparc-files/slurm-parameters.png)
+
+Once you are done with the cryoSPARC session you can stop it with ``cryosparc stop``
 
 There are several tutorials at the CryoSPARC website, in the previous picture I followed the
 [Introductory Tutorial (v4.0+)](https://guide.cryosparc.com/processing-data/get-started-with-cryosparc-introductory-tutorial#step-3-download-the-tutorial-dataset){:target="_blank"}. 
