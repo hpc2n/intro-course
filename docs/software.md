@@ -412,7 +412,7 @@ $cryosparc listusers
 cryosparc resetpassword --email "myemail@mail.com" --password "choose-a-password"
 ```
 Copy and paste the line which has the url ``http://b-...:3900`` port (notice that port number can change) to a browser on Kebnekaise:
-![cryosparc-ini](./cryosparc-files/cryosparc-ini.png)
+![cryosparc-ini](images/cryosparc-ini.png)
 
 Accept the CroSPARC Non-commercial software license agreement.
 After loging in, you will be able to see the CryoSPARC's dashboard:
@@ -421,7 +421,7 @@ After loging in, you will be able to see the CryoSPARC's dashboard:
 
 Upon queueing a job, you can set the account (SUPR Project on Kebnekaise) and the time limit in hours:
 
-![slurm](./cryosparc-files/slurm-parameters.png)
+![slurm](images/slurm-parameters.png)
 
 Once you are done with the cryoSPARC session you can stop it with ``cryosparc stop``
 
