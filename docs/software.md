@@ -419,7 +419,7 @@ After loging in, you will be able to see the CryoSPARC's dashboard:
 
 ![cryosparc-dash](images/cryosparc-snapshot.png)
 
-Upon queueing a job, you can set the account (SUPR Project on Kebnekaise) and the time limit in hours:
+Upon queueing a job, you can set the account (SUPR Project on Kebnekaise), job reservation (leave it blank if you don't have one), and the time limit in hours:
 
 ![slurm](images/slurm-parameters.png)
 
